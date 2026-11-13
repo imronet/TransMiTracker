@@ -1,0 +1,89 @@
+{
+  "checked_at": "2026-11-13T17:13:23.851254-05:00",
+  "python": "3.13.14",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "checks": [
+    {
+      "command": [
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "exit_code": 1,
+      "output": "........................................................E............... [ 30%]\n........................................................................ [ 60%]\n........................................................................ [ 91%]\n.....................                                                    [100%]\n=================================== ERRORS ====================================\n_ ERROR at setup of test_widget_upstream_changes_preserve_independent_structural_choices _\n\ndesktop = <transmitracker.gui.controller.DesktopController object at 0x000001A63454CDD0>\n\n    @pytest.fixture\n    def window(desktop):\n>       app = TransMiTrackerApp(desktop.config.root)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests\\test_gui_widgets.py:36: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nsrc\\transmitracker\\gui\\app.py:32: in __init__\n    super().__init__()\n.venv\\Lib\\site-packages\\customtkinter\\windows\\ctk_tk.py:40: in __init__\n    CTK_PARENT_CLASS.__init__(self, **pop_from_dict_by_set(kwargs, self._valid_tk_constructor_arguments))\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <transmitracker.gui.app.TransMiTrackerApp object .>, screenName = None\nbaseName = '__main__', className = 'Tk', useTk = True, sync = False, use = None\n\n    def __init__(self, screenName=None, baseName=None, className='Tk',\n                 useTk=True, sync=False, use=None):\n        \"\"\"Return a new top level widget on screen SCREENNAME. A new Tcl interpreter will\n        be created. BASENAME will be used for the identification of the profile file (see\n        readprofile).\n        It is constructed from sys.argv[0] without extensions if None is given. CLASSNAME\n        is the name of the widget class.\"\"\"\n        self.master = None\n        self.children = {}\n        self._tkloaded = False\n        # to avoid recursions in the getattr code in case of failure, we\n        # ensure that self.tk is always _something_.\n        self.tk = None\n        if baseName is None:\n            import os\n            baseName = os.path.basename(sys.argv[0])\n            baseName, ext = os.path.splitext(baseName)\n            if ext not in ('.py', '.pyc'):\n                baseName = baseName + ext\n        interactive = False\n>       self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       _tkinter.TclError: invalid command name \"tcl_findLibrary\"\n\nC:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.3824.0_x64__qbz5n2kfra8p0\\Lib\\tkinter\\__init__.py:2470: TclError\n=========================== short test summary info ===========================\nERROR tests/test_gui_widgets.py::test_widget_upstream_changes_preserve_independent_structural_choices\n236 passed, 1 error in 215.86s (0:03:35)\n"
+    },
+    {
+      "command": [
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "output": "87 files already formatted\n"
+    },
+    {
+      "command": [
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "output": "No broken requirements found.\n"
+    }
+  ],
+  "dependencies": {
+    "httpx": {
+      "version": "0.28.1",
+      "requires_python": ">=3.8",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: hatchling 1.26.3\nRoot-Is-Purelib: true\nTag: py3-none-any\n"
+    },
+    "protobuf": {
+      "version": "7.36.2",
+      "requires_python": ">=3.10",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: bazel-wheelmaker 1.0\nRoot-Is-Purelib: false\nTag: cp310-abi3-win_amd64\n"
+    },
+    "gtfs-realtime-bindings": {
+      "version": "3.0.0",
+      "requires_python": ">=3.10",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: setuptools (84.0.0)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n"
+    },
+    "tzdata": {
+      "version": "2026.6",
+      "requires_python": ">=2",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: setuptools (84.2.1)\nRoot-Is-Purelib: true\nTag: py2-none-any\nTag: py3-none-any\n\n"
+    },
+    "pytest": {
+      "version": "9.2.0",
+      "requires_python": ">=3.10",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: setuptools (84.2.1)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n"
+    },
+    "ruff": {
+      "version": "0.17.5",
+      "requires_python": ">=3.7",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: maturin (1.15.0)\nRoot-Is-Purelib: false\nTag: py3-none-win_amd64\n"
+    },
+    "customtkinter": {
+      "version": "6.0.0",
+      "requires_python": ">=3.7",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: setuptools (82.0.1)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n"
+    },
+    "darkdetect": {
+      "version": "0.8.0",
+      "requires_python": ">=3.6",
+      "installed_wheel": "Wheel-Version: 1.0\nGenerator: bdist_wheel (0.38.4)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n"
+    }
+  },
+  "all_passed": false
+}

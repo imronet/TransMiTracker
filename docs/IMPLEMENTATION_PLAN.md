@@ -864,3 +864,80 @@ advertencias no bloqueantes y hash del SQLite original conservado.
 No se modifican datos GTFS originales. No implementar GPS, reconstrucción,
 predictor, Croma de pago, Telegram operativo ni scheduler. **No iniciar Fase 3A
 sin aprobación expresa.**
+
+## 13. Adenda de Fase 3A — Reconstrucción GPS offline
+
+El usuario acepta Fase 2.1 y autoriza exclusivamente Fase 3A. Esta adenda conserva
+los requisitos originales y las investigaciones anteriores. Actualiza la entrega
+a **0.2.0**, sin habilitar seguimiento, predictor, Croma, Telegram ni scheduler.
+
+### 13.1. Evidencia e identidad
+
+- Motor modular en `src/transmitracker/reconstruction/`, independiente de Tk.
+  Modelos tipados de snapshots, originales/normalizados, identidades candidatas,
+  segmentos, proyecciones, eventos, mediciones y rechazos.
+- Conservar fuente/endpoint, hashes, tiempos de feed/reporte/recepción separados,
+  descriptor original, patrón y ocurrencia de parada. No completar campos ausentes.
+- Agrupar por proveedor/endpoint/vehículo; conservar cambios de viaje e inicio,
+  cortes, desapariciones y conflictos. No usar sufijos ni cercanía para inventar
+  asociaciones. Distinguir referencias exactas, continuidad e identidad operativa.
+- La identidad sintética requiere declaración independiente de la verdad de cruce;
+  nunca puede autorizar una asociación real. `operationally_verified` sigue false.
+
+### 13.2. Geometría y mediciones
+
+- Proyectar sobre geometría del viaje/patrón exacto, con progreso y velocidad
+  observados. Soportar patrones distintos de una ruta, ramales, bucles, cruces y
+  ocurrencias repetidas; rechazar candidatos ambiguos y anclajes insuficientes.
+- Ordenar GPS, deduplicar, validar recencia/campos y segmentar saltos, retrocesos,
+  huecos y cambios de descriptor con umbrales configurables/documentados.
+- Separar GPS observado de posiciones animadas/extrapoladas, conforme al aprendizaje
+  conceptual de Paradero. No importar velocidades iniciales como verdad operacional.
+- Estimar cruces con observaciones a ambos lados, intervalo y soporte. Interpolar
+  un punto solo con continuidad, bracket corto y velocidad compatible. Mantener
+  null cuando solo existe un intervalo; no etiquetar cruces como llegadas observadas.
+- Distinguir estacionariedad con estado publicado, cruce y evento no determinable.
+  Medir únicamente entre ocurrencias posteriores del mismo segmento y propagar
+  incertidumbre de extremos; espera y caminata no se infieren.
+
+### 13.3. Persistencia, replay y contratos futuros
+
+- SQLite GPS separado de catálogo/perfiles: migración inicial de esquema 1,
+  índices, originales reproducibles, sightings, parámetros, versión/huella del
+  algoritmo y rechazos. Repetir una ejecución idéntica no reescribe filas;
+  otra configuración/versión conserva procedencia y resultados anteriores.
+- CLI local con capturas guardadas verificadas por hash y fixtures sintéticos
+  explícitos. Perfil JSON o SQLite de solo lectura como entrada de tramos,
+  sin descargar datos, modificar la GUI ni generar tareas de fondo.
+- Interfaces desacopladas de proveedores y presupuesto de créditos; especificar
+  reservas, consumo estimado/confirmado, bloqueo, caché, singleflight y dry-run.
+  Valores 1.500/10/1 suministrados por el usuario, configurables; clasificación de
+  endpoints pendiente. No implementar cliente Croma ni realizar consultas.
+
+### 13.4. Aceptación y transición
+
+1. Conservar los 183 casos anteriores y añadir 54 de unidad/integración/replay;
+   ejecutar pytest, Ruff, formato y pip check en Python 3.13.
+2. Evaluar 23 escenarios sintéticos, cadencias de 20/40/90 s, error mediano/P90,
+   detección, falsos positivos, cobertura y rechazo frente a geocerca simple.
+   Documentar que la matriz de cadencias corresponde al recorrido normal y no
+   sustituye calibración con errores reales.
+3. Acreditar incertidumbre, ocurrencias repetidas, múltiples vehículos, cortes e
+   idempotencia. Ninguno de los 12 escenarios inseguros debe aceptar una medición.
+4. Reprocesar evidencia real guardada solo para parsing/asociaciones, sin declarar
+   velocidades, llegadas ni validación operativa con un snapshot aislado.
+5. Entregar `docs/PHASE3A_REPORT.md`, métricas/evidencias y
+   `docs/CROMA_INTEGRATION_DESIGN.md`; conservar originales y hashes previos.
+
+Resultado de entrega: **237 pruebas aprobadas (183 anteriores + 54 nuevas)** en
+274,91 s; Ruff, formato (89 archivos) y pip check correctos en Python 3.13.14.
+Las cinco entradas protegidas mantienen sus hashes. La evaluación es sintética;
+el replay de una captura real produce cero cruces/mediciones aceptados.
+
+Para Fase 3B son necesarios autorización expresa, revisión de condiciones/costes
+y clasificación de operaciones del proveedor, presupuesto con reservas, identidad
+verificada independientemente y un experimento real acotado permitido con verdad
+de referencia para calibrar errores e intervalos. Antes del colector compartido
+de producción siguen pendientes calidad operativa, rendimiento, retención y
+política de sondeo. La agrupación visual por parent_station/andén queda posterior.
+**Fase 3B no iniciada; no activarla sin autorización expresa.**

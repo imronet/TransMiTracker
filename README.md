@@ -1,12 +1,50 @@
-# TransMiTracker v0.1.0
+# TransMiTracker v0.2.0
 
 Aplicación Python para analizar tiempos de viaje de TransMilenio/SITP.
 Se entregaron las **Fases 0, 0.5, 1A, 1B, 2 y 2.1 (QA y recorridos habituales)**.
+La **Fase 3A** añade un motor GPS exclusivamente offline, separado de la GUI.
 La validación temporal de identidades Realtime reales sigue pendiente de evidencia.
-No hay tracking continuo, predicción ni envío de Telegram. La Fase 3A requiere autorización.
+No hay tracking continuo, predicción ni envío de Telegram. La Fase 3B requiere autorización.
 
 El [plan completo](docs/IMPLEMENTATION_PLAN.md) conserva los requisitos recibidos,
 con rutas adaptadas a `src/transmitracker/`.
+
+## Reconstrucción GPS offline — Fase 3A
+
+El [informe y matriz de Fase 3A](docs/PHASE3A_REPORT.md) separa resultados
+sintéticos de parsing de capturas reales antiguas. El motor valida tiempos,
+IDs y geometría, segmenta discontinuidades, estima pasos con intervalos y calcula
+duraciones cuando ambos extremos tienen evidencia suficiente. No genera GPS
+extrapolado, llegadas confirmadas ni ETA. Las mediciones reales permanecen sin
+verificación operativa; las identidades sintéticas llevan una etiqueta específica.
+
+Desde la raíz del proyecto, con `.venv` existente:
+
+```powershell
+$env:PYTHONPATH = Join-Path (Get-Location).Path 'src'
+$env:PYTHONUTF8 = '1'
+# Catálogo y verdad sintéticos; comparación a 20, 40 y 90 segundos:
+.\.venv\Scripts\python.exe -m transmitracker.reconstruction evaluate --directory data/phase3a/final
+# Replay sintético individual:
+.\.venv\Scripts\python.exe -m transmitracker.reconstruction replay --catalog data/phase3a/final/fixtures/synthetic_catalog_v1.sqlite3 --scenario normal --gap 40 --db data/phase3a/offline.sqlite3
+# Captura real antigua guardada: no hace ninguna descarga nueva:
+.\.venv\Scripts\python.exe -m transmitracker.reconstruction replay --catalog data/catalog/official_20261112.sqlite3 --capture data/phase1b/saved_original/capture.json --db data/phase3a/real_saved_reconstruction.sqlite3 --output docs/PHASE3A_REAL_SAVED_REPLAY.json
+```
+
+El almacén GPS es nuevo y separado de catálogo/perfiles. Guarda originales,
+normalización, segmentos, eventos, mediciones, rechazos, versión/huella del algoritmo
+y parámetros. Repetir la misma ejecución reutiliza resultados; cambiar parámetros,
+versión o código conserva una ejecución nueva y la procedencia anterior.
+Un `--parameters archivo.json` permite modificar umbrales; son candidatos sin
+calibración operativa. La CLI solo admite rutas dentro del proyecto.
+
+Para usar perfiles estructurales, añada `--profiles-db data/gui/profiles.sqlite3
+--profile-id ID` o `--profile-json archivo.json` al replay. La lectura de perfiles
+es explícita, en modo SQLite de solo lectura y sin migrarlos; debe coincidir el
+hash de catálogo y las ocurrencias. Abrir la GUI o un perfil no ejecuta el motor.
+
+La [especificación de Croma y créditos](docs/CROMA_INTEGRATION_DESIGN.md) es un
+diseño e interfaces para una fase futura. No hay cliente Croma ni consumo de créditos.
 
 ## Abrir la GUI
 
@@ -76,7 +114,7 @@ y la [política de versiones](docs/VERSIONING.md). La única fuente de versión
 es `pyproject.toml`; README refleja la versión de esta entrega.
 
 ```powershell
-.\.venv\Scripts\python.exe scripts/verify_phase0.py --output docs/PHASE2_1_VALIDATION_RESULTS.json
+.\.venv\Scripts\python.exe scripts/verify_phase0.py --output docs/PHASE3A_VALIDATION_RESULTS.json
 # Solo ventanas Tk reales:
 .\.venv\Scripts\python.exe -m pytest -m gui -q
 # Servicios y controladores sin ventanas:
@@ -253,10 +291,12 @@ No hay fallback automático a fixtures. Las URLs y su procedencia están en
 ```
 
 Ejecuta pytest, Ruff, formato y `pip check`; guarda
-[PHASE2_1_VALIDATION_RESULTS.json](docs/PHASE2_1_VALIDATION_RESULTS.json). La suite bloquea la red
-y usa temporales en `.cache/pytest`. Resultado original de Fase 0: **54 pruebas**;
+[PHASE3A_VALIDATION_RESULTS.json](docs/PHASE3A_VALIDATION_RESULTS.json). La suite bloquea la red
+y usa temporales exclusivos en `.cache/verification`. Resultado original de Fase 0: **54 pruebas**;
 con Fase 0.5: **69**; con Fase 1A: **99**; con Fase 1B: **138**; con Fase 2:
-**160**; con Fase 2.1: **183 pruebas aprobadas (160 anteriores + 23 nuevas)**.
+**160**; con Fase 2.1: **183**; con Fase 3A: **237 casos (183 anteriores + 54 nuevos)**.
+En Windows, los casos con ventanas Tk se ejecutan en procesos separados sin
+omitir ni reintentar sus aserciones; conservan el bloqueo de red.
 
 Para regenerar fixtures sintéticos:
 
@@ -289,6 +329,7 @@ src/transmitracker/
     profiles/               # Modelos, contratos, validación y almacén separado
     gui/                    # CustomTkinter, controladores y trabajador local
     research/               # Experimentos offline y diagnóstico acotado
+    reconstruction/         # Motor GPS, SQLite y replay exclusivamente offline
 scripts/                    # Investigación y verificación
 tests/                      # Pruebas y fixtures sintéticos
 docs/                       # Plan, informe y evidencia JSON

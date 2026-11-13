@@ -6,6 +6,7 @@ import os
 import platform
 import subprocess
 import sys
+import uuid
 from datetime import datetime
 from importlib import metadata
 from pathlib import Path
@@ -24,8 +25,11 @@ def main():
     cache = ROOT / ".cache/tmp"
     cache.mkdir(parents=True, exist_ok=True)
     os.environ.update(TEMP=str(cache), TMP=str(cache), PYTHONUTF8="1")
+    verification_root = ROOT / ".cache/verification"
+    verification_root.mkdir(parents=True, exist_ok=True)
+    basetemp = verification_root / uuid.uuid4().hex
     commands = [
-        [sys.executable, "-m", "pytest", "-q"],
+        [sys.executable, "-m", "pytest", "-q", "--basetemp", str(basetemp)],
         [sys.executable, "-m", "ruff", "check", "."],
         [sys.executable, "-m", "ruff", "format", "--check", "."],
         [sys.executable, "-m", "pip", "check"],

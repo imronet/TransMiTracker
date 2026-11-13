@@ -1,0 +1,36 @@
+{
+    "checked_at":  "2026-11-13T17:42:07.7413619-05:00",
+    "files":  [
+                  {
+                      "path":  "data/catalog/official_20261112.sqlite3",
+                      "before_sha256":  "30502df8428df296b29aa1d1ffb3bbe6f79efe0b90d551812a89ad106c579c3c",
+                      "after_sha256":  "30502df8428df296b29aa1d1ffb3bbe6f79efe0b90d551812a89ad106c579c3c",
+                      "unchanged":  true
+                  },
+                  {
+                      "path":  "data/phase1b/saved_original/capture.json",
+                      "before_sha256":  "d0b9a01309eb1dbc7710ae52de187f0457099adfa965864a4499d1a55e5fd11a",
+                      "after_sha256":  "d0b9a01309eb1dbc7710ae52de187f0457099adfa965864a4499d1a55e5fd11a",
+                      "unchanged":  true
+                  },
+                  {
+                      "path":  "data/phase1b/saved_original/positions.pb",
+                      "before_sha256":  "d9f038d3b803eb6743ffcd3920a1fd848e72a9b44a606222eff1da535e9c68eb",
+                      "after_sha256":  "d9f038d3b803eb6743ffcd3920a1fd848e72a9b44a606222eff1da535e9c68eb",
+                      "unchanged":  true
+                  },
+                  {
+                      "path":  "data/phase1b/synthetic_catalog.sqlite3",
+                      "before_sha256":  "7326630e6348a714a0b39957923193c9b546b0aec556430606e428491aa1054d",
+                      "after_sha256":  "7326630e6348a714a0b39957923193c9b546b0aec556430606e428491aa1054d",
+                      "unchanged":  true
+                  },
+                  {
+                      "path":  "data/gui/profiles.sqlite3",
+                      "before_sha256":  "18feda4bfcf38b38cbea440aceacc6c0d8115ec89fb488834356b96134d1d0cd",
+                      "after_sha256":  "18feda4bfcf38b38cbea440aceacc6c0d8115ec89fb488834356b96134d1d0cd",
+                      "unchanged":  true
+                  }
+              ],
+    "all_unchanged":  true
+}

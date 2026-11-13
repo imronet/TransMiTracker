@@ -1,0 +1,29 @@
+{
+  "origin": "synthetic_scenarios_not_real_api_captures",
+  "base_time": "2026-11-12T08:00:00-05:00",
+  "cases": [
+    {"name": "normal", "path": "line"},
+    {"name": "bounded_gps_noise", "path": "line", "fault": "noise"},
+    {"name": "two_vehicles", "path": "line", "second_vehicle": "branch"},
+    {"name": "two_buses_same_route", "path": "line", "second_vehicle": "line"},
+    {"name": "duplicates", "path": "line", "fault": "duplicates"},
+    {"name": "out_of_order", "path": "line", "fault": "out_of_order"},
+    {"name": "gps_jump", "path": "line", "fault": "off_shape", "must_reject_measurement": true},
+    {"name": "stopped", "path": "line", "fault": "dwell"},
+    {"name": "implausible_speed", "path": "line", "fault": "speed", "must_reject_measurement": true},
+    {"name": "trip_change", "path": "line", "fault": "trip", "must_reject_measurement": true},
+    {"name": "unstable_start_time", "path": "line", "fault": "start", "must_reject_measurement": true},
+    {"name": "stale", "path": "line", "fault": "stale", "must_reject_measurement": true},
+    {"name": "missing_snapshots", "path": "line", "fault": "missing", "must_reject_measurement": true},
+    {"name": "loop_repeated_stop", "path": "loop"},
+    {"name": "cross_with_context", "path": "cross"},
+    {"name": "ambiguous_intersection", "path": "cross", "fault": "ambiguous", "must_reject_measurement": true},
+    {"name": "midnight", "path": "line", "fault": "midnight"},
+    {"name": "insufficient_endpoints", "path": "line", "fault": "short", "must_reject_measurement": true},
+    {"name": "reverse", "path": "line", "fault": "reverse", "must_reject_measurement": true},
+    {"name": "clock_reset", "path": "line", "fault": "clock", "must_reject_measurement": true},
+    {"name": "invalid_coordinates", "path": "line", "fault": "coordinates", "must_reject_measurement": true},
+    {"name": "timestamp_conflict", "path": "line", "fault": "conflict", "must_reject_measurement": true},
+    {"name": "branch_trip", "path": "branch"}
+  ]
+}
