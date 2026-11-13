@@ -1,0 +1,2757 @@
+{
+  "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "results": [
+    {
+      "name": "official_index",
+      "url": "https://gtfs.transmilenio.gov.co/",
+      "queried_at": "2026-11-12T21:51:38.628496-05:00",
+      "status": 200,
+      "final_url": "https://gtfs.transmilenio.gov.co/",
+      "bytes": 3079,
+      "content_type": "text/html",
+      "sha256": "0fbd68d3b722a34f6df75641cac8bf643c87677e3f6e10b8b837097ba1ce6f7d"
+    },
+    {
+      "name": "legacy_index",
+      "url": "https://gis.transmilenio.gov.co/gtfs/",
+      "queried_at": "2026-11-12T21:51:39.213281-05:00",
+      "status": 500,
+      "final_url": "https://gis.transmilenio.gov.co/gtfs/",
+      "bytes": 1208,
+      "content_type": "text/html",
+      "sha256": "e1b0a10649c4b92f828523efc2ebe135ea9488179a2816888d1e84f786202dbf"
+    },
+    {
+      "name": "static_catalog",
+      "url": "https://datosabiertos.bogota.gov.co/api/3/action/package_show?id=especificacion-gtfs-general-transport-feed-specification-sitp",
+      "queried_at": "2026-11-12T21:51:39.503478-05:00",
+      "status": 200,
+      "final_url": "https://datosabiertos.bogota.gov.co/api/3/action/package_show?id=especificacion-gtfs-general-transport-feed-specification-sitp",
+      "bytes": 6625,
+      "content_type": "application/json;charset=utf-8",
+      "sha256": "e653ff295bc12be229d0176ce4ed4e1c8d02e880dd48a56fae2d334e46d3a15f",
+      "resources": [
+        {
+          "name": "",
+          "url": "",
+          "format": ""
+        },
+        {
+          "name": "Especificación GTFS (General Transport Feed Specification) - Sistema Integrado de Transporte Público",
+          "url": "https://datosabiertos-transmilenio.hub.arcgis.com/search?collection=Document&tags=gtfs",
+          "format": "ZIP"
+        }
+      ]
+    },
+    {
+      "name": "static_arcgis",
+      "url": "https://www.arcgis.com/sharing/rest/content/items/23ca762178a94b23a5e227ce60e2b08e?f=json",
+      "queried_at": "2026-11-12T21:51:46.968728-05:00",
+      "status": 200,
+      "final_url": "https://www.arcgis.com/sharing/rest/content/items/23ca762178a94b23a5e227ce60e2b08e?f=json",
+      "bytes": 1172,
+      "content_type": "application/json;charset=utf-8",
+      "sha256": "03f8fd28f32b8dc588f3e8e54f69cb594dad8694a541b2825eab7172e55ffe6a",
+      "metadata": {
+        "id": "23ca762178a94b23a5e227ce60e2b08e",
+        "owner": "david.monroy_Transmilenio",
+        "ownerId": "c90e5089c1134c4d9f52505a304d7ecb",
+        "orgId": "9unqgkQ8KCOfnzoB",
+        "created": 1669842919000,
+        "modified": 1669842926000,
+        "guid": null,
+        "name": null,
+        "title": "GTFS Estáticos 2022-11-23",
+        "type": "Document Link",
+        "typeKeywords": [
+          "Data",
+          "Document"
+        ],
+        "description": null,
+        "tags": [
+          "GTFS"
+        ],
+        "snippet": "Conjunto de datos relacionados con la operación de la flota implemnetando la especificación GTFS",
+        "thumbnail": "thumbnail/ago_downloaded.png",
+        "documentation": null,
+        "extent": [],
+        "categories": [],
+        "spatialReference": null,
+        "accessInformation": null,
+        "classification": null,
+        "licenseInfo": null,
+        "culture": "es-419",
+        "properties": null,
+        "advancedSettings": null,
+        "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2022-11-23.zip",
+        "proxyFilter": null,
+        "access": "public",
+        "size": 65,
+        "subInfo": 0,
+        "appCategories": [],
+        "industries": [],
+        "languages": [],
+        "largeThumbnail": null,
+        "banner": null,
+        "screenshots": [],
+        "listed": false,
+        "commentsEnabled": true,
+        "numComments": 0,
+        "numRatings": 0,
+        "avgRating": 0,
+        "numViews": 38,
+        "scoreCompleteness": 50,
+        "groupDesignations": null,
+        "apiToken1ExpirationDate": -1,
+        "apiToken2ExpirationDate": -1,
+        "lastViewed": 1793743200000
+      }
+    },
+    {
+      "name": "croma_original",
+      "url": "https://docs.usecroma.com/es/guides/colombia/transmilenio",
+      "queried_at": "2026-11-12T21:51:47.177168-05:00",
+      "status": 200,
+      "final_url": "https://docs.usecroma.com/es/guides/colombia/transmilenio",
+      "bytes": 294198,
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "db3897b44d37f312ebd2a5b5d005b1b6a4934530814b9ea5f27e6b7802845fcd"
+    },
+    {
+      "name": "croma_guide",
+      "url": "https://docs.usecroma.com/guides/colombia/transmilenio.md",
+      "queried_at": "2026-11-12T21:51:47.442375-05:00",
+      "status": 200,
+      "final_url": "https://docs.usecroma.com/guides/colombia/transmilenio.md",
+      "bytes": 12067,
+      "content_type": "text/markdown; charset=utf-8",
+      "sha256": "02ff5d3742c86e8c32b7d469b60672c7f3501188c99569ff711805440851455e"
+    },
+    {
+      "name": "croma_spanish",
+      "url": "https://docs.usecroma.com/es/guides/colombia/transmilenio.md",
+      "queried_at": "2026-11-12T21:51:48.904990-05:00",
+      "status": 200,
+      "final_url": "https://docs.usecroma.com/es/guides/colombia/transmilenio.md",
+      "bytes": 12734,
+      "content_type": "text/markdown; charset=utf-8",
+      "sha256": "7600205acf7743a477b58d0bc3abc4e0f7eeca5628445749b6c3cb0968a37004"
+    },
+    {
+      "name": "croma_auth",
+      "url": "https://docs.usecroma.com/authentication.md",
+      "queried_at": "2026-11-12T21:51:49.397611-05:00",
+      "status": 200,
+      "final_url": "https://docs.usecroma.com/authentication.md",
+      "bytes": 2673,
+      "content_type": "text/markdown; charset=utf-8",
+      "sha256": "a180c1265988a3abe057785fafba6a33f6f9c0f88eb49c649693edc3bfd4cc59"
+    },
+    {
+      "name": "croma_credits",
+      "url": "https://docs.usecroma.com/credits.md",
+      "queried_at": "2026-11-12T21:51:50.131841-05:00",
+      "status": 200,
+      "final_url": "https://docs.usecroma.com/credits.md",
+      "bytes": 2641,
+      "content_type": "text/markdown; charset=utf-8",
+      "sha256": "7b0d625952d03f5924c7328f6c442d66d4bedf31881d3c10c4ea892b63e2ae44"
+    },
+    {
+      "name": "croma_limits",
+      "url": "https://docs.usecroma.com/rate-limits.md",
+      "queried_at": "2026-11-12T21:51:50.429175-05:00",
+      "status": 200,
+      "final_url": "https://docs.usecroma.com/rate-limits.md",
+      "bytes": 4052,
+      "content_type": "text/markdown; charset=utf-8",
+      "sha256": "907aa004ed04851a1956023a141767d75292564997894dce30c218a1e42e9a1c"
+    },
+    {
+      "name": "croma_openapi",
+      "url": "https://usecroma.com/openapi.json",
+      "queried_at": "2026-11-12T21:51:51.360486-05:00",
+      "status": 200,
+      "final_url": "https://usecroma.com/openapi.json",
+      "bytes": 4425326,
+      "content_type": "application/vnd.oai.openapi+json;version=3.1; charset=utf-8",
+      "sha256": "fe1eb85e63dcd9b471cfbfc8cc462f391b426c108cdaaaa881657517c7ab4128",
+      "transmilenio_operations": {
+        "/co/transmilenio/stops-search/v1": {
+          "post": {
+            "operationId": "transmilenio_stops_search",
+            "summary": "TransMilenio Stops Search",
+            "description": "Search the stops and stations of Bogotá's public transport network (TransMilenio, feeders, SITP zonal buses, TransMiCable) by name or code, by the route that serves them (`B10`, `C25`), or near a point (latitude, longitude and radius in metres, nearest first). Each stop carries its location, accessibility, its platforms and every route that stops there. Schedule data refreshed daily.\n\n**Dataset endpoint**: answers from the whole source in milliseconds and carries `as_of`.",
+            "x-served-from": "dataset",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "maxLength": 200,
+                        "default": "",
+                        "description": "Optional words in the stop's or station's name, or its code, e.g. `Portal Norte`, `Calle 72`, `Héroes`."
+                      },
+                      "route": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "default": "",
+                        "description": "Optional route: its `route_id` (e.g. `10075`) or its public code as printed on the bus (e.g. `B10`, `C25`, `T25`). A code matches every direction of that route."
+                      },
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "",
+                          "station",
+                          "stop"
+                        ],
+                        "default": "",
+                        "description": "Optional kind: `station` (a TransMilenio or TransMiCable station, which holds platforms) or `stop` (a platform inside a station, or a street stop). Empty returns both."
+                      },
+                      "latitude": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "default": null,
+                        "minimum": 3.5,
+                        "maximum": 5.5,
+                        "description": "Optional latitude in decimal degrees, e.g. `4.6486`. With `longitude`, returns only what is within `radius_m` of that point, nearest first."
+                      },
+                      "longitude": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "default": null,
+                        "minimum": -75,
+                        "maximum": -73,
+                        "description": "Optional longitude in decimal degrees, e.g. `-74.0633`. With `latitude`, returns only what is within `radius_m` of that point, nearest first."
+                      },
+                      "radius_m": {
+                        "type": "integer",
+                        "minimum": 50,
+                        "maximum": 5000,
+                        "default": 500,
+                        "description": "Radius in metres around `latitude` and `longitude` (50-5000). Default `500`."
+                      },
+                      "page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 1000,
+                        "default": 1,
+                        "description": "1-based page number for paginated results."
+                      },
+                      "per_page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100,
+                        "default": 20,
+                        "description": "Results per page (1-100)."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {
+                    "query": "Portal Norte"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioStopsSearchResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/co/transmilenio/stop/v1": {
+          "post": {
+            "operationId": "transmilenio_stop",
+            "summary": "TransMilenio Stop",
+            "description": "One stop or station of Bogotá's public transport network by its `stop_id`: name, code, location, accessibility, platforms and every route that stops there, plus the station a platform belongs to.\n\n**Dataset endpoint**: answers from the whole source in milliseconds and carries `as_of`.",
+            "x-served-from": "dataset",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [
+                      "stop_id"
+                    ],
+                    "properties": {
+                      "stop_id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{1,40}$",
+                        "description": "The stop's or station's `stop_id`, as the stop search returns it, e.g. `10000` (Portal 20 de Julio). A station covers every platform inside it."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {
+                    "stop_id": "10000"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioStopResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/co/transmilenio/stop-departures/v1": {
+          "post": {
+            "operationId": "transmilenio_stop_departures",
+            "summary": "TransMilenio Stop Departures",
+            "description": "The scheduled departures from a stop or station of Bogotá's public transport network, for today or any date, from now or a given time, across every route or one (`B10`): time, route, destination and minutes from now. Weekends and public holidays follow their own timetable, and trips past midnight are included. For buses already on their way, use stop-arrivals.\n\n**Dataset endpoint**: answers from the whole source in milliseconds and carries `as_of`.",
+            "x-served-from": "dataset",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [
+                      "stop_id"
+                    ],
+                    "properties": {
+                      "stop_id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{1,40}$",
+                        "description": "The stop's or station's `stop_id`, as the stop search returns it, e.g. `10000` (Portal 20 de Julio). A station covers every platform inside it."
+                      },
+                      "date": {
+                        "type": "string",
+                        "pattern": "^(\\d{4}-\\d{2}-\\d{2})?$",
+                        "default": "",
+                        "description": "Optional day, `yyyy-mm-dd`, in Bogotá. Empty is today. Weekends and public holidays follow their own timetable."
+                      },
+                      "from_time": {
+                        "type": "string",
+                        "pattern": "^(([01]\\d|2[0-3]):[0-5]\\d)?$",
+                        "default": "",
+                        "description": "Optional time of day, `HH:MM` in 24-hour Bogotá time, e.g. `07:30`. Empty is now for today and the start of the day for any other date."
+                      },
+                      "route": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "default": "",
+                        "description": "Optional route: its `route_id` (e.g. `10075`) or its public code as printed on the bus (e.g. `B10`, `C25`, `T25`). A code matches every direction of that route."
+                      },
+                      "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 200,
+                        "default": 20,
+                        "description": "How many to return (1-200). Default `20`."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {
+                    "stop_id": "10000"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioStopDeparturesResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/co/transmilenio/routes-search/v1": {
+          "post": {
+            "operationId": "transmilenio_routes_search",
+            "summary": "TransMilenio Routes Search",
+            "description": "Search the routes of Bogotá's public transport network by code (`B10`, `G43`) or destination, by system (`troncal`, `alimentador`, `dual`, `zonal_urbano`, `zonal_complementario`, `zonal_especial`, `transmicable`), or by a stop they serve. Each route carries its colour, number of stops, trips a week, first and last departures and its timetables.\n\n**Dataset endpoint**: answers from the whole source in milliseconds and carries `as_of`.",
+            "x-served-from": "dataset",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                      "query": {
+                        "type": "string",
+                        "maxLength": 200,
+                        "default": "",
+                        "description": "Optional route code or words in its destination, e.g. `B10`, `G43`, `Portal Suba`."
+                      },
+                      "system": {
+                        "type": "string",
+                        "enum": [
+                          "",
+                          "troncal",
+                          "alimentador",
+                          "dual",
+                          "zonal_urbano",
+                          "zonal_complementario",
+                          "zonal_especial",
+                          "transmicable"
+                        ],
+                        "default": "",
+                        "description": "Optional part of the network: `troncal` (TransMilenio BRT), `alimentador` (feeders), `dual` (routes that run on the busway and the street), `zonal_urbano`, `zonal_complementario`, `zonal_especial` (the SITP street buses) or `transmicable` (the cable car). Empty returns every system."
+                      },
+                      "stop_id": {
+                        "type": "string",
+                        "pattern": "^([A-Za-z0-9_-]{1,40})?$",
+                        "default": "",
+                        "description": "Optional `stop_id` of a stop or station, as the stop search returns it. A station covers every platform inside it."
+                      },
+                      "page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 1000,
+                        "default": 1,
+                        "description": "1-based page number for paginated results."
+                      },
+                      "per_page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100,
+                        "default": 20,
+                        "description": "Results per page (1-100)."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {
+                    "query": "B10"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioRoutesSearchResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/co/transmilenio/route/v1": {
+          "post": {
+            "operationId": "transmilenio_route",
+            "summary": "TransMilenio Route",
+            "description": "One route of Bogotá's public transport network by its `route_id`: its timetables, first and last departures, and every sequence of stops it runs in order, with each stop's location and scheduled minutes from the start. With `include_geometry`, each sequence carries its path as a GeoJSON LineString for a map.\n\n**Dataset endpoint**: answers from the whole source in milliseconds and carries `as_of`.",
+            "x-served-from": "dataset",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [
+                      "route_id"
+                    ],
+                    "properties": {
+                      "route_id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{1,40}$",
+                        "description": "The route's `route_id`, as the route search returns it, e.g. `10075`. Each direction of a route has its own id."
+                      },
+                      "include_geometry": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "When true, each pattern carries its path as a GeoJSON `LineString`, ready to draw on a map. Default `false`."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {
+                    "route_id": "10075"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioRouteResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/co/transmilenio/vehicles/v1": {
+          "post": {
+            "operationId": "transmilenio_vehicles",
+            "summary": "TransMilenio Live Vehicles",
+            "description": "Where the buses and cable cars of Bogotá's public transport network are right now: position, speed, route, trip and the stop each one is at or heading to, updated about every 20 seconds. Filter by route (`B10`) or around a point (latitude, longitude, radius in metres, nearest first).",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                      "route": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "default": "",
+                        "description": "Optional route: its `route_id` (e.g. `10075`) or its public code as printed on the bus (e.g. `B10`, `C25`, `T25`). A code matches every direction of that route."
+                      },
+                      "latitude": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "default": null,
+                        "minimum": 3.5,
+                        "maximum": 5.5,
+                        "description": "Optional latitude in decimal degrees, e.g. `4.6486`. With `longitude`, returns only what is within `radius_m` of that point, nearest first."
+                      },
+                      "longitude": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "default": null,
+                        "minimum": -75,
+                        "maximum": -73,
+                        "description": "Optional longitude in decimal degrees, e.g. `-74.0633`. With `latitude`, returns only what is within `radius_m` of that point, nearest first."
+                      },
+                      "radius_m": {
+                        "type": "integer",
+                        "minimum": 50,
+                        "maximum": 5000,
+                        "default": 500,
+                        "description": "Radius in metres around `latitude` and `longitude` (50-5000). Default `500`."
+                      },
+                      "page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 1000,
+                        "default": 1,
+                        "description": "1-based page number for paginated results."
+                      },
+                      "per_page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 500,
+                        "default": 100,
+                        "description": "Vehicles per page (1-500). Default `100`."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {
+                    "route": "B10"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioVehiclesResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "502": {
+                "description": "Upstream source returned an error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/co/transmilenio/stop-arrivals/v1": {
+          "post": {
+            "operationId": "transmilenio_stop_arrivals",
+            "summary": "TransMilenio Live Arrivals",
+            "description": "The vehicles of Bogotá's public transport network about to reach a stop or station, live: route, destination, predicted arrival time, minutes away and delay against the timetable, updated about every 20 seconds. Pair it with stop-departures for the rest of the day's timetable.",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [
+                      "stop_id"
+                    ],
+                    "properties": {
+                      "stop_id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{1,40}$",
+                        "description": "The stop's or station's `stop_id`, as the stop search returns it, e.g. `10000` (Portal 20 de Julio). A station covers every platform inside it."
+                      },
+                      "route": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "default": "",
+                        "description": "Optional route: its `route_id` (e.g. `10075`) or its public code as printed on the bus (e.g. `B10`, `C25`, `T25`). A code matches every direction of that route."
+                      },
+                      "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 200,
+                        "default": 20,
+                        "description": "How many to return (1-200). Default `20`."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {
+                    "stop_id": "10000"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioStopArrivalsResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "502": {
+                "description": "Upstream source returned an error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/co/transmilenio/alerts/v1": {
+          "post": {
+            "operationId": "transmilenio_alerts",
+            "summary": "TransMilenio Service Alerts",
+            "description": "The service alerts of Bogotá's public transport network in force now: detours, closed stops, reduced service and delays, with their cause, effect, text, active period and the routes and stops affected. Filter by route (`B10`) or stop.",
+            "tags": [
+              "Colombia",
+              "TransMilenio"
+            ],
+            "externalDocs": {
+              "description": "Interactive documentation and examples",
+              "url": "https://docs.usecroma.com/guides/colombia/transmilenio"
+            },
+            "security": [
+              {
+                "bearerAuth": []
+              }
+            ],
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/IdempotencyKey"
+              }
+            ],
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "required": [],
+                    "properties": {
+                      "route": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "default": "",
+                        "description": "Optional route: its `route_id` (e.g. `10075`) or its public code as printed on the bus (e.g. `B10`, `C25`, `T25`). A code matches every direction of that route."
+                      },
+                      "stop_id": {
+                        "type": "string",
+                        "pattern": "^([A-Za-z0-9_-]{1,40})?$",
+                        "default": "",
+                        "description": "Optional `stop_id` of a stop or station, as the stop search returns it. A station covers every platform inside it."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "example": {}
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "X-Cache": {
+                    "$ref": "#/components/headers/X-Cache"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/TransmilenioAlertsResponse"
+                    }
+                  }
+                }
+              },
+              "400": {
+                "description": "Invalid request body",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "401": {
+                "description": "Missing or invalid API key",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "429": {
+                "description": "Rate limit exceeded",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  },
+                  "X-RateLimit-Limit": {
+                    "$ref": "#/components/headers/X-RateLimit-Limit"
+                  },
+                  "X-RateLimit-Remaining": {
+                    "$ref": "#/components/headers/X-RateLimit-Remaining"
+                  },
+                  "X-RateLimit-Reset": {
+                    "$ref": "#/components/headers/X-RateLimit-Reset"
+                  },
+                  "Retry-After": {
+                    "$ref": "#/components/headers/Retry-After"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "500": {
+                "description": "Internal error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              },
+              "502": {
+                "description": "Upstream source returned an error",
+                "headers": {
+                  "X-Request-Id": {
+                    "$ref": "#/components/headers/X-Request-Id"
+                  },
+                  "RateLimit-Policy": {
+                    "$ref": "#/components/headers/RateLimit-Policy"
+                  },
+                  "Idempotency-Key": {
+                    "$ref": "#/components/headers/Idempotency-Key"
+                  },
+                  "Deprecation": {
+                    "$ref": "#/components/headers/Deprecation"
+                  },
+                  "Sunset": {
+                    "$ref": "#/components/headers/Sunset"
+                  }
+                },
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ApiError"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "official_script",
+      "url": "https://gtfs.transmilenio.gov.co/scripts.js",
+      "queried_at": "2026-11-12T21:52:33.315757-05:00",
+      "status": 200,
+      "final_url": "https://gtfs.transmilenio.gov.co/scripts.js",
+      "bytes": 12506,
+      "content_type": "application/javascript",
+      "sha256": "aa6c557a2831263d52b558d794cfa6fd2d0f35639375db4c4bd39ae54e02f63f"
+    },
+    {
+      "name": "static_search",
+      "url": "https://www.arcgis.com/sharing/rest/search?f=json&q=orgid%3A9unqgkQ8KCOfnzoB%20GTFS&num=100&sortField=modified&sortOrder=desc",
+      "queried_at": "2026-11-12T21:52:33.718249-05:00",
+      "status": 200,
+      "final_url": "https://www.arcgis.com/sharing/rest/search?f=json&q=orgid%3A9unqgkQ8KCOfnzoB%20GTFS&num=100&sortField=modified&sortOrder=desc",
+      "bytes": 111566,
+      "content_type": "application/json;charset=utf-8",
+      "sha256": "158b37f2e71627c0fdd024ec7443425eeb49ab600018ca98aa1506f3fc8da790",
+      "items": [
+        {
+          "id": "39423b0fc9ea486dab89416339b081a7",
+          "title": "aviso_ajuste_gtfs",
+          "url": null,
+          "modified": 1794024735000
+        },
+        {
+          "id": "6d0043cf1ba443a699bad973539a1422",
+          "title": "GTFS Estáticos 2026-10-27",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20261027.zip",
+          "modified": 1793400783000
+        },
+        {
+          "id": "17968343de044e41a9590db295589bd4",
+          "title": "GTFS Estáticos 2026-10-13",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20261013.zip",
+          "modified": 1793400597000
+        },
+        {
+          "id": "8f56b486d8044e698ad82e7e7bd4cbff",
+          "title": "GTFS Estáticos 2026-09-29",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260929.zip",
+          "modified": 1790783677000
+        },
+        {
+          "id": "42498602b4ae497492ddb3dfc132af7b",
+          "title": "GTFS Estáticos 2026-09-14",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260914.zip",
+          "modified": 1790783320000
+        },
+        {
+          "id": "0a7b5fc31aa34ee3a740138136efb785",
+          "title": "GTFS Estáticos 2026-09-02",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260902.zip",
+          "modified": 1790782960000
+        },
+        {
+          "id": "a5362824b285476290772d45446a0a9d",
+          "title": "GTFS Estáticos 2026-08-18",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260818.zip",
+          "modified": 1788207013000
+        },
+        {
+          "id": "ad1a94eecee74fc9b9c6000c819b6c35",
+          "title": "GTFS Estáticos 2026-08-04",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260807.zip",
+          "modified": 1788206891000
+        },
+        {
+          "id": "952b5a3b698945618b7332587ddf6dbb",
+          "title": "GTFS Estáticos 2026-07-22",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260727.zip",
+          "modified": 1785769056000
+        },
+        {
+          "id": "f6d41000392f4537bd85185817c1219a",
+          "title": "GTFS Estáticos 2026-07-08",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260708.zip",
+          "modified": 1785768880000
+        },
+        {
+          "id": "4cf28f5cd53d465e974c0fb10c860133",
+          "title": "GTFS Estáticos 2026-06-27",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260627.zip",
+          "modified": 1782854452000
+        },
+        {
+          "id": "fcbcf1b9ee14476ca5107fb182f17c02",
+          "title": "GTFS Estáticos 2026-06-13",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS_20260613.zip",
+          "modified": 1782854259000
+        },
+        {
+          "id": "0882bbf41dba4fb19446e57b55a5aef0",
+          "title": "GTFS Estáticos 2026-04-29",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2026-04-29.zip",
+          "modified": 1777478982000
+        },
+        {
+          "id": "a3a3c26b53b54f15b4214211dc5f906a",
+          "title": "GTFS Estáticos 2026-04-15",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2026-04-15.zip",
+          "modified": 1777478856000
+        },
+        {
+          "id": "b6125352fb154f48a3560cb75195798b",
+          "title": "GTFS Estáticos 2026-04-01",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2026-04-01.zip",
+          "modified": 1777478678000
+        },
+        {
+          "id": "586889f0f70046f494e252fc93c140dd",
+          "title": "GTFS Estáticos 2026-03-18",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2026-03-18.zip",
+          "modified": 1773938574000
+        },
+        {
+          "id": "ecc5ceb6eade4f39b3995026b30e12c8",
+          "title": "GTFS Estáticos 2025-12-05",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-12-05.zip",
+          "modified": 1765904719000
+        },
+        {
+          "id": "d006e92936824698a49ba44558cd8162",
+          "title": "GTFS Estáticos 2025-11-25",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-11-25.zip",
+          "modified": 1765904601000
+        },
+        {
+          "id": "3101b20792004f5795db4fe9fc0ade32",
+          "title": "GTFS Estáticos 2025-10-28",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-10-28.zip",
+          "modified": 1761663665000
+        },
+        {
+          "id": "ba6aecad50134c489cc4355152ac5105",
+          "title": "GTFS Estáticos 2025-10-21",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-10-21.zip",
+          "modified": 1761663455000
+        },
+        {
+          "id": "54e7f860a2b642f8b2fd9a7b7c831e5b",
+          "title": "GTFS Estáticos 2025-10-02",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-10-02.zip",
+          "modified": 1761663240000
+        },
+        {
+          "id": "07c2e35470664f518f0229d3426da4a6",
+          "title": "GTFS Estáticos 2025-09-17",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-09-17.zip",
+          "modified": 1758905130000
+        },
+        {
+          "id": "6a6a625da93242f5beb2ddcc3ba77983",
+          "title": "GTFS Estáticos 2025-09-08",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-09-08.zip",
+          "modified": 1758905008000
+        },
+        {
+          "id": "a016c5ef08e54f53be8d266590de5749",
+          "title": "GTFS Estáticos 2025-08-22",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-08-22.zip",
+          "modified": 1756241348000
+        },
+        {
+          "id": "7b385175e0af498e8b39459e7553f8e6",
+          "title": "GTFS Estáticos 2025-07-28",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-07-28.zip",
+          "modified": 1753737907000
+        },
+        {
+          "id": "46108c7fa8ca44e6967e2180f00928fa",
+          "title": "GTFS Estáticos 2025-07-23",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-07-23.zip",
+          "modified": 1753737577000
+        },
+        {
+          "id": "c59b4b9883964cb18aedceb972f576bc",
+          "title": "GTFS Estáticos 2025-07-09",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-07-09.zip",
+          "modified": 1753737477000
+        },
+        {
+          "id": "cbbd3ce9d28e4927b61af9d0242964c0",
+          "title": "GTFS Estáticos 2025-06-24",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-06-24.zip",
+          "modified": 1751041637000
+        },
+        {
+          "id": "634b5dd8f5b14b758fae3b1ac13eb641",
+          "title": "GTFS Estáticos 2025-06-09",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-06-09.zip",
+          "modified": 1751041480000
+        },
+        {
+          "id": "8dbb751ebbe64f5ab1177239704f26bc",
+          "title": "GTFS Estáticos 2025-05-28",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-05-28.zip",
+          "modified": 1748638092000
+        },
+        {
+          "id": "a38530120fd948069f42515dce3c73e6",
+          "title": "GTFS Estáticos 2025-05-15",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-05-15.zip",
+          "modified": 1748637919000
+        },
+        {
+          "id": "d3f90db49c9b460896ee111ab0c1c7fd",
+          "title": "GTFS Estáticos 2025-05-01",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-05-01.zip",
+          "modified": 1748637832000
+        },
+        {
+          "id": "dafdba2f3d974dfc92facec44b62c3ee",
+          "title": "GTFS Estáticos 2025-04-10",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-04-10.zip",
+          "modified": 1745958681000
+        },
+        {
+          "id": "5b3af53aab2946ed83b958e0f083ee4a",
+          "title": "GTFS Estáticos 2025-03-28",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-03-28.zip",
+          "modified": 1745958593000
+        },
+        {
+          "id": "686e273e808548399909dd4b1eda3549",
+          "title": "GTFS Estáticos 2025-03-14",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-03-14.zip",
+          "modified": 1745958499000
+        },
+        {
+          "id": "11b7ef6241bd425aaa433a0c14f2f7dd",
+          "title": "GTFS Estáticos 2025-02-28",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-02-28.zip",
+          "modified": 1741032818000
+        },
+        {
+          "id": "26a3d16d5cc54d54ac6dce603819762b",
+          "title": "GTFS Estáticos 2025-02-14",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-02-14.zip",
+          "modified": 1739548090000
+        },
+        {
+          "id": "fba88c9e134b49d8aac0c846e0f3c9e3",
+          "title": "GTFS Estáticos 2025-02-05",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-02-05.zip",
+          "modified": 1739548029000
+        },
+        {
+          "id": "b92117d175234a00969aba6a67851aa0",
+          "title": "GTFS Estáticos 2025-01-22",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-01-22.zip",
+          "modified": 1739547942000
+        },
+        {
+          "id": "e7a8a701632d4ee7acd9732174540a4a",
+          "title": "GTFS Estáticos 2025-01-08",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2025-01-08.zip",
+          "modified": 1736888090000
+        },
+        {
+          "id": "309f1b18266a42d0b2e142b581a57d0a",
+          "title": "GTFS Estáticos 2024-12-25",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-12-25.zip",
+          "modified": 1736888010000
+        },
+        {
+          "id": "d5ef0932f5a546a4a0a4636edcd821cc",
+          "title": "GTFS Estáticos 2024-12-11",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-12-11.zip",
+          "modified": 1736887940000
+        },
+        {
+          "id": "c695e8c491d849d591fe0623605143b3",
+          "title": "GTFS Estáticos 2024-11-27",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-11-27.zip",
+          "modified": 1736887865000
+        },
+        {
+          "id": "4684e34f20dc4541bae740dea1d6badc",
+          "title": "GTFS Estáticos 2024-11-13",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-11-13.zip",
+          "modified": 1736887788000
+        },
+        {
+          "id": "7237f4d61bcd435fa54799274b9810c2",
+          "title": "GTFS Estáticos 2024-10-30",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-10-30.zip",
+          "modified": 1736887706000
+        },
+        {
+          "id": "70a7224ac9f747849f43b60350526580",
+          "title": "GTFS Estáticos 2024-10-16",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-10-16.zip",
+          "modified": 1729199275000
+        },
+        {
+          "id": "b5a98425f71b4d48867e4b2ef5549709",
+          "title": "GTFS Estáticos 2024-10-02",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-10-02.zip",
+          "modified": 1729199186000
+        },
+        {
+          "id": "ad1b8333c5d947da966c52492ead6078",
+          "title": "GTFS Estáticos 2024-09-18",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-09-18.zip",
+          "modified": 1729199122000
+        },
+        {
+          "id": "f503fe1ad91f4a5e83eb922b3a678d58",
+          "title": "GTFS Estáticos 2024-09-04",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-09-04.zip",
+          "modified": 1729198927000
+        },
+        {
+          "id": "13dee5b0550a4f07b31b71cacd47cff8",
+          "title": "GTFS Estáticos 2024-08-21",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-08-21.zip",
+          "modified": 1724423153000
+        },
+        {
+          "id": "1f2f87d65cd444719e57cfb5dbd342ac",
+          "title": "GTFS Estáticos 2024-08-07",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-08-07.zip",
+          "modified": 1724423050000
+        },
+        {
+          "id": "d2b5c7923e804814a11479fcde1862e4",
+          "title": "GTFS Estáticos 2024-07-24",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-07-24.zip",
+          "modified": 1724422925000
+        },
+        {
+          "id": "bb9fe681917f47799131606d0b49009a",
+          "title": "GTFS Estáticos 2024-07-10",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-07-10.zip",
+          "modified": 1721320105000
+        },
+        {
+          "id": "90bc2bd90a464cc69ae4c11ebcfb0606",
+          "title": "GTFS Estáticos 2024-06-26",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-06-26.zip",
+          "modified": 1721320018000
+        },
+        {
+          "id": "07c19b39ff5e498ab81b96ca0a8902b3",
+          "title": "GTFS Estáticos 2024-06-12",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-06-12.zip",
+          "modified": 1721319855000
+        },
+        {
+          "id": "d6cc8f3091784165b76f4cf748028a67",
+          "title": "gtfs",
+          "url": null,
+          "modified": 1719583451000
+        },
+        {
+          "id": "1215819ef3fb42d3a0009b254a14ee9f",
+          "title": "GTFS Estáticos 2024-05-22",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-05-22.zip",
+          "modified": 1716830877000
+        },
+        {
+          "id": "a9e973861f464139b197fe9c868f6b96",
+          "title": "GTFS Estáticos 2024-05-15",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-05-15.zip",
+          "modified": 1716830801000
+        },
+        {
+          "id": "492cb346c29046ff8f5b218149f71df9",
+          "title": "GTFS Estáticos 2024-05-10",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-05-10.zip",
+          "modified": 1716830688000
+        },
+        {
+          "id": "622fd807f3c94a729c21504884c4d324",
+          "title": "GTFS Estáticos 2024-04-15",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-04-15.zip",
+          "modified": 1715113018000
+        },
+        {
+          "id": "d92beefa5f3c4c1893669da815993901",
+          "title": "GTFS Estáticos 2024-03-20",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-03-20.zip",
+          "modified": 1710967462000
+        },
+        {
+          "id": "bbc1f9ee569e4c1699b5507c257e9758",
+          "title": "GTFS Estáticos 2024-03-13",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-03-13.zip",
+          "modified": 1710967382000
+        },
+        {
+          "id": "69cc4bcaed04409d8b6c033365373c54",
+          "title": "GTFS Estáticos 2024-03-06",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-03-06.zip",
+          "modified": 1710967295000
+        },
+        {
+          "id": "93d22125e5b8422794356147809301d4",
+          "title": "GTFS Estáticos 2024-02-28",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-02-28.zip",
+          "modified": 1710967181000
+        },
+        {
+          "id": "cebfbe42163b4a339ca8ac2e36397951",
+          "title": "GTFS Estáticos 2024-02-21",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-02-21.zip",
+          "modified": 1708549226000
+        },
+        {
+          "id": "79052fb37d7f437db585b5e8610f7dba",
+          "title": "GTFS Estáticos 2024-02-14",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-02-14.zip",
+          "modified": 1708549066000
+        },
+        {
+          "id": "ab12118499fb4c6ab911d43d981fac74",
+          "title": "GTFS Estáticos 2024-02-07",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-02-07.zip",
+          "modified": 1708548971000
+        },
+        {
+          "id": "db0042f3685a4f9eb50744a7f17ecb73",
+          "title": "GTFS Estáticos 2024-01-31",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-01-31.zip",
+          "modified": 1708548877000
+        },
+        {
+          "id": "18822d32b992445cb26a0062ba2b3a31",
+          "title": "GTFS Estáticos 2024-01-24",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-01-24.zip",
+          "modified": 1708548791000
+        },
+        {
+          "id": "9e1c5f811f7c439081f8ecb06f79ff19",
+          "title": "GTFS Estáticos 2024-01-17",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-01-17.zip",
+          "modified": 1708548715000
+        },
+        {
+          "id": "0e0313fc7a5440fd849d58abd277e796",
+          "title": "GTFS Estáticos 2024-01-10",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-01-10.zip",
+          "modified": 1708548414000
+        },
+        {
+          "id": "6c2591b7dbb14ee69bfe48649c781341",
+          "title": "GTFS Estáticos 2024-01-03",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2024-01-03.zip",
+          "modified": 1708548268000
+        },
+        {
+          "id": "6d2301eb20ff4c76bc6a214b272b49a3",
+          "title": "GTFS Estáticos 2023-12-06",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-12-06.zip",
+          "modified": 1704212069000
+        },
+        {
+          "id": "476bc7502ad64f9eabceed2ca50c235c",
+          "title": "GTFS Estáticos 2023-12-27",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-12-27.zip",
+          "modified": 1704211883000
+        },
+        {
+          "id": "6400492e01b64aa78c9aea950777057d",
+          "title": "GTFS Estáticos 2023-12-20",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-12-20.zip",
+          "modified": 1704211771000
+        },
+        {
+          "id": "85179a00782b4c8cb099824731ebfdcc",
+          "title": "GTFS Estáticos 2023-12-13",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-12-13.zip",
+          "modified": 1704211526000
+        },
+        {
+          "id": "816498c66815437799ddf9f0292d2178",
+          "title": "GTFS Estáticos 2023-11-29",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-11-29.zip",
+          "modified": 1701294677000
+        },
+        {
+          "id": "3fdaf6a2e32a4a9089b40f495504da5e",
+          "title": "GTFS Estáticos 2023-11-15",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-11-15.zip",
+          "modified": 1701294623000
+        },
+        {
+          "id": "175cc4aca23f42cb87a3ce23ec95d209",
+          "title": "GTFS Estáticos 2023-11-08",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-11-08.zip",
+          "modified": 1701294322000
+        },
+        {
+          "id": "c402e787306b4794b345847a9f19faab",
+          "title": "GTFS Estáticos 2023-11-01",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-11-01.zip",
+          "modified": 1699096855000
+        },
+        {
+          "id": "378a7c93eb5e4ec4b49f6e27c71edb62",
+          "title": "GTFS Estáticos 2023-10-25",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-10-25.zip",
+          "modified": 1699096794000
+        },
+        {
+          "id": "eeb63bcf813548c3aa2c272372e7478e",
+          "title": "GTFS Estáticos 2023-10-19",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-10-19.zip",
+          "modified": 1699096710000
+        },
+        {
+          "id": "640cd90f4a904912af72d1ec33376ce7",
+          "title": "GTFS Estáticos 2023-10-11",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-10-11.zip",
+          "modified": 1699096638000
+        },
+        {
+          "id": "d3a99aa8fe5640f0bd780b193d600134",
+          "title": "GTFS Estáticos 2023-10-04",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-10-04.zip",
+          "modified": 1699096467000
+        },
+        {
+          "id": "23c4efb00ac2488e877685ba058aadb1",
+          "title": "GTFS Estáticos 2023-09-20",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-09-20.zip",
+          "modified": 1695836543000
+        },
+        {
+          "id": "16ec3000b2b1492995b70de5c3a321eb",
+          "title": "GTFS Estáticos 2023-09-27",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-09-27.zip",
+          "modified": 1695836459000
+        },
+        {
+          "id": "85b3d55f516a4658bbb0ba2da1187bc3",
+          "title": "GTFS Estáticos 2023-09-13",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-09-13.zip",
+          "modified": 1695836285000
+        },
+        {
+          "id": "4e3357c80ca44f6fb2f2ff62a0c1599a",
+          "title": "GTFS Estáticos 2023-09-06",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-09-06.zip",
+          "modified": 1695836191000
+        },
+        {
+          "id": "60ccceb0cb8d43e1b080a4b34adcaaac",
+          "title": "GTFS Estáticos 2023-08-30",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-08-30.zip",
+          "modified": 1695836075000
+        },
+        {
+          "id": "01f86cbf26494bc4ba8032d742b40eb5",
+          "title": "GTFS Estáticos 2023-08-24",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-08-24.zip",
+          "modified": 1693328237000
+        },
+        {
+          "id": "ff55f968f6194407a8990732ed62916e",
+          "title": "GTFS Estáticos 2023-08-16",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-08-16.zip",
+          "modified": 1693328144000
+        },
+        {
+          "id": "51dca8042efe43078599e7e257231117",
+          "title": "GTFS Estáticos 2023-08-09",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-08-09.zip",
+          "modified": 1693328009000
+        },
+        {
+          "id": "b0ea25004173487780723bf91285ddf4",
+          "title": "GTFS Estáticos 2023-08-02",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-08-02.zip",
+          "modified": 1693327864000
+        },
+        {
+          "id": "53bb78966ef041e89cb726f19c031e20",
+          "title": "GTFS Estáticos 2023-07-19",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-07-19.zip",
+          "modified": 1693327728000
+        },
+        {
+          "id": "a1f44869ced64902b1ac2450ff0c77c0",
+          "title": "GTFS Estáticos 2023-07-13",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-07-13.zip",
+          "modified": 1689610347000
+        },
+        {
+          "id": "2038b8fd63934a6cb96994be54a72ee5",
+          "title": "GTFS Estáticos 2023-07-06",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-07-06.zip",
+          "modified": 1689610318000
+        },
+        {
+          "id": "19534e0ef44c4c3e88d62d963d99009e",
+          "title": "GTFS Estáticos 2023-06-30",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-06-30.zip",
+          "modified": 1689610276000
+        },
+        {
+          "id": "b655325b0b1e4d80b7a2d559d59f345b",
+          "title": "GTFS Estáticos 2023-06-21",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-06-21.zip",
+          "modified": 1689609674000
+        },
+        {
+          "id": "86d227327d12409fba8883458f2aa1a9",
+          "title": "GTFS Estáticos 2023-06-14",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-06-14.zip",
+          "modified": 1687468604000
+        },
+        {
+          "id": "d373bbf26a4c46d8bb98e2ee3504dc6b",
+          "title": "GTFS Estáticos 2023-06-09",
+          "url": "https://storage.googleapis.com/gtfs-estaticos/GTFS-2023-06-09.zip",
+          "modified": 1687468356000
+        }
+      ]
+    },
+    {
+      "name": "official_manifest",
+      "url": "https://gtfs.transmilenio.gov.co/manifest.json",
+      "queried_at": "2026-11-12T21:52:53.434290-05:00",
+      "status": 200,
+      "final_url": "https://gtfs.transmilenio.gov.co/manifest.json",
+      "bytes": 1500,
+      "content_type": "application/json",
+      "sha256": "21b0a409cf88d7b41b4ed5347dd7410995ea379c42a0d91fbc98cc374e1f0e76"
+    }
+  ]
+}

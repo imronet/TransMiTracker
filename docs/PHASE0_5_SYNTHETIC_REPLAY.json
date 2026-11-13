@@ -1,0 +1,33 @@
+{
+  "origin": "synthetic_scenario_not_real_api_captures",
+  "network_requests": 0,
+  "database": "data/phase0_5/synthetic_replay_223105156979.sqlite3",
+  "snapshots": [
+    {
+      "captured_at": "2026-11-12T07:00:00-05:00",
+      "result": {
+        "seen": 2,
+        "inserted": 2
+      }
+    },
+    {
+      "captured_at": "2026-11-12T07:01:00-05:00",
+      "result": {
+        "seen": 2,
+        "inserted": 2
+      }
+    },
+    {
+      "captured_at": "2026-11-12T07:02:00-05:00",
+      "result": {
+        "seen": 3,
+        "inserted": 1,
+        "quarantined_identity": 1,
+        "rejected_timestamp": 1
+      }
+    }
+  ],
+  "candidate_identities": 3,
+  "observations": 5,
+  "arrivals_inferred": 0
+}

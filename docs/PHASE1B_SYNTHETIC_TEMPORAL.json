@@ -1,0 +1,256 @@
+{
+  "evidence_origins": [
+    "synthetic_fixture"
+  ],
+  "capture_count": 3,
+  "unique_real_captures": 0,
+  "real_temporal_validation": false,
+  "operational_identity_validated": false,
+  "catalog_sha256": "094827c58ae522eab5d936508d1c6ff42dc3dae515bfbb2fbd5a556bdae7ac7e",
+  "reference_associations": {
+    "verified": 6
+  },
+  "reference_reason_counts": {
+    "exact_catalog_references_only": 6
+  },
+  "reference_association_samples": {
+    "verified": [
+      {
+        "vehicle_id": "DEMO_TEMP_V1",
+        "trip_id": "DEMO_T1",
+        "route_id": "DEMO_R1",
+        "stop_id": "DEMO_S1",
+        "current_stop_sequence": 1,
+        "assessment": {
+          "classification": "verified",
+          "reason": "exact_catalog_references_only",
+          "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+          "pattern_id": "a10a8569329c77d803c153332bd3b41b2df1dbf6e271a0e06eec59062ec663b3",
+          "shape_id": "DEMO_SHAPE"
+        }
+      },
+      {
+        "vehicle_id": "DEMO_TEMP_V2",
+        "trip_id": "DEMO_T1",
+        "route_id": "DEMO_R1",
+        "stop_id": "DEMO_S1",
+        "current_stop_sequence": 1,
+        "assessment": {
+          "classification": "verified",
+          "reason": "exact_catalog_references_only",
+          "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+          "pattern_id": "a10a8569329c77d803c153332bd3b41b2df1dbf6e271a0e06eec59062ec663b3",
+          "shape_id": "DEMO_SHAPE"
+        }
+      },
+      {
+        "vehicle_id": "DEMO_TEMP_V1",
+        "trip_id": "DEMO_T1",
+        "route_id": "DEMO_R1",
+        "stop_id": "DEMO_S1",
+        "current_stop_sequence": 1,
+        "assessment": {
+          "classification": "verified",
+          "reason": "exact_catalog_references_only",
+          "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+          "pattern_id": "a10a8569329c77d803c153332bd3b41b2df1dbf6e271a0e06eec59062ec663b3",
+          "shape_id": "DEMO_SHAPE"
+        }
+      }
+    ]
+  },
+  "field_change_counts": {
+    "start_time": 2,
+    "current_stop_sequence": 2
+  },
+  "vehicle_cohort_transitions": [
+    {
+      "source": "synthetic://phase1b",
+      "from_capture": "2026-11-13T01:00:00-05:00",
+      "to_capture": "2026-11-13T01:01:00-05:00",
+      "common_vehicle_ids": 2,
+      "appeared_vehicle_ids": [],
+      "disappeared_vehicle_ids": []
+    },
+    {
+      "source": "synthetic://phase1b",
+      "from_capture": "2026-11-13T01:01:00-05:00",
+      "to_capture": "2026-11-13T01:02:00-05:00",
+      "common_vehicle_ids": 2,
+      "appeared_vehicle_ids": [],
+      "disappeared_vehicle_ids": []
+    }
+  ],
+  "temporal_associations": {
+    "ambiguous": 2,
+    "verified": 2
+  },
+  "compared_vehicle_pairs": 4,
+  "pairs": [
+    {
+      "vehicle_id": "DEMO_TEMP_V1",
+      "from_capture": "2026-11-13T01:00:00-05:00",
+      "to_capture": "2026-11-13T01:01:00-05:00",
+      "changed": {
+        "vehicle_id": false,
+        "trip_id": false,
+        "route_id": false,
+        "start_time": true,
+        "start_date": false,
+        "current_stop_sequence": false
+      },
+      "association": {
+        "classification": "ambiguous",
+        "reason": "start_time_changed_instance_not_verified"
+      },
+      "trajectory_status": "ambiguous_instance_start_time",
+      "gps_delta_seconds": 60,
+      "sequence_progress": "unchanged",
+      "start_time_changed_with_new_gps": true,
+      "start_time_equals_gps_clock": true,
+      "displacement_m": 784.767,
+      "apparent_speed_mps": 13.079,
+      "first_projection": {
+        "distance_to_shape_m": 0.184,
+        "progress_m": 0.199,
+        "ambiguous_projection": false
+      },
+      "last_projection": {
+        "distance_to_shape_m": 0.04,
+        "progress_m": 784.967,
+        "ambiguous_projection": false
+      },
+      "progress_delta_m": 784.768,
+      "geometric_progress": "forward"
+    },
+    {
+      "vehicle_id": "DEMO_TEMP_V2",
+      "from_capture": "2026-11-13T01:00:00-05:00",
+      "to_capture": "2026-11-13T01:01:00-05:00",
+      "changed": {
+        "vehicle_id": false,
+        "trip_id": false,
+        "route_id": false,
+        "start_time": false,
+        "start_date": false,
+        "current_stop_sequence": false
+      },
+      "association": {
+        "classification": "verified",
+        "reason": "exact_catalog_references_only",
+        "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+        "pattern_id": "a10a8569329c77d803c153332bd3b41b2df1dbf6e271a0e06eec59062ec663b3",
+        "shape_id": "DEMO_SHAPE"
+      },
+      "trajectory_status": "compatible_geometry_not_confirmed_run",
+      "gps_delta_seconds": 60,
+      "sequence_progress": "unchanged",
+      "start_time_changed_with_new_gps": false,
+      "start_time_equals_gps_clock": false,
+      "displacement_m": 784.767,
+      "apparent_speed_mps": 13.079,
+      "first_projection": {
+        "distance_to_shape_m": 0.184,
+        "progress_m": 0.199,
+        "ambiguous_projection": false
+      },
+      "last_projection": {
+        "distance_to_shape_m": 0.04,
+        "progress_m": 784.967,
+        "ambiguous_projection": false
+      },
+      "progress_delta_m": 784.768,
+      "geometric_progress": "forward"
+    },
+    {
+      "vehicle_id": "DEMO_TEMP_V1",
+      "from_capture": "2026-11-13T01:01:00-05:00",
+      "to_capture": "2026-11-13T01:02:00-05:00",
+      "changed": {
+        "vehicle_id": false,
+        "trip_id": false,
+        "route_id": false,
+        "start_time": true,
+        "start_date": false,
+        "current_stop_sequence": true
+      },
+      "association": {
+        "classification": "ambiguous",
+        "reason": "start_time_changed_instance_not_verified"
+      },
+      "trajectory_status": "ambiguous_instance_start_time",
+      "gps_delta_seconds": 60,
+      "sequence_progress": "forward",
+      "start_time_changed_with_new_gps": true,
+      "start_time_equals_gps_clock": true,
+      "displacement_m": 784.726,
+      "apparent_speed_mps": 13.079,
+      "first_projection": {
+        "distance_to_shape_m": 0.04,
+        "progress_m": 784.967,
+        "ambiguous_projection": false
+      },
+      "last_projection": {
+        "distance_to_shape_m": 0.228,
+        "progress_m": 1569.697,
+        "ambiguous_projection": false
+      },
+      "progress_delta_m": 784.73,
+      "geometric_progress": "forward"
+    },
+    {
+      "vehicle_id": "DEMO_TEMP_V2",
+      "from_capture": "2026-11-13T01:01:00-05:00",
+      "to_capture": "2026-11-13T01:02:00-05:00",
+      "changed": {
+        "vehicle_id": false,
+        "trip_id": false,
+        "route_id": false,
+        "start_time": false,
+        "start_date": false,
+        "current_stop_sequence": true
+      },
+      "association": {
+        "classification": "verified",
+        "reason": "exact_catalog_references_only",
+        "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+        "pattern_id": "a10a8569329c77d803c153332bd3b41b2df1dbf6e271a0e06eec59062ec663b3",
+        "shape_id": "DEMO_SHAPE"
+      },
+      "trajectory_status": "compatible_geometry_not_confirmed_run",
+      "gps_delta_seconds": 60,
+      "sequence_progress": "forward",
+      "start_time_changed_with_new_gps": false,
+      "start_time_equals_gps_clock": false,
+      "displacement_m": 784.726,
+      "apparent_speed_mps": 13.079,
+      "first_projection": {
+        "distance_to_shape_m": 0.04,
+        "progress_m": 784.967,
+        "ambiguous_projection": false
+      },
+      "last_projection": {
+        "distance_to_shape_m": 0.228,
+        "progress_m": 1569.697,
+        "ambiguous_projection": false
+      },
+      "progress_delta_m": 784.73,
+      "geometric_progress": "forward"
+    }
+  ],
+  "arrivals_inferred": 0,
+  "travel_durations_inferred": 0,
+  "thresholds": {
+    "freshness_seconds": 300,
+    "max_projection_distance_m": 150,
+    "ambiguous_branch_tie_m": 5,
+    "progress_noise_m": 15,
+    "apparent_speed_mps": 40
+  },
+  "limitations": [
+    "Verified means exact catalog references, not a proven operational trip instance.",
+    "Geometric thresholds are diagnostic candidates, not calibrated tracking.",
+    "No vehicle-ID suffix is used to infer routes.",
+    "vehicle_id stability is measured as cohort overlap; a renumbered vehicle cannot be identified by assumption."
+  ]
+}

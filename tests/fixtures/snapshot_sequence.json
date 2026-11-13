@@ -1,0 +1,20 @@
+{
+  "origin": "synthetic_scenario_not_real_api_captures",
+  "reference_time": "2026-11-12T07:00:00-05:00",
+  "description": "Two vehicles on one synthetic route, then a trip change, missing identity, stale data and disappearance. No arrivals are inferred.",
+  "snapshots": [
+    {"offset_seconds": 0, "vehicles": [
+      {"vehicle_id": "SYN_V1", "trip_id": "SYN_T1", "route_id": "SYN_R1", "start_date": "20261112", "start_time": "06:50:00", "latitude": 4.65, "longitude": -74.06, "stop_id": "SYN_S1", "sequence": 1},
+      {"vehicle_id": "SYN_V2", "trip_id": "SYN_T2", "route_id": "SYN_R1", "start_date": "20261112", "start_time": "06:55:00", "latitude": 4.64, "longitude": -74.07, "stop_id": "SYN_S1", "sequence": 1}
+    ]},
+    {"offset_seconds": 60, "vehicles": [
+      {"vehicle_id": "SYN_V1", "trip_id": "SYN_T1", "route_id": "SYN_R1", "start_date": "20261112", "start_time": "06:50:00", "latitude": 4.66, "longitude": -74.05, "stop_id": "SYN_S2", "sequence": 2},
+      {"vehicle_id": "SYN_V2", "trip_id": "SYN_T2", "route_id": "SYN_R1", "start_date": "20261112", "start_time": "06:55:00", "latitude": 4.65, "longitude": -74.06, "stop_id": "SYN_S2", "sequence": 2}
+    ]},
+    {"offset_seconds": 120, "vehicles": [
+      {"vehicle_id": "SYN_V1", "trip_id": "SYN_T3", "route_id": "SYN_R1", "start_date": "20261112", "start_time": "07:01:00", "latitude": 4.66, "longitude": -74.05, "stop_id": "SYN_S2", "sequence": 2},
+      {"vehicle_id": "SYN_UNKNOWN", "route_id": "SYN_R1", "start_date": "20261112", "start_time": "07:01:00", "latitude": 4.65, "longitude": -74.06},
+      {"vehicle_id": "SYN_STALE", "trip_id": "SYN_OLD", "route_id": "SYN_R1", "start_date": "20261112", "start_time": "06:00:00", "latitude": 4.65, "longitude": -74.06, "age_seconds": 1000}
+    ]}
+  ]
+}

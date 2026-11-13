@@ -1,0 +1,40 @@
+header {
+  gtfs_realtime_version: "2.0"
+  incrementality: FULL_DATASET
+  timestamp: 1794484800
+}
+entity {
+  id: "DEMO_ENTITY_V1"
+  vehicle {
+    trip { trip_id: "DEMO_T1" route_id: "DEMO_R1" direction_id: 0 start_date: "20261112" start_time: "25:00:00" }
+    vehicle { id: "DEMO_V1" }
+    position { latitude: 4.65 longitude: -74.06 }
+    current_stop_sequence: 1
+    current_status: IN_TRANSIT_TO
+    stop_id: "DEMO_S1"
+    timestamp: 1794484770
+  }
+}
+entity {
+  id: "DEMO_ENTITY_V2"
+  vehicle {
+    trip { route_id: "DEMO_R2" }
+    vehicle { id: "DEMO_V2" }
+  }
+}
+entity {
+  id: "DEMO_ENTITY_UPDATE"
+  trip_update {
+    trip { trip_id: "DEMO_T1" route_id: "DEMO_R1" start_date: "20261112" start_time: "25:00:00" }
+    vehicle { id: "DEMO_V1" }
+    timestamp: 1794484770
+    stop_time_update { stop_sequence: 1 stop_id: "DEMO_S1" arrival { time: 1794538800 } }
+  }
+}
+entity {
+  id: "DEMO_ENTITY_ALERT"
+  alert {
+    informed_entity { route_id: "DEMO_R1" stop_id: "DEMO_S1" }
+    header_text { translation { text: "Aviso sintetico de prueba" language: "es" } }
+  }
+}

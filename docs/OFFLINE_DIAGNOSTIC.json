@@ -1,0 +1,331 @@
+{
+  "mode": "offline_synthetic_fixture",
+  "network_requests": 0,
+  "live_connection_validated": false,
+  "fixture_reference_time": "2026-11-12T07:00:00-05:00",
+  "environment": {
+    "python": "3.13.14",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "dependencies": {
+      "httpx": "0.28.1",
+      "protobuf": "7.36.2",
+      "gtfs-realtime-bindings": "3.0.0",
+      "tzdata": "2026.6"
+    }
+  },
+  "static": {
+    "validation_scope": "structural_and_selected_references_only",
+    "basic_checks_passed": true,
+    "counts": {
+      "routes.txt": 2,
+      "stops.txt": 3,
+      "trips.txt": 1,
+      "agency.txt": 1,
+      "calendar.txt": 1,
+      "feed_info.txt": 1,
+      "stop_times.txt": 2,
+      "shapes.txt": 2
+    },
+    "reference_errors": {
+      "trip_route_missing": 0,
+      "trip_service_missing": 0,
+      "parent_station_missing": 0,
+      "stop_time_trip_missing": 0,
+      "stop_time_stop_missing": 0
+    },
+    "route_types": {
+      "3": 2
+    },
+    "agencies": [
+      {
+        "agency_id": "DEMO_AGENCY",
+        "agency_name": "Synthetic test agency",
+        "agency_url": "https://example.invalid",
+        "agency_timezone": "America/Bogota"
+      }
+    ],
+    "agency_count": 1,
+    "coverage_by_agency": [
+      {
+        "agency_id": "DEMO_AGENCY",
+        "agency_name": "Synthetic test agency",
+        "routes": 2,
+        "stops_in_stop_times": 2
+      }
+    ],
+    "sample_optional_tables": {
+      "agency.txt": [
+        {
+          "agency_id": "DEMO_AGENCY",
+          "agency_name": "Synthetic test agency",
+          "agency_url": "https://example.invalid",
+          "agency_timezone": "America/Bogota"
+        }
+      ],
+      "calendar.txt": [
+        {
+          "service_id": "DEMO_SERVICE",
+          "monday": "1",
+          "tuesday": "1",
+          "wednesday": "1",
+          "thursday": "1",
+          "friday": "1",
+          "saturday": "1",
+          "sunday": "1",
+          "start_date": "20260101",
+          "end_date": "20261231"
+        }
+      ],
+      "feed_info.txt": [
+        {
+          "feed_publisher_name": "Synthetic fixture",
+          "feed_publisher_url": "https://example.invalid",
+          "feed_lang": "es",
+          "feed_start_date": "20260101",
+          "feed_end_date": "20261231",
+          "feed_version": "synthetic-1"
+        }
+      ]
+    },
+    "routes_with_stop_times": 1,
+    "stops_in_stop_times": 2,
+    "sample_trip": {
+      "route_id": "DEMO_R1",
+      "service_id": "DEMO_SERVICE",
+      "trip_id": "DEMO_T1",
+      "trip_headsign": "Destino sintetico",
+      "direction_id": "0",
+      "shape_id": "DEMO_SHAPE"
+    },
+    "sample_trip_stops": [
+      {
+        "trip_id": "DEMO_T1",
+        "arrival_time": "25:00:00",
+        "departure_time": "25:00:00",
+        "stop_id": "DEMO_S1",
+        "stop_sequence": 1
+      },
+      {
+        "trip_id": "DEMO_T1",
+        "arrival_time": "25:10:00",
+        "departure_time": "25:10:00",
+        "stop_id": "DEMO_S2",
+        "stop_sequence": 2
+      }
+    ],
+    "files": [
+      "agency.txt",
+      "calendar.txt",
+      "feed_info.txt",
+      "routes.txt",
+      "shapes.txt",
+      "stop_times.txt",
+      "stops.txt",
+      "trips.txt"
+    ]
+  },
+  "realtime": {
+    "validation_scope": "protobuf_required_fields_version_ids_and_vehicle_coordinates",
+    "gtfs_realtime_version": "2.0",
+    "incrementality": "FULL_DATASET",
+    "header": {
+      "timestamp": 1794484800,
+      "at_bogota": "2026-11-12T07:00:00-05:00",
+      "age_seconds": 0.0,
+      "freshness": "recent"
+    },
+    "entity_count": 4,
+    "entities_by_kind": {
+      "vehicle": 2,
+      "trip_update": 1,
+      "alert": 1
+    },
+    "vehicle_freshness": {
+      "recent": 1,
+      "unknown": 1
+    },
+    "trip_update_freshness": {
+      "recent": 1
+    },
+    "stop_time_update_count": 1,
+    "trip_updates_with_stops": 1,
+    "vehicle_fields_present": {
+      "vehicle_id": 2,
+      "trip_id": 1,
+      "route_id": 2,
+      "stop_id": 1,
+      "latitude": 1,
+      "longitude": 1
+    },
+    "vehicle_samples": [
+      {
+        "entity_id": "DEMO_ENTITY_V1",
+        "vehicle_id": "DEMO_V1",
+        "trip_id": "DEMO_T1",
+        "route_id": "DEMO_R1",
+        "direction_id": 0,
+        "start_date": "20261112",
+        "start_time": "25:00:00",
+        "stop_id": "DEMO_S1",
+        "current_stop_sequence": 1,
+        "current_status": "IN_TRANSIT_TO",
+        "latitude": 4.650000095367432,
+        "longitude": -74.05999755859375,
+        "reported": {
+          "timestamp": 1794484770,
+          "at_bogota": "2026-11-12T06:59:30-05:00",
+          "age_seconds": 30.0,
+          "freshness": "recent"
+        }
+      },
+      {
+        "entity_id": "DEMO_ENTITY_V2",
+        "vehicle_id": "DEMO_V2",
+        "trip_id": null,
+        "route_id": "DEMO_R2",
+        "direction_id": null,
+        "start_date": null,
+        "start_time": null,
+        "stop_id": null,
+        "current_stop_sequence": null,
+        "current_status": "IN_TRANSIT_TO",
+        "latitude": null,
+        "longitude": null,
+        "reported": {
+          "timestamp": null,
+          "at_bogota": null,
+          "age_seconds": null,
+          "freshness": "unknown"
+        }
+      }
+    ],
+    "trip_update_samples": [
+      {
+        "entity_id": "DEMO_ENTITY_UPDATE",
+        "trip_id": "DEMO_T1",
+        "route_id": "DEMO_R1",
+        "vehicle_id": "DEMO_V1",
+        "reported": {
+          "timestamp": 1794484770,
+          "at_bogota": "2026-11-12T06:59:30-05:00",
+          "age_seconds": 30.0,
+          "freshness": "recent"
+        },
+        "stop_time_update_count": 1,
+        "stops": [
+          {
+            "stop_id": "DEMO_S1",
+            "stop_sequence": 1,
+            "arrival_time": 1794538800,
+            "departure_time": null
+          }
+        ]
+      }
+    ],
+    "alert_samples": [
+      {
+        "entity_id": "DEMO_ENTITY_ALERT",
+        "headers": [
+          "Aviso sintetico de prueba"
+        ],
+        "selectors": [
+          {
+            "route_id": "DEMO_R1",
+            "stop_id": "DEMO_S1",
+            "trip_id": null
+          }
+        ]
+      }
+    ],
+    "warnings": []
+  },
+  "links": {
+    "join_type": "exact_ids_within_official_provider",
+    "vehicle_counts": {
+      "vehicles": 2,
+      "trip_id_present": 1,
+      "trip_id_matched": 1,
+      "route_id_present": 2,
+      "route_id_matched": 2,
+      "stop_id_present": 1,
+      "stop_id_matched": 1,
+      "trip_route_conflicts": 0,
+      "direction_conflicts": 0,
+      "status_trip_match": 1,
+      "status_route_only": 1
+    },
+    "trip_update_counts": {
+      "trip_updates": 1,
+      "trip_id_matched": 1,
+      "route_id_present": 1,
+      "route_id_matched": 1,
+      "trip_route_conflicts": 0,
+      "stop_updates": 1,
+      "stop_id_present": 1,
+      "stop_id_matched": 1
+    },
+    "examples": [
+      {
+        "entity_id": "DEMO_ENTITY_V1",
+        "vehicle_id": "DEMO_V1",
+        "trip_id": "DEMO_T1",
+        "route_id": "DEMO_R1",
+        "direction_id": 0,
+        "start_date": "20261112",
+        "start_time": "25:00:00",
+        "stop_id": "DEMO_S1",
+        "current_stop_sequence": 1,
+        "current_status": "IN_TRANSIT_TO",
+        "latitude": 4.650000095367432,
+        "longitude": -74.05999755859375,
+        "reported": {
+          "timestamp": 1794484770,
+          "at_bogota": "2026-11-12T06:59:30-05:00",
+          "age_seconds": 30.0,
+          "freshness": "recent"
+        },
+        "join_status": "trip_match",
+        "static_trip_route_id": "DEMO_R1",
+        "shape_id": "DEMO_SHAPE",
+        "service_id": "DEMO_SERVICE",
+        "route_short_name": "DEMO",
+        "route_long_name": "Recorrido sintetico de prueba",
+        "stop_known": true,
+        "trip_instance_resolved": false
+      },
+      {
+        "entity_id": "DEMO_ENTITY_V2",
+        "vehicle_id": "DEMO_V2",
+        "trip_id": null,
+        "route_id": "DEMO_R2",
+        "direction_id": null,
+        "start_date": null,
+        "start_time": null,
+        "stop_id": null,
+        "current_stop_sequence": null,
+        "current_status": "IN_TRANSIT_TO",
+        "latitude": null,
+        "longitude": null,
+        "reported": {
+          "timestamp": null,
+          "at_bogota": null,
+          "age_seconds": null,
+          "freshness": "unknown"
+        },
+        "join_status": "route_only",
+        "static_trip_route_id": null,
+        "shape_id": null,
+        "service_id": null,
+        "route_short_name": "DEMO2",
+        "route_long_name": "Otro recorrido sintetico",
+        "stop_known": false,
+        "trip_instance_resolved": false
+      }
+    ],
+    "limitations": [
+      "An exact trip_id join does not validate service date or identify a frequency-based trip instance.",
+      "No normalization or cross-provider mapping is assumed.",
+      "Vehicle IDs and entity IDs are distinct; no static vehicle table is assumed."
+    ]
+  }
+}

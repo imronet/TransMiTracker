@@ -1,0 +1,242 @@
+{
+  "origin": "technical_profile_examples_using_real_static_catalog_not_user_commutes",
+  "network_requests": 0,
+  "profile_database": "data/phase1b/profiles_demo_7a923993affa485aa9dce25f10ce50d4.sqlite3",
+  "profiles": [
+    {
+      "profile_id": "example-to-work",
+      "kind": "home_to_work",
+      "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+      "legs": [
+        {
+          "origin_stop_id": "74389",
+          "route_id": "13766",
+          "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+          "direction_id": null,
+          "origin_sequence": 2,
+          "destination_stop_id": "56059",
+          "destination_sequence": 3
+        }
+      ],
+      "transfers": [],
+      "initial_walk_minutes": 2,
+      "final_walk_minutes": 5,
+      "arrival_deadline": "09:00:00",
+      "notification_time": "07:30:00",
+      "active_weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "safety_margin_minutes": 3,
+      "arrival_day_offset": 0,
+      "departure_window_minutes": 120
+    },
+    {
+      "profile_id": "example-to-home",
+      "kind": "work_to_home",
+      "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+      "legs": [
+        {
+          "origin_stop_id": "74389",
+          "route_id": "13766",
+          "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+          "direction_id": null,
+          "origin_sequence": 2,
+          "destination_stop_id": "56059",
+          "destination_sequence": 3
+        }
+      ],
+      "transfers": [],
+      "initial_walk_minutes": 2,
+      "final_walk_minutes": 5,
+      "arrival_deadline": "18:00:00",
+      "notification_time": "16:30:00",
+      "active_weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "safety_margin_minutes": 3,
+      "arrival_day_offset": 0,
+      "departure_window_minutes": 120
+    }
+  ],
+  "transfer_example": {
+    "profile_id": "example-to-work",
+    "kind": "home_to_work",
+    "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+    "legs": [
+      {
+        "origin_stop_id": "74389",
+        "route_id": "13766",
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+        "direction_id": null,
+        "origin_sequence": 2,
+        "destination_stop_id": "56059",
+        "destination_sequence": 3
+      },
+      {
+        "origin_stop_id": "56059",
+        "route_id": "13766",
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+        "direction_id": null,
+        "origin_sequence": 3,
+        "destination_stop_id": "56060",
+        "destination_sequence": 4
+      }
+    ],
+    "transfers": [
+      {
+        "walking_minutes": 7,
+        "buffer_minutes": 2
+      }
+    ],
+    "initial_walk_minutes": 2,
+    "final_walk_minutes": 5,
+    "arrival_deadline": "10:00:00",
+    "notification_time": "07:30:00",
+    "active_weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "safety_margin_minutes": 3,
+    "arrival_day_offset": 0,
+    "departure_window_minutes": 120
+  },
+  "validation_examples": {
+    "valid_to_work": {
+      "contract_version": 1,
+      "ok": true,
+      "data": {
+        "profile_id": "example-to-work",
+        "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+        "legs": [
+          {
+            "leg_index": 0,
+            "ready_at": "2026-11-12T08:02:00-05:00",
+            "boarding_at": "2026-11-12T08:04:56-05:00",
+            "scheduled_arrival_at": "2026-11-12T08:12:21-05:00",
+            "service_date": "2026-11-12",
+            "example_trip_id": "SO2000001.11.13766"
+          }
+        ],
+        "arrival_with_walk_and_margin": "2026-11-12T08:20:21-05:00",
+        "spatial_connections_verified": true,
+        "basis": "static_schedule_validation_not_prediction"
+      },
+      "errors": [],
+      "warnings": []
+    },
+    "valid_to_home": {
+      "contract_version": 1,
+      "ok": true,
+      "data": {
+        "profile_id": "example-to-home",
+        "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+        "legs": [
+          {
+            "leg_index": 0,
+            "ready_at": "2026-11-12T17:02:00-05:00",
+            "boarding_at": "2026-11-12T17:07:05-05:00",
+            "scheduled_arrival_at": "2026-11-12T17:14:45-05:00",
+            "service_date": "2026-11-12",
+            "example_trip_id": "SO2000003.33.13766"
+          }
+        ],
+        "arrival_with_walk_and_margin": "2026-11-12T17:22:45-05:00",
+        "spatial_connections_verified": true,
+        "basis": "static_schedule_validation_not_prediction"
+      },
+      "errors": [],
+      "warnings": []
+    },
+    "two_legs_user_transfer": {
+      "contract_version": 1,
+      "ok": true,
+      "data": {
+        "profile_id": "example-to-work",
+        "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+        "legs": [
+          {
+            "leg_index": 0,
+            "ready_at": "2026-11-12T08:02:00-05:00",
+            "boarding_at": "2026-11-12T08:04:56-05:00",
+            "scheduled_arrival_at": "2026-11-12T08:12:21-05:00",
+            "service_date": "2026-11-12",
+            "example_trip_id": "SO2000001.11.13766"
+          },
+          {
+            "leg_index": 1,
+            "ready_at": "2026-11-12T08:21:21-05:00",
+            "boarding_at": "2026-11-12T08:23:51-05:00",
+            "scheduled_arrival_at": "2026-11-12T08:24:59-05:00",
+            "service_date": "2026-11-12",
+            "example_trip_id": "SO2000004.9.13766"
+          }
+        ],
+        "arrival_with_walk_and_margin": "2026-11-12T08:32:59-05:00",
+        "spatial_connections_verified": false,
+        "basis": "static_schedule_validation_not_prediction"
+      },
+      "errors": [],
+      "warnings": [
+        {
+          "code": "TRANSFER_PATH_UNVERIFIED",
+          "field": "transfers.0",
+          "message": "User walking/buffer time is preserved; no pedestrian connection has been verified, even within one station"
+        }
+      ]
+    },
+    "invalid_direction": {
+      "contract_version": 1,
+      "ok": false,
+      "data": null,
+      "errors": [
+        {
+          "code": "LEG_SERVICE_INVALID",
+          "field": "legs.0",
+          "message": "Route, direction and pattern are incompatible"
+        }
+      ],
+      "warnings": []
+    },
+    "invalid_deadline": {
+      "contract_version": 1,
+      "ok": false,
+      "data": null,
+      "errors": [
+        {
+          "code": "ARRIVAL_DEADLINE_EXCEEDED",
+          "field": "arrival_deadline",
+          "message": "Scheduled arrival plus final walk and safety margin exceeds the configured deadline"
+        }
+      ],
+      "warnings": []
+    },
+    "invalid_sequence": {
+      "contract_version": 1,
+      "ok": false,
+      "data": null,
+      "errors": [
+        {
+          "code": "INVALID_SEQUENCE",
+          "field": "legs.0",
+          "message": "Destination occurrence must follow origin"
+        }
+      ],
+      "warnings": []
+    }
+  },
+  "persisted_revisions": [
+    1,
+    1
+  ]
+}

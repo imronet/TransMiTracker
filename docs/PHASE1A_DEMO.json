@@ -1,0 +1,274 @@
+{
+  "origin": "real_saved_static_gtfs_catalog",
+  "network_requests": 0,
+  "query_at": "2026-11-12T08:00:00-05:00",
+  "catalog": {
+    "sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+    "source_path": "E:\\Docs\\Documents\\My Python Scripts\\TransMiTracker\\data\\probes\\official_static.zip",
+    "source_url": "https://gtfs.transmilenio.gov.co/GTFS.zip",
+    "imported_at": "2026-11-12T22:51:27.810417-05:00",
+    "zip_bytes": 180271992,
+    "batch_size": 10000,
+    "schema_version": 1,
+    "counts": {
+      "agencies": 7,
+      "routes": 1054,
+      "stops": 8325,
+      "calendar": 7,
+      "calendar_dates": 133,
+      "trips": 181070,
+      "stop_times": 9464235,
+      "shape_points": 952585,
+      "frequencies": 14,
+      "feed_info": 1,
+      "patterns": 1564
+    },
+    "timings": {
+      "agencies": 0.000599899998633191,
+      "routes": 0.004686799991759472,
+      "stops": 0.04982519999612123,
+      "calendar": 0.006311499993898906,
+      "calendar_dates": 0.001283400008105673,
+      "trips": 0.7135628999967594,
+      "stop_times": 110.90685680000752,
+      "shape_points": 5.12208250000549,
+      "frequencies": 0.0003358000103617087,
+      "feed_info": 0.00021220000053290278,
+      "patterns": 19.88968290000048,
+      "indexes": 19.957573299994692,
+      "total_seconds": 169.1686492000008
+    },
+    "indexes": [
+      "idx_pattern_stops_stop",
+      "idx_patterns_route_direction",
+      "idx_stop_times_stop_departure",
+      "idx_stops_code",
+      "idx_stops_parent",
+      "idx_trips_pattern",
+      "idx_trips_route_pattern_service",
+      "idx_trips_service"
+    ]
+  },
+  "demonstration": {
+    "query": "Portal Norte",
+    "search_results": 20,
+    "origin": {
+      "stop_id": "2000",
+      "code": null,
+      "name": "Portal Norte - Unicervantes ",
+      "latitude": 4.755476318825073,
+      "longitude": -74.0458863256048,
+      "location_type": 1,
+      "parent_station": null,
+      "platform_code": null,
+      "parent_name": null,
+      "child_count": 9
+    },
+    "option_count": 25,
+    "selection": {
+      "route_id": "13766",
+      "direction_id": null,
+      "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+      "origin_platform_id": "74389",
+      "origin_sequence": 2,
+      "short_name": "2-1",
+      "long_name": "Mirandela ||  Portal Norte",
+      "headsign": null,
+      "boarding_type": 0,
+      "availability_from": "2026-11-12T08:04:56-05:00",
+      "next_boarding_at": "2026-11-12T08:04:56-05:00",
+      "time_basis": "scheduled",
+      "headway_seconds": null,
+      "service_dates": [
+        "2026-11-12"
+      ],
+      "trip_templates": 17
+    },
+    "destinations": [
+      {
+        "sequence": 3,
+        "stop_id": "56059",
+        "drop_off_type": 0,
+        "code": "285A02_TM",
+        "name": "Br. Tejares del Norte II",
+        "parent_station": null,
+        "arrival_seconds": 29541,
+        "template_arrival_seconds": 29541,
+        "arrival_at": "2026-11-12T08:12:21-05:00",
+        "time_basis": "scheduled",
+        "service_date": "2026-11-12",
+        "example_trip_id": "SO2000001.11.13766",
+        "origin_sequence": 2,
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66"
+      },
+      {
+        "sequence": 4,
+        "stop_id": "56060",
+        "drop_off_type": 0,
+        "code": "286A02_TM",
+        "name": "San Pedro Plaza",
+        "parent_station": null,
+        "arrival_seconds": 29609,
+        "template_arrival_seconds": 29609,
+        "arrival_at": "2026-11-12T08:13:29-05:00",
+        "time_basis": "scheduled",
+        "service_date": "2026-11-12",
+        "example_trip_id": "SO2000001.11.13766",
+        "origin_sequence": 2,
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66"
+      },
+      {
+        "sequence": 5,
+        "stop_id": "56128",
+        "drop_off_type": 0,
+        "code": "333A02_TM",
+        "name": "Urb. San Pedro",
+        "parent_station": null,
+        "arrival_seconds": 29687,
+        "template_arrival_seconds": 29687,
+        "arrival_at": "2026-11-12T08:14:47-05:00",
+        "time_basis": "scheduled",
+        "service_date": "2026-11-12",
+        "example_trip_id": "SO2000001.11.13766",
+        "origin_sequence": 2,
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66"
+      },
+      {
+        "sequence": 6,
+        "stop_id": "56061",
+        "drop_off_type": 0,
+        "code": "287A02_TM",
+        "name": "Br. Santa Amalia",
+        "parent_station": null,
+        "arrival_seconds": 29843,
+        "template_arrival_seconds": 29843,
+        "arrival_at": "2026-11-12T08:17:23-05:00",
+        "time_basis": "scheduled",
+        "service_date": "2026-11-12",
+        "example_trip_id": "SO2000001.11.13766",
+        "origin_sequence": 2,
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66"
+      },
+      {
+        "sequence": 7,
+        "stop_id": "55886",
+        "drop_off_type": 0,
+        "code": "169A02_TM",
+        "name": "Patio del Norte",
+        "parent_station": null,
+        "arrival_seconds": 29922,
+        "template_arrival_seconds": 29922,
+        "arrival_at": "2026-11-12T08:18:42-05:00",
+        "time_basis": "scheduled",
+        "service_date": "2026-11-12",
+        "example_trip_id": "SO2000001.11.13766",
+        "origin_sequence": 2,
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66"
+      },
+      {
+        "sequence": 8,
+        "stop_id": "57285",
+        "drop_off_type": 0,
+        "code": "597A01_TM",
+        "name": "C.C. Santafé",
+        "parent_station": null,
+        "arrival_seconds": 29996,
+        "template_arrival_seconds": 29996,
+        "arrival_at": "2026-11-12T08:19:56-05:00",
+        "time_basis": "scheduled",
+        "service_date": "2026-11-12",
+        "example_trip_id": "SO2000001.11.13766",
+        "origin_sequence": 2,
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66"
+      },
+      {
+        "sequence": 9,
+        "stop_id": "74387",
+        "drop_off_type": 0,
+        "code": "Portal Norte Alimentación",
+        "name": "Portal Norte Alimentación",
+        "parent_station": null,
+        "arrival_seconds": 30165,
+        "template_arrival_seconds": 30165,
+        "arrival_at": "2026-11-12T08:22:45-05:00",
+        "time_basis": "scheduled",
+        "service_date": "2026-11-12",
+        "example_trip_id": "SO2000001.11.13766",
+        "origin_sequence": 2,
+        "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66"
+      }
+    ],
+    "query_timings_seconds": {
+      "search_and_selection": 0.2106954000046244,
+      "options": 0.15592230000765994,
+      "destinations": 0.05332629999611527
+    }
+  },
+  "rejection_checks": [
+    {
+      "case": "wrong_direction",
+      "rejected": true,
+      "message": "Route, direction and pattern are incompatible"
+    },
+    {
+      "case": "destination_outside_pattern",
+      "rejected": true,
+      "message": "Destination is not downstream with permitted drop-off in the selected service"
+    }
+  ],
+  "query_plan": [
+    {
+      "id": 2,
+      "parent": 0,
+      "notused": 61,
+      "detail": "SEARCH stop_times USING COVERING INDEX idx_stop_times_stop_departure (stop_id=? AND departure>? AND departure<?)"
+    }
+  ],
+  "served_routes": 1052,
+  "served_stops": 8155,
+  "shape_count": 1054,
+  "direction_counts": [
+    {
+      "direction_id": null,
+      "trips": 181070
+    }
+  ],
+  "stop_location_types": [
+    {
+      "location_type": 0,
+      "stops": 8167
+    },
+    {
+      "location_type": 1,
+      "stops": 158
+    }
+  ],
+  "quick_check": "ok",
+  "foreign_key_check": [],
+  "sqlite_version": "3.50.4",
+  "idempotent_reimport": {
+    "status": "reused",
+    "sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+    "database": "E:\\Docs\\Documents\\My Python Scripts\\TransMiTracker\\data\\catalog\\official_20261112.sqlite3",
+    "elapsed_seconds": 0.1431665999989491,
+    "database_bytes": 673136640,
+    "original_timings": {
+      "agencies": 0.000599899998633191,
+      "routes": 0.004686799991759472,
+      "stops": 0.04982519999612123,
+      "calendar": 0.006311499993898906,
+      "calendar_dates": 0.001283400008105673,
+      "trips": 0.7135628999967594,
+      "stop_times": 110.90685680000752,
+      "shape_points": 5.12208250000549,
+      "frequencies": 0.0003358000103617087,
+      "feed_info": 0.00021220000053290278,
+      "patterns": 19.88968290000048,
+      "indexes": 19.957573299994692,
+      "total_seconds": 169.1686492000008
+    }
+  },
+  "database_unchanged_on_reimport": true,
+  "database_bytes": 673136640,
+  "total_verification_seconds": 9.664270200009923
+}

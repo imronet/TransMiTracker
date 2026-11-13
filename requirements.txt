@@ -1,0 +1,6 @@
+# Dependencias de ejecución probadas en Python 3.13.14 / Windows.
+httpx==0.28.1
+customtkinter==6.0.0
+gtfs-realtime-bindings==3.0.0
+protobuf==7.36.2
+tzdata==2026.6

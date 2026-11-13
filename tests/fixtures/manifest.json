@@ -1,0 +1,9 @@
+{
+  "origin": "synthetic_hand_authored_not_an_api_response",
+  "reference_time": "2026-11-12T07:00:00-05:00",
+  "generator": "scripts/build_fixtures.py",
+  "files": {
+    "synthetic_gtfs.zip": "094827c58ae522eab5d936508d1c6ff42dc3dae515bfbb2fbd5a556bdae7ac7e",
+    "synthetic_realtime.pb": "9acfb4bb67364c2f7b6159a2179fe2894c5b71962e5a3a39b34e2939990a6c75"
+  }
+}

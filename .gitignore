@@ -1,0 +1,47 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Variables de entorno y secretos locales
+.env
+.env.*
+!.env.example
+
+# Cachés y bytecode de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Distribuciones y metadatos de paquetes
+build/
+dist/
+*.egg-info/
+
+# Bases de datos locales y archivos auxiliares de SQLite
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.duckdb
+*.duckdb.wal
+
+# Datos locales (se conserva la carpeta vacía)
+data/*
+!data/.gitkeep
+
+# Archivos temporales
+*.log
+*.tmp
+*~
+Thumbs.db
+.DS_Store
+.env.tmp

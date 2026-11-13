@@ -1,0 +1,2 @@
+route_id,service_id,trip_id,trip_headsign,direction_id,shape_id
+DEMO_R1,DEMO_SERVICE,DEMO_T1,Destino sintetico,0,DEMO_SHAPE

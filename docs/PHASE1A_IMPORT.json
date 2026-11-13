@@ -1,0 +1,35 @@
+{
+  "status": "imported",
+  "sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+  "database": "E:\\Docs\\Documents\\My Python Scripts\\TransMiTracker\\data\\catalog\\official_20261112.sqlite3",
+  "database_bytes": 673136640,
+  "elapsed_seconds": 169.32179610000458,
+  "counts": {
+    "agencies": 7,
+    "routes": 1054,
+    "stops": 8325,
+    "calendar": 7,
+    "calendar_dates": 133,
+    "trips": 181070,
+    "stop_times": 9464235,
+    "shape_points": 952585,
+    "frequencies": 14,
+    "feed_info": 1,
+    "patterns": 1564
+  },
+  "timings": {
+    "agencies": 0.000599899998633191,
+    "routes": 0.004686799991759472,
+    "stops": 0.04982519999612123,
+    "calendar": 0.006311499993898906,
+    "calendar_dates": 0.001283400008105673,
+    "trips": 0.7135628999967594,
+    "stop_times": 110.90685680000752,
+    "shape_points": 5.12208250000549,
+    "frequencies": 0.0003358000103617087,
+    "feed_info": 0.00021220000053290278,
+    "patterns": 19.88968290000048,
+    "indexes": 19.957573299994692,
+    "total_seconds": 169.1686492000008
+  }
+}

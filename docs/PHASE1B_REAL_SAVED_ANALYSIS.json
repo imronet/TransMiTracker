@@ -1,0 +1,159 @@
+{
+  "evidence_origins": [
+    "saved_real_snapshot"
+  ],
+  "capture_count": 1,
+  "unique_real_captures": 1,
+  "real_temporal_validation": false,
+  "operational_identity_validated": false,
+  "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+  "reference_associations": {
+    "unresolved": 2381,
+    "contradictory": 167,
+    "verified": 17
+  },
+  "reference_reason_counts": {
+    "trip_id_not_in_catalog": 2351,
+    "stale_missing_or_future_timestamp": 30,
+    "trip_route_conflict": 156,
+    "exact_catalog_references_only": 17,
+    "stop_sequence_conflict": 11
+  },
+  "reference_association_samples": {
+    "unresolved": [
+      {
+        "vehicle_id": "10192",
+        "trip_id": "TTABA1331.3.12428",
+        "route_id": "13790",
+        "stop_id": "61153",
+        "current_stop_sequence": 15,
+        "assessment": {
+          "classification": "unresolved",
+          "reason": "trip_id_not_in_catalog"
+        }
+      },
+      {
+        "vehicle_id": "327046",
+        "trip_id": "TB5E4G030.1.12151",
+        "route_id": "13140",
+        "stop_id": "54412",
+        "current_stop_sequence": 118,
+        "assessment": {
+          "classification": "unresolved",
+          "reason": "trip_id_not_in_catalog"
+        }
+      },
+      {
+        "vehicle_id": "104752",
+        "trip_id": "CN2FF0008.3.12497",
+        "route_id": "13489",
+        "stop_id": "53117",
+        "current_stop_sequence": 46,
+        "assessment": {
+          "classification": "unresolved",
+          "reason": "trip_id_not_in_catalog"
+        }
+      }
+    ],
+    "contradictory": [
+      {
+        "vehicle_id": "504203",
+        "trip_id": "CE12D0027.6.12327",
+        "route_id": "13378",
+        "stop_id": "56146",
+        "current_stop_sequence": 12,
+        "assessment": {
+          "classification": "contradictory",
+          "reason": "trip_route_conflict"
+        }
+      },
+      {
+        "vehicle_id": "104441",
+        "trip_id": "CN2510002.3.11675",
+        "route_id": "13514",
+        "stop_id": "56407",
+        "current_stop_sequence": 55,
+        "assessment": {
+          "classification": "contradictory",
+          "reason": "trip_route_conflict"
+        }
+      },
+      {
+        "vehicle_id": "102258",
+        "trip_id": "CN2FC0008.3.12496",
+        "route_id": "12496",
+        "stop_id": "56090",
+        "current_stop_sequence": 48,
+        "assessment": {
+          "classification": "contradictory",
+          "reason": "stop_sequence_conflict"
+        }
+      }
+    ],
+    "verified": [
+      {
+        "vehicle_id": "924093",
+        "trip_id": "TB4710008.7.11836",
+        "route_id": "11836",
+        "stop_id": "53244",
+        "current_stop_sequence": 31,
+        "assessment": {
+          "classification": "verified",
+          "reason": "exact_catalog_references_only",
+          "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+          "pattern_id": "b676b165bf15c367b8d98c3a89c0c3f4bcc23fe2b211f7959713b28a49a222fc",
+          "shape_id": "11836"
+        }
+      },
+      {
+        "vehicle_id": "504342",
+        "trip_id": "CE1270001.5.12730",
+        "route_id": "12730",
+        "stop_id": "52729",
+        "current_stop_sequence": 82,
+        "assessment": {
+          "classification": "verified",
+          "reason": "exact_catalog_references_only",
+          "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+          "pattern_id": "eca36d2e3a8fa9c7babf63ae6195a39ebe5efcc7cee0b10898166e9197ad0a2d",
+          "shape_id": "12730"
+        }
+      },
+      {
+        "vehicle_id": "524006",
+        "trip_id": "CE12D0016.6.12328",
+        "route_id": "12328",
+        "stop_id": "56187",
+        "current_stop_sequence": 65,
+        "assessment": {
+          "classification": "verified",
+          "reason": "exact_catalog_references_only",
+          "scope": "route_trip_stop_sequence_and_service_not_operational_instance",
+          "pattern_id": "3fe2a026476beca3ee5beafe84d946829cb9139ef18b7be9df01293cc24fc5ce",
+          "shape_id": "12328"
+        }
+      }
+    ]
+  },
+  "field_change_counts": {},
+  "vehicle_cohort_transitions": [],
+  "temporal_associations": {},
+  "compared_vehicle_pairs": 0,
+  "pairs": [],
+  "arrivals_inferred": 0,
+  "travel_durations_inferred": 0,
+  "thresholds": {
+    "freshness_seconds": 300,
+    "max_projection_distance_m": 150,
+    "ambiguous_branch_tie_m": 5,
+    "progress_noise_m": 15,
+    "apparent_speed_mps": 40
+  },
+  "limitations": [
+    "Verified means exact catalog references, not a proven operational trip instance.",
+    "Geometric thresholds are diagnostic candidates, not calibrated tracking.",
+    "No vehicle-ID suffix is used to infer routes.",
+    "vehicle_id stability is measured as cohort overlap; a renumbered vehicle cannot be identified by assumption."
+  ],
+  "time_reference_kind": "original_request_start_reference_exact_receipt_not_recorded_in_phase0"
+}

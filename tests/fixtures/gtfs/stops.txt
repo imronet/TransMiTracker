@@ -1,0 +1,4 @@
+stop_id,stop_name,stop_lat,stop_lon,location_type,parent_station
+DEMO_STATION,Estacion sintetica,4.65,-74.06,1,
+DEMO_S1,Plataforma sintetica,4.65,-74.06,0,DEMO_STATION
+DEMO_S2,Destino sintetico,4.66,-74.05,0,

@@ -1,0 +1,15 @@
+{
+  "decision": "not_established",
+  "endpoint": "https://gtfs.transmilenio.gov.co/positions.pb",
+  "reviewed_at": "2026-11-12T23:45:17.372353-05:00",
+  "review_record": "docs/PHASE1B_PROVIDER_REVIEW.json",
+  "requested_maximum_captures": 16,
+  "requested_minimum_interval_seconds": 60,
+  "operator_decision": "offline_only_until_applicable_provider_conditions_are_established",
+  "reason": "The reviewed public pages do not establish a polling allowance for this subdomain. A generation frequency and absent robots.txt are not treated as polling authorization. This is not a finding that the provider prohibits every bounded diagnostic.",
+  "evidence": [
+    {"url": "https://gtfs.transmilenio.gov.co/manifest.json", "observation": "Publication frequency metadata, not a stated consumer request quota."},
+    {"url": "https://gtfs.transmilenio.gov.co/robots.txt", "observation": "HTTP 404; no allowance inferred."},
+    {"url": "https://www.transmilenio.gov.co/comunicaciones/publicaciones/2025/terminos-y-condiciones-en-el-sitio-web-de-transmilenio", "observation": "General website conditions, no specific polling cadence for the public GTFS feed identified."}
+  ]
+}

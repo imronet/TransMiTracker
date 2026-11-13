@@ -1,0 +1,3 @@
+route_id,agency_id,route_short_name,route_long_name,route_type
+DEMO_R1,DEMO_AGENCY,DEMO,Recorrido sintetico de prueba,3
+DEMO_R2,DEMO_AGENCY,DEMO2,Otro recorrido sintetico,3

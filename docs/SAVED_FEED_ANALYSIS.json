@@ -1,0 +1,1012 @@
+{
+  "mode": "saved_real_download_analysis_no_network",
+  "network_requests": 0,
+  "analyzed_at": "2026-11-12T22:04:45.773251-05:00",
+  "original_probe_started_at": "2026-11-12T21:56:47.256094-05:00",
+  "files": {
+    "official_static": {
+      "sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+      "original_download": {
+        "url": "https://gtfs.transmilenio.gov.co/GTFS.zip",
+        "queried_at": "2026-11-12T21:56:47.652477-05:00",
+        "attempts": 1,
+        "status": 200,
+        "final_url": "https://gtfs.transmilenio.gov.co/GTFS.zip",
+        "content_type": "application/zip",
+        "last_modified": null,
+        "size_bytes": 180271992,
+        "sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d"
+      },
+      "hash_matches_original": true
+    },
+    "official_positions": {
+      "sha256": "d9f038d3b803eb6743ffcd3920a1fd848e72a9b44a606222eff1da535e9c68eb",
+      "original_download": {
+        "url": "https://gtfs.transmilenio.gov.co/positions.pb",
+        "queried_at": "2026-11-12T21:57:39.517970-05:00",
+        "attempts": 1,
+        "status": 200,
+        "final_url": "https://gtfs.transmilenio.gov.co/positions.pb",
+        "content_type": "text/plain",
+        "last_modified": null,
+        "size_bytes": 298066,
+        "sha256": "d9f038d3b803eb6743ffcd3920a1fd848e72a9b44a606222eff1da535e9c68eb"
+      },
+      "hash_matches_original": true,
+      "strict_reader_accepted": true,
+      "summary_at_original_query": {
+        "validation_scope": "protobuf_required_fields_version_ids_and_vehicle_coordinates",
+        "gtfs_realtime_version": "2.0",
+        "incrementality": "FULL_DATASET",
+        "header": {
+          "timestamp": 1794538616,
+          "at_bogota": "2026-11-12T21:56:56-05:00",
+          "age_seconds": 43.518,
+          "freshness": "recent"
+        },
+        "entity_count": 2565,
+        "entities_by_kind": {
+          "vehicle": 2565
+        },
+        "vehicle_freshness": {
+          "recent": 2535,
+          "stale": 30
+        },
+        "trip_update_freshness": {},
+        "stop_time_update_count": 0,
+        "trip_updates_with_stops": 0,
+        "vehicle_fields_present": {
+          "vehicle_id": 2565,
+          "trip_id": 2565,
+          "route_id": 2565,
+          "stop_id": 2565,
+          "latitude": 2565,
+          "longitude": 2565
+        },
+        "vehicle_samples": [
+          {
+            "entity_id": "10192",
+            "vehicle_id": "10192",
+            "trip_id": "TTABA1331.3.12428",
+            "route_id": "13790",
+            "direction_id": null,
+            "start_date": "20261112",
+            "start_time": "21:55:58",
+            "stop_id": "61153",
+            "current_stop_sequence": 15,
+            "current_status": "IN_TRANSIT_TO",
+            "latitude": 4.646982192993164,
+            "longitude": -74.06501007080078,
+            "reported": {
+              "timestamp": 1794538558,
+              "at_bogota": "2026-11-12T21:55:58-05:00",
+              "age_seconds": 101.518,
+              "freshness": "recent"
+            }
+          },
+          {
+            "entity_id": "327046",
+            "vehicle_id": "327046",
+            "trip_id": "TB5E4G030.1.12151",
+            "route_id": "13140",
+            "direction_id": null,
+            "start_date": "20261112",
+            "start_time": "21:55:47",
+            "stop_id": "54412",
+            "current_stop_sequence": 118,
+            "current_status": "IN_TRANSIT_TO",
+            "latitude": 4.569308280944824,
+            "longitude": -74.10062408447266,
+            "reported": {
+              "timestamp": 1794538547,
+              "at_bogota": "2026-11-12T21:55:47-05:00",
+              "age_seconds": 112.518,
+              "freshness": "recent"
+            }
+          },
+          {
+            "entity_id": "104752",
+            "vehicle_id": "104752",
+            "trip_id": "CN2FF0008.3.12497",
+            "route_id": "13489",
+            "direction_id": null,
+            "start_date": "20261112",
+            "start_time": "21:55:42",
+            "stop_id": "53117",
+            "current_stop_sequence": 46,
+            "current_status": "IN_TRANSIT_TO",
+            "latitude": 4.760495185852051,
+            "longitude": -74.02645874023438,
+            "reported": {
+              "timestamp": 1794538542,
+              "at_bogota": "2026-11-12T21:55:42-05:00",
+              "age_seconds": 117.518,
+              "freshness": "recent"
+            }
+          }
+        ],
+        "trip_update_samples": [],
+        "alert_samples": [],
+        "warnings": []
+      },
+      "links": {
+        "join_type": "exact_ids_within_official_provider",
+        "vehicle_counts": {
+          "vehicles": 2565,
+          "trip_id_present": 2565,
+          "trip_id_matched": 189,
+          "route_id_present": 2565,
+          "route_id_matched": 2565,
+          "stop_id_present": 2565,
+          "stop_id_matched": 2451,
+          "trip_route_conflicts": 159,
+          "direction_conflicts": 0,
+          "status_route_only": 2376,
+          "status_conflict": 159,
+          "status_trip_match": 30
+        },
+        "trip_update_counts": {},
+        "examples": [
+          {
+            "entity_id": "10192",
+            "vehicle_id": "10192",
+            "trip_id": "TTABA1331.3.12428",
+            "route_id": "13790",
+            "direction_id": null,
+            "start_date": "20261112",
+            "start_time": "21:55:58",
+            "stop_id": "61153",
+            "current_stop_sequence": 15,
+            "current_status": "IN_TRANSIT_TO",
+            "latitude": 4.646982192993164,
+            "longitude": -74.06501007080078,
+            "reported": {
+              "timestamp": 1794538558,
+              "at_bogota": "2026-11-12T21:55:58-05:00",
+              "age_seconds": 101.518,
+              "freshness": "recent"
+            },
+            "join_status": "route_only",
+            "static_trip_route_id": null,
+            "shape_id": null,
+            "service_id": null,
+            "route_short_name": "B18",
+            "route_long_name": "Terminal",
+            "stop_known": false,
+            "trip_instance_resolved": false
+          },
+          {
+            "entity_id": "504203",
+            "vehicle_id": "504203",
+            "trip_id": "CE12D0027.6.12327",
+            "route_id": "13378",
+            "direction_id": null,
+            "start_date": "20261112",
+            "start_time": "21:56:00",
+            "stop_id": "56146",
+            "current_stop_sequence": 12,
+            "current_status": "IN_TRANSIT_TO",
+            "latitude": 4.57436466217041,
+            "longitude": -74.09325408935547,
+            "reported": {
+              "timestamp": 1794538560,
+              "at_bogota": "2026-11-12T21:56:00-05:00",
+              "age_seconds": 99.518,
+              "freshness": "recent"
+            },
+            "join_status": "conflict",
+            "static_trip_route_id": "12327",
+            "shape_id": "12327",
+            "service_id": "1",
+            "route_short_name": "DL219",
+            "route_long_name": "L219 La Roca || D219 Engativá Centro",
+            "stop_known": true,
+            "trip_instance_resolved": false
+          },
+          {
+            "entity_id": "924093",
+            "vehicle_id": "924093",
+            "trip_id": "TB4710008.7.11836",
+            "route_id": "11836",
+            "direction_id": null,
+            "start_date": "20261112",
+            "start_time": "21:55:56",
+            "stop_id": "53244",
+            "current_stop_sequence": 31,
+            "current_status": "IN_TRANSIT_TO",
+            "latitude": 4.598415851593018,
+            "longitude": -74.13612365722656,
+            "reported": {
+              "timestamp": 1794538556,
+              "at_bogota": "2026-11-12T21:55:56-05:00",
+              "age_seconds": 103.518,
+              "freshness": "recent"
+            },
+            "join_status": "trip_match",
+            "static_trip_route_id": "11836",
+            "shape_id": "11836",
+            "service_id": "1",
+            "route_short_name": "K721",
+            "route_long_name": "Terminal Salitre",
+            "stop_known": true,
+            "trip_instance_resolved": false
+          }
+        ],
+        "limitations": [
+          "An exact trip_id join does not validate service date or identify a frequency-based trip instance.",
+          "No normalization or cross-provider mapping is assumed.",
+          "Vehicle IDs and entity IDs are distinct; no static vehicle table is assumed."
+        ]
+      }
+    },
+    "official_tripupdates": {
+      "sha256": "fb9c3dede56bd2dfc4bfdc223a15b845296d94d87fd51d2af57f92aaf394e9de",
+      "original_download": {
+        "url": "https://gtfs.transmilenio.gov.co/tripupdates.pb",
+        "queried_at": "2026-11-12T21:57:40.352293-05:00",
+        "attempts": 1,
+        "status": 200,
+        "final_url": "https://gtfs.transmilenio.gov.co/tripupdates.pb",
+        "content_type": "text/plain",
+        "last_modified": null,
+        "size_bytes": 8211671,
+        "sha256": "fb9c3dede56bd2dfc4bfdc223a15b845296d94d87fd51d2af57f92aaf394e9de"
+      },
+      "hash_matches_original": true,
+      "strict_reader_accepted": true,
+      "summary_at_original_query": {
+        "validation_scope": "protobuf_required_fields_version_ids_and_vehicle_coordinates",
+        "gtfs_realtime_version": "2.0",
+        "incrementality": "FULL_DATASET",
+        "header": {
+          "timestamp": 1794538616,
+          "at_bogota": "2026-11-12T21:56:56-05:00",
+          "age_seconds": 44.352,
+          "freshness": "recent"
+        },
+        "entity_count": 84292,
+        "entities_by_kind": {
+          "trip_update": 84292
+        },
+        "vehicle_freshness": {},
+        "trip_update_freshness": {
+          "stale": 83866,
+          "recent": 426
+        },
+        "stop_time_update_count": 0,
+        "trip_updates_with_stops": 0,
+        "vehicle_fields_present": {
+          "vehicle_id": 0,
+          "trip_id": 0,
+          "route_id": 0,
+          "stop_id": 0,
+          "latitude": 0,
+          "longitude": 0
+        },
+        "vehicle_samples": [],
+        "trip_update_samples": [
+          {
+            "entity_id": "AD0017077.1.14045",
+            "trip_id": "AD0017077.1.14045",
+            "route_id": "14045",
+            "vehicle_id": "41572",
+            "reported": {
+              "timestamp": 1794536404,
+              "at_bogota": "2026-11-12T21:20:04-05:00",
+              "age_seconds": 2256.352,
+              "freshness": "stale"
+            },
+            "stop_time_update_count": 0,
+            "stops": []
+          },
+          {
+            "entity_id": "AD0019070.1.13816",
+            "trip_id": "AD0019070.1.13816",
+            "route_id": "13816",
+            "vehicle_id": null,
+            "reported": {
+              "timestamp": 1794531167,
+              "at_bogota": "2026-11-12T19:52:47-05:00",
+              "age_seconds": 7493.352,
+              "freshness": "stale"
+            },
+            "stop_time_update_count": 0,
+            "stops": []
+          },
+          {
+            "entity_id": "AD0019070.2.13815",
+            "trip_id": "AD0019070.2.13815",
+            "route_id": "13815",
+            "vehicle_id": null,
+            "reported": {
+              "timestamp": 1794533617,
+              "at_bogota": "2026-11-12T20:33:37-05:00",
+              "age_seconds": 5043.352,
+              "freshness": "stale"
+            },
+            "stop_time_update_count": 0,
+            "stops": []
+          }
+        ],
+        "alert_samples": [],
+        "warnings": []
+      },
+      "links": {
+        "join_type": "exact_ids_within_official_provider",
+        "vehicle_counts": {},
+        "trip_update_counts": {
+          "trip_updates": 84292,
+          "trip_id_matched": 39822,
+          "route_id_present": 84292,
+          "route_id_matched": 83356,
+          "trip_route_conflicts": 0
+        },
+        "examples": [],
+        "limitations": [
+          "An exact trip_id join does not validate service date or identify a frequency-based trip instance.",
+          "No normalization or cross-provider mapping is assumed.",
+          "Vehicle IDs and entity IDs are distinct; no static vehicle table is assumed."
+        ]
+      }
+    },
+    "official_alerts": {
+      "sha256": "aca8dc829856097e204430a8ef44debcc1c7578c9063148d6d7a6a0937d59922",
+      "original_download": {
+        "url": "https://gtfs.transmilenio.gov.co/alerts.pb",
+        "queried_at": "2026-11-12T21:57:41.661261-05:00",
+        "attempts": 1,
+        "status": 200,
+        "final_url": "https://gtfs.transmilenio.gov.co/alerts.pb",
+        "content_type": "text/plain",
+        "last_modified": null,
+        "size_bytes": 101391,
+        "sha256": "aca8dc829856097e204430a8ef44debcc1c7578c9063148d6d7a6a0937d59922"
+      },
+      "hash_matches_original": true,
+      "strict_reader_accepted": false,
+      "strict_reader_error": "Empty or duplicate entity IDs",
+      "protobuf_initialized": true,
+      "empty_entity_ids": 0,
+      "duplicate_entity_ids": {
+        "193183": 2,
+        "206186": 2,
+        "213714": 2,
+        "212516": 2,
+        "213854": 2,
+        "213882": 2,
+        "213904": 2,
+        "213884": 2
+      },
+      "forensic_summary_not_accepted_for_application": {
+        "validation_scope": "protobuf_required_fields_version_ids_and_vehicle_coordinates",
+        "gtfs_realtime_version": "2.0",
+        "incrementality": "FULL_DATASET",
+        "header": {
+          "timestamp": 1794538616,
+          "at_bogota": "2026-11-12T21:56:56-05:00",
+          "age_seconds": 45.661,
+          "freshness": "recent"
+        },
+        "entity_count": 421,
+        "entities_by_kind": {
+          "alert": 421
+        },
+        "vehicle_freshness": {},
+        "trip_update_freshness": {},
+        "stop_time_update_count": 0,
+        "trip_updates_with_stops": 0,
+        "vehicle_fields_present": {
+          "vehicle_id": 0,
+          "trip_id": 0,
+          "route_id": 0,
+          "stop_id": 0,
+          "latitude": 0,
+          "longitude": 0
+        },
+        "vehicle_samples": [],
+        "trip_update_samples": [],
+        "alert_samples": [
+          {
+            "entity_id": "197051",
+            "headers": [
+              "****GAITAN CORTEZ FIJO ***"
+            ],
+            "selectors": [
+              {
+                "route_id": "10242",
+                "stop_id": "50145",
+                "trip_id": null
+              },
+              {
+                "route_id": "10242",
+                "stop_id": "54892",
+                "trip_id": null
+              }
+            ]
+          },
+          {
+            "entity_id": "130844",
+            "headers": [
+              "EMOBRASMETROCLL42SURAV1MAYO"
+            ],
+            "selectors": [
+              {
+                "route_id": "10172",
+                "stop_id": "54473",
+                "trip_id": null
+              },
+              {
+                "route_id": "10172",
+                "stop_id": "53997",
+                "trip_id": null
+              }
+            ]
+          },
+          {
+            "entity_id": "213700",
+            "headers": [
+              "S2 TM02 SIN PASO CRR 111A"
+            ],
+            "selectors": [
+              {
+                "route_id": "10040",
+                "stop_id": "53024",
+                "trip_id": null
+              },
+              {
+                "route_id": "10040",
+                "stop_id": "53344",
+                "trip_id": null
+              }
+            ]
+          }
+        ],
+        "warnings": []
+      }
+    }
+  },
+  "static": {
+    "validation_scope": "structural_and_selected_references_only",
+    "basic_checks_passed": true,
+    "counts": {
+      "routes.txt": 1054,
+      "stops.txt": 8325,
+      "trips.txt": 181070,
+      "agency.txt": 7,
+      "calendar.txt": 7,
+      "calendar_dates.txt": 133,
+      "feed_info.txt": 1,
+      "frequencies.txt": 14,
+      "stop_times.txt": 9464235,
+      "shapes.txt": 952585
+    },
+    "reference_errors": {
+      "trip_route_missing": 0,
+      "trip_service_missing": 0,
+      "parent_station_missing": 0,
+      "stop_time_trip_missing": 0,
+      "stop_time_stop_missing": 0
+    },
+    "route_types": {
+      "3": 1053,
+      "6": 1
+    },
+    "agencies": [
+      {
+        "agency_id": "1",
+        "agency_name": "Transmilenio-Troncal",
+        "agency_url": "http://www.sitp.gov.co",
+        "agency_timezone": "America/Bogota",
+        "agency_lang": "es",
+        "agency_phone": "18000115510",
+        "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+      },
+      {
+        "agency_id": "2",
+        "agency_name": "Transmilenio-Alimentadores",
+        "agency_url": "http://www.sitp.gov.co",
+        "agency_timezone": "America/Bogota",
+        "agency_lang": "es",
+        "agency_phone": "18000115510",
+        "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+      },
+      {
+        "agency_id": "6",
+        "agency_name": "Transmilenio-Dual",
+        "agency_url": "http://www.sitp.gov.co",
+        "agency_timezone": "America/Bogota",
+        "agency_lang": "es",
+        "agency_phone": "18000115510",
+        "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+      },
+      {
+        "agency_id": "3",
+        "agency_name": "Zonal-Urbano",
+        "agency_url": "https://www.sitp.gov.co/publicaciones/40083/urbano/",
+        "agency_timezone": "America/Bogota",
+        "agency_lang": "es",
+        "agency_phone": "18000115510",
+        "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+      },
+      {
+        "agency_id": "4",
+        "agency_name": "Zonal-Complementario",
+        "agency_url": "https://www.sitp.gov.co/publicaciones/40085/complementario/",
+        "agency_timezone": "America/Bogota",
+        "agency_lang": "es",
+        "agency_phone": "18000115510",
+        "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+      },
+      {
+        "agency_id": "5",
+        "agency_name": "Zonal-Especial",
+        "agency_url": "https://www.sitp.gov.co/publicaciones/40087/especial/",
+        "agency_timezone": "America/Bogota",
+        "agency_lang": "es",
+        "agency_phone": "18000115510",
+        "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+      },
+      {
+        "agency_id": "7",
+        "agency_name": "TransMiCable",
+        "agency_url": "https://www.transmilenio.gov.co/TransMiCable/",
+        "agency_timezone": "America/Bogota",
+        "agency_lang": "es",
+        "agency_phone": "18000115510",
+        "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+      }
+    ],
+    "agency_count": 7,
+    "coverage_by_agency": [
+      {
+        "agency_id": "1",
+        "agency_name": "Transmilenio-Troncal",
+        "routes": 113,
+        "stops_in_stop_times": 656
+      },
+      {
+        "agency_id": "2",
+        "agency_name": "Transmilenio-Alimentadores",
+        "routes": 152,
+        "stops_in_stop_times": 682
+      },
+      {
+        "agency_id": "6",
+        "agency_name": "Transmilenio-Dual",
+        "routes": 31,
+        "stops_in_stop_times": 183
+      },
+      {
+        "agency_id": "3",
+        "agency_name": "Zonal-Urbano",
+        "routes": 746,
+        "stops_in_stop_times": 7219
+      },
+      {
+        "agency_id": "4",
+        "agency_name": "Zonal-Complementario",
+        "routes": 7,
+        "stops_in_stop_times": 192
+      },
+      {
+        "agency_id": "5",
+        "agency_name": "Zonal-Especial",
+        "routes": 4,
+        "stops_in_stop_times": 63
+      },
+      {
+        "agency_id": "7",
+        "agency_name": "TransMiCable",
+        "routes": 1,
+        "stops_in_stop_times": 4
+      }
+    ],
+    "sample_optional_tables": {
+      "agency.txt": [
+        {
+          "agency_id": "1",
+          "agency_name": "Transmilenio-Troncal",
+          "agency_url": "http://www.sitp.gov.co",
+          "agency_timezone": "America/Bogota",
+          "agency_lang": "es",
+          "agency_phone": "18000115510",
+          "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+        },
+        {
+          "agency_id": "2",
+          "agency_name": "Transmilenio-Alimentadores",
+          "agency_url": "http://www.sitp.gov.co",
+          "agency_timezone": "America/Bogota",
+          "agency_lang": "es",
+          "agency_phone": "18000115510",
+          "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+        },
+        {
+          "agency_id": "6",
+          "agency_name": "Transmilenio-Dual",
+          "agency_url": "http://www.sitp.gov.co",
+          "agency_timezone": "America/Bogota",
+          "agency_lang": "es",
+          "agency_phone": "18000115510",
+          "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+        },
+        {
+          "agency_id": "3",
+          "agency_name": "Zonal-Urbano",
+          "agency_url": "https://www.sitp.gov.co/publicaciones/40083/urbano/",
+          "agency_timezone": "America/Bogota",
+          "agency_lang": "es",
+          "agency_phone": "18000115510",
+          "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+        },
+        {
+          "agency_id": "4",
+          "agency_name": "Zonal-Complementario",
+          "agency_url": "https://www.sitp.gov.co/publicaciones/40085/complementario/",
+          "agency_timezone": "America/Bogota",
+          "agency_lang": "es",
+          "agency_phone": "18000115510",
+          "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+        },
+        {
+          "agency_id": "5",
+          "agency_name": "Zonal-Especial",
+          "agency_url": "https://www.sitp.gov.co/publicaciones/40087/especial/",
+          "agency_timezone": "America/Bogota",
+          "agency_lang": "es",
+          "agency_phone": "18000115510",
+          "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+        },
+        {
+          "agency_id": "7",
+          "agency_name": "TransMiCable",
+          "agency_url": "https://www.transmilenio.gov.co/TransMiCable/",
+          "agency_timezone": "America/Bogota",
+          "agency_lang": "es",
+          "agency_phone": "18000115510",
+          "agency_fare_url": "https://www.sitp.gov.co/publicaciones/40710/tarifas/"
+        }
+      ],
+      "calendar.txt": [
+        {
+          "service_id": "2",
+          "monday": "0",
+          "tuesday": "0",
+          "wednesday": "0",
+          "thursday": "0",
+          "friday": "0",
+          "saturday": "1",
+          "sunday": "0",
+          "start_date": "20260101",
+          "end_date": "20261231"
+        },
+        {
+          "service_id": "4",
+          "monday": "0",
+          "tuesday": "0",
+          "wednesday": "0",
+          "thursday": "0",
+          "friday": "0",
+          "saturday": "0",
+          "sunday": "1",
+          "start_date": "20260101",
+          "end_date": "20261231"
+        },
+        {
+          "service_id": "6",
+          "monday": "0",
+          "tuesday": "0",
+          "wednesday": "0",
+          "thursday": "0",
+          "friday": "0",
+          "saturday": "1",
+          "sunday": "1",
+          "start_date": "20260101",
+          "end_date": "20261231"
+        }
+      ],
+      "calendar_dates.txt": [
+        {
+          "service_id": "4",
+          "date": "20260101",
+          "exception_type": "1"
+        },
+        {
+          "service_id": "4",
+          "date": "20260112",
+          "exception_type": "1"
+        },
+        {
+          "service_id": "4",
+          "date": "20260323",
+          "exception_type": "1"
+        }
+      ],
+      "feed_info.txt": [
+        {
+          "feed_publisher_name": "Transmilenio S.A.",
+          "feed_start_date": "20260101",
+          "feed_version": "1",
+          "feed_end_date": "20261231",
+          "feed_lang": "es",
+          "feed_publisher_url": "https://www.transmilenio.gov.co/",
+          "feed_contact_email": "radicacion@transmilenio.gov.co"
+        }
+      ],
+      "frequencies.txt": [
+        {
+          "trip_id": "cable_habil_2",
+          "start_time": "05:15:00",
+          "end_time": "07:15:00",
+          "headway_secs": "10"
+        },
+        {
+          "trip_id": "cable_habil_4",
+          "start_time": "18:00:00",
+          "end_time": "20:00:00",
+          "headway_secs": "10"
+        },
+        {
+          "trip_id": "cable_habil_6",
+          "start_time": "22:00:00",
+          "end_time": "22:15:00",
+          "headway_secs": "10"
+        }
+      ]
+    },
+    "routes_with_stop_times": 1052,
+    "stops_in_stop_times": 8155,
+    "sample_trip": {
+      "route_id": "10004",
+      "service_id": "2",
+      "shape_id": "10004",
+      "trip_headsign": "",
+      "trip_id": "TO68D0001.1.10004"
+    },
+    "sample_trip_stops": [
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:40:00",
+        "departure_time": "03:40:00",
+        "stop_id": "54056",
+        "stop_sequence": 26,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "7161.026"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:41:20",
+        "departure_time": "03:41:20",
+        "stop_id": "58349",
+        "stop_sequence": 27,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "7560.027"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:42:05",
+        "departure_time": "03:42:05",
+        "stop_id": "73773",
+        "stop_sequence": 28,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "7786.028"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:42:48",
+        "departure_time": "03:42:48",
+        "stop_id": "53976",
+        "stop_sequence": 29,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "7997.029"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:43:17",
+        "departure_time": "03:43:17",
+        "stop_id": "73786",
+        "stop_sequence": 30,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "8143.03"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:44:18",
+        "departure_time": "03:44:18",
+        "stop_id": "53977",
+        "stop_sequence": 31,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "8448.031"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:44:47",
+        "departure_time": "03:44:47",
+        "stop_id": "73858",
+        "stop_sequence": 32,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "8593.032"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:45:15",
+        "departure_time": "03:45:15",
+        "stop_id": "53694",
+        "stop_sequence": 33,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "8729.033"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:45:39",
+        "departure_time": "03:45:39",
+        "stop_id": "59152",
+        "stop_sequence": 34,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "8849.034"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:46:23",
+        "departure_time": "03:46:23",
+        "stop_id": "53689",
+        "stop_sequence": 35,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "9072.035"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:47:13",
+        "departure_time": "03:47:13",
+        "stop_id": "53667",
+        "stop_sequence": 36,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "9319.036"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:48:25",
+        "departure_time": "03:48:25",
+        "stop_id": "53665",
+        "stop_sequence": 37,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "9680.037"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:49:20",
+        "departure_time": "03:49:20",
+        "stop_id": "54101",
+        "stop_sequence": 38,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "9952.038"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:50:01",
+        "departure_time": "03:50:01",
+        "stop_id": "53656",
+        "stop_sequence": 39,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "10157.039"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:50:59",
+        "departure_time": "03:50:59",
+        "stop_id": "53654",
+        "stop_sequence": 40,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "10446.04"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:52:03",
+        "departure_time": "03:52:03",
+        "stop_id": "53328",
+        "stop_sequence": 41,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "10767.041"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:53:18",
+        "departure_time": "03:53:18",
+        "stop_id": "53324",
+        "stop_sequence": 42,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "11139.042"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:53:54",
+        "departure_time": "03:53:54",
+        "stop_id": "53321",
+        "stop_sequence": 43,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "11319.043"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:55:10",
+        "departure_time": "03:55:10",
+        "stop_id": "53318",
+        "stop_sequence": 44,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "11695.044"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:56:44",
+        "departure_time": "03:56:44",
+        "stop_id": "53315",
+        "stop_sequence": 45,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "12165.045"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:57:34",
+        "departure_time": "03:57:34",
+        "stop_id": "53313",
+        "stop_sequence": 46,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "12414.046"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "03:59:37",
+        "departure_time": "03:59:37",
+        "stop_id": "53253",
+        "stop_sequence": 47,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "13027.047"
+      },
+      {
+        "trip_id": "TO68D0001.1.10004",
+        "arrival_time": "04:00:00",
+        "departure_time": "04:00:00",
+        "stop_id": "58337",
+        "stop_sequence": 48,
+        "stop_headsign": "H710",
+        "timepoint": "0",
+        "shape_dist_traveled": "13027.048"
+      }
+    ],
+    "files": [
+      "calendar_dates.txt",
+      "routes.txt",
+      "feed_info.txt",
+      "stops.txt",
+      "trips.txt",
+      "agency.txt",
+      "calendar.txt",
+      "shapes.txt",
+      "frequencies.txt",
+      "fare_attributes.txt",
+      "stop_times.txt"
+    ]
+  }
+}

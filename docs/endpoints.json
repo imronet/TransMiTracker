@@ -1,0 +1,46 @@
+{
+  "sources": [
+    {
+      "name": "official_static",
+      "kind": "static",
+      "url": "https://gtfs.transmilenio.gov.co/GTFS.zip",
+      "provenance": "https://gtfs.transmilenio.gov.co/manifest.json"
+    },
+    {
+      "name": "official_positions",
+      "kind": "realtime",
+      "url": "https://gtfs.transmilenio.gov.co/positions.pb",
+      "provenance": "https://gtfs.transmilenio.gov.co/manifest.json"
+    },
+    {
+      "name": "official_tripupdates",
+      "kind": "realtime",
+      "url": "https://gtfs.transmilenio.gov.co/tripupdates.pb",
+      "provenance": "https://gtfs.transmilenio.gov.co/manifest.json"
+    },
+    {
+      "name": "official_alerts",
+      "kind": "realtime",
+      "url": "https://gtfs.transmilenio.gov.co/alerts.pb",
+      "provenance": "https://gtfs.transmilenio.gov.co/manifest.json"
+    },
+    {
+      "name": "legacy_positions",
+      "kind": "realtime",
+      "url": "https://gis.transmilenio.gov.co/gtfs/vehiclepos.pb",
+      "provenance": "https://gis.transmilenio.gov.co/gtfs/ (official page indexed by search)"
+    },
+    {
+      "name": "legacy_tripupdates",
+      "kind": "realtime",
+      "url": "https://gis.transmilenio.gov.co/gtfs/tripupdate.pb",
+      "provenance": "https://gis.transmilenio.gov.co/gtfs/ (official page indexed by search)"
+    },
+    {
+      "name": "legacy_alerts",
+      "kind": "realtime",
+      "url": "https://gis.transmilenio.gov.co/gtfs/serviceAlerts.pb",
+      "provenance": "https://gis.transmilenio.gov.co/gtfs/ (official page indexed by search)"
+    }
+  ]
+}

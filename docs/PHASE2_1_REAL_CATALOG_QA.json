@@ -1,0 +1,137 @@
+{
+  "version": "0.1.0",
+  "origin": "offline_real_static_catalog_no_personal_commute_claimed",
+  "network_requests": 0,
+  "requires_date_or_departure": false,
+  "programmed_examples_run": false,
+  "catalog_unchanged": true,
+  "reopened_profiles_match": true,
+  "portal_norte_station_found": true,
+  "profiles": [
+    {
+      "contract_version": 1,
+      "ok": true,
+      "data": {
+        "profile": {
+          "profile_id": "qa-technical-work",
+          "kind": "home_to_work",
+          "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+          "legs": [
+            {
+              "origin_stop_id": "74389",
+              "route_id": "13766",
+              "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+              "direction_id": null,
+              "origin_sequence": 2,
+              "destination_stop_id": "56059",
+              "destination_sequence": 3
+            },
+            {
+              "origin_stop_id": "56059",
+              "route_id": "13766",
+              "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+              "direction_id": null,
+              "origin_sequence": 3,
+              "destination_stop_id": "56060",
+              "destination_sequence": 4
+            },
+            {
+              "origin_stop_id": "56060",
+              "route_id": "13766",
+              "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+              "direction_id": null,
+              "origin_sequence": 4,
+              "destination_stop_id": "56128",
+              "destination_sequence": 5
+            }
+          ],
+          "transfers": [
+            {
+              "walking_minutes": 7,
+              "buffer_minutes": 2
+            },
+            {
+              "walking_minutes": 4,
+              "buffer_minutes": 1
+            }
+          ],
+          "initial_walk_minutes": 2,
+          "final_walk_minutes": 5,
+          "arrival_deadline": "09:00:00",
+          "notification_time": "07:30:00",
+          "active_weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "safety_margin_minutes": 3,
+          "arrival_day_offset": 0,
+          "departure_window_minutes": 120,
+          "usual_departure": null
+        },
+        "revision": 1,
+        "active_catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+        "configuration_state": "configured"
+      },
+      "errors": [],
+      "warnings": [
+        {
+          "code": "TRANSFER_PATH_UNVERIFIED",
+          "field": "transfers.0",
+          "message": "User walking time preserved; path unverified"
+        },
+        {
+          "code": "TRANSFER_PATH_UNVERIFIED",
+          "field": "transfers.1",
+          "message": "User walking time preserved; path unverified"
+        }
+      ]
+    },
+    {
+      "contract_version": 1,
+      "ok": true,
+      "data": {
+        "profile": {
+          "profile_id": "qa-technical-home",
+          "kind": "work_to_home",
+          "catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+          "legs": [
+            {
+              "origin_stop_id": "74389",
+              "route_id": "13766",
+              "pattern_id": "37a81a22cf512050fb347523e3fb7aea140ff4a36a2be9b98199006e2dacbe66",
+              "direction_id": null,
+              "origin_sequence": 2,
+              "destination_stop_id": "56059",
+              "destination_sequence": 3
+            }
+          ],
+          "transfers": [],
+          "initial_walk_minutes": 2,
+          "final_walk_minutes": 5,
+          "arrival_deadline": null,
+          "notification_time": "07:30:00",
+          "active_weekdays": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "safety_margin_minutes": 3,
+          "arrival_day_offset": 0,
+          "departure_window_minutes": 120,
+          "usual_departure": "17:30:00"
+        },
+        "revision": 1,
+        "active_catalog_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+        "configuration_state": "configured"
+      },
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "workspace": "data/phase2_1/demo"
+}

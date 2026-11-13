@@ -1,0 +1,37 @@
+{
+  "reviewed_at": "2026-11-12T23:45:17.372353-05:00",
+  "sources": [
+    {
+      "name": "portal",
+      "url": "https://gtfs.transmilenio.gov.co/",
+      "status": 200,
+      "final_url": "https://gtfs.transmilenio.gov.co/",
+      "sha256": "0fbd68d3b722a34f6df75641cac8bf643c87677e3f6e10b8b837097ba1ce6f7d",
+      "bytes": 3079
+    },
+    {
+      "name": "robots",
+      "url": "https://gtfs.transmilenio.gov.co/robots.txt",
+      "status": 404,
+      "final_url": "https://gtfs.transmilenio.gov.co/robots.txt",
+      "sha256": "f9085efa664244a12cc1997e7d770d8d5a1e07aaf1c261b614e935a3d14af933",
+      "bytes": 96
+    },
+    {
+      "name": "manifest",
+      "url": "https://gtfs.transmilenio.gov.co/manifest.json",
+      "status": 200,
+      "final_url": "https://gtfs.transmilenio.gov.co/manifest.json",
+      "sha256": "21b0a409cf88d7b41b4ed5347dd7410995ea379c42a0d91fbc98cc374e1f0e76",
+      "bytes": 1500
+    },
+    {
+      "name": "terms",
+      "url": "https://www.transmilenio.gov.co/comunicaciones/publicaciones/2025/terminos-y-condiciones-en-el-sitio-web-de-transmilenio",
+      "status": 200,
+      "final_url": "https://www.transmilenio.gov.co/comunicaciones/publicaciones/2025/terminos-y-condiciones-en-el-sitio-web-de-transmilenio",
+      "sha256": "8b465d0c5b68c9a5364a79922982532170b90f657eeb49a18960464e3279d0c4",
+      "bytes": 433115
+    }
+  ]
+}

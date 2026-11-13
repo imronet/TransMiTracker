@@ -1,0 +1,3 @@
+shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence
+DEMO_SHAPE,4.65,-74.06,1
+DEMO_SHAPE,4.66,-74.05,2

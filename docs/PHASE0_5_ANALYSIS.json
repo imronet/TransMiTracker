@@ -1,0 +1,654 @@
+{
+  "mode": "offline_analysis_of_original_real_captures",
+  "network_requests": 0,
+  "analyzed_at": "2026-11-12T22:31:06.994661-05:00",
+  "evidence": {
+    "positions": {
+      "file": "data/probes/official_positions.pb",
+      "bytes": 298066,
+      "sha256": "d9f038d3b803eb6743ffcd3920a1fd848e72a9b44a606222eff1da535e9c68eb"
+    },
+    "tripupdates": {
+      "file": "data/probes/official_tripupdates.pb",
+      "bytes": 8211671,
+      "sha256": "fb9c3dede56bd2dfc4bfdc223a15b845296d94d87fd51d2af57f92aaf394e9de"
+    },
+    "static": {
+      "file": "data/probes/official_static.zip",
+      "bytes": 180271992,
+      "sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d"
+    }
+  },
+  "positions_temporal": {
+    "reference_query_at": "2026-11-12T21:57:39.517970-05:00",
+    "total": 2565,
+    "timestamp_present": 2565,
+    "timestamp_missing": 0,
+    "min_at": "2026-09-03T08:49:59-05:00",
+    "max_at": "2026-11-12T21:56:10-05:00",
+    "local_dates": {
+      "2026-09-03": 1,
+      "2026-09-25": 1,
+      "2026-10-19": 1,
+      "2026-11-06": 1,
+      "2026-11-09": 1,
+      "2026-11-12": 2560
+    },
+    "age_bins": {
+      "0_to_5m": 2535,
+      "5_to_30m": 2,
+      "30m_to_2h": 7,
+      "2_to_6h": 15,
+      "6_to_24h": 1,
+      "1_to_7d": 2,
+      "over_7d": 3
+    },
+    "age_seconds_quantiles": {
+      "0": 89.51797008514404,
+      "0.25": 98.51797008514404,
+      "0.5": 105.51797008514404,
+      "0.75": 112.51797008514404,
+      "0.95": 123.51797008514404,
+      "0.99": 1893.517970085144,
+      "1": 6095260.517970085
+    },
+    "all_field_presence": {
+      "trip": 2565,
+      "trip.trip_id": 2565,
+      "trip.start_time": 2565,
+      "trip.start_date": 2565,
+      "trip.schedule_relationship": 2565,
+      "trip.route_id": 2565,
+      "position": 2565,
+      "position.latitude": 2565,
+      "position.longitude": 2565,
+      "current_stop_sequence": 2565,
+      "timestamp": 2565,
+      "stop_id": 2565,
+      "vehicle": 2565,
+      "vehicle.id": 2565,
+      "vehicle.label": 2565,
+      "vehicle.license_plate": 2565
+    },
+    "old_field_presence": {
+      "trip": 30,
+      "trip.trip_id": 30,
+      "trip.start_time": 30,
+      "trip.start_date": 30,
+      "trip.schedule_relationship": 30,
+      "trip.route_id": 30,
+      "position": 30,
+      "position.latitude": 30,
+      "position.longitude": 30,
+      "current_stop_sequence": 30,
+      "timestamp": 30,
+      "stop_id": 30,
+      "vehicle": 30,
+      "vehicle.id": 30,
+      "vehicle.label": 30,
+      "vehicle.license_plate": 30
+    },
+    "oldest_raw_samples": [
+      {
+        "trip": {
+          "trip_id": "CO1F90009.4.11076",
+          "start_time": "08:49:59",
+          "start_date": "20260903",
+          "schedule_relationship": "SCHEDULED",
+          "route_id": "11076"
+        },
+        "position": {
+          "latitude": 4.6847997,
+          "longitude": -74.09821
+        },
+        "current_stop_sequence": 60,
+        "timestamp": "1788443399",
+        "stop_id": "53010",
+        "vehicle": {
+          "id": "402107"
+        }
+      },
+      {
+        "trip": {
+          "trip_id": "CO27A0009.3.12800",
+          "start_time": "07:59:01",
+          "start_date": "20260925",
+          "schedule_relationship": "SCHEDULED",
+          "route_id": "10660"
+        },
+        "position": {
+          "latitude": 4.720985,
+          "longitude": -74.12165
+        },
+        "current_stop_sequence": 90,
+        "timestamp": "1790341141",
+        "stop_id": "52092",
+        "vehicle": {
+          "id": "407229"
+        }
+      },
+      {
+        "trip": {
+          "trip_id": "CO221G006.1.10825",
+          "start_time": "06:51:56",
+          "start_date": "20261019",
+          "schedule_relationship": "SCHEDULED",
+          "route_id": "10745"
+        },
+        "position": {
+          "latitude": 4.7101808,
+          "longitude": -74.07684
+        },
+        "current_stop_sequence": 144,
+        "timestamp": "1792410716",
+        "stop_id": "51173",
+        "vehicle": {
+          "id": "404230"
+        }
+      }
+    ],
+    "schedule_relationships": {
+      "0": 2565
+    }
+  },
+  "tripupdates_temporal": {
+    "reference_query_at": "2026-11-12T21:57:40.352293-05:00",
+    "total": 84292,
+    "timestamp_present": 84292,
+    "timestamp_missing": 0,
+    "min_at": "2026-11-12T00:12:11-05:00",
+    "max_at": "2026-11-12T21:56:01-05:00",
+    "local_dates": {
+      "2026-11-12": 84292
+    },
+    "age_bins": {
+      "0_to_5m": 426,
+      "5_to_30m": 2911,
+      "30m_to_2h": 9684,
+      "2_to_6h": 18899,
+      "6_to_24h": 52372
+    },
+    "age_seconds_quantiles": {
+      "0": 99.35229301452637,
+      "0.25": 12648.352293014526,
+      "0.5": 30878.352293014526,
+      "0.75": 48487.35229301453,
+      "0.95": 63203.35229301453,
+      "0.99": 78329.35229301453,
+      "1": 78329.35229301453
+    },
+    "all_field_presence": {
+      "trip": 84292,
+      "trip.trip_id": 84292,
+      "trip.start_time": 84292,
+      "trip.start_date": 84292,
+      "trip.schedule_relationship": 84292,
+      "trip.route_id": 84292,
+      "vehicle": 38491,
+      "vehicle.id": 38491,
+      "vehicle.label": 38491,
+      "vehicle.license_plate": 38491,
+      "timestamp": 84292,
+      "delay": 84292
+    },
+    "old_field_presence": {
+      "trip": 83866,
+      "trip.trip_id": 83866,
+      "trip.start_time": 83866,
+      "trip.start_date": 83866,
+      "trip.schedule_relationship": 83866,
+      "trip.route_id": 83866,
+      "vehicle": 38111,
+      "vehicle.id": 38111,
+      "vehicle.label": 38111,
+      "vehicle.license_plate": 38111,
+      "timestamp": 83866,
+      "delay": 83866
+    },
+    "oldest_raw_samples": [
+      {
+        "trip": {
+          "trip_id": "CD2CC0052.18.10529",
+          "start_time": "22:45:30",
+          "start_date": "20261112",
+          "schedule_relationship": "SCHEDULED",
+          "route_id": "10529"
+        },
+        "vehicle": {
+          "id": "154150"
+        },
+        "timestamp": "1794460331",
+        "delay": 0
+      },
+      {
+        "trip": {
+          "trip_id": "CN4C50042.32.13755",
+          "start_time": "23:31:00",
+          "start_date": "20261112",
+          "schedule_relationship": "SCHEDULED",
+          "route_id": "13755"
+        },
+        "vehicle": {
+          "id": "14871"
+        },
+        "timestamp": "1794460331",
+        "delay": 0
+      },
+      {
+        "trip": {
+          "trip_id": "RB01C0001.22.11250",
+          "start_time": "16:18:00",
+          "start_date": "20261112",
+          "schedule_relationship": "SCHEDULED",
+          "route_id": "11250"
+        },
+        "timestamp": "1794460331",
+        "delay": 0
+      }
+    ],
+    "schedule_relationships": {
+      "1": 2828,
+      "3": 8589,
+      "0": 72875
+    }
+  },
+  "headers": {
+    "positions": {
+      "gtfs_realtime_version": "2.0",
+      "incrementality": "FULL_DATASET",
+      "timestamp": "1794538616"
+    },
+    "tripupdates": {
+      "gtfs_realtime_version": "2.0",
+      "incrementality": "FULL_DATASET",
+      "timestamp": "1794538616"
+    }
+  },
+  "static_versions": {
+    "original_20261112": {
+      "positions": {
+        "missing_trip": 2376,
+        "route_found": 2565,
+        "stop_found": 2451,
+        "route_conflict": 159,
+        "route_conflict_service_active": 159,
+        "consistent": 30,
+        "consistent_service_active": 30
+      },
+      "trip_updates": {
+        "trip_found": 39822,
+        "route_found": 83356,
+        "route_conflict": 0
+      },
+      "examples": {
+        "missing_trip": {
+          "entity_id": "10192",
+          "vehicle_id": "10192",
+          "trip_id": "TTABA1331.3.12428",
+          "route_id": "13790",
+          "direction_id": null,
+          "start_date": "20261112",
+          "start_time": "21:55:58",
+          "stop_id": "61153",
+          "current_stop_sequence": 15,
+          "current_status": "IN_TRANSIT_TO",
+          "latitude": 4.646982192993164,
+          "longitude": -74.06501007080078,
+          "reported": {
+            "timestamp": 1794538558,
+            "at_bogota": "2026-11-12T21:55:58-05:00",
+            "age_seconds": 101.518,
+            "freshness": "recent"
+          },
+          "static_trip": null
+        },
+        "route_conflict": {
+          "entity_id": "504203",
+          "vehicle_id": "504203",
+          "trip_id": "CE12D0027.6.12327",
+          "route_id": "13378",
+          "direction_id": null,
+          "start_date": "20261112",
+          "start_time": "21:56:00",
+          "stop_id": "56146",
+          "current_stop_sequence": 12,
+          "current_status": "IN_TRANSIT_TO",
+          "latitude": 4.57436466217041,
+          "longitude": -74.09325408935547,
+          "reported": {
+            "timestamp": 1794538560,
+            "at_bogota": "2026-11-12T21:56:00-05:00",
+            "age_seconds": 99.518,
+            "freshness": "recent"
+          },
+          "static_trip": {
+            "route_id": "12327",
+            "service_id": "1",
+            "shape_id": "12327",
+            "trip_headsign": "",
+            "trip_id": "CE12D0027.6.12327"
+          }
+        },
+        "consistent": {
+          "entity_id": "924093",
+          "vehicle_id": "924093",
+          "trip_id": "TB4710008.7.11836",
+          "route_id": "11836",
+          "direction_id": null,
+          "start_date": "20261112",
+          "start_time": "21:55:56",
+          "stop_id": "53244",
+          "current_stop_sequence": 31,
+          "current_status": "IN_TRANSIT_TO",
+          "latitude": 4.598415851593018,
+          "longitude": -74.13612365722656,
+          "reported": {
+            "timestamp": 1794538556,
+            "at_bogota": "2026-11-12T21:55:56-05:00",
+            "age_seconds": 103.518,
+            "freshness": "recent"
+          },
+          "static_trip": {
+            "route_id": "11836",
+            "service_id": "1",
+            "shape_id": "11836",
+            "trip_headsign": "",
+            "trip_id": "TB4710008.7.11836"
+          }
+        }
+      },
+      "static_counts": {
+        "trips": 181070,
+        "routes": 1054,
+        "stops": 8325
+      },
+      "feed_info": [
+        {
+          "feed_publisher_name": "Transmilenio S.A.",
+          "feed_start_date": "20260101",
+          "feed_version": "1",
+          "feed_end_date": "20261231",
+          "feed_lang": "es",
+          "feed_publisher_url": "https://www.transmilenio.gov.co/",
+          "feed_contact_email": "radicacion@transmilenio.gov.co"
+        }
+      ],
+      "active_services_by_date": {
+        "20261112": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "20260903": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "20261109": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ]
+      }
+    },
+    "archive_20261027": {
+      "positions": {
+        "missing_trip": 2294,
+        "route_found": 2321,
+        "stop_found": 2448,
+        "route_conflict": 236,
+        "route_conflict_service_active": 236,
+        "consistent": 35,
+        "consistent_service_active": 35
+      },
+      "trip_updates": {
+        "trip_found": 29832,
+        "route_found": 76192,
+        "route_conflict": 0
+      },
+      "examples": {
+        "missing_trip": {
+          "entity_id": "10192",
+          "vehicle_id": "10192",
+          "trip_id": "TTABA1331.3.12428",
+          "route_id": "13790",
+          "direction_id": null,
+          "start_date": "20261112",
+          "start_time": "21:55:58",
+          "stop_id": "61153",
+          "current_stop_sequence": 15,
+          "current_status": "IN_TRANSIT_TO",
+          "latitude": 4.646982192993164,
+          "longitude": -74.06501007080078,
+          "reported": {
+            "timestamp": 1794538558,
+            "at_bogota": "2026-11-12T21:55:58-05:00",
+            "age_seconds": 101.518,
+            "freshness": "recent"
+          },
+          "static_trip": null
+        },
+        "route_conflict": {
+          "entity_id": "504203",
+          "vehicle_id": "504203",
+          "trip_id": "CE12D0027.6.12327",
+          "route_id": "13378",
+          "direction_id": null,
+          "start_date": "20261112",
+          "start_time": "21:56:00",
+          "stop_id": "56146",
+          "current_stop_sequence": 12,
+          "current_status": "IN_TRANSIT_TO",
+          "latitude": 4.57436466217041,
+          "longitude": -74.09325408935547,
+          "reported": {
+            "timestamp": 1794538560,
+            "at_bogota": "2026-11-12T21:56:00-05:00",
+            "age_seconds": 99.518,
+            "freshness": "recent"
+          },
+          "static_trip": {
+            "route_id": "12327",
+            "service_id": "1",
+            "shape_id": "12327",
+            "trip_headsign": "",
+            "trip_id": "CE12D0027.6.12327"
+          }
+        },
+        "consistent": {
+          "entity_id": "104263",
+          "vehicle_id": "104263",
+          "trip_id": "CN1D30013.4.10803",
+          "route_id": "10803",
+          "direction_id": null,
+          "start_date": "20261112",
+          "start_time": "21:55:53",
+          "stop_id": "55617",
+          "current_stop_sequence": 74,
+          "current_status": "IN_TRANSIT_TO",
+          "latitude": 4.744069576263428,
+          "longitude": -74.12885284423828,
+          "reported": {
+            "timestamp": 1794538553,
+            "at_bogota": "2026-11-12T21:55:53-05:00",
+            "age_seconds": 106.518,
+            "freshness": "recent"
+          },
+          "static_trip": {
+            "route_id": "10803",
+            "service_id": "1",
+            "shape_id": "10803",
+            "trip_headsign": "",
+            "trip_id": "CN1D30013.4.10803"
+          }
+        }
+      },
+      "static_counts": {
+        "trips": 177724,
+        "routes": 1060,
+        "stops": 8308
+      },
+      "feed_info": [
+        {
+          "feed_publisher_name": "Transmilenio S.A.",
+          "feed_start_date": "20260101",
+          "feed_version": "1",
+          "feed_end_date": "20261231",
+          "feed_lang": "es",
+          "feed_publisher_url": "https://www.transmilenio.gov.co/",
+          "feed_contact_email": "radicacion@transmilenio.gov.co"
+        }
+      ],
+      "active_services_by_date": {
+        "20261112": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "20260903": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ],
+        "20261109": [
+          "1",
+          "3",
+          "5",
+          "7"
+        ]
+      }
+    }
+  },
+  "historical_static_evidence": {
+    "bytes": 119305053,
+    "sha256": "f72c48df3d6461663dc0d47f2ba06191b6943ab9f37e5a1ed95fd73a4df7be12",
+    "files": [
+      "calendar_dates.txt",
+      "routes.txt",
+      "feed_info.txt",
+      "stops.txt",
+      "trips.txt",
+      "agency.txt",
+      "calendar.txt",
+      "shapes.txt",
+      "frequencies.txt",
+      "fare_attributes.txt",
+      "stop_times.txt"
+    ],
+    "classification": "static_schedule_not_operational_history"
+  },
+  "static_version_differences": {
+    "common_trip_ids": 104842,
+    "common_trip_ids_with_different_route": 0
+  },
+  "crossfeed_exact_trip_comparison": {
+    "ambiguous_trip_id_in_tripupdates": 0,
+    "same_trip_id_in_tripupdates": 131,
+    "same_trip_different_route": 111,
+    "same_trip_same_vehicle": 3,
+    "same_trip_different_start_date": 2,
+    "same_trip_different_start_time": 131
+  },
+  "tripupdate_duplicate_trip_ids": 0,
+  "producer_field_diagnostics": {
+    "position_start_time_equals_observation_local_time": 2565,
+    "position_start_date_equals_observation_local_date": 2565,
+    "position_trip_id_suffix_equals_route_id": 181,
+    "static_trip_id_suffix_equals_route_id": 181056,
+    "tripupdate_delay_summary": {
+      "present": 84292,
+      "zero": 12588,
+      "positive": 39874,
+      "negative": 31830,
+      "min": -9090,
+      "max": 21992
+    },
+    "scheduled_updates_without_stop_time_update": 72875,
+    "position_start_dates": {
+      "20261112": 2560,
+      "20261106": 1,
+      "20260925": 1,
+      "20261019": 1,
+      "20260903": 1,
+      "20261109": 1
+    },
+    "tripupdate_start_dates": {
+      "20261112": 84292
+    }
+  },
+  "stop_time_update_count": 0,
+  "real_offline_replay": {
+    "origin": "one_saved_real_snapshot_replayed_twice_not_two_temporal_captures",
+    "first": {
+      "seen": 2565,
+      "filtered_out": 2559,
+      "inserted": 5,
+      "rejected_timestamp": 1
+    },
+    "repeated": {
+      "replayed_snapshot": true,
+      "inserted": 0
+    },
+    "database": "data/phase0_5/real_replay_223109334862.sqlite3",
+    "event_reconstruction_demonstrated": false
+  },
+  "storage_measurements": {
+    "positions_full_pb": 298066,
+    "positions_full_gzip": 108697,
+    "tripupdates_full_pb": 8211671,
+    "illustrative_route_id": "11836",
+    "selected_vehicle_count": 6,
+    "route_filtered_before_quality_jsonl_bytes": 2511,
+    "filtered_jsonl_bytes": 2094,
+    "sqlite_total_bytes": 32768,
+    "sqlite_page_size": 4096,
+    "sqlite_pages": 8,
+    "persisted_observations": 5,
+    "sqlite_synthetic_growth_benchmark": {
+      "origin": "synthetic_timestamp_replication_of_real_row_shapes_not_real_movement",
+      "base_rows": 5,
+      "expanded_rows": 1005,
+      "delta_bytes": 368640,
+      "bytes_per_additional_observation": 368.64
+    },
+    "sqlite_metadata_bytes_per_snapshot_benchmark": 421.888,
+    "sqlite_identity_churn_bytes_per_new_observation_benchmark": 712.704
+  },
+  "storage_projections": [
+    {
+      "interval_seconds": 40,
+      "requests_per_24h": 2160,
+      "positions_full_bytes_per_day": 643822560,
+      "positions_full_gzip_bytes_per_day": 234785520,
+      "tripupdates_full_bytes_per_day": 17737209360,
+      "filtered_jsonl_bytes_per_day": 4523040,
+      "filtered_sqlite_stable_identity_bytes_per_day": 4892590.079999999,
+      "filtered_sqlite_identity_churn_bytes_per_day": 8608481.28
+    },
+    {
+      "interval_seconds": 60,
+      "requests_per_24h": 1440,
+      "positions_full_bytes_per_day": 429215040,
+      "positions_full_gzip_bytes_per_day": 156523680,
+      "tripupdates_full_bytes_per_day": 11824806240,
+      "filtered_jsonl_bytes_per_day": 3015360,
+      "filtered_sqlite_stable_identity_bytes_per_day": 3261726.7199999997,
+      "filtered_sqlite_identity_churn_bytes_per_day": 5738987.52
+    },
+    {
+      "interval_seconds": 120,
+      "requests_per_24h": 720,
+      "positions_full_bytes_per_day": 214607520,
+      "positions_full_gzip_bytes_per_day": 78261840,
+      "tripupdates_full_bytes_per_day": 5912403120,
+      "filtered_jsonl_bytes_per_day": 1507680,
+      "filtered_sqlite_stable_identity_bytes_per_day": 1630863.3599999999,
+      "filtered_sqlite_identity_churn_bytes_per_day": 2869493.76
+    }
+  ]
+}

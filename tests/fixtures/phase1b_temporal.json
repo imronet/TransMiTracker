@@ -1,0 +1,19 @@
+{
+  "origin": "synthetic_scenario_not_real_api_captures",
+  "reference_time": "2026-11-13T01:00:00-05:00",
+  "description": "Synthetic prior-service-day snapshots: V1 mimics changing GPS clock in start_time, V2 keeps GTFS 25:00:00 stable. No operational identity or arrivals are proven.",
+  "snapshots": [
+    {"offset_seconds": 0, "vehicles": [
+      {"vehicle_id": "DEMO_TEMP_V1", "trip_id": "DEMO_T1", "route_id": "DEMO_R1", "direction_id": 0, "start_date": "20261112", "start_time": "01:00:00", "latitude": 4.65, "longitude": -74.06, "stop_id": "DEMO_S1", "sequence": 1},
+      {"vehicle_id": "DEMO_TEMP_V2", "trip_id": "DEMO_T1", "route_id": "DEMO_R1", "direction_id": 0, "start_date": "20261112", "start_time": "25:00:00", "latitude": 4.65, "longitude": -74.06, "stop_id": "DEMO_S1", "sequence": 1}
+    ]},
+    {"offset_seconds": 60, "vehicles": [
+      {"vehicle_id": "DEMO_TEMP_V1", "trip_id": "DEMO_T1", "route_id": "DEMO_R1", "direction_id": 0, "start_date": "20261112", "start_time": "01:01:00", "latitude": 4.655, "longitude": -74.055, "stop_id": "DEMO_S1", "sequence": 1},
+      {"vehicle_id": "DEMO_TEMP_V2", "trip_id": "DEMO_T1", "route_id": "DEMO_R1", "direction_id": 0, "start_date": "20261112", "start_time": "25:00:00", "latitude": 4.655, "longitude": -74.055, "stop_id": "DEMO_S1", "sequence": 1}
+    ]},
+    {"offset_seconds": 120, "vehicles": [
+      {"vehicle_id": "DEMO_TEMP_V1", "trip_id": "DEMO_T1", "route_id": "DEMO_R1", "direction_id": 0, "start_date": "20261112", "start_time": "01:02:00", "latitude": 4.66, "longitude": -74.05, "stop_id": "DEMO_S2", "sequence": 2},
+      {"vehicle_id": "DEMO_TEMP_V2", "trip_id": "DEMO_T1", "route_id": "DEMO_R1", "direction_id": 0, "start_date": "20261112", "start_time": "25:00:00", "latitude": 4.66, "longitude": -74.05, "stop_id": "DEMO_S2", "sequence": 2}
+    ]}
+  ]
+}
