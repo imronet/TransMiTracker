@@ -1,0 +1,863 @@
+[
+    {
+        "url":  "https://api.croma.run/openapi",
+        "queried_at":  "2026-11-13T21:05:53.8719449-05:00",
+        "status":  200,
+        "bytes":  4487963,
+        "schemas":  [
+                        {
+                            "name":  "TransmilenioVehiclesData",
+                            "schema":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "as_of":  {
+                                                                            "anyOf":  [
+                                                                                          {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                                          {
+                                                                                              "type":  "null"
+                                                                                          }
+                                                                                      ],
+                                                                            "description":  "When the network last published the data in this response."
+                                                                        },
+                                                              "live":  {
+                                                                           "type":  "boolean",
+                                                                           "description":  "False when the network has published nothing new for over 5 minutes; `as_of` says when it last did."
+                                                                       },
+                                                              "notice":  {
+                                                                             "anyOf":  [
+                                                                                           {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                                           {
+                                                                                               "type":  "null"
+                                                                                           }
+                                                                                       ],
+                                                                             "description":  "Null while the data is live. Otherwise, in plain words: that TransMilenio is not publishing live data, since when, and what this response holds instead."
+                                                                         },
+                                                              "route":  {
+                                                                            "anyOf":  [
+                                                                                          {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                                          {
+                                                                                              "type":  "null"
+                                                                                          }
+                                                                                      ]
+                                                                        },
+                                                              "latitude":  {
+                                                                               "anyOf":  [
+                                                                                             {
+                                                                                                 "type":  "number"
+                                                                                             },
+                                                                                             {
+                                                                                                 "type":  "null"
+                                                                                             }
+                                                                                         ]
+                                                                           },
+                                                              "longitude":  {
+                                                                                "anyOf":  [
+                                                                                              {
+                                                                                                  "type":  "number"
+                                                                                              },
+                                                                                              {
+                                                                                                  "type":  "null"
+                                                                                              }
+                                                                                          ]
+                                                                            },
+                                                              "radius_m":  {
+                                                                               "anyOf":  [
+                                                                                             {
+                                                                                                 "type":  "integer"
+                                                                                             },
+                                                                                             {
+                                                                                                 "type":  "null"
+                                                                                             }
+                                                                                         ]
+                                                                           },
+                                                              "total":  {
+                                                                            "type":  "integer"
+                                                                        },
+                                                              "page":  {
+                                                                           "type":  "integer"
+                                                                       },
+                                                              "per_page":  {
+                                                                               "type":  "integer"
+                                                                           },
+                                                              "total_pages":  {
+                                                                                  "type":  "integer"
+                                                                              },
+                                                              "count":  {
+                                                                            "type":  "integer"
+                                                                        },
+                                                              "vehicles":  {
+                                                                               "type":  "array",
+                                                                               "items":  {
+                                                                                             "type":  "object",
+                                                                                             "properties":  {
+                                                                                                                "vehicle_id":  {
+                                                                                                                                   "anyOf":  [
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "string"
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "null"
+                                                                                                                                                 }
+                                                                                                                                             ]
+                                                                                                                               },
+                                                                                                                "label":  {
+                                                                                                                              "anyOf":  [
+                                                                                                                                            {
+                                                                                                                                                "type":  "string"
+                                                                                                                                            },
+                                                                                                                                            {
+                                                                                                                                                "type":  "null"
+                                                                                                                                            }
+                                                                                                                                        ],
+                                                                                                                              "description":  "The vehicle\u0027s fleet label."
+                                                                                                                          },
+                                                                                                                "license_plate":  {
+                                                                                                                                      "anyOf":  [
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "string"
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "null"
+                                                                                                                                                    }
+                                                                                                                                                ]
+                                                                                                                                  },
+                                                                                                                "latitude":  {
+                                                                                                                                 "type":  "number"
+                                                                                                                             },
+                                                                                                                "longitude":  {
+                                                                                                                                  "type":  "number"
+                                                                                                                              },
+                                                                                                                "bearing":  {
+                                                                                                                                "anyOf":  [
+                                                                                                                                              {
+                                                                                                                                                  "type":  "number"
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                  "type":  "null"
+                                                                                                                                              }
+                                                                                                                                          ]
+                                                                                                                            },
+                                                                                                                "speed_kmh":  {
+                                                                                                                                  "anyOf":  [
+                                                                                                                                                {
+                                                                                                                                                    "type":  "number"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "type":  "null"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                              },
+                                                                                                                "route_id":  {
+                                                                                                                                 "anyOf":  [
+                                                                                                                                               {
+                                                                                                                                                   "type":  "string"
+                                                                                                                                               },
+                                                                                                                                               {
+                                                                                                                                                   "type":  "null"
+                                                                                                                                               }
+                                                                                                                                           ]
+                                                                                                                             },
+                                                                                                                "route_code":  {
+                                                                                                                                   "anyOf":  [
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "string"
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "null"
+                                                                                                                                                 }
+                                                                                                                                             ]
+                                                                                                                               },
+                                                                                                                "route_name":  {
+                                                                                                                                   "anyOf":  [
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "string"
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "null"
+                                                                                                                                                 }
+                                                                                                                                             ]
+                                                                                                                               },
+                                                                                                                "system":  {
+                                                                                                                               "anyOf":  [
+                                                                                                                                             {
+                                                                                                                                                 "type":  "string",
+                                                                                                                                                 "enum":  [
+                                                                                                                                                              "troncal",
+                                                                                                                                                              "alimentador",
+                                                                                                                                                              "dual",
+                                                                                                                                                              "zonal_urbano",
+                                                                                                                                                              "zonal_complementario",
+                                                                                                                                                              "zonal_especial",
+                                                                                                                                                              "transmicable",
+                                                                                                                                                              "other"
+                                                                                                                                                          ]
+                                                                                                                                             },
+                                                                                                                                             {
+                                                                                                                                                 "type":  "null"
+                                                                                                                                             }
+                                                                                                                                         ]
+                                                                                                                           },
+                                                                                                                "trip_id":  {
+                                                                                                                                "anyOf":  [
+                                                                                                                                              {
+                                                                                                                                                  "type":  "string"
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                  "type":  "null"
+                                                                                                                                              }
+                                                                                                                                          ]
+                                                                                                                            },
+                                                                                                                "trip_start_time":  {
+                                                                                                                                        "anyOf":  [
+                                                                                                                                                      {
+                                                                                                                                                          "type":  "string"
+                                                                                                                                                      },
+                                                                                                                                                      {
+                                                                                                                                                          "type":  "null"
+                                                                                                                                                      }
+                                                                                                                                                  ],
+                                                                                                                                        "description":  "`HH:MM:SS` the trip was scheduled to start."
+                                                                                                                                    },
+                                                                                                                "stop_id":  {
+                                                                                                                                "anyOf":  [
+                                                                                                                                              {
+                                                                                                                                                  "type":  "string"
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                  "type":  "null"
+                                                                                                                                              }
+                                                                                                                                          ],
+                                                                                                                                "description":  "The stop the vehicle is at or heading to."
+                                                                                                                            },
+                                                                                                                "stop_name":  {
+                                                                                                                                  "anyOf":  [
+                                                                                                                                                {
+                                                                                                                                                    "type":  "string"
+                                                                                                                                                },
+                                                                                                                                                {
+                                                                                                                                                    "type":  "null"
+                                                                                                                                                }
+                                                                                                                                            ]
+                                                                                                                              },
+                                                                                                                "stop_status":  {
+                                                                                                                                    "anyOf":  [
+                                                                                                                                                  {
+                                                                                                                                                      "type":  "string"
+                                                                                                                                                  },
+                                                                                                                                                  {
+                                                                                                                                                      "type":  "null"
+                                                                                                                                                  }
+                                                                                                                                              ],
+                                                                                                                                    "description":  "`incoming_at`, `stopped_at` or `in_transit_to` that stop."
+                                                                                                                                },
+                                                                                                                "reported_at":  {
+                                                                                                                                    "anyOf":  [
+                                                                                                                                                  {
+                                                                                                                                                      "type":  "string"
+                                                                                                                                                  },
+                                                                                                                                                  {
+                                                                                                                                                      "type":  "null"
+                                                                                                                                                  }
+                                                                                                                                              ],
+                                                                                                                                    "description":  "When the vehicle reported this position, ISO 8601."
+                                                                                                                                },
+                                                                                                                "distance_m":  {
+                                                                                                                                   "anyOf":  [
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "integer"
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "null"
+                                                                                                                                                 }
+                                                                                                                                             ],
+                                                                                                                                   "description":  "Metres from the point searched around; null without one."
+                                                                                                                               }
+                                                                                                            },
+                                                                                             "required":  [
+                                                                                                              "vehicle_id",
+                                                                                                              "label",
+                                                                                                              "license_plate",
+                                                                                                              "latitude",
+                                                                                                              "longitude",
+                                                                                                              "bearing",
+                                                                                                              "speed_kmh",
+                                                                                                              "route_id",
+                                                                                                              "route_code",
+                                                                                                              "route_name",
+                                                                                                              "system",
+                                                                                                              "trip_id",
+                                                                                                              "trip_start_time",
+                                                                                                              "stop_id",
+                                                                                                              "stop_name",
+                                                                                                              "stop_status",
+                                                                                                              "reported_at",
+                                                                                                              "distance_m"
+                                                                                                          ]
+                                                                                         }
+                                                                           }
+                                                          },
+                                           "required":  [
+                                                            "as_of",
+                                                            "live",
+                                                            "notice",
+                                                            "route",
+                                                            "latitude",
+                                                            "longitude",
+                                                            "radius_m",
+                                                            "total",
+                                                            "page",
+                                                            "per_page",
+                                                            "total_pages",
+                                                            "count",
+                                                            "vehicles"
+                                                        ]
+                                       }
+                        },
+                        {
+                            "name":  "TransmilenioVehiclesResponse",
+                            "schema":  {
+                                           "type":  "object",
+                                           "required":  [
+                                                            "data"
+                                                        ],
+                                           "properties":  {
+                                                              "data":  {
+                                                                           "$ref":  "#/components/schemas/TransmilenioVehiclesData"
+                                                                       }
+                                                          }
+                                       }
+                        },
+                        {
+                            "name":  "TransmilenioStopArrivalsData",
+                            "schema":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "as_of":  {
+                                                                            "anyOf":  [
+                                                                                          {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                                          {
+                                                                                              "type":  "null"
+                                                                                          }
+                                                                                      ],
+                                                                            "description":  "When the network last published the data in this response."
+                                                                        },
+                                                              "live":  {
+                                                                           "type":  "boolean",
+                                                                           "description":  "False when the network has published nothing new for over 5 minutes; `as_of` says when it last did."
+                                                                       },
+                                                              "notice":  {
+                                                                             "anyOf":  [
+                                                                                           {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                                           {
+                                                                                               "type":  "null"
+                                                                                           }
+                                                                                       ],
+                                                                             "description":  "Null while the data is live. Otherwise, in plain words: that TransMilenio is not publishing live data, since when, and what this response holds instead."
+                                                                         },
+                                                              "found":  {
+                                                                            "type":  "boolean",
+                                                                            "description":  "False for an id the network does not publish."
+                                                                        },
+                                                              "stop_id":  {
+                                                                              "type":  "string"
+                                                                          },
+                                                              "stop_name":  {
+                                                                                "anyOf":  [
+                                                                                              {
+                                                                                                  "type":  "string"
+                                                                                              },
+                                                                                              {
+                                                                                                  "type":  "null"
+                                                                                              }
+                                                                                          ]
+                                                                            },
+                                                              "route":  {
+                                                                            "anyOf":  [
+                                                                                          {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                                          {
+                                                                                              "type":  "null"
+                                                                                          }
+                                                                                      ]
+                                                                        },
+                                                              "count":  {
+                                                                            "type":  "integer"
+                                                                        },
+                                                              "arrivals":  {
+                                                                               "type":  "array",
+                                                                               "items":  {
+                                                                                             "type":  "object",
+                                                                                             "properties":  {
+                                                                                                                "predicted_at":  {
+                                                                                                                                     "anyOf":  [
+                                                                                                                                                   {
+                                                                                                                                                       "type":  "string"
+                                                                                                                                                   },
+                                                                                                                                                   {
+                                                                                                                                                       "type":  "null"
+                                                                                                                                                   }
+                                                                                                                                               ],
+                                                                                                                                     "description":  "When the vehicle is expected at the stop, ISO 8601 `-05:00`."
+                                                                                                                                 },
+                                                                                                                "minutes_away":  {
+                                                                                                                                     "anyOf":  [
+                                                                                                                                                   {
+                                                                                                                                                       "type":  "integer"
+                                                                                                                                                   },
+                                                                                                                                                   {
+                                                                                                                                                       "type":  "null"
+                                                                                                                                                   }
+                                                                                                                                               ]
+                                                                                                                                 },
+                                                                                                                "basis":  {
+                                                                                                                              "type":  "string",
+                                                                                                                              "enum":  [
+                                                                                                                                           "predicted",
+                                                                                                                                           "estimated",
+                                                                                                                                           "scheduled"
+                                                                                                                                       ],
+                                                                                                                              "description":  "`predicted` when the network predicts this stop itself; `estimated` from the last stop the vehicle reported plus the scheduled running time from there; `scheduled` from the timetable, when the live data is not arriving (`live: false`)."
+                                                                                                                          },
+                                                                                                                "delay_seconds":  {
+                                                                                                                                      "anyOf":  [
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "integer"
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "null"
+                                                                                                                                                    }
+                                                                                                                                                ],
+                                                                                                                                      "description":  "Seconds behind (positive) or ahead of (negative) the timetable."
+                                                                                                                                  },
+                                                                                                                "stop_id":  {
+                                                                                                                                "type":  "string",
+                                                                                                                                "description":  "The platform it arrives at."
+                                                                                                                            },
+                                                                                                                "route_id":  {
+                                                                                                                                 "anyOf":  [
+                                                                                                                                               {
+                                                                                                                                                   "type":  "string"
+                                                                                                                                               },
+                                                                                                                                               {
+                                                                                                                                                   "type":  "null"
+                                                                                                                                               }
+                                                                                                                                           ]
+                                                                                                                             },
+                                                                                                                "route_code":  {
+                                                                                                                                   "anyOf":  [
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "string"
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "null"
+                                                                                                                                                 }
+                                                                                                                                             ]
+                                                                                                                               },
+                                                                                                                "route_name":  {
+                                                                                                                                   "anyOf":  [
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "string"
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "null"
+                                                                                                                                                 }
+                                                                                                                                             ]
+                                                                                                                               },
+                                                                                                                "system":  {
+                                                                                                                               "anyOf":  [
+                                                                                                                                             {
+                                                                                                                                                 "type":  "string",
+                                                                                                                                                 "enum":  [
+                                                                                                                                                              "troncal",
+                                                                                                                                                              "alimentador",
+                                                                                                                                                              "dual",
+                                                                                                                                                              "zonal_urbano",
+                                                                                                                                                              "zonal_complementario",
+                                                                                                                                                              "zonal_especial",
+                                                                                                                                                              "transmicable",
+                                                                                                                                                              "other"
+                                                                                                                                                          ]
+                                                                                                                                             },
+                                                                                                                                             {
+                                                                                                                                                 "type":  "null"
+                                                                                                                                             }
+                                                                                                                                         ]
+                                                                                                                           },
+                                                                                                                "trip_id":  {
+                                                                                                                                "anyOf":  [
+                                                                                                                                              {
+                                                                                                                                                  "type":  "string"
+                                                                                                                                              },
+                                                                                                                                              {
+                                                                                                                                                  "type":  "null"
+                                                                                                                                              }
+                                                                                                                                          ]
+                                                                                                                            },
+                                                                                                                "vehicle_id":  {
+                                                                                                                                   "anyOf":  [
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "string"
+                                                                                                                                                 },
+                                                                                                                                                 {
+                                                                                                                                                     "type":  "null"
+                                                                                                                                                 }
+                                                                                                                                             ]
+                                                                                                                               },
+                                                                                                                "vehicle_label":  {
+                                                                                                                                      "anyOf":  [
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "string"
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "null"
+                                                                                                                                                    }
+                                                                                                                                                ]
+                                                                                                                                  },
+                                                                                                                "license_plate":  {
+                                                                                                                                      "anyOf":  [
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "string"
+                                                                                                                                                    },
+                                                                                                                                                    {
+                                                                                                                                                        "type":  "null"
+                                                                                                                                                    }
+                                                                                                                                                ]
+                                                                                                                                  }
+                                                                                                            },
+                                                                                             "required":  [
+                                                                                                              "predicted_at",
+                                                                                                              "minutes_away",
+                                                                                                              "basis",
+                                                                                                              "delay_seconds",
+                                                                                                              "stop_id",
+                                                                                                              "route_id",
+                                                                                                              "route_code",
+                                                                                                              "route_name",
+                                                                                                              "system",
+                                                                                                              "trip_id",
+                                                                                                              "vehicle_id",
+                                                                                                              "vehicle_label",
+                                                                                                              "license_plate"
+                                                                                                          ]
+                                                                                         }
+                                                                           }
+                                                          },
+                                           "required":  [
+                                                            "as_of",
+                                                            "live",
+                                                            "notice",
+                                                            "found",
+                                                            "stop_id",
+                                                            "stop_name",
+                                                            "route",
+                                                            "count",
+                                                            "arrivals"
+                                                        ]
+                                       }
+                        },
+                        {
+                            "name":  "TransmilenioStopArrivalsResponse",
+                            "schema":  {
+                                           "type":  "object",
+                                           "required":  [
+                                                            "data"
+                                                        ],
+                                           "properties":  {
+                                                              "data":  {
+                                                                           "$ref":  "#/components/schemas/TransmilenioStopArrivalsData"
+                                                                       }
+                                                          }
+                                       }
+                        }
+                    ],
+        "security":  {
+                         "bearerAuth":  {
+                                            "type":  "http",
+                                            "scheme":  "bearer",
+                                            "description":  "Use Authorization: Bearer YOUR_API_KEY"
+                                        }
+                     }
+    },
+    {
+        "url":  "https://datosabiertos.bogota.gov.co/api/3/action/package_search?q=GTFS\u0026rows=10",
+        "queried_at":  "2026-11-13T21:06:02.7411642-05:00",
+        "status":  200,
+        "bytes":  6572,
+        "metadata":  {
+                         "help":  "https://datosabiertos.bogota.gov.co/api/3/action/help_show?name=package_search",
+                         "success":  true,
+                         "result":  {
+                                        "count":  1,
+                                        "facets":  {
+
+                                                   },
+                                        "results":  [
+                                                        {
+                                                            "author":  "",
+                                                            "author_email":  "",
+                                                            "creator_user_id":  "dfa861a2-1091-40bd-9e92-c3d0a2a78818",
+                                                            "date_types":  "Última actualización",
+                                                            "dis_organization":  "Transmilenio S.A.",
+                                                            "dis_scope":  "Conjunto de datos",
+                                                            "id":  "4d5a71b1-fe52-44fe-a34d-b1e7387c1266",
+                                                            "ideca_languages":  "Espanol",
+                                                            "idnt_add_resource":  [
+                                                                                      "https://datosabiertos-transmilenio.hub.arcgis.com/"
+                                                                                  ],
+                                                            "idnt_spatial_resolution":  "",
+                                                            "inf_citation_date":  "2022-01-24",
+                                                            "inf_metadata_resp":  "Transmilenio S.A.",
+                                                            "inf_metadata_scope":  "Conjunto de datos",
+                                                            "isopen":  true,
+                                                            "license_id":  "CC-BY-SA-4.0",
+                                                            "license_title":  "Creative Commons Attribution Share-Alike 4.0",
+                                                            "license_url":  "https://creativecommons.org/licenses/by-sa/4.0/",
+                                                            "maintainer":  "Carlos Eduardo Aparicio",
+                                                            "maintainer_email":  "carlos.aparicio@transmilenio.gov.co",
+                                                            "metadata_created":  "2022-02-24T19:49:12.454819",
+                                                            "metadata_modified":  "2023-12-18T20:26:51.077171",
+                                                            "name":  "especificacion-gtfs-general-transport-feed-specification-sitp",
+                                                            "notes":  "Son el conjunto de datos estructurados dentro del formato definido para la publicación de la información de servicios de transporte público cuyas siglas en inglés son General Transport Feed Specification (GTFS), el cual se compone de rutas (zonales, troncales, especiales, complementarias, alimentadoras), paraderos y estaciones, viajes, Calendario.\r\nEsta información hace referencia a la planeación de la operación de la flota existente dentro de TRANSMILENIO S.A",
+                                                            "num_resources":  2,
+                                                            "num_tags":  7,
+                                                            "organization":  {
+                                                                                 "id":  "00aaae77-b33b-4c1c-9017-ed9d6543f51b",
+                                                                                 "name":  "transmilenio",
+                                                                                 "title":  "Empresa de Transporte del Tercer Milenio - Transmilenio S.A.",
+                                                                                 "type":  "organization",
+                                                                                 "description":  "Contiene los datasets pertenecientes a la entidad Transmilenio",
+                                                                                 "image_url":  "2019-04-04-232250.340787transmi2018-12-26-204814.566045.jpg",
+                                                                                 "created":  "2017-09-15T09:40:26.678906",
+                                                                                 "is_organization":  true,
+                                                                                 "approval_status":  "approved",
+                                                                                 "state":  "active"
+                                                                             },
+                                                            "owner_org":  "00aaae77-b33b-4c1c-9017-ed9d6543f51b",
+                                                            "presentation_types":  "Tabla Digital",
+                                                            "private":  false,
+                                                            "qua_summary":  "El conjunto de datos cuenta con las especificaciones y lineamientos estipulados por IDECA",
+                                                            "ref_systems":  "Sin sistema de referencia",
+                                                            "responsable_types":  "Autor",
+                                                            "spatial":  "{\"type\":\"Polygon\",\"coordinates\":[[[-74.267032,4.514065],[-74.267032,4.828575],[-73.969597,4.828575],[-73.969597,4.514065],[-74.267032,4.514065]]]}",
+                                                            "spatial_types":  "Sin representación espacial",
+                                                            "state":  "active",
+                                                            "title":  "Especificación GTFS (General Transport Feed Specification) - SITP",
+                                                            "topic_main_categories":  "Transporte",
+                                                            "type":  "dataset",
+                                                            "update_frequencies":  "Mensual",
+                                                            "groups":  [
+                                                                           {
+                                                                               "description":  "",
+                                                                               "display_name":  "Transporte",
+                                                                               "id":  "c567293b-adf2-4fd4-bb7a-0143ec03e60c",
+                                                                               "image_display_url":  "https://datosabiertos.bogota.gov.co/uploads/group/2018-12-24-002740.284420transporte.svg",
+                                                                               "name":  "transporte",
+                                                                               "title":  "Transporte"
+                                                                           }
+                                                                       ],
+                                                            "resources":  [
+                                                                              {
+                                                                                  "cache_last_updated":  null,
+                                                                                  "cache_url":  null,
+                                                                                  "created":  "2022-02-24T19:49:53.855972",
+                                                                                  "datastore_active":  false,
+                                                                                  "datastore_contains_all_records_of_source_file":  false,
+                                                                                  "description":  "Son el conjunto de datos estructurados dentro del formato definido para la publicación de la información de servicios de transporte público cuyas siglas en inglés son General Transport Feed Specification (GTFS), el cual se compone de rutas (zonales, troncales, especiales, complementarias, alimentadoras), paraderos y estaciones, viajes, Calendario.\r\nEsta información hace referencia a la planeación de la operación de la flota existente dentro de TRANSMILENIO S.A",
+                                                                                  "format":  "",
+                                                                                  "hash":  "",
+                                                                                  "id":  "fcc135c1-0662-4a2e-97d1-d3e7b9543c2b",
+                                                                                  "last_modified":  null,
+                                                                                  "metadata_modified":  "2022-02-24T19:49:53.855972",
+                                                                                  "mimetype":  null,
+                                                                                  "mimetype_inner":  null,
+                                                                                  "name":  "",
+                                                                                  "package_id":  "4d5a71b1-fe52-44fe-a34d-b1e7387c1266",
+                                                                                  "position":  0,
+                                                                                  "resource_type":  null,
+                                                                                  "size":  null,
+                                                                                  "state":  "active",
+                                                                                  "url":  "",
+                                                                                  "url_type":  null
+                                                                              },
+                                                                              {
+                                                                                  "cache_last_updated":  null,
+                                                                                  "cache_url":  null,
+                                                                                  "created":  "2022-02-24T19:53:05.114453",
+                                                                                  "datastore_active":  false,
+                                                                                  "datastore_contains_all_records_of_source_file":  false,
+                                                                                  "description":  "Son el conjunto de datos estructurados dentro del formato definido para la publicación de la información de servicios de transporte público cuyas siglas en inglés son General Transport Feed Specification (GTFS), el cual se compone de rutas (zonales, troncales, especiales, complementarias, alimentadoras), paraderos y estaciones, viajes y calendario.\r\nEsta información hace referencia a la planeación de la operación de la flota existente dentro de TRANSMILENIO S.A.",
+                                                                                  "format":  "ZIP",
+                                                                                  "hash":  "",
+                                                                                  "id":  "0885fac9-a7bb-490f-abe8-ddee3bbe9cf2",
+                                                                                  "last_modified":  null,
+                                                                                  "metadata_modified":  "2022-02-24T19:53:05.114453",
+                                                                                  "mimetype":  null,
+                                                                                  "mimetype_inner":  null,
+                                                                                  "name":  "Especificación GTFS (General Transport Feed Specification) - Sistema Integrado de Transporte Público",
+                                                                                  "package_id":  "4d5a71b1-fe52-44fe-a34d-b1e7387c1266",
+                                                                                  "position":  1,
+                                                                                  "resource_type":  null,
+                                                                                  "size":  null,
+                                                                                  "state":  "active",
+                                                                                  "url":  "https://datosabiertos-transmilenio.hub.arcgis.com/search?collection=Document\u0026tags=gtfs",
+                                                                                  "url_type":  null
+                                                                              }
+                                                                          ],
+                                                            "tags":  [
+                                                                         {
+                                                                             "display_name":  "GTFS",
+                                                                             "id":  "b17fa61e-d4e2-4334-8546-e6984599bb22",
+                                                                             "name":  "GTFS",
+                                                                             "state":  "active",
+                                                                             "vocabulary_id":  null
+                                                                         },
+                                                                         {
+                                                                             "display_name":  "Movilidad",
+                                                                             "id":  "6a6b1c23-0d8d-4bde-bc2b-63b7378c65d5",
+                                                                             "name":  "Movilidad",
+                                                                             "state":  "active",
+                                                                             "vocabulary_id":  null
+                                                                         },
+                                                                         {
+                                                                             "display_name":  "SITP",
+                                                                             "id":  "bbd9bd5e-751c-4082-9537-520ec35ce6a9",
+                                                                             "name":  "SITP",
+                                                                             "state":  "active",
+                                                                             "vocabulary_id":  null
+                                                                         },
+                                                                         {
+                                                                             "display_name":  "Transmilenio",
+                                                                             "id":  "c777e5f9-d825-4ec1-9ba5-b5902fc91b33",
+                                                                             "name":  "Transmilenio",
+                                                                             "state":  "active",
+                                                                             "vocabulary_id":  null
+                                                                         },
+                                                                         {
+                                                                             "display_name":  "Transporte",
+                                                                             "id":  "6d9cd57c-1a23-4b73-be13-567228e65b4f",
+                                                                             "name":  "Transporte",
+                                                                             "state":  "active",
+                                                                             "vocabulary_id":  null
+                                                                         },
+                                                                         {
+                                                                             "display_name":  "transporte masivo",
+                                                                             "id":  "7419e337-2909-4364-923f-6aa4cbad71d4",
+                                                                             "name":  "transporte masivo",
+                                                                             "state":  "active",
+                                                                             "vocabulary_id":  null
+                                                                         },
+                                                                         {
+                                                                             "display_name":  "transporte público",
+                                                                             "id":  "434f43d4-1ca5-49a6-99c3-e107c06e6530",
+                                                                             "name":  "transporte público",
+                                                                             "state":  "active",
+                                                                             "vocabulary_id":  null
+                                                                         }
+                                                                     ],
+                                                            "relationships_as_subject":  [
+
+                                                                                         ],
+                                                            "relationships_as_object":  [
+
+                                                                                        ]
+                                                        }
+                                                    ],
+                                        "sort":  "score desc, metadata_modified desc",
+                                        "search_facets":  {
+
+                                                          }
+                                    }
+                     }
+    },
+    {
+        "url":  "https://www.arcgis.com/sharing/rest/content/items/6d0043cf1ba443a699bad973539a1422?f=json",
+        "queried_at":  "2026-11-13T21:06:03.0822429-05:00",
+        "status":  200,
+        "bytes":  1181,
+        "metadata":  {
+                         "id":  "6d0043cf1ba443a699bad973539a1422",
+                         "owner":  "david.monroy_Transmilenio",
+                         "ownerId":  "c90e5089c1134c4d9f52505a304d7ecb",
+                         "orgId":  "9unqgkQ8KCOfnzoB",
+                         "created":  1793400749000,
+                         "modified":  1793400783000,
+                         "guid":  null,
+                         "name":  null,
+                         "title":  "GTFS Estáticos 2026-10-27",
+                         "type":  "Document Link",
+                         "typeKeywords":  [
+                                              "Data",
+                                              "Document"
+                                          ],
+                         "description":  null,
+                         "tags":  [
+                                      "GTFS",
+                                      "SITP"
+                                  ],
+                         "snippet":  "Conjunto de datos bajo la especificación GTFS, asociados a la operación del sistema SITP de TRANSMILENIO S.A",
+                         "thumbnail":  null,
+                         "documentation":  null,
+                         "extent":  [
+
+                                    ],
+                         "categories":  [
+                                            "/Categories/GTFS"
+                                        ],
+                         "spatialReference":  null,
+                         "accessInformation":  null,
+                         "classification":  null,
+                         "licenseInfo":  null,
+                         "culture":  "es-419",
+                         "properties":  null,
+                         "advancedSettings":  null,
+                         "url":  "https://storage.googleapis.com/gtfs-estaticos/GTFS_20261027.zip",
+                         "proxyFilter":  null,
+                         "access":  "public",
+                         "size":  63,
+                         "subInfo":  0,
+                         "appCategories":  [
+
+                                           ],
+                         "industries":  [
+
+                                        ],
+                         "languages":  [
+
+                                       ],
+                         "largeThumbnail":  null,
+                         "banner":  null,
+                         "screenshots":  [
+
+                                         ],
+                         "listed":  false,
+                         "commentsEnabled":  true,
+                         "numComments":  0,
+                         "numRatings":  0,
+                         "avgRating":  0,
+                         "numViews":  22,
+                         "scoreCompleteness":  41,
+                         "groupDesignations":  null,
+                         "apiToken1ExpirationDate":  -1,
+                         "apiToken2ExpirationDate":  -1,
+                         "lastViewed":  1794524400000
+                     }
+    },
+    {
+        "url":  "https://www.transmilenio.gov.co/comunicaciones/publicaciones/2025/terminos-y-condiciones-en-el-sitio-web-de-transmilenio",
+        "queried_at":  "2026-11-13T21:06:05.2051051-05:00",
+        "status":  200,
+        "bytes":  433482,
+        "findings":  "General website reuse restrictions; no specific GTFS subdomain polling license established. HTTP 200 is not permission."
+    }
+]

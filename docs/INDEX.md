@@ -5,6 +5,7 @@
 - [Presentación e instalación](../README.md)
 - [Preparar el catálogo y ejemplos](getting-started/SETUP.md)
 - [Uso de perfiles, estados y privacidad](getting-started/USAGE.md)
+- [Piloto GPS local 3B-P0: preparación offline y captura bloqueada](getting-started/LOCAL_GPS_PILOT.md)
 
 ## Para desarrollar
 
@@ -18,12 +19,14 @@
 
 ## Investigación y trabajo futuro
 
+- [Viabilidad de GPS real previa a 3B: fuentes, costes y condiciones](research/GPS_REAL_FEASIBILITY.md)
 - [Diseño de proveedores y créditos: no implementado](research/CROMA_INTEGRATION_DESIGN.md)
 - [Históricos operativos, snapshots y limitaciones de IDs](archive/phases/PHASE0_5_REPORT.md)
 - [Diagnóstico temporal e identidad candidata](archive/phases/PHASE1B_REPORT.md)
 
-Fase 3A está entregada; 3B requiere aprobación expresa. El plan conserva requisitos
-originales y adendas: las posteriores precisan el alcance vigente sin borrar historia.
+Fase 3A está entregada. 3B-P0 autoriza exclusivamente preparación y pruebas offline;
+la captura real sigue bloqueada. El plan conserva requisitos originales y adendas:
+las posteriores precisan el alcance vigente sin borrar historia.
 No existe todavía precisión operativa real validada ni recolección continua.
 
 ## Informes archivados (contexto de cada fase)
@@ -39,6 +42,7 @@ salidas consulte la guía de validación. No ejecute comandos históricos sobre 
 - [PHASE2_1_REPORT.md](archive/phases/PHASE2_1_REPORT.md)
 - [PHASE2_REPORT.md](archive/phases/PHASE2_REPORT.md)
 - [PHASE3A_REPORT.md](archive/phases/PHASE3A_REPORT.md)
+- [PHASE3B_P0_REPORT.md](archive/phases/PHASE3B_P0_REPORT.md)
 
 - [Catálogo de evidencias, hashes y excepciones de rutas](archive/evidence/INDEX.md)
 

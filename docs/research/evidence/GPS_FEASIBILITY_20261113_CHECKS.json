@@ -1,0 +1,23 @@
+{
+    "checked_at":  "2026-11-13T21:12:03.7379499-05:00",
+    "scope":  "Static documentation, JSON parsing, links and historical hashes; no pytest, GPS acquisition, paid API or replay",
+    "local_links_checked":  34,
+    "historical_files_checked":  49,
+    "code_or_dependency_diff":  [
+
+                                ],
+    "evidence":  [
+                     {
+                         "path":  "GPS_FEASIBILITY_20261113_METADATA.json",
+                         "sha256":  "207e66c05088656c117942fedd99f20f89447f704d795333493d53be67a40212"
+                     },
+                     {
+                         "path":  "GPS_FEASIBILITY_20261113_PUBLIC_HTTP.json",
+                         "sha256":  "3821108e8c1129b0d2982e91bb2aa78599115791652c1653b7f8738389adcf55"
+                     }
+                 ],
+    "failures":  [
+
+                 ],
+    "all_passed":  true
+}

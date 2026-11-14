@@ -35,6 +35,9 @@ synthetic evaluation metrics and limitations.
 - Experimental offline GPS replay with provenance, conservative identity checks,
   trajectory segmentation, estimated crossings and uncertainty intervals.
 - Separate SQLite stores for the static catalog, profiles and GPS evidence.
+- [Local GPS pilot preparation](docs/getting-started/LOCAL_GPS_PILOT.md): manual
+  tooling tested offline; real capture remains blocked pending conditions review
+  and separate execution approval (Phase 3B-P0).
 
 ## Planned, not active
 

@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "origins": [
+    "synthetic_fixture"
+  ],
+  "network_requests": 0,
+  "real_operational_validation": false,
+  "counts": {
+    "age_recent": 4,
+    "changed_position_pairs": 2,
+    "decodable_snapshots": 4,
+    "observations": 4,
+    "observations_before_filter": 4,
+    "observed_pair": 3,
+    "plausible_displacement_candidates": 2,
+    "reappearing_candidate_observations": 3,
+    "repeated_gps_timestamps": 1,
+    "snapshots": 4,
+    "unchanged_position_pairs": 1
+  },
+  "thresholds": {
+    "recent_lt_s": 120,
+    "delayed_through_s": 300,
+    "max_candidate_speed_mps": 35
+  },
+  "field_presence": {
+    "current_status": {
+      "present": 0,
+      "absent": 4,
+      "explicit_null": 0
+    },
+    "current_stop_sequence": {
+      "present": 0,
+      "absent": 4,
+      "explicit_null": 0
+    },
+    "gps_timestamp": {
+      "present": 4,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "latitude": {
+      "present": 4,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "longitude": {
+      "present": 4,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "route_id": {
+      "present": 4,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "start_date": {
+      "present": 0,
+      "absent": 4,
+      "explicit_null": 0
+    },
+    "start_time": {
+      "present": 0,
+      "absent": 4,
+      "explicit_null": 0
+    },
+    "stop_id": {
+      "present": 0,
+      "absent": 4,
+      "explicit_null": 0
+    },
+    "trip_id": {
+      "present": 4,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "vehicle_id": {
+      "present": 4,
+      "absent": 0,
+      "explicit_null": 0
+    }
+  },
+  "null_semantics": "Protobuf has absence, not JSON null; absent values stay absent",
+  "gps_ages_s": [
+    5.0,
+    5.0,
+    65.0,
+    65.0
+  ],
+  "snapshots": [
+    {
+      "capture": "capture_00.json",
+      "received_at": "2027-01-15T08:00:05+00:00",
+      "feed_timestamp": 1800000000,
+      "observations": 1,
+      "new_gps_times": 1,
+      "classification": "observation"
+    },
+    {
+      "capture": "capture_01.json",
+      "received_at": "2027-01-15T08:01:05+00:00",
+      "feed_timestamp": 1800000060,
+      "observations": 1,
+      "new_gps_times": 1,
+      "classification": "observation"
+    },
+    {
+      "capture": "capture_02.json",
+      "received_at": "2027-01-15T08:02:05+00:00",
+      "feed_timestamp": 1800000060,
+      "observations": 1,
+      "new_gps_times": 0,
+      "classification": "observation"
+    },
+    {
+      "capture": "capture_03.json",
+      "received_at": "2027-01-15T08:03:05+00:00",
+      "feed_timestamp": 1800000120,
+      "observations": 1,
+      "new_gps_times": 1,
+      "classification": "observation"
+    }
+  ],
+  "pairs": [
+    {
+      "vehicle_id": "DEMO_BUS",
+      "classification": "candidate",
+      "delta_gps_s": 60,
+      "distance_m": 65.953,
+      "mean_speed_mps": 1.099,
+      "reason": "observed_pair"
+    },
+    {
+      "vehicle_id": "DEMO_BUS",
+      "classification": "not_determinable",
+      "delta_gps_s": 0,
+      "distance_m": 0.0,
+      "mean_speed_mps": null,
+      "reason": "observed_pair"
+    },
+    {
+      "vehicle_id": "DEMO_BUS",
+      "classification": "candidate",
+      "delta_gps_s": 60,
+      "distance_m": 66.799,
+      "mean_speed_mps": 1.113,
+      "reason": "observed_pair"
+    }
+  ],
+  "candidate_ids_with_three_distinct_times": [
+    "synthetic://local-pilot|DEMO_BUS"
+  ],
+  "route_filter": [],
+  "route_scope": "Exact published route_id only; no GTFS crosswalk or operational identity proven",
+  "inferences_excluded": [
+    "arrivals",
+    "boarding",
+    "travel_durations",
+    "passenger_wait"
+  ]
+}

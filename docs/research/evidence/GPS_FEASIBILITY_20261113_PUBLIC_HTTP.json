@@ -1,0 +1,267 @@
+[
+    {
+        "url":  "https://docs.usecroma.com/rate-limits",
+        "queried_at":  "2026-11-13T21:04:43.6403397-05:00",
+        "status":  200,
+        "bytes":  157595,
+        "utf8_text_sha256":  "1a8e57ad35a0eeeef775f705193e75729805613789a77f8e03f617900276812e",
+        "findings":  "Organization-wide allowance. Listed hourly ceilings apply to some other operations; none specifically established for TransMilenio. Cache hits count toward applicable hourly ceilings. Retry-After on 429. Idempotency-Key is correlation, not proof of one charge."
+    },
+    {
+        "url":  "https://usecroma.com/pricing",
+        "queried_at":  "2026-11-13T21:04:44.1219345-05:00",
+        "status":  200,
+        "bytes":  205829,
+        "utf8_text_sha256":  "c3e544aee59a6c615cde4bbe05dd49a6b9deb8f786106b6b9a15724d9215c70b",
+        "findings":  "Free: USD 0/month, 1500 credits. Live lookup 10, dataset 1. Published price; no account inspected."
+    },
+    {
+        "url":  "https://api.croma.run/openapi",
+        "queried_at":  "2026-11-13T21:04:45.1179889-05:00",
+        "status":  200,
+        "bytes":  4487963,
+        "utf8_text_sha256":  "d6d7c4dac07f27c0f85f52533bbf0e770cc2f1a4fd05cec1a8f780b79535f4c2",
+        "servers":  [
+                        {
+                            "url":  "https://api.croma.run"
+                        }
+                    ],
+        "operations":  [
+                           {
+                               "path":  "/co/transmilenio/stops-search/v1",
+                               "method":  "POST",
+                               "served_from":  "dataset",
+                               "request_fields":  [
+                                                      "query",
+                                                      "route",
+                                                      "kind",
+                                                      "latitude",
+                                                      "longitude",
+                                                      "radius_m",
+                                                      "page",
+                                                      "per_page"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioStopsSearchResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           },
+                           {
+                               "path":  "/co/transmilenio/stop/v1",
+                               "method":  "POST",
+                               "served_from":  "dataset",
+                               "request_fields":  [
+                                                      "stop_id"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioStopResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           },
+                           {
+                               "path":  "/co/transmilenio/stop-departures/v1",
+                               "method":  "POST",
+                               "served_from":  "dataset",
+                               "request_fields":  [
+                                                      "stop_id",
+                                                      "date",
+                                                      "from_time",
+                                                      "route",
+                                                      "limit"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioStopDeparturesResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           },
+                           {
+                               "path":  "/co/transmilenio/routes-search/v1",
+                               "method":  "POST",
+                               "served_from":  "dataset",
+                               "request_fields":  [
+                                                      "query",
+                                                      "system",
+                                                      "stop_id",
+                                                      "page",
+                                                      "per_page"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioRoutesSearchResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           },
+                           {
+                               "path":  "/co/transmilenio/route/v1",
+                               "method":  "POST",
+                               "served_from":  "dataset",
+                               "request_fields":  [
+                                                      "route_id",
+                                                      "include_geometry"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioRouteResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           },
+                           {
+                               "path":  "/co/transmilenio/vehicles/v1",
+                               "method":  "POST",
+                               "served_from":  null,
+                               "request_fields":  [
+                                                      "route",
+                                                      "latitude",
+                                                      "longitude",
+                                                      "radius_m",
+                                                      "page",
+                                                      "per_page"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioVehiclesResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           },
+                           {
+                               "path":  "/co/transmilenio/stop-arrivals/v1",
+                               "method":  "POST",
+                               "served_from":  null,
+                               "request_fields":  [
+                                                      "stop_id",
+                                                      "route",
+                                                      "limit"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioStopArrivalsResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           },
+                           {
+                               "path":  "/co/transmilenio/alerts/v1",
+                               "method":  "POST",
+                               "served_from":  null,
+                               "request_fields":  [
+                                                      "route",
+                                                      "stop_id"
+                                                  ],
+                               "response_schema":  {
+                                                       "$ref":  "#/components/schemas/TransmilenioAlertsResponse"
+                                                   },
+                               "security":  [
+                                                {
+                                                    "bearerAuth":  [
+
+                                                                   ]
+                                                }
+                                            ]
+                           }
+                       ]
+    },
+    {
+        "url":  "https://gtfs.transmilenio.gov.co/manifest.json",
+        "queried_at":  "2026-11-13T21:04:46.3061197-05:00",
+        "status":  200,
+        "bytes":  1500,
+        "utf8_text_sha256":  "b0cb81d1df5cd04226c3e9f81d1019a8809a6760c5a8a8981fd68359ae4c4432",
+        "manifest":  {
+                         "manifest_version":  "1.0",
+                         "realtime_available":  true,
+                         "generated_at":  "2026-11-13T04:19:35.056342-05:00",
+                         "dataset":  "tmsa-gtfs",
+                         "files":  [
+                                       {
+                                           "icon":  "📦",
+                                           "badge":  "ZIP",
+                                           "class":  "badge-zip",
+                                           "frequency":  "Diariamente",
+                                           "file_name":  "GTFS.zip",
+                                           "size_bytes":  121080648,
+                                           "available":  true,
+                                           "last_modified":  "2026-11-13T04:19:31.968-05:00",
+                                           "url":  "https://gtfs.transmilenio.gov.co/GTFS.zip"
+                                       },
+                                       {
+                                           "icon":  "📍",
+                                           "badge":  "PB",
+                                           "class":  "badge-pb",
+                                           "frequency":  "Cada 26 segundos",
+                                           "file_name":  "alerts.pb",
+                                           "size_bytes":  23944,
+                                           "available":  true,
+                                           "last_modified":  "2026-11-13T04:19:16.179-05:00",
+                                           "url":  "https://gtfs.transmilenio.gov.co/alerts.pb"
+                                       },
+                                       {
+                                           "icon":  "📍",
+                                           "badge":  "PB",
+                                           "class":  "badge-pb",
+                                           "frequency":  "Cada 26 segundos",
+                                           "file_name":  "positions.pb",
+                                           "size_bytes":  180434,
+                                           "available":  true,
+                                           "last_modified":  "2026-11-13T04:19:16.554-05:00",
+                                           "url":  "https://gtfs.transmilenio.gov.co/positions.pb"
+                                       },
+                                       {
+                                           "icon":  "📍",
+                                           "badge":  "PB",
+                                           "class":  "badge-pb",
+                                           "frequency":  "Cada 26 segundos",
+                                           "file_name":  "tripupdates.pb",
+                                           "size_bytes":  7575247,
+                                           "available":  true,
+                                           "last_modified":  "2026-11-13T04:19:21.249-05:00",
+                                           "url":  "https://gtfs.transmilenio.gov.co/tripupdates.pb"
+                                       }
+                                   ]
+                     }
+    },
+    {
+        "url":  "https://usecroma.com/terms",
+        "queried_at":  "2026-11-13T21:04:46.6880983-05:00",
+        "status":  200,
+        "bytes":  111194,
+        "utf8_text_sha256":  "b8a35ca493173ca574fac4d9327d4a930d7883b9b649b87eadc96a3772964767",
+        "findings":  "Updated 2026-08-17. No uninterrupted/current/accurate guarantee; redistribution of Services requires written permission. API-specific terms accepted when creating key not available in this review."
+    }
+]

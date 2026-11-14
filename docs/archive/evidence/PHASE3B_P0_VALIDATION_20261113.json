@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-11-13T21:37:16.2457036-05:00",
+  "scope": "Offline unit/integration tests only; no real captures or GUI/full-suite run",
+  "checks": [
+    {
+      "command": "pytest local_pilot,http,realtime,temporal_diagnostic,reconstruction,reconstruction_store,snapshots",
+      "exit_code": 0,
+      "output": "........................................................................ [ 51%]\n...................................................................      [100%]\n139 passed in 25.51s"
+    },
+    {
+      "command": "ruff check .",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "ruff format --check .",
+      "exit_code": 0,
+      "output": "110 files already formatted"
+    },
+    {
+      "command": "pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ],
+  "all_passed": true
+}

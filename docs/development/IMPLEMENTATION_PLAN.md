@@ -941,3 +941,28 @@ de referencia para calibrar errores e intervalos. Antes del colector compartido
 de producción siguen pendientes calidad operativa, rendimiento, retención y
 política de sondeo. La agrupación visual por parent_station/andén queda posterior.
 **Fase 3B no iniciada; no activarla sin autorización expresa.**
+
+## 14. Adenda 3B-P0 — Preparación doméstica offline
+
+El propietario aprueba la investigación de viabilidad con observaciones y autoriza
+solo preparar/probar offline una herramienta manual. Esto acota el siguiente paso
+sin exigir garantías de producción, identidad verificada o certificación de
+duraciones para explorar novedades. **No autoriza capturas reales.**
+
+- CLI aislada de research/, reutilizando descarga acotada y decoder existentes;
+  máximo 12 posiciones, mínimo 60 s, una consulta al manifiesto (límite dos),
+  sesión única, sin reintentos, paralelismo ni scheduler.
+- Default offline; confirmación explícita y gate de condiciones antes de red.
+  Revisión pública sin resolver sondeo/retención: gate permanece bloqueado.
+- Archivos PB/JSON nuevos bajo data/pilots, recepción UTC y GPS separados,
+  hashes y errores conservados; sin SQLite adicional o cambios a datos previos.
+- Analizador offline: presencia, edades, novedad, IDs candidatos repetidos,
+  intervalos, desplazamiento y anomalías. Filtro de hasta dos route_id exactos;
+  sin crosswalk supuesto ni llegadas/esperas/duraciones inferidas.
+- Detener ante límites/error o tres snapshots sin GPS relevante nuevo; fixtures
+  explícitamente sintéticos. Motor 3A y confianza sintética permanecen intactos.
+
+Entrega: 139 pruebas pertinentes aprobadas (22 nuevas), Ruff/formato/pip check
+correctos; ejemplo sintético de cuatro snapshots reproducible. No se reejecutó
+la suite completa. Informe: [3B-P0](../archive/phases/PHASE3B_P0_REPORT.md).
+La captura real y la ampliación de fase requieren autorización posterior explícita.
