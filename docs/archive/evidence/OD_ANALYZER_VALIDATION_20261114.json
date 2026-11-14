@@ -1,0 +1,140 @@
+{
+  "date_bogota": "2026-11-14",
+  "product_version": "0.5.0",
+  "algorithm": "od-candidate-offline-0.1.0",
+  "reference_commit": "d490ff911222f1fd9381c77cdf9c9e5604e470a2",
+  "scope": "New standalone offline candidate OD CLI, no production acceptance and no new data acquisition.",
+  "checks": [
+    {
+      "command": "ruff format src/transmitracker/research/od_analyzer.py tests/test_od_analyzer.py",
+      "exit_code": 0,
+      "output": "2 files left unchanged"
+    },
+    {
+      "command": "pytest -q tests/test_od_analyzer.py tests/test_reconstruction.py tests/test_reconstruction_store.py tests/test_route_tracker.py tests/test_viewer.py tests/test_phase2_1.py::test_version_is_semver_and_from_project_metadata",
+      "exit_code": 0,
+      "output": "........................................................................ [ 62%]\n...........................................                              [100%]\n115 passed in 26.26s"
+    },
+    {
+      "command": "ruff check src/transmitracker/research/od_analyzer.py tests/test_od_analyzer.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "ruff format --check src/transmitracker/research/od_analyzer.py tests/test_od_analyzer.py",
+      "exit_code": 0,
+      "output": "2 files already formatted"
+    },
+    {
+      "command": "pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ],
+  "synthetic_new_tests": 18,
+  "operational_durations_accepted": 0,
+  "saved_real_exercise": {
+    "hypotheses": [
+      {
+        "ordinal": 0,
+        "summary": {
+          "candidates": 3,
+          "crossing_candidates": 2,
+          "duration_candidates": 0,
+          "reasons": {
+            "duration_uncertainty_too_wide": 1,
+            "endpoint_crossing_intervals_overlap": 1,
+            "insufficient_endpoint_events_in_same_segment": 3,
+            "tracker_segment_ambiguo": 5,
+            "tracker_segment_descartado": 1
+          },
+          "segment_statuses": {
+            "indeterminate": 10
+          },
+          "segments": 10
+        },
+        "crossing_support_widths_s": [
+          122,
+          122
+        ],
+        "crossings_share_support": true,
+        "crossings_have_point_estimates": false,
+        "input_pattern_explicit": true,
+        "code_matches_current": true,
+        "geometry_error": null,
+        "private_result_sha256": "96ab676f421b6f9211cbd9de7204a7842113d36bc80cfc03210aa7869b9f634a"
+      },
+      {
+        "ordinal": 1,
+        "summary": {
+          "candidates": 3,
+          "crossing_candidates": 2,
+          "duration_candidates": 0,
+          "reasons": {
+            "duration_uncertainty_too_wide": 1,
+            "endpoint_crossing_intervals_overlap": 1,
+            "insufficient_endpoint_events_in_same_segment": 3,
+            "tracker_segment_ambiguo": 5,
+            "tracker_segment_descartado": 1
+          },
+          "segment_statuses": {
+            "indeterminate": 10
+          },
+          "segments": 10
+        },
+        "crossing_support_widths_s": [
+          122,
+          122
+        ],
+        "crossings_share_support": true,
+        "crossings_have_point_estimates": false,
+        "input_pattern_explicit": true,
+        "code_matches_current": true,
+        "geometry_error": null,
+        "private_result_sha256": "119ef798f6e298a2bcca254b7d8aa921acfeb06adc21590e7da840dfc34ffbec"
+      }
+    ],
+    "hypotheses_share_the_same_input_not_independent_observations": true,
+    "input_report_sha256": "aba9b467f88bd6313d434e17dce2710e6f942af2f44e39bcb1b78bdadee54ab1",
+    "catalog_file_sha256": "30502df8428df296b29aa1d1ffb3bbe6f79efe0b90d551812a89ad106c579c3c",
+    "inputs_unchanged": true,
+    "selection_recipe_sha256": "7032454fec4b32ab5821c74d43aea654f5780dcc826e7f6ec65cec90fab68130",
+    "deterministic_replay": true,
+    "protected_changed_paths": [],
+    "source_sha256": "82dbcad8fae0bcc041254dc069f72561b37a649ab154ff444f7191a7daf9a1b3",
+    "network_requests": 0,
+    "new_gps_captures": 0
+  },
+  "documentation": {
+    "local_links": 188,
+    "broken_links": [],
+    "external_links_not_fetched": 58,
+    "head": "d490ff911222f1fd9381c77cdf9c9e5604e470a2"
+  },
+  "interpretation": "Each of two explicit pattern hypotheses examined the same 3 candidates and 10 existing segments. Two candidate crossings per hypothesis shared the same support and 122-second windows, with no point estimates. Temporal order and duration uncertainty do not support a duration. The hypotheses do not identify the actual service and are not independent observations.",
+  "private_outputs": "data/pilots/first-real-20261113-223641-1613d2b6/od-analysis-20261114/",
+  "restrictions": {
+    "network_requests": 0,
+    "new_gps_captures": 0,
+    "new_dependencies": 0,
+    "new_sqlite_schemas": 0,
+    "operational_identity_verified": false,
+    "arrivals_boardings_eta_waiting_or_walking_inferred": false,
+    "conservative_3a_and_tracker_rules_changed": false,
+    "gui_or_profile_integration": false,
+    "commit_or_push_performed": false
+  },
+  "limitations": [
+    "Report membership/order are validated; the original PB payloads are not re-decoded by this CLI.",
+    "GTFS hash comparison is version compatibility through metadata; file hashes in the exercise establish unchanged inputs.",
+    "Explicit GTFS pattern is a hypothesis, not an operational trip/service match.",
+    "Only original tracker segments are inspected; no rejoining or dropping a bad point to bridge it.",
+    "3A limits remain fixed; wide diagnostic ranges stay indeterminate, and overlapping endpoint intervals do not yield durations.",
+    "No full GUI suite or external-link/network verification was performed."
+  ],
+  "reproduction": {
+    "guide": "docs/getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050",
+    "private_selection": "selection-0.json and selection-1.json in the private output directory; use new --output paths.",
+    "tests": "python -m pytest -q tests/test_od_analyzer.py"
+  }
+}

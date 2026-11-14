@@ -1,4 +1,4 @@
-# Arquitectura vigente — 0.4.1
+# Arquitectura vigente — 0.5.0
 
 ## Componentes y límites
 
@@ -70,3 +70,18 @@ la versión GTFS registrada cuando está fijada en el reporte. No selecciona una
 alternativa geométrica ni usa interpolación. No importa widgets de la GUI principal,
 no escribe perfiles y no inicia adquisiciones. El control temporal avanza por
 observaciones originales en orden de captura; las regresiones no se ocultan.
+
+## Análisis OD candidato, separado de la aceptación operativa
+
+`research/od_analyzer.py` consume el JSON existente del rastreador, reutiliza la
+validación de pertenencia/orden del visor y construye un `Leg` con consultas del
+catálogo. Un adaptador usa `GeometryCatalog`, `select_projection`, `crossing_events`
+y `measure` sin modificar 3A. La plantilla GTFS de un patrón no se empareja con un
+viaje Realtime; las anotaciones de anclas deben ser consistentes entre plantillas.
+
+Cada evaluación queda dentro de un segmento existente y siempre usa confianza
+candidata, incluso con fixtures. La aceptación operativa de 3A permanece falsa.
+La nueva capa distingue soporte de cruce, orden temporal e intervalo admisible,
+manteniendo los límites conservadores y sin resolver variantes por proximidad.
+JSON privado exclusivo en `data/pilots`; sin persistencia adicional o integración
+con GUI/perfiles. [Contrato, comandos y límites](../getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050).

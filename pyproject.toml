@@ -1,6 +1,6 @@
 [project]
 name = "transmitracker"
-version = "0.4.1"
+version = "0.5.0"
 description = "Catálogo GTFS y perfiles de escritorio de TransMilenio/SITP"
 requires-python = ">=3.12"
 dependencies = [

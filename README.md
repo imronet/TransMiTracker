@@ -14,7 +14,7 @@ queries scheduled services and provides an experimental offline GPS engine.
 
 ## Current status
 
-**Version 0.4.1 — Standalone experimental offline GPS viewer delivered.** The application
+**Version 0.5.0 — Experimental offline origin–destination analysis delivered.** The application
 and documentation are under active development. The interface and most technical
 documents are in Spanish.
 
@@ -28,6 +28,9 @@ The conservative engine's earlier synthetic evaluation remains in the
 
 ## Available today
 
+- [Offline origin–destination analysis](docs/getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050):
+  explicit GTFS stop occurrences, supported candidate crossings and bounded candidate
+  durations when evidence suffices. These are not operationally validated travel times.
 - [Standalone offline GPS viewer](docs/getting-started/OFFLINE_ROUTE_TRACKER.md#visor-gráfico-independiente-040):
   local Canvas, candidate selection, segments and manual observation stepping.
   All route geometries remain visible; no web maps or interpolated GPS positions.

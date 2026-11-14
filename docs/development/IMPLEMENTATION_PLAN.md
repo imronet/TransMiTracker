@@ -1,8 +1,8 @@
 # TransMiTracker — Implementation Plan
 
-**Estado vigente — v0.4.1:** rastreador y visor experimental offline por ruta disponibles;
+**Estado vigente — v0.5.0:** rastreador, visor y analizador OD experimental offline disponibles;
 véanse [uso](../getting-started/OFFLINE_ROUTE_TRACKER.md) y
-[adenda 18](#18-visor-gráfico-experimental-offline--capacidad-autorizada).
+[adenda 19](#19-análisis-experimental-origendestino-offline--capacidad-autorizada).
 Las secciones y adendas anteriores conservan su contexto histórico. Croma es una
 alternativa futura y opcional; no se requiere para la capacidad actual. No hay
 autorización de nuevas capturas ni seguimiento continuo.
@@ -1029,3 +1029,19 @@ Producto 0.4.0, sin dependencias nuevas, interpolaciones, adquisición ni predic
 Pruebas focalizadas, demo sintética y apertura del reporte real guardado:
 [uso, validación y límites](../getting-started/OFFLINE_ROUTE_TRACKER.md#visor-gráfico-independiente-040).
 No autoriza captura, seguimiento continuo o siguiente fase.
+
+## 19. Análisis experimental origen–destino offline — capacidad autorizada
+
+El propietario autoriza avanzar RF-05/RF-06 con una CLI aislada sobre reportes del
+rastreador, catálogo compatible y un tramo `Leg` con patrón/ocurrencias inequívocos.
+Reutiliza proyección, anclas y cruces de 3A sin modificar su motor ni las decisiones
+del rastreador. Solo segmentos existentes; sin unión de interrupciones ni identidad
+operativa por ID. Los eventos/intervalos son candidatos y conservan soporte,
+incertidumbre y rechazos. No se usa confianza sintética para aceptar tiempos reales.
+
+Producto 0.5.0: salidas JSON privadas nuevas, sin esquemas SQLite, dependencias,
+GUI, espera/caminata inferidas, predictor o adquisición. Se conservan todos los
+requisitos originales de persistencia y medición validada para trabajo posterior.
+[Uso, 115 pruebas pertinentes y ejercicio real negativo](../getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050).
+No se obtuvo una duración admisible ni se relajaron filtros. La siguiente capacidad
+y cualquier nueva captura requieren autorización expresa.

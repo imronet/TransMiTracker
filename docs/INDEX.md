@@ -1,6 +1,10 @@
-# Índice de documentación — TransMiTracker 0.4.1
+# Índice de documentación — TransMiTracker 0.5.0
 
 ## Capacidad vigente
+
+El [analizador origen–destino offline](getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050)
+evalúa cruces e intervalos candidatos dentro de segmentos existentes, sin validar
+duraciones operativas. Comando, ejemplo real y límites en la guía existente.
 
 El rastreador por ruta y su visor gráfico independiente procesan reportes/sesiones
 guardados, sin red ni seguimiento en vivo. Empezar por su

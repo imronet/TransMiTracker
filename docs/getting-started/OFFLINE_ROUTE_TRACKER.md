@@ -5,6 +5,8 @@ no descarga datos ni activa seguimiento. No exige viaje GTFS exacto ni estabilid
 de `start_time`. El motor conservador 3A mantiene sus reglas sin cambios.
 Desde **0.4.0** también puede explorarse el reporte con el
 [visor gráfico independiente](#visor-gráfico-independiente-040).
+Desde **0.5.0** incluye [análisis experimental origen–destino](#análisis-experimental-origendestino-050)
+sobre sus segmentos, sin convertir tiempos candidatos en mediciones operativas.
 
 ## Ejecución manual en PowerShell
 
@@ -215,3 +217,112 @@ Los tests nuevos son `tests/test_viewer.py` y `tests/test_viewer_widgets.py`.
 Quedan fuera de alcance mapas geográficos de fondo, grandes lotes de producción,
 identidad permanente, nuevos análisis y adquisición. Entrega preparada para QA;
 ningún commit/push ni autorización de la siguiente capacidad.
+
+## Análisis experimental origen–destino (0.5.0)
+
+CLI independiente `research.od_analyzer`: lee un reporte del rastreador ya guardado
+y un catálogo local en modo lectura. Requiere coincidencia de ruta y del hash GTFS
+fijado en el reporte; un catálogo ausente, diferente o no fijado se rechaza. La
+compatibilidad por metadatos no certifica por sí sola la integridad física del DB.
+No decodifica de nuevo los PB ni cambia las decisiones del rastreador o de 3A.
+
+```powershell
+$env:PYTHONPATH = Join-Path (Get-Location).Path 'src'
+$env:PYTHONUTF8 = '1'
+.\.venv\Scripts\python.exe -m transmitracker.research.od_analyzer `
+  data/pilots/SESION/reporte-ruta.json --catalog data/catalog/CATALOGO.sqlite3 `
+  --route 'ID_RUTA' --pattern 'ID_PATRON' `
+  --origin 'ID_PARADA_ORIGEN' --origin-sequence 10 `
+  --destination 'ID_PARADA_DESTINO' --destination-sequence 20 `
+  --output data/pilots/RESULTADO_NUEVO/tramo.json
+```
+
+Los IDs permanecen como cadenas. Si una parada se repite, su secuencia es obligatoria;
+si tiene una sola ocurrencia, puede omitirse. El destino debe ser posterior y
+ambos extremos deben cumplir `Leg` y `Catalog.validate_leg_structure`, sin remapeo
+de plataformas ni selección por proximidad. `--pattern` solo puede omitirse cuando
+la ruta tiene exactamente un patrón. La selección es una **hipótesis explícita**,
+sin prueba de que un candidato estuviera realizando ese servicio o calendario.
+
+La geometría y anclas se obtienen con `GeometryCatalog`. El viaje GTFS registrado
+como plantilla sirve exclusivamente para construir el patrón estático; no es una
+correspondencia con el `trip_id` Realtime. Si las plantillas del mismo patrón tienen
+distintas anotaciones `shape_distance`, el análisis queda indeterminado. Se conservan
+los cambios de viaje, start_time, fecha, parada y secuencia como evidencia auxiliar;
+no se utilizan esos campos para fabricar continuidad o resolver ramas GPS.
+
+Se procesan solo los segmentos existentes. No se unen cortes, no se rehabilitan
+segmentos ambiguos/descartados y no se eliminan puntos problemáticos para puentearlos.
+La proyección reutiliza `select_projection`, con soporte de continuidad observada
+y sin anclas tomadas de las referencias de parada Realtime. Un segmento con salto,
+retroceso incompatible, mala frescura, hueco excesivo o rama sin resolver se rechaza.
+
+Los cruces reutilizan `crossing_events`: requieren soporte anterior y posterior a
+la banda de error GPS, con IDs/procedencia e intervalo temporal. Cercanía, una sola
+observación o un timestamp repetido no prueban un cruce. Se conservan los parámetros
+3A: hueco máximo 120 s (más estricto que los 300 s del rastreador), residual 60 m,
+retroceso tolerado 10 m, velocidad 35 m/s, error GPS 8 m y timestamp ±1 s.
+También se limita a 120 s el intervalo entre soportes extremos de cada cruce.
+Solo se conserva una estimación puntual si 3A la justifica por velocidad estable
+y separación de hasta 40 s; no se sustituye por un punto medio.
+
+`measure` calcula límites usando ambos cruces del mismo segmento y las ocurrencias
+seleccionadas. Esta CLI exige además intervalos de extremos temporalmente separados
+(`origen.latest < destino.earliest`). Si se solapan, no propone duración. La
+incertidumbre máxima admisible conserva el límite de 85 s de 3A: un rango más amplio
+puede quedar registrado para diagnóstico con estado `indeterminate`, sin contar como
+duración candidata. No se reducen los rangos para obtener una cifra más precisa.
+
+Estados: `candidate_crossing` para cruce candidato con soporte; `no_evidence` o
+`rejected` para los demás cruces; `candidate_interval`, `indeterminate` o `rejected`
+para segmentos. Un intervalo candidato no implica aceptación conservadora/operativa:
+**incluso en fixtures se usa `Confidence.CANDIDATE`, nunca una identidad sintética
+que autorice tiempos reales**. Se conservan las razones de no aceptación de 3A.
+No se generan llegadas, embarques, esperas, caminatas ni ETA.
+
+El JSON completo contiene el tramo, plantilla estática, parámetros/huellas,
+procedencia del reporte, segmentos, soporte original, proyecciones, eventos,
+intervalos y razones. Solo admite archivos nuevos bajo `data/pilots`, sin
+sobrescritura. La consola muestra agregados; los errores no imprimen IDs o GPS.
+
+### Entrega OD — 2026-11-14
+
+**115 pruebas pertinentes aprobadas en 26,26 s**, incluidas 18 nuevas sintéticas,
+las 54 de reconstrucción/almacenamiento, 25 del rastreador, 17 de preparación del
+visor y el contrato de versión. Ruff, formato y `pip check` correctos con Python
+3.13. Sin suite completa ni ventanas GUI. Código nuevo en
+`src/transmitracker/research/od_analyzer.py`; pruebas en `tests/test_od_analyzer.py`.
+Producto 0.5.0 (capacidad compatible), algoritmo `od-candidate-offline-0.1.0`;
+sin dependencias o esquemas SQLite nuevos.
+
+Ejercicio real: se fijaron por separado **dos hipótesis de patrón** de la ruta
+ya estudiada. Para cada una se tomó la primera pareja consecutiva de paradas
+embarcable/desembarcable dentro del rango proyectado de un segmento móvil, sin
+optimizar después para obtener duración. Cada hipótesis examinó los mismos
+**3 candidatos y 10 segmentos**: dos cruces candidatos, cero intervalos admisibles.
+Los dos cruces comparten soporte y sus ventanas de 122 s se solapan; no hay orden
+temporal suficientemente acotado y se supera la incertidumbre permitida. Otros
+segmentos: cinco ambiguos, uno descartado y tres sin ambos extremos. Son hipótesis
+sobre los mismos datos, no cuatro cruces independientes ni un servicio identificado.
+La repetición de la primera salida fue idéntica byte a byte. No se relajaron filtros.
+
+Selecciones y resultados privados nuevos:
+`data/pilots/first-real-20261113-223641-1613d2b6/od-analysis-20261114/`.
+Incluye `selection-0.json`, `selection-1.json`, `result-0.json`, `result-1.json`,
+`replay-0.json`, `input-integrity.json` y la receta local `prepare_example.py`.
+Para repetir offline con un destino **nuevo**:
+
+```powershell
+$folder = 'data/pilots/first-real-20261113-223641-1613d2b6/od-analysis-20261114'
+$s = Get-Content "$folder/selection-0.json" -Raw | ConvertFrom-Json
+.\.venv\Scripts\python.exe -m transmitracker.research.od_analyzer `
+  $s.report --catalog $s.catalog --route $s.route --pattern $s.pattern `
+  --origin $s.origin --origin-sequence $s.origin_sequence `
+  --destination $s.destination --destination-sequence $s.destination_sequence `
+  --output "$folder/reproduccion-NUEVA.json"
+```
+
+[Evidencia QA y agregados no identificables](../archive/evidence/OD_ANALYZER_VALIDATION_20261114.json).
+Los originales y análisis previos se conservan. Entrega lista para revisión del
+propietario; no habilita otra captura, predicción, GUI o siguiente capacidad.
+Sin red, Croma, modificaciones al motor 3A/rastreador, commit ni push.

@@ -1,5 +1,11 @@
 # Evidencias históricas y compatibilidad
 
+## Analizador OD candidato — 2026-11-14
+
+[Pruebas y ejercicio offline sobre el reporte real](OD_ANALYZER_VALIDATION_20261114.json).
+Solo agregados, huellas y razones: no contiene IDs operativos, coordenadas o
+payloads. Uso y cierre breve en la [guía existente](../../getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050).
+
 ## Visor gráfico offline — 2026-11-14
 
 [Validación focalizada y apertura real/sintética](OFFLINE_VIEWER_VALIDATION_20261114.json).

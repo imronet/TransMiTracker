@@ -10,6 +10,9 @@ El visor gráfico independiente añade otra capacidad compatible en **0.4.0**;
 no modifica reglas ni versión del algoritmo del rastreador.
 **0.4.1** corrige el cambio entre pares reporte–catálogo en una misma ventana,
 conservando validaciones y contratos. Se aplica PATCH por ser una corrección compatible.
+El analizador OD offline añade una capacidad compatible en **0.5.0** (MINOR), con
+algoritmo independiente `od-candidate-offline-0.1.0`. No modifica el rastreador,
+el algoritmo conservador 3A o los esquemas SQLite.
 
 `pyproject.toml` es la única fuente de verdad. `version.app_version()` la lee en
 el proyecto; en una distribución instalada utiliza los metadatos generados desde
