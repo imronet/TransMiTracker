@@ -6,7 +6,7 @@ import json
 import math
 import time
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
 
@@ -19,8 +19,6 @@ from transmitracker.research.temporal import capture_record, distance_m
 MANIFEST = "https://gtfs.transmilenio.gov.co/manifest.json"
 ENDPOINT = "https://gtfs.transmilenio.gov.co/positions.pb"
 PILOT_ROOT = ROOT / "data/pilots"
-# Deliberately not a CLI override. A future documented review must resolve this gate.
-NETWORK_ALLOWED = False
 BLOCK_REASON = "Public conditions do not yet resolve bounded polling and local retention."
 _SESSION_USED = False
 MAX_BYTES = 8 * 1024**2
@@ -43,6 +41,89 @@ def write_json(path, value):
     with Path(path).open("x", encoding="utf-8") as target:
         json.dump(value, target, ensure_ascii=False, indent=2, allow_nan=False)
         target.write("\n")
+
+
+def pilot_path(path):
+    path = Path(path).resolve()
+    if not path.is_relative_to(PILOT_ROOT.resolve()) or path == PILOT_ROOT.resolve():
+        raise ValueError("Session and permit must be children of data/pilots")
+    return path
+
+
+def check_review(review, now):
+    if (
+        review.get("decision") != "allowed_private_temporary"
+        or review.get("scope") != "one_local_session_12_positions_60s_no_redistribution"
+        or not isinstance(review.get("evidence"), list)
+        or not review["evidence"]
+        or not isinstance(review.get("rationale"), str)
+        or not review["rationale"].strip()
+    ):
+        raise ValueError("Conditions unresolved: " + BLOCK_REASON)
+    reviewed = datetime.fromisoformat(review["reviewed_at"])
+    if reviewed.utcoffset() is None or not 0 <= (now - reviewed).total_seconds() <= 7 * 86400:
+        raise ValueError("Conditions review must be dated within seven days")
+
+
+def create_permit(review, directory, permit, *, confirm=False, now=utc_now):
+    """Offline, explicit operator decision; not a provider license or remote authorization."""
+    moment = now()
+    if not confirm:
+        raise ValueError("Explicit single-session confirmation required")
+    check_review(review, moment)
+    directory, permit = pilot_path(directory), pilot_path(permit)
+    if directory.exists() or permit.is_relative_to(directory):
+        raise ValueError("Session must be new and permit must be outside it")
+    value = {
+        "schema_version": 1,
+        "permit_id": uuid4().hex,
+        "directory": str(directory),
+        "endpoint": ENDPOINT,
+        "manifest": MANIFEST,
+        "issued_at": moment.isoformat(),
+        "expires_at": (moment + timedelta(minutes=15)).isoformat(),
+        "maximum_positions": 12,
+        "minimum_interval": 60,
+        "review": review,
+    }
+    permit.parent.mkdir(parents=True, exist_ok=True)
+    write_json(permit, value)
+    return value
+
+
+def claim_permit(permit, directory, *, count, interval, now):
+    permit, directory = pilot_path(permit), pilot_path(directory)
+    value = json.loads(permit.read_text(encoding="utf-8"))
+    moment = now()
+    issued = datetime.fromisoformat(value["issued_at"])
+    expires = datetime.fromisoformat(value["expires_at"])
+    if (
+        value.get("schema_version") != 1
+        or value.get("endpoint") != ENDPOINT
+        or value.get("manifest") != MANIFEST
+        or value.get("directory") != str(directory)
+        or directory.exists()
+        or issued.utcoffset() is None
+        or expires.utcoffset() is None
+        or not issued <= moment < expires
+        or not 0 < (expires - issued).total_seconds() <= 900
+        or value.get("maximum_positions") != 12
+        or value.get("minimum_interval") != 60
+    ):
+        raise ValueError("Permit expired, invalid, or bound to another session")
+    check_review(value["review"], moment)
+    limits(count, interval)
+    # Exclusive creation is the cross-process one-use claim. Never auto-remove it,
+    # even after a failure; copying the permission still binds the same new directory.
+    write_json(
+        permit.with_suffix(permit.suffix + ".used"),
+        {
+            "permit_id": value["permit_id"],
+            "claimed_at": moment.isoformat(),
+            "permit_sha256": hashlib.sha256(permit.read_bytes()).hexdigest(),
+        },
+    )
+    return value
 
 
 def limits(count, interval, routes=()):
@@ -117,6 +198,7 @@ def collect(
     count=3,
     interval=60,
     routes=(),
+    permit=None,
     client=None,
     clock=time.monotonic,
     sleep=time.sleep,
@@ -129,16 +211,15 @@ def collect(
     """
     global _SESSION_USED
     limits(count, interval, routes)
-    if not confirm or not NETWORK_ALLOWED:
+    if not confirm or permit is None:
         raise ValueError(
             "Capture blocked: explicit confirmation and resolved conditions required. "
             + BLOCK_REASON
         )
     if _SESSION_USED:
         raise ValueError("Only one session per process")
-    directory = Path(directory).resolve()
-    if not directory.is_relative_to(PILOT_ROOT.resolve()) or directory == PILOT_ROOT.resolve():
-        raise ValueError("Capture directory must be a new child of data/pilots")
+    directory = pilot_path(directory)
+    permission = claim_permit(permit, directory, count=count, interval=interval, now=now)
     directory.mkdir(parents=True, exist_ok=False)
     _SESSION_USED = True
     own = client is None
@@ -158,7 +239,8 @@ def collect(
         "positions_requests": 0,
         "captures": [],
         "stop_reason": "limit_reached",
-        "conditions_review": BLOCK_REASON,
+        "conditions_review": permission["review"],
+        "permit_id": permission["permit_id"],
     }
     latest, unchanged, previous = {}, 0, None
     try:
@@ -207,6 +289,8 @@ def collect(
             if unchanged >= 3:
                 session["stop_reason"] = "three_snapshots_without_new_relevant_gps_times"
                 break
+    except KeyboardInterrupt:
+        session["stop_reason"] = "operator_interrupted"
     except (DownloadError, ValueError, KeyError, OSError) as error:
         session["stop_reason"] = "error_no_retry"
         session["error_type"] = type(error).__name__
@@ -453,10 +537,18 @@ def main(argv=None):
     fixture.add_argument("--directory", required=True)
     capture = sub.add_parser("capture")
     capture.add_argument("--confirm-real-capture", action="store_true")
+    capture.add_argument("--permit", help="Local expiring one-use permission; no default")
     capture.add_argument("--count", type=int, default=3)
     capture.add_argument("--interval", type=int, default=60)
     capture.add_argument("--directory", default="data/pilots/" + uuid4().hex)
     capture.add_argument("--route", action="append", default=[])
+    authorize = sub.add_parser(
+        "permit", help="Offline issuance, only after conditions are resolved"
+    )
+    authorize.add_argument("--review", required=True)
+    authorize.add_argument("--directory", required=True)
+    authorize.add_argument("--output", required=True)
+    authorize.add_argument("--confirm-one-session", action="store_true")
     offline = sub.add_parser("analyze")
     offline.add_argument("directory")
     offline.add_argument("--output", required=True)
@@ -471,10 +563,19 @@ def main(argv=None):
                     {
                         "mode": "offline_plan",
                         "network_requests": 0,
-                        "capture_enabled": NETWORK_ALLOWED,
+                        "capture_enabled": False,
                         "reason": BLOCK_REASON,
                     }
                 )
+            )
+            return 0
+        if args.command == "permit":
+            review = json.loads(project_path(args.review).read_text(encoding="utf-8"))
+            create_permit(
+                review,
+                project_path(args.directory),
+                project_path(args.output),
+                confirm=args.confirm_one_session,
             )
             return 0
         if args.command == "fixture":
@@ -487,6 +588,7 @@ def main(argv=None):
                 count=args.count,
                 interval=args.interval,
                 routes=args.route,
+                permit=project_path(args.permit) if args.permit else None,
             )
             print(json.dumps({"stop_reason": result["stop_reason"]}))
             return 0 if result["stop_reason"] == "limit_reached" else 1

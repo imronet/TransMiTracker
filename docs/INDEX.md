@@ -5,7 +5,8 @@
 - [Presentación e instalación](../README.md)
 - [Preparar el catálogo y ejemplos](getting-started/SETUP.md)
 - [Uso de perfiles, estados y privacidad](getting-started/USAGE.md)
-- [Piloto GPS local 3B-P0: preparación offline y captura bloqueada](getting-started/LOCAL_GPS_PILOT.md)
+- [Piloto GPS local 3B-P2: permiso temporal y captura bloqueada](getting-started/LOCAL_GPS_PILOT.md)
+- [Revisión pendiente de condiciones del piloto doméstico](research/LOCAL_PILOT_CONDITIONS.json)
 
 ## Para desarrollar
 
@@ -24,7 +25,7 @@
 - [Históricos operativos, snapshots y limitaciones de IDs](archive/phases/PHASE0_5_REPORT.md)
 - [Diagnóstico temporal e identidad candidata](archive/phases/PHASE1B_REPORT.md)
 
-Fase 3A está entregada. 3B-P0 autoriza exclusivamente preparación y pruebas offline;
+Fase 3A está entregada. 3B-P0/P2 autorizan exclusivamente preparación y pruebas offline;
 la captura real sigue bloqueada. El plan conserva requisitos originales y adendas:
 las posteriores precisan el alcance vigente sin borrar historia.
 No existe todavía precisión operativa real validada ni recolección continua.
@@ -43,6 +44,7 @@ salidas consulte la guía de validación. No ejecute comandos históricos sobre 
 - [PHASE2_REPORT.md](archive/phases/PHASE2_REPORT.md)
 - [PHASE3A_REPORT.md](archive/phases/PHASE3A_REPORT.md)
 - [PHASE3B_P0_REPORT.md](archive/phases/PHASE3B_P0_REPORT.md)
+- [PHASE3B_P2_REPORT.md](archive/phases/PHASE3B_P2_REPORT.md)
 
 - [Catálogo de evidencias, hashes y excepciones de rutas](archive/evidence/INDEX.md)
 

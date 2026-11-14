@@ -1,8 +1,8 @@
-# Piloto GPS local — preparación 3B-P0
+# Piloto GPS local — preparación 3B-P2
 
 Herramienta manual aislada en `transmitracker.research.local_pilot`. El propietario
 autorizó implementación y pruebas offline, **no capturas reales**. La captura
-permanece bloqueada por revisión de condiciones; no hay opción CLI para saltarla.
+permanece bloqueada: requiere revisión resuelta y permiso temporal de una sesión.
 
 Desde la raíz del proyecto en PowerShell, con el entorno ya instalado:
 
@@ -52,18 +52,36 @@ Tres timestamps de un ID tampoco demuestran identidad operativa.
 
 ## Una sesión real futura, todavía bloqueada
 
-Después de resolver la revisión pública de sondeo/retención y de una autorización
-posterior para ejecutar, deberá actualizarse el gate NETWORK_ALLOWED con evidencia
-documentada en una tarea explícita. La confirmación por sí sola no lo activa.
-No se requiere certificar duraciones o resolver identidad operacional para preparar
-este diagnóstico doméstico: precisamente se investigarán esas limitaciones.
+El bloqueo global de código de P0 se sustituyó por permiso local de un solo uso.
+La revisión [LOCAL_PILOT_CONDITIONS.json](../research/LOCAL_PILOT_CONDITIONS.json)
+dice unresolved: el comando de emisión falla sin hacer red. No cambie esa decisión
+sin resolver con evidencia la pregunta de conservación privada/consulta acotada.
+No se exige automáticamente un convenio; consulte el [informe P2](../archive/phases/PHASE3B_P2_REPORT.md).
 
-El comando preparado para esa futura revisión es:
+Solo después de resolver la revisión y de que el propietario autorice ejecución,
+los comandos preparados son (no ejecutados en P2):
 
 ```powershell
-# NO ejecutado en 3B-P0. Actualmente falla antes de crear cliente o hacer red.
-.\.venv\Scripts\python.exe -m transmitracker.research.local_pilot capture --confirm-real-capture --count 12 --interval 60 --directory data/pilots/real-NUEVA-SESION
+# Emisión offline, confirmación del operador y sesión nueva exacta.
+.\.venv\Scripts\python.exe -m transmitracker.research.local_pilot permit --review docs/research/LOCAL_PILOT_CONDITIONS.json --directory data/pilots/real-SESION-001 --output data/pilots/permiso-SESION-001.json --confirm-one-session
+# Iniciar dentro de 15 minutos; sigue necesitando confirmación explícita.
+.\.venv\Scripts\python.exe -m transmitracker.research.local_pilot capture --permit data/pilots/permiso-SESION-001.json --confirm-real-capture --count 12 --interval 60 --directory data/pilots/real-SESION-001
+# Después, offline, con salida nueva y privada:
+.\.venv\Scripts\python.exe -m transmitracker.research.local_pilot analyze data/pilots/real-SESION-001 --output data/pilots/diagnostico-SESION-001.json
 ```
+
+El permiso vincula endpoint, revisión y directorio nuevo, vence para iniciar a los
+15 minutos y se consume mediante archivo exclusivo .json.used antes de red. La
+revisión debe tener menos de siete días, evidencia/justificación, ámbito exacto y
+decisión allowed_private_temporary. Es constancia local del operador, no licencia
+remota ni prueba jurídica por sí misma. No hay activación global/permanente.
+
+Ctrl+C detiene y registra operator_interrupted; no recupera el permiso ni permite
+reanudar. Tras error o cancelación, revisar archivos completos offline. Nunca borrar
+el marcador para repetir; otra sesión necesitaría nueva autorización y directorio.
+Revisar dentro de siete días; eliminar originales/derivados identificables solo
+tras revisión del propietario, sin borrado automático. Proteger el directorio de
+acceso público: estar excluido de Git no implica cifrado ni permisos privados.
 
 Una sesión por proceso, secuencial: primero un GET del manifiesto oficial, luego
 hasta 12 GET de posiciones, separados al menos 60 s entre inicios. Una consulta

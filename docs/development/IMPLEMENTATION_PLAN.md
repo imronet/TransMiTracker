@@ -966,3 +966,15 @@ Entrega: 139 pruebas pertinentes aprobadas (22 nuevas), Ruff/formato/pip check
 correctos; ejemplo sintético de cuatro snapshots reproducible. No se reejecutó
 la suite completa. Informe: [3B-P0](../archive/phases/PHASE3B_P0_REPORT.md).
 La captura real y la ampliación de fase requieren autorización posterior explícita.
+
+## 15. Adenda 3B-P2 — Permiso local temporal
+
+Autorizada preparación, no ejecución: sustituir el bloqueo global NETWORK_ALLOWED
+por permiso local de un uso, ligado a directorio nuevo y vencimiento de inicio
+de 15 minutos. Emisión offline requiere confirmación y revisión fundamentada de
+condiciones; captura requiere segunda confirmación y consume un marcador exclusivo.
+La revisión actual sigue pendiente: no se emite ni activa permiso real.
+Máximo 12 posiciones, intervalo >=60 s, un manifiesto, sin reintentos ni paralelismo;
+se mantienen análisis y garantías del motor. Ctrl+C deja constancia y no permite
+reanudar el permiso. Retención propuesta de siete días hasta revisión del dueño,
+sin borrar automáticamente. [Informe P2](../archive/phases/PHASE3B_P2_REPORT.md).

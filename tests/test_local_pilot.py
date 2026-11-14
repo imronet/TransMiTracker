@@ -8,6 +8,16 @@ from google.transit import gtfs_realtime_pb2 as pb
 from transmitracker.research import local_pilot as pilot
 
 
+def allowed_review(moment):
+    return {
+        "decision": "allowed_private_temporary",
+        "scope": "one_local_session_12_positions_60s_no_redistribution",
+        "evidence": ["https://example.invalid/SYNTHETIC-REVIEW"],
+        "rationale": "SYNTHETIC TEST ONLY, not a real provider allowance",
+        "reviewed_at": moment.isoformat(),
+    }
+
+
 def payload(ts=1800000000, *, missing=False, longitude=-74.1):
     feed = pb.FeedMessage()
     feed.header.gtfs_realtime_version = "2.0"
@@ -26,7 +36,6 @@ def payload(ts=1800000000, *, missing=False, longitude=-74.1):
 @pytest.fixture
 def mocked_pilot(tmp_path, monkeypatch):
     monkeypatch.setattr(pilot, "PILOT_ROOT", tmp_path)
-    monkeypatch.setattr(pilot, "NETWORK_ALLOWED", True)
     monkeypatch.setattr(pilot, "_SESSION_USED", False)
     state = {"time": 0, "calls": []}
 
@@ -55,6 +64,14 @@ def mocked_pilot(tmp_path, monkeypatch):
         clock=lambda: state["time"],
         sleep=sleep,
         now=lambda: datetime.fromtimestamp(1800000005 + state["time"], timezone.utc),
+        permit=tmp_path / "permission.json",
+    )
+    pilot.create_permit(
+        allowed_review(args["now"]()),
+        tmp_path / "session",
+        args["permit"],
+        confirm=True,
+        now=args["now"],
     )
     yield tmp_path, state, args
     client.close()
@@ -66,7 +83,6 @@ def test_default_and_confirmation_never_network(tmp_path, monkeypatch, capsys):
     with pytest.raises(ValueError):
         pilot.collect(tmp_path / "blocked", confirm=True)
     assert not (tmp_path / "blocked").exists()
-    monkeypatch.setattr(pilot, "NETWORK_ALLOWED", True)
     with pytest.raises(ValueError):
         pilot.collect(tmp_path / "blocked", confirm=False)
 
@@ -79,7 +95,7 @@ def test_strict_limits(count, interval):
 
 def test_max_requests_spacing_session_and_manifest(mocked_pilot):
     root, state, args = mocked_pilot
-    session = pilot.collect(root / "one", count=12, interval=60, **args)
+    session = pilot.collect(root / "session", count=12, interval=60, **args)
     assert session["positions_requests"] == 12
     assert session["manifest_requests"] == 1
     times = [t for path, t in state["calls"] if path.endswith("positions.pb")]
@@ -87,7 +103,7 @@ def test_max_requests_spacing_session_and_manifest(mocked_pilot):
     with pytest.raises(ValueError, match="one session"):
         pilot.collect(root / "two", **args)
     assert len(state["calls"]) == 13
-    record = json.loads((root / "one/capture_00.json").read_text())
+    record = json.loads((root / "session/capture_00.json").read_text())
     assert record["received_at"].endswith("+00:00")
     assert (
         record["vehicles"][0]["reported"]["timestamp"]
@@ -108,12 +124,12 @@ def test_error_no_retry(mocked_pilot, status):
 
     args["client"] = httpx.Client(transport=httpx.MockTransport(handler))
     try:
-        report = pilot.collect(root / "failure", count=12, **args)
+        report = pilot.collect(root / "session", count=12, **args)
     finally:
         args["client"].close()
     assert report["stop_reason"] == "error_no_retry"
     assert len(state["calls"]) == 2
-    assert (root / "failure/session.json").exists()
+    assert (root / "session/session.json").exists()
 
 
 @pytest.mark.parametrize("body", [b"invalid", payload(longitude=190)])
@@ -130,12 +146,12 @@ def test_rejected_payload_preserved_and_no_retry(mocked_pilot, body):
         )
     )
     try:
-        result = pilot.collect(root / "invalid", **args)
+        result = pilot.collect(root / "session", **args)
     finally:
         args["client"].close()
     assert result["stop_reason"] == "decode_error"
-    assert (root / "invalid/capture_00.pb").read_bytes() == body
-    assert pilot.analyze(root / "invalid")["counts"]["undecodable_snapshots"] == 1
+    assert (root / "session/capture_00.pb").read_bytes() == body
+    assert pilot.analyze(root / "session")["counts"]["undecodable_snapshots"] == 1
 
 
 def test_stop_after_three_without_novelty(mocked_pilot):
@@ -151,7 +167,7 @@ def test_stop_after_three_without_novelty(mocked_pilot):
         )
     )
     try:
-        result = pilot.collect(root / "stale", count=12, **args)
+        result = pilot.collect(root / "session", count=12, **args)
     finally:
         args["client"].close()
     assert result["positions_requests"] == 4  # first observation, then three repeated snapshots
@@ -210,7 +226,7 @@ def test_size_limit_transport_failure_and_manifest_host(mocked_pilot):
         )
     )
     try:
-        report = pilot.collect(root / "oversized", **args)
+        report = pilot.collect(root / "session", **args)
     finally:
         args["client"].close()
     assert report["positions_requests"] == 1 and report["stop_reason"] == "error_no_retry"
@@ -258,7 +274,7 @@ def test_timeout_and_bad_manifest_stop_without_positions(mocked_pilot):
 
     args["client"] = httpx.Client(transport=httpx.MockTransport(timeout))
     try:
-        result = pilot.collect(root / "timeout", **args)
+        result = pilot.collect(root / "session", **args)
     finally:
         args["client"].close()
     assert result["positions_requests"] == 0
@@ -287,3 +303,92 @@ def test_paths_and_missing_status(tmp_path):
     (tmp_path / "capture_00.json").write_text(json.dumps(record))
     with pytest.raises(ValueError, match="path"):
         pilot.analyze(tmp_path)
+
+
+@pytest.mark.parametrize("change", ["expired", "future", "directory", "endpoint", "conditions"])
+def test_permit_invalid_never_creates_client(mocked_pilot, monkeypatch, change):
+    root, _, args = mocked_pilot
+    value = json.loads(args["permit"].read_text())
+    if change == "expired":
+        value["expires_at"] = value["issued_at"]
+    elif change == "future":
+        value["issued_at"] = "2030-01-01T00:00:00+00:00"
+    elif change == "directory":
+        value["directory"] = str(root / "other")
+    elif change == "endpoint":
+        value["endpoint"] = "https://example.invalid/positions.pb"
+    else:
+        value["review"]["decision"] = "unresolved"
+    args["permit"].write_text(json.dumps(value))
+    monkeypatch.setattr(httpx, "Client", lambda **kwargs: pytest.fail("No client expected"))
+    args.pop("client")
+    with pytest.raises(ValueError):
+        pilot.collect(root / "session", **args)
+    assert not (root / "session").exists()
+
+
+def test_permit_atomic_claim_survives_new_process_flag(mocked_pilot, monkeypatch):
+    root, _, args = mocked_pilot
+    pilot.claim_permit(args["permit"], root / "session", count=12, interval=60, now=args["now"])
+    monkeypatch.setattr(pilot, "_SESSION_USED", False)
+    with pytest.raises(FileExistsError):
+        pilot.collect(root / "session", **args)
+    assert not (root / "session").exists()
+
+
+def test_issuance_requires_resolution_confirmation_and_new_directory(tmp_path, monkeypatch):
+    monkeypatch.setattr(pilot, "PILOT_ROOT", tmp_path)
+    moment = datetime.now(timezone.utc)
+    review = allowed_review(moment)
+    for confirm, decision in [(False, "allowed_private_temporary"), (True, "unresolved")]:
+        review["decision"] = decision
+        with pytest.raises(ValueError):
+            pilot.create_permit(
+                review, tmp_path / "session", tmp_path / "permit.json", confirm=confirm
+            )
+    assert not (tmp_path / "permit.json").exists()
+    review["decision"] = "allowed_private_temporary"
+    value = pilot.create_permit(
+        review, tmp_path / "session", tmp_path / "permit.json", confirm=True
+    )
+    assert (
+        datetime.fromisoformat(value["expires_at"]) - datetime.fromisoformat(value["issued_at"])
+    ).total_seconds() == 900
+    with pytest.raises(FileExistsError):
+        pilot.create_permit(review, tmp_path / "session", tmp_path / "permit.json", confirm=True)
+
+
+def test_interrupt_consumes_permission_and_preserves_session(mocked_pilot):
+    root, _, args = mocked_pilot
+
+    def interrupt(request):
+        raise KeyboardInterrupt()
+
+    client = httpx.Client(transport=httpx.MockTransport(interrupt))
+    args["client"] = client
+    try:
+        result = pilot.collect(root / "session", **args)
+    finally:
+        client.close()
+    assert result["stop_reason"] == "operator_interrupted"
+    assert (root / "session/session.json").exists()
+    assert args["permit"].with_suffix(".json.used").exists()
+
+
+def test_session_data_ignored_by_git():
+    import subprocess
+
+    result = subprocess.run(
+        [
+            "git",
+            "check-ignore",
+            "data/pilots/private/session.json",
+            "data/pilots/private/capture_00.pb",
+        ],
+        cwd=pilot.ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0
+    assert len(result.stdout.splitlines()) == 2

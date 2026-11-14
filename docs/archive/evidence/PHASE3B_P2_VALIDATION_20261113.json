@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-11-13T22:20:22.7379078-05:00",
+  "scope": "3B-P2 offline tests only, synthetic permits and MockTransport; no GPS requests or operational permits",
+  "checks": [
+    {
+      "command": "pytest test_local_pilot.py test_http.py test_realtime.py",
+      "exit_code": 0,
+      "output": "................................................................         [100%]\n64 passed in 0.93s"
+    },
+    {
+      "command": "ruff check .",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "ruff format --check .",
+      "exit_code": 0,
+      "output": "113 files already formatted"
+    },
+    {
+      "command": "pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ],
+  "all_passed": true
+}
