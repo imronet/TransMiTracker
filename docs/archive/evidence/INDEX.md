@@ -1,5 +1,11 @@
 # Evidencias históricas y compatibilidad
 
+## Mantenimiento focalizado de v0.3.0 — 2026-11-14
+
+[Validación de limpieza y QA](MAINTENANCE_V030_20261114.json): hashes de las ocho
+copias retiradas y sus originales archivados, pruebas del rastreador y enlaces.
+No se ejecutaron scripts históricos ni se regeneraron evidencias anteriores.
+
 ## Rastreador experimental por ruta — 2026-11-14
 
 - [Pruebas focalizadas y controles](ROUTE_TRACKER_VALIDATION_20261114.json).
@@ -52,8 +58,12 @@ una tarea explícita posterior. No reutilizar esos destinos para nuevas ejecucio
 
 Hashes y correspondencia de todos los documentos originales:
 [DOCUMENTATION_INTEGRITY.json](DOCUMENTATION_INTEGRITY.json).
-Los screenshots permanecen también en su ruta original por compatibilidad con
-rutas almacenadas; las copias archivadas son exactamente las mismas imágenes.
+Las ocho copias de `docs/screenshots/` se retiraron en el mantenimiento focalizado
+de v0.3.0 tras comprobar SHA-256 contra sus versiones archivadas. Las imágenes
+conservadas están en `docs/archive/phases/screenshots/`; los enlaces de los informes
+ya apuntan allí. `DOCUMENTATION_INTEGRITY.json` y el informe de reorganización
+anterior conservan las rutas originales como registro histórico, no como rutas
+vigentes. Los once documentos puente se conservan.
 
 Los informes se conservan sin cambios de contenido en [phases](../phases/).
 Sus nombres inline/rutas de comandos describen el contexto de la ejecución original;

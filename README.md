@@ -18,15 +18,19 @@ queries scheduled services and provides an experimental offline GPS engine.
 and documentation are under active development. The interface and most technical
 documents are in Spanish.
 
-The last recorded Phase 3A validation passed **237 tests**, Ruff, formatting and
-`pip check` on Windows/Python 3.13.14. This is a historical validation result,
-not a coverage claim or a test run performed by opening this README.
-
-See the [Phase 3A report](docs/archive/phases/PHASE3A_REPORT.md) for evidence,
-synthetic evaluation metrics and limitations.
+Start with the [offline route tracker guide](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
+for the manual PowerShell command. It uses saved snapshots and a local catalog;
+it does not collect live positions. See the
+[v0.3.0 delivery report](docs/archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md)
+for the saved real example and its historical validation (106 relevant tests).
+The conservative engine's earlier synthetic evaluation remains in the
+[Phase 3A report](docs/archive/phases/PHASE3A_REPORT.md).
 
 ## Available today
 
+- [Manual offline route tracker](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
+  for saved GPS sessions: candidate vehicle segments and route geometry progress,
+  without requiring an exact static trip or stable `start_time`.
 - Local GTFS catalog import and searches for stops, routes and stop patterns.
 - Downstream destination selection with platform and stop-occurrence identities.
 - Home → Work and Work → Home profiles with one to three legs.
@@ -35,14 +39,12 @@ synthetic evaluation metrics and limitations.
 - User-defined walking allowances and warnings for unverified transfers.
 - Experimental offline GPS replay with provenance, conservative identity checks,
   trajectory segmentation, estimated crossings and uncertainty intervals.
-- [Manual offline route tracker](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
-  for saved GPS sessions: candidate vehicle segments and route geometry progress,
-  without requiring an exact static trip or stable `start_time`.
 - Separate SQLite stores for the static catalog, profiles and GPS evidence.
 - [Local GPS pilot preparation](docs/getting-started/LOCAL_GPS_PILOT.md): manual
-  tooling tested offline; real capture remains blocked pending conditions review
-  and separate execution approval. One [bounded real session](docs/archive/phases/PHASE3B_FIRST_REAL_REPORT.md)
-  has now completed; its permission is consumed. No second session is authorized.
+  tooling and offline analysis. One
+  [bounded real session](docs/archive/phases/PHASE3B_FIRST_REAL_REPORT.md)
+  completed; its permission is consumed. Another capture requires a new conditions
+  review and separate execution approval. No second session is authorized.
 
 ## Planned, not active
 
@@ -50,6 +52,8 @@ Shared snapshot collection, independently verified operational identities,
 historical journey recommendations, arrival predictions and Telegram notifications
 remain future work. Further collection or implementation requires explicit approval.
 There is no mobile app or deployed backend.
+Croma is an optional future integration; the current application does not require
+an account, key or credits from that provider.
 
 ## Requirements and installation
 
@@ -100,12 +104,13 @@ An explicit synthetic diagnostic works without a downloaded feed:
 
 Start with the [documentation index](docs/INDEX.md).
 
+- [Current offline route tracker and PowerShell command](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
 - [Setup and catalog import](docs/getting-started/SETUP.md)
 - [Architecture and data boundaries](docs/architecture/OVERVIEW.md)
 - [Offline replay and development commands](docs/development/VALIDATION.md)
 - [Implementation plan and authorization history](docs/development/IMPLEMENTATION_PLAN.md)
 - [Versioning](docs/development/VERSIONING.md)
-- [Future provider and credit-budget design](docs/research/CROMA_INTEGRATION_DESIGN.md)
+- [Optional future provider and credit-budget design](docs/research/CROMA_INTEGRATION_DESIGN.md)
 - [Historical reports and evidence](docs/archive/evidence/INDEX.md)
 
 ## Important limitations

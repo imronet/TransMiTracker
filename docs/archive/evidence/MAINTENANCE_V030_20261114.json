@@ -1,0 +1,119 @@
+{
+    "date_bogota":  "2026-11-14",
+    "product_version":  "0.3.0",
+    "reference_commit":  "cd348b3285896ff069caabe2e9b0bf94b66121a3",
+    "scope":  "Focused CLI diagnostics, real projection ambiguity on synthetic shapes, duplicate screenshots and canonical navigation. No GPS analysis, network, capture or full suite.",
+    "screenshots":  [
+                                      {
+                                          "removed":  "docs/screenshots/phase2-dashboard-dark.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2-dashboard-dark.png",
+                                          "sha256":  "00f4b62a20ca6167f8deb913b6e2c8209a4c4de1bab166cff92bf51ce2c41b0e",
+                                          "bytes":  92294
+                                      },
+                                      {
+                                          "removed":  "docs/screenshots/phase2-profile-dark.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2-profile-dark.png",
+                                          "sha256":  "dc774bc6dceabcebc510e661a1f3b14d8a66cfdbd3a3c85d950f606458998574",
+                                          "bytes":  90556
+                                      },
+                                      {
+                                          "removed":  "docs/screenshots/phase2-settings-light.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2-settings-light.png",
+                                          "sha256":  "a9e2a492cc78c21bfae4d85be9f3dd6c2f89338aaf590aa14b7c84a04060a9a0",
+                                          "bytes":  92815
+                                      },
+                                      {
+                                          "removed":  "docs/screenshots/phase2_1-dashboard.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2_1-dashboard.png",
+                                          "sha256":  "ac4df50576be2fd4c36d4f9b237aca295f28f641ad7f0ffda64b635288c4aa56",
+                                          "bytes":  87016
+                                      },
+                                      {
+                                          "removed":  "docs/screenshots/phase2_1-profile.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2_1-profile.png",
+                                          "sha256":  "692e59740a1e92c907f03a5addf9629db796ae329453b64905515828dfe74af7",
+                                          "bytes":  90674
+                                      },
+                                      {
+                                          "removed":  "docs/screenshots/phase2_1-route-first.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2_1-route-first.png",
+                                          "sha256":  "a8577372f59187cadc2e334df5d6a76baa00d6c669959a3d3d5b11706229ff3d",
+                                          "bytes":  91923
+                                      },
+                                      {
+                                          "removed":  "docs/screenshots/phase2_1-saved.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2_1-saved.png",
+                                          "sha256":  "92a7b08c81dc934e1311d2c4528d591c1d961ad009e61c56a0f00cd26be085b5",
+                                          "bytes":  93251
+                                      },
+                                      {
+                                          "removed":  "docs/screenshots/phase2_1-settings.png",
+                                          "preserved":  "docs/archive/phases/screenshots/phase2_1-settings.png",
+                                          "sha256":  "910b2025b17911c04c2e6852563ef1a12644c6228cbc2f7f6790932bd66ece28",
+                                          "bytes":  87765
+                                      }
+                                  ],
+    "removed_bytes":  726294,
+    "sha256_matches_archives_and_original_documentation_manifest":  true,
+    "checks":  [
+                                 {
+                                     "command":  "ruff format src/transmitracker/research/route_tracker.py tests/test_route_tracker.py",
+                                     "exit_code":  0,
+                                     "output":  "2 files reformatted"
+                                 },
+                                 {
+                                     "command":  "pytest -q tests/test_route_tracker.py",
+                                     "exit_code":  0,
+                                     "output":  ".........................                                                [100%]\n25 passed in 0.34s"
+                                 },
+                                 {
+                                     "command":  "ruff check src/transmitracker/research/route_tracker.py tests/test_route_tracker.py",
+                                     "exit_code":  0,
+                                     "output":  "All checks passed!"
+                                 },
+                                 {
+                                     "command":  "ruff format --check src/transmitracker/research/route_tracker.py tests/test_route_tracker.py",
+                                     "exit_code":  0,
+                                     "output":  "2 files already formatted"
+                                 }
+                             ],
+    "documentation":  {
+                          "markdown_files":  41,
+                          "local_file_links":  174,
+                          "broken_links":  [
+
+                                           ],
+                          "external_links_not_fetched":  58,
+                          "historical_copy_consumers_in_code":  [
+
+                                                                ],
+                          "bridge_documents":  [
+                                                   "docs/CROMA_INTEGRATION_DESIGN.md",
+                                                   "docs/IMPLEMENTATION_PLAN.md",
+                                                   "docs/PHASE0_5_REPORT.md",
+                                                   "docs/PHASE0_REPORT.md",
+                                                   "docs/PHASE1A_REPORT.md",
+                                                   "docs/PHASE1B_REPORT.md",
+                                                   "docs/PHASE2_1_REPORT.md",
+                                                   "docs/PHASE2_REPORT.md",
+                                                   "docs/PHASE3A_REPORT.md",
+                                                   "docs/USAGE.md",
+                                                   "docs/VERSIONING.md"
+                                               ],
+                          "changed_bridges":  [
+
+                                              ],
+                          "protected_changed_paths":  [
+
+                                                      ],
+                          "head":  "cd348b3285896ff069caabe2e9b0bf94b66121a3"
+                      },
+    "preservation":  "Only eight duplicate PNGs removed. Eleven bridges, archived screenshots, reports, previous evidence, scripts, fixtures, 3A, GUI, profiles and catalog unchanged.",
+    "remaining_risks":  [
+                            "Historical generators retain fixed output destinations; they were not executed.",
+                            "Historical integrity tables retain retired docs/screenshots paths as historical provenance.",
+                            "External links were not checked over the network."
+                        ],
+    "commit_attribution":  "Assisted-by: OpenAI Codex",
+    "commit_or_push_performed":  false
+}

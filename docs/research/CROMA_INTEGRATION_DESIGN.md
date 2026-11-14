@@ -1,9 +1,13 @@
 # Integración futura de proveedores y créditos — especificación, no cliente
 
+**Estado vigente (v0.3.0):** Croma es una alternativa futura y opcional. El
+rastreador offline funciona sin ella, sin claves ni créditos. Esta especificación
+no autoriza implementar un cliente ni consultar al proveedor.
+
 Fase 3A entrega `SnapshotSource`, `OperationalIdentityVerifier` y
 `CreditBudgetManager` como protocolos en `reconstruction/providers.py`.
-**No hay cliente HTTP, facturación, scheduler ni llamadas Croma.** La Fase 3B
-requiere autorización adicional.
+**No hay cliente HTTP, facturación, scheduler ni llamadas Croma.** Toda integración
+o adquisición adicional requiere autorización; el rastreador 3B actual es offline.
 
 ## Adaptadores de datos
 

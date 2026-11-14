@@ -10,6 +10,7 @@ from dataclasses import asdict
 from pathlib import Path
 from types import SimpleNamespace
 
+from transmitracker.catalog import CatalogError
 from transmitracker.catalog.queries import Catalog
 from transmitracker.diagnostics import project_path
 from transmitracker.reconstruction.geometry import MeasuredShape, select_projection
@@ -407,6 +408,35 @@ def run(directory, route_id, catalog_path=None):
             catalog.close()
 
 
+def _cli_problem(error, stage):
+    """Fixed diagnostics only: exception text can contain private feed data."""
+    if isinstance(error, FileExistsError):
+        return "OUTPUT_EXISTS", "La salida ya existe; elija un archivo nuevo."
+    if stage == "output":
+        return "OUTPUT_PATH", "La salida debe ser un archivo nuevo dentro de data/pilots."
+    if stage == "write":
+        return "OUTPUT_WRITE", "No se pudo escribir el reporte privado; revise permisos y espacio."
+    if isinstance(error, (CatalogError, sqlite3.Error)):
+        return (
+            "CATALOG",
+            "No se pudo abrir o consultar el catalogo local; revise archivo y esquema.",
+        )
+    if isinstance(error, FileNotFoundError):
+        return "INPUT_MISSING", "Falta un archivo de la sesion; revise manifiesto, registros y PB."
+    if isinstance(error, json.JSONDecodeError):
+        return "INPUT_JSON", "El manifiesto o un registro no contiene JSON valido."
+    if isinstance(error, UnicodeError):
+        return "INPUT_ENCODING", "El manifiesto o un registro no tiene una codificacion valida."
+    if isinstance(error, OSError):
+        return "INPUT_READ", "No se pudo leer la entrada local; revise acceso y permisos."
+    if isinstance(error, ValueError) and str(error) == "Saved capture hash mismatch":
+        return (
+            "INPUT_INTEGRITY",
+            "El hash del PB no coincide con su registro; conserve los originales.",
+        )
+    return "INPUT_INVALID", "Estructura, campos o contenido de la sesion incompatibles."
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("session")
@@ -414,15 +444,18 @@ def main(argv=None):
     parser.add_argument("--catalog", help="Optional local read-only SQLite catalog")
     parser.add_argument("--output", required=True, help="New private JSON under data/pilots")
     args = parser.parse_args(argv)
+    stage = "output"
     try:
         output = pilot_path(project_path(args.output))
         if output.exists():
-            raise ValueError("Output already exists")
+            raise FileExistsError("Output already exists")
+        stage = "input"
         report = run(
             project_path(args.session),
             args.route,
             project_path(args.catalog) if args.catalog else None,
         )
+        stage = "write"
         output.parent.mkdir(parents=True, exist_ok=True)
         write_json(output, json.loads(canonical(report)))
         print(
@@ -440,10 +473,8 @@ def main(argv=None):
         )
         return 0
     except (ValueError, OSError, KeyError, TypeError, sqlite3.Error) as error:
-        parser.exit(
-            2,
-            f"Entrada offline rechazada ({type(error).__name__}); sin adquisicion ni reintento.\n",
-        )
+        code, message = _cli_problem(error, stage)
+        parser.exit(2, f"Error offline [{code}]: {message} Sin adquisicion ni reintento.\n")
 
 
 if __name__ == "__main__":

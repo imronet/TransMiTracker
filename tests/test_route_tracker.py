@@ -1,8 +1,12 @@
 import json
+import sqlite3
 from dataclasses import replace
+from types import SimpleNamespace
 
 import pytest
 
+from transmitracker.catalog import CatalogError
+from transmitracker.gtfs import FeedError
 from transmitracker.reconstruction.geometry import MeasuredShape
 from transmitracker.reconstruction.io import snapshot_from_rows
 from transmitracker.research import route_tracker as tracker
@@ -185,6 +189,36 @@ def test_route_geometry_uses_existing_projection_and_keeps_patterns():
     assert len(candidates) == 1
 
 
+def test_two_distinct_viable_shapes_never_select_one_arbitrarily():
+    with sqlite3.connect(":memory:") as connection:
+        connection.row_factory = sqlite3.Row
+        connection.execute("CREATE TABLE patterns (pattern_id, shape_id, route_id)")
+        connection.execute("CREATE TABLE shape_points (shape_id, latitude, longitude, sequence)")
+        connection.executemany(
+            "INSERT INTO patterns VALUES (?,?,?)",
+            [("P1", "S1", "DEMO_R"), ("P2", "S2", "DEMO_R")],
+        )
+        connection.executemany(
+            "INSERT INTO shape_points VALUES (?,?,?,?)",
+            [
+                ("S1", 4.65, -74.1, 1),
+                ("S1", 4.65, -74.09, 2),
+                ("S2", 4.6502, -74.1, 1),
+                ("S2", 4.6502, -74.09, 2),
+            ],
+        )
+        geometry = tracker.RouteGeometry(
+            SimpleNamespace(connection=connection), "DEMO_R", tracker.Parameters()
+        )
+        candidates, selected, error = geometry.project(frame(60).observations[0])
+        assert {c["shape_id"] for c in candidates} == {"S1", "S2"}
+        assert all(c["projection"] is not None for c in candidates)
+        assert selected is None and error == "ambiguous_geometry"
+        report = tracker.track([frame(0), frame(60)], "DEMO_R", geometry=geometry)
+        assert {s["state"] for s in segments(report)} == {"ambiguo"}
+        assert all(f["selected_geometry"] is None for s in segments(report) for f in s["fixes"])
+
+
 def test_duplicate_after_absence_does_not_reseed_movement():
     report = tracker.track(
         [frame(0), frame(60), frame(90, []), frame(120, [row(60)]), frame(180)], "DEMO_R"
@@ -228,3 +262,64 @@ def test_cli_private_output_and_pb_integrity(tmp_path, monkeypatch):
     (directory / "capture_00.pb").write_bytes(b"tampered")
     with pytest.raises(ValueError, match="hash"):
         tracker.run(directory, "DEMO_ROUTE")
+
+
+@pytest.mark.parametrize(
+    "error,code",
+    [
+        (FileNotFoundError("PRIVATE_ID"), "INPUT_MISSING"),
+        (PermissionError("PRIVATE_ID"), "INPUT_READ"),
+        (json.JSONDecodeError("PRIVATE_ID", "PRIVATE_ID", 0), "INPUT_JSON"),
+        (UnicodeDecodeError("utf-8", b"PRIVATE_ID", 0, 1, "private"), "INPUT_ENCODING"),
+        (CatalogError("PRIVATE_ID"), "CATALOG"),
+        (sqlite3.DatabaseError("PRIVATE_ID"), "CATALOG"),
+        (ValueError("Saved capture hash mismatch"), "INPUT_INTEGRITY"),
+        (FeedError("Invalid coordinates PRIVATE_ID 4.650001 -74.100001"), "INPUT_INVALID"),
+        (KeyError("PRIVATE_ID"), "INPUT_INVALID"),
+        (TypeError("PRIVATE_ID"), "INPUT_INVALID"),
+    ],
+)
+def test_cli_distinguishes_input_errors_without_private_details(
+    tmp_path, monkeypatch, capsys, error, code
+):
+    monkeypatch.setattr("transmitracker.research.local_pilot.PILOT_ROOT", tmp_path)
+
+    def reject(*args):
+        raise error
+
+    monkeypatch.setattr(tracker, "run", reject)
+    with pytest.raises(SystemExit) as stopped:
+        tracker.main(
+            [str(tmp_path), "--route", "PRIVATE_ID", "--output", str(tmp_path / "out.json")]
+        )
+    assert stopped.value.code == 2
+    output = capsys.readouterr()
+    assert not output.out and f"[{code}]" in output.err
+    assert all(secret not in output.err for secret in ("PRIVATE_ID", "4.650001", "-74.100001"))
+    assert not (tmp_path / "out.json").exists()
+
+
+def test_cli_output_errors_are_distinct_and_do_not_overwrite(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr("transmitracker.research.local_pilot.PILOT_ROOT", tmp_path)
+    calls = []
+    monkeypatch.setattr(tracker, "run", lambda *args: calls.append(args) or {})
+    output = tmp_path / "out.json"
+    output.write_text("unchanged", encoding="utf-8")
+    for path, code in ((output, "OUTPUT_EXISTS"), (tmp_path.parent / "public.json", "OUTPUT_PATH")):
+        with pytest.raises(SystemExit) as stopped:
+            tracker.main([str(tmp_path), "--route", "PRIVATE_ID", "--output", str(path)])
+        assert stopped.value.code == 2
+        assert f"[{code}]" in capsys.readouterr().err
+    assert not calls and output.read_text(encoding="utf-8") == "unchanged"
+
+    def denied(*args):
+        raise PermissionError("PRIVATE_ID 4.650001 -74.100001")
+
+    monkeypatch.setattr(tracker, "write_json", denied)
+    with pytest.raises(SystemExit) as stopped:
+        tracker.main(
+            [str(tmp_path), "--route", "PRIVATE_ID", "--output", str(tmp_path / "new.json")]
+        )
+    assert stopped.value.code == 2
+    message = capsys.readouterr().err
+    assert "[OUTPUT_WRITE]" in message and "PRIVATE_ID" not in message and "4.650001" not in message

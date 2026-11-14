@@ -31,6 +31,13 @@ Se rechazan destinos publicables, escapes y sobrescrituras. La consola muestra s
 conteos; el JSON contiene coordenadas e identificadores y debe permanecer privado.
 Un checkout público no incluye los datos de la sesión real.
 
+Los errores controlados terminan con código 2 y una categoría estable, sin imprimir
+la excepción original, rutas de entrada, IDs ni coordenadas: `OUTPUT_PATH`
+(destino privado inválido), `OUTPUT_EXISTS`, `OUTPUT_WRITE`, `CATALOG` (archivo,
+consulta o esquema), `INPUT_MISSING`, `INPUT_READ`, `INPUT_JSON`, `INPUT_ENCODING`,
+`INPUT_INTEGRITY` (hash PB) e `INPUT_INVALID` (estructura/contenido incompatible).
+No se adquieren datos ni se reintenta para resolver esos errores.
+
 ## Ejemplo real conservado
 
 La selección privada corresponde a la ruta de la mediana S01 del diagnóstico

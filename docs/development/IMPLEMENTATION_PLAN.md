@@ -1,5 +1,12 @@
 # TransMiTracker — Implementation Plan
 
+**Estado vigente — v0.3.0:** rastreador experimental offline por ruta disponible;
+véanse [uso](../getting-started/OFFLINE_ROUTE_TRACKER.md) y
+[adenda 17](#17-rastreador-experimental-offline-por-ruta--capacidad-autorizada).
+Las secciones y adendas anteriores conservan su contexto histórico. Croma es una
+alternativa futura y opcional; no se requiere para la capacidad actual. No hay
+autorización de nuevas capturas ni seguimiento continuo.
+
 **Proyecto:** Aplicación de escritorio para estimar tiempos de desplazamiento en TransMilenio/SITP.
 
 **Lenguaje:** Python 3.12+

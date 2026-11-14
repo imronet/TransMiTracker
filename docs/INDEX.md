@@ -1,13 +1,20 @@
 # Índice de documentación — TransMiTracker 0.3.0
 
+## Capacidad vigente
+
+El rastreador experimental por ruta procesa sesiones guardadas, sin red ni
+seguimiento en vivo. Empezar por su [comando PowerShell y uso](getting-started/OFFLINE_ROUTE_TRACKER.md).
+El [informe de entrega](archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md) conserva
+el ejemplo real offline y las pruebas históricas de v0.3.0.
+No existe precisión operativa validada ni recolección continua. La primera sesión
+real está cerrada; otra captura requiere nueva autorización.
+
 ## Para empezar
 
 - [Presentación e instalación](../README.md)
 - [Preparar el catálogo y ejemplos](getting-started/SETUP.md)
 - [Uso de perfiles, estados y privacidad](getting-started/USAGE.md)
-- [Piloto GPS local: primera sesión cerrada y análisis offline](getting-started/LOCAL_GPS_PILOT.md)
 - [Rastreador offline por ruta: comando y resultados candidatos](getting-started/OFFLINE_ROUTE_TRACKER.md)
-- [Decisión experimental consumida y evidencia de licencia](research/LOCAL_PILOT_CONDITIONS.json)
 
 ## Para desarrollar
 
@@ -17,22 +24,24 @@
 - [Validación y replay sin sobrescribir evidencia](development/VALIDATION.md)
 - [Política documental obligatoria](development/DOCUMENTATION_POLICY.md)
 - [Instrucciones de contribución asistida](../AGENTS.md)
-- [Informe de esta reorganización](development/DOCUMENTATION_MAINTENANCE_REPORT.md)
 
-## Investigación y trabajo futuro
+## Trabajo futuro opcional
+
+- [Diseño de proveedores y créditos: integración Croma futura y opcional, no implementada](research/CROMA_INTEGRATION_DESIGN.md)
+
+El plan conserva requisitos originales y adendas históricas; las posteriores
+precisan el alcance autorizado sin borrar historia.
+
+## Investigaciones completadas y navegación histórica
 
 - [Continuidad GPS offline: start_time, comparación de filtros y límites](research/GPS_CONTINUITY_OFFLINE.md)
 - [Correspondencia GTFS y progresión geométrica offline](research/GPS_GTFS_GEOMETRY_OFFLINE.md)
 - [Viabilidad de GPS real previa a 3B: fuentes, costes y condiciones](research/GPS_REAL_FEASIBILITY.md)
-- [Diseño de proveedores y créditos: no implementado](research/CROMA_INTEGRATION_DESIGN.md)
 - [Históricos operativos, snapshots y limitaciones de IDs](archive/phases/PHASE0_5_REPORT.md)
 - [Diagnóstico temporal e identidad candidata](archive/phases/PHASE1B_REPORT.md)
-
-Fase 3A está entregada. La primera sesión GPS real terminó el 13/11/2026;
-su autorización está consumida y no se permite otra captura sin nueva autorización.
-El plan conserva requisitos originales y adendas:
-las posteriores precisan el alcance vigente sin borrar historia.
-No existe todavía precisión operativa real validada ni recolección continua.
+- [Piloto GPS local: primera sesión cerrada y análisis offline](getting-started/LOCAL_GPS_PILOT.md)
+- [Decisión experimental consumida y evidencia de licencia](research/LOCAL_PILOT_CONDITIONS.json)
+- [Informe de la reorganización documental anterior](development/DOCUMENTATION_MAINTENANCE_REPORT.md)
 
 ## Informes archivados (contexto de cada fase)
 
