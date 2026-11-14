@@ -30,7 +30,7 @@ from transmitracker.research.local_pilot import pilot_path, write_json
 from transmitracker.research.temporal import distance_m
 from transmitracker.viewer.data import prepare
 
-VERSION = "od-candidate-offline-0.1.0"
+VERSION = "od-candidate-offline-0.1.1"
 
 
 class InputError(ValueError):
@@ -107,10 +107,60 @@ def _result(segment):
         "status": "indeterminate",
         "reasons": [],
         "crossings": [],
+        "endpoint_progression": [],
         "duration": None,
         "observations": [],
         "auxiliary_changes": {},
         "operationally_validated": False,
+    }
+
+
+def endpoint_progression(stop, event, observations, parameters):
+    """Audit full-band transitions, not the sum of local negative GPS steps.
+
+    Band-only oscillations retain the same crossing. After a supported forward
+    crossing, any observed return strictly before the band invalidates choosing
+    that endpoint for duration, even if no later recross is observed. Retain all
+    transition supports without selecting a replacement first/last crossing.
+    """
+    low, high = stop.progress_m - parameters.gps_error_m, stop.progress_m + parameters.gps_error_m
+    before, peak = None, None
+    forwards, returns = [], []
+
+    def support(first, last):
+        return tuple(o["support_id"] for o in observations[first : last + 1])
+
+    for index, observation in enumerate(observations):
+        progress = observation["projection"]["progress_m"]
+        if progress < low:
+            if peak is not None:
+                returns.append(
+                    {
+                        "after_forward_crossing": len(forwards) - 1,
+                        "support_ids": support(peak, index),
+                        "cumulative_reverse_m": observations[peak]["projection"]["progress_m"]
+                        - progress,
+                    }
+                )
+                peak = None
+            before = index
+        elif progress > high:
+            if before is not None:
+                forwards.append({"support_ids": support(before, index)})
+                before = None
+            if forwards and (
+                peak is None or progress > observations[peak]["projection"]["progress_m"]
+            ):
+                peak = index
+    return {
+        "stop_id": stop.stop_id,
+        "sequence": stop.sequence,
+        "original_event_id": event.event_id,
+        "band_min_progress_m": low,
+        "band_max_progress_m": high,
+        "forward_crossings": forwards,
+        "returns_before_band": returns,
+        "ambiguous_for_duration": bool(returns),
     }
 
 
@@ -293,6 +343,24 @@ def evaluate_segment(raw, source, vehicle, leg, geometry, parameters, report_has
                 "operationally_validated": False,
             }
         )
+        if event.kind == EventKind.CROSSING:
+            stop = next(
+                s for s in anchors if (s.stop_id, s.sequence) == (event.stop_id, event.sequence)
+            )
+            audit = endpoint_progression(stop, event, result["observations"], parameters)
+            result["endpoint_progression"].append(audit)
+            result["crossings"][-1]["duration_ambiguous"] = audit["ambiguous_for_duration"]
+            if audit["ambiguous_for_duration"]:
+                role = (
+                    "origin"
+                    if (stop.stop_id, stop.sequence) == (leg.origin_stop_id, leg.origin_sequence)
+                    else "destination"
+                )
+                result["reasons"].append(role + "_recross_or_cumulative_reversal")
+    if result["reasons"]:
+        # Original crossing events remain diagnostic evidence, never an arbitrary
+        # first/last pair. No numeric duration survives this indeterminate case.
+        return result
     measurement = measure(segment, usable, leg, parameters)
     reasons = [r for r in measurement.reasons if r != "operational_identity_not_verified"]
     ordered = len(usable) == 2 and usable[0].latest_at < usable[1].earliest_at

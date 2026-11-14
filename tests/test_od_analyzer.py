@@ -126,6 +126,122 @@ def test_interval_without_justified_point_estimate_has_no_midpoint_fallback(cata
     assert all(e["estimated_at"] is None for e in segments(result)[0]["crossings"])
 
 
+def test_qa_accumulated_origin_reversal_keeps_crossing_but_never_a_duration(catalog):
+    progress = (100, 150, 141, 132, 123, 114, 105, 150, 400, 475)
+    times = (0, 10, 11, 12, 13, 14, 15, 25, 35, 45)
+    payload = report(catalog, progress, times)
+    assert len(payload["vehicles"][0]["segments"]) == 1
+    result = analyze(catalog, payload)
+    segment = segments(result)[0]
+    assert len(segment["observations"]) == len(progress)
+    assert [o["projection"]["progress_m"] for o in segment["observations"]] == pytest.approx(
+        progress, abs=0.01
+    )
+    assert result["summary"]["crossing_candidates"] == 2
+    assert result["summary"]["duration_candidates"] == 0
+    assert segment["status"] == "indeterminate" and segment["duration"] is None
+    assert "origin_recross_or_cumulative_reversal" in segment["reasons"]
+    origin = segment["crossings"][0]
+    assert origin["earliest_at"] == 1800000000 - 1
+    assert origin["latest_at"] == 1800000010 + 1
+    assert origin["support"] == segment["observations"][:2]
+    audit = segment["endpoint_progression"][0]
+    assert audit["ambiguous_for_duration"] and origin["duration_ambiguous"]
+    assert len(audit["forward_crossings"]) == 2 and len(audit["returns_before_band"]) == 1
+    assert audit["forward_crossings"][0]["support_ids"] == origin["support_ids"]
+    assert audit["forward_crossings"][1]["support_ids"] == tuple(
+        o["support_id"] for o in segment["observations"][6:8]
+    )
+    assert audit["returns_before_band"][0]["support_ids"] == tuple(
+        o["support_id"] for o in segment["observations"][1:5]
+    )
+    assert audit["returns_before_band"][0]["cumulative_reverse_m"] == pytest.approx(27, abs=0.01)
+
+
+def test_small_post_crossing_variations_within_band_keep_candidate_duration(catalog):
+    progress = (100, 150, 142, 139, 141, 137, 145, 400, 475)
+    times = (0, 10, 11, 12, 13, 14, 15, 25, 35)
+    result = analyze(catalog, report(catalog, progress, times))
+    segment = segments(result)[0]
+    assert result["summary"]["duration_candidates"] == 1
+    assert segment["duration"]["status"] == "candidate_interval"
+    assert segment["duration"]["duration_min_s"] == pytest.approx(13)
+    assert segment["duration"]["duration_max_s"] == pytest.approx(37)
+    assert all(
+        not a["ambiguous_for_duration"]
+        and not a["returns_before_band"]
+        and len(a["forward_crossings"]) == 1
+        for a in segment["endpoint_progression"]
+    )
+
+
+def test_accumulated_destination_reversal_never_retargets_first_or_last_crossing(catalog):
+    progress = (100, 200, 400, 450, 441, 432, 423, 414, 405, 450, 500)
+    times = (0, 10, 20, 30, 31, 32, 33, 34, 35, 45, 55)
+    result = analyze(catalog, report(catalog, progress, times))
+    segment = segments(result)[0]
+    assert len(segment["observations"]) == len(progress)
+    assert result["summary"]["duration_candidates"] == 0
+    assert segment["status"] == "indeterminate" and segment["duration"] is None
+    assert segment["reasons"] == ["destination_recross_or_cumulative_reversal"]
+    origin, destination = segment["endpoint_progression"]
+    assert not origin["ambiguous_for_duration"] and destination["ambiguous_for_duration"]
+    assert len(destination["forward_crossings"]) == 2
+    assert segment["crossings"][1]["earliest_at"] == 1800000019
+    assert segment["crossings"][1]["latest_at"] == 1800000031
+    assert segment["crossings"][1]["support"] == segment["observations"][2:4]
+
+
+def test_return_before_band_is_indeterminate_even_without_later_recross(catalog):
+    result = analyze(catalog, report(catalog, (100, 150, 141, 132, 123), (0, 10, 11, 12, 13)))
+    segment = segments(result)[0]
+    audit = segment["endpoint_progression"][0]
+    assert len(audit["forward_crossings"]) == 1 and len(audit["returns_before_band"]) == 1
+    assert segment["reasons"] == ["origin_recross_or_cumulative_reversal"]
+    assert segment["duration"] is None
+
+
+@pytest.mark.parametrize(
+    "case", ["origin", "destination", "small_variations", "continuous", "interrupted"]
+)
+def test_summary_counts_match_report_states_and_ambiguous_durations_have_no_numbers(catalog, case):
+    cases = {
+        "origin": (
+            (100, 150, 141, 132, 123, 114, 105, 150, 400, 475),
+            (0, 10, 11, 12, 13, 14, 15, 25, 35, 45),
+            (),
+        ),
+        "destination": (
+            (100, 200, 400, 450, 441, 432, 423, 414, 405, 450, 500),
+            (0, 10, 20, 30, 31, 32, 33, 34, 35, 45, 55),
+            (),
+        ),
+        "small_variations": (
+            (100, 150, 142, 139, 141, 137, 145, 400, 475),
+            (0, 10, 11, 12, 13, 14, 15, 25, 35),
+            (),
+        ),
+        "continuous": ((0, 200, 300, 500, 600), (0, 20, 30, 50, 60), ()),
+        "interrupted": ((0, 200, 250, 300, 500), (0, 20, 25, 30, 50), (2,)),
+    }
+    progress, times, other = cases[case]
+    result = analyze(catalog, report(catalog, progress, times, other_routes=other))
+    rows = segments(result)
+    assert result["summary"]["duration_candidates"] == sum(
+        s["status"] == "candidate_interval" for s in rows
+    )
+    assert result["summary"]["crossing_candidates"] == sum(
+        e["status"] == "candidate_crossing" for s in rows for e in s["crossings"]
+    )
+    for row in rows:
+        if any(a["ambiguous_for_duration"] for a in row["endpoint_progression"]):
+            assert row["status"] == "indeterminate" and row["duration"] is None
+        if row["duration"] is not None:
+            assert row["duration"]["status"] == row["status"]
+    if case == "interrupted":
+        assert len(rows) == 2 and result["summary"]["duration_candidates"] == 0
+
+
 @pytest.mark.parametrize(
     "positions,expected", [((0, 100, 200), "DEMO_LINE_A"), ((300, 400, 500), "DEMO_LINE_B")]
 )
