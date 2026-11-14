@@ -992,3 +992,22 @@ Hay novedades GPS y recurrencia candidata, pero start_time cambia junto al reloj
 no se validan identidades operativas ni duraciones. Motor 3A intacto. Permiso consumido
 y revisión de ejecución cerrada; **segunda captura requiere nueva autorización**.
 [Informe y agregados](../archive/phases/PHASE3B_FIRST_REAL_REPORT.md).
+
+## 17. Rastreador experimental offline por ruta — capacidad autorizada
+
+El propietario autoriza implementar y probar una herramienta manual sobre la
+primera sesión guardada; no autoriza nuevas capturas ni seguimiento en vivo.
+Producto 0.3.0: `research.route_tracker`, selección por route_id exacto,
+agrupación `(source, vehicle_id)`, originales/hashes, deduplicación temporal y
+segmentación explicable. Viaje, start_time y paradas se conservan como auxiliares,
+sin exigir estabilidad para movimiento candidato. No modifica el motor 3A.
+
+Se reutilizan catálogo de lectura, decoder, distancias y proyección; varios
+patrones del mismo shape mantienen ambigüedad. Salida nueva y privada bajo
+data/pilots; sin servicio/calendario operativo supuesto, llegadas o duraciones.
+Aceptación: selección por ruta, segmentos y anomalías, progreso cuando sea posible,
+reproducción determinista y tests offline. Entrega: 106 pruebas pertinentes,
+Ruff/formato/pip check correctos y ejemplo con 12 snapshots existentes.
+[Informe y evidencia](../archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md).
+Capacidad disponible para revisión; siguiente ampliación o captura requiere
+autorización expresa. Se conservan todos los requisitos originales del plan.

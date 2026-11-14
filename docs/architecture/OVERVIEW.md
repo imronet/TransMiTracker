@@ -1,4 +1,4 @@
-# Arquitectura vigente — 0.2.0
+# Arquitectura vigente — 0.3.0
 
 ## Componentes y límites
 
@@ -49,3 +49,14 @@ Los detalles de campos, umbrales y resultados están en el
 [informe 3A](../archive/phases/PHASE3A_REPORT.md); sus métricas son históricas y
 sintéticas. El [diseño de proveedores y créditos](../research/CROMA_INTEGRATION_DESIGN.md)
 es futuro. No hay cliente Croma, predictor, Telegram operativo ni scheduler.
+
+## Rastreador experimental por ruta (3B, aislado)
+
+`research/route_tracker.py` añade una CLI offline sobre sesiones guardadas.
+Reutiliza lectura de PB con hashes, `Catalog` en lectura y utilidades geométricas;
+no cambia los criterios conservadores anteriores. Agrupa por fuente/vehículo,
+selecciona ruta exacta y trata viaje/start_time como auxiliares. Corta enlaces
+ante discontinuidades y conserva todos los patrones de cada shape candidato.
+No consulta calendarios ni verifica identidad física o eventos de servicio.
+El reporte completo solo puede escribirse bajo `data/pilots`, en un archivo nuevo;
+la consola emite conteos. [Contrato de uso y estados](../getting-started/OFFLINE_ROUTE_TRACKER.md).

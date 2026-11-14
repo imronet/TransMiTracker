@@ -4,6 +4,8 @@ La versión declarada antes de Fase 2.1 era **0.0.1**, comprobada en `pyproject.
 Fase 2.1 usó **0.1.0** por la ampliación del guardado estructural, borradores
 y selección por ruta. Fase 3A usa **0.2.0**, una ampliación compatible con motor
 GPS offline y CLI independientes. Se usa `MAJOR.MINOR.PATCH`, conforme a Semantic Versioning.
+La entrega del rastreador experimental offline por ruta usa **0.3.0** por añadir
+una capacidad compatible nueva. No cambia el algoritmo ni el esquema GPS de 3A.
 
 `pyproject.toml` es la única fuente de verdad. `version.app_version()` la lee en
 el proyecto; en una distribución instalada utiliza los metadatos generados desde

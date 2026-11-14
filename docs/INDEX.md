@@ -1,4 +1,4 @@
-# Índice de documentación — TransMiTracker 0.2.0
+# Índice de documentación — TransMiTracker 0.3.0
 
 ## Para empezar
 
@@ -6,6 +6,7 @@
 - [Preparar el catálogo y ejemplos](getting-started/SETUP.md)
 - [Uso de perfiles, estados y privacidad](getting-started/USAGE.md)
 - [Piloto GPS local: primera sesión cerrada y análisis offline](getting-started/LOCAL_GPS_PILOT.md)
+- [Rastreador offline por ruta: comando y resultados candidatos](getting-started/OFFLINE_ROUTE_TRACKER.md)
 - [Decisión experimental consumida y evidencia de licencia](research/LOCAL_PILOT_CONDITIONS.json)
 
 ## Para desarrollar
@@ -49,6 +50,7 @@ salidas consulte la guía de validación. No ejecute comandos históricos sobre 
 - [PHASE3B_P0_REPORT.md](archive/phases/PHASE3B_P0_REPORT.md)
 - [PHASE3B_P2_REPORT.md](archive/phases/PHASE3B_P2_REPORT.md)
 - [Primera sesión GPS real: agregados, QA y límites](archive/phases/PHASE3B_FIRST_REAL_REPORT.md)
+- [Rastreador experimental offline por ruta: entrega y QA](archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md)
 
 - [Catálogo de evidencias, hashes y excepciones de rutas](archive/evidence/INDEX.md)
 

@@ -1,5 +1,13 @@
 # Evidencias históricas y compatibilidad
 
+## Rastreador experimental por ruta — 2026-11-14
+
+- [Pruebas focalizadas y controles](ROUTE_TRACKER_VALIDATION_20261114.json).
+- [Ejemplo real offline: agregados no identificables y reproducción](ROUTE_TRACKER_REAL_SUMMARY_20261114.json).
+- [Informe de entrega](../phases/PHASE3B_ROUTE_TRACKER_REPORT.md).
+
+## Evidencia anterior preservada
+
 Los JSON originales permanecen en docs/ con bytes idénticos. Este índice los
 agrupa sin duplicarlos ni cambiar rutas contractuales. No son resultados nuevos.
 

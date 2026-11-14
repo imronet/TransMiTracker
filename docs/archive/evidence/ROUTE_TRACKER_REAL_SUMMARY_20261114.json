@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-14",
+  "product_version": "0.3.0",
+  "algorithm": "route-tracker-experimental-0.1.0",
+  "scope": "Saved real session; exact route of prior S01 median. No acquisition.",
+  "snapshots": 12,
+  "route_candidates": 1,
+  "vehicle_candidates": 3,
+  "original_route_observations": 36,
+  "distinct_vehicle_gps_times": 30,
+  "duplicates_removed_from_movement": 6,
+  "segment_states": {
+    "ambiguo": 5,
+    "descartado": 1,
+    "estacionario": 1,
+    "interrumpido": 1,
+    "movimiento_candidato": 2
+  },
+  "incident_reasons": {
+    "ambiguous_geometry": 5,
+    "repeated_gps_state": 6,
+    "geometry_backtrack": 1
+  },
+  "auxiliary_changes": {
+    "start_time": 27
+  },
+  "segments_with_motion_activity": 3,
+  "segments": [
+    {
+      "state": "ambiguo",
+      "activity_candidate": "ambiguo",
+      "position_changes": 0,
+      "sampled_distance_m": 0,
+      "geometric_progress_m": null,
+      "pattern_ambiguous": true,
+      "start_reason": "ambiguous_geometry",
+      "end_reason": "ambiguous_geometry",
+      "fixes": 1
+    },
+    {
+      "state": "ambiguo",
+      "activity_candidate": "ambiguo",
+      "position_changes": 0,
+      "sampled_distance_m": 0,
+      "geometric_progress_m": null,
+      "pattern_ambiguous": true,
+      "start_reason": "ambiguous_geometry",
+      "end_reason": "ambiguous_geometry",
+      "fixes": 1
+    },
+    {
+      "state": "ambiguo",
+      "activity_candidate": "ambiguo",
+      "position_changes": 0,
+      "sampled_distance_m": 0,
+      "geometric_progress_m": null,
+      "pattern_ambiguous": true,
+      "start_reason": "ambiguous_geometry",
+      "end_reason": "ambiguous_geometry",
+      "fixes": 1
+    },
+    {
+      "state": "descartado",
+      "activity_candidate": "descartado",
+      "position_changes": 0,
+      "sampled_distance_m": 0,
+      "geometric_progress_m": 0.0,
+      "pattern_ambiguous": true,
+      "start_reason": "ambiguous_geometry",
+      "end_reason": "ambiguous_geometry",
+      "fixes": 1
+    },
+    {
+      "state": "ambiguo",
+      "activity_candidate": "ambiguo",
+      "position_changes": 0,
+      "sampled_distance_m": 0,
+      "geometric_progress_m": null,
+      "pattern_ambiguous": true,
+      "start_reason": "ambiguous_geometry",
+      "end_reason": "ambiguous_geometry",
+      "fixes": 1
+    },
+    {
+      "state": "ambiguo",
+      "activity_candidate": "ambiguo",
+      "position_changes": 0,
+      "sampled_distance_m": 0,
+      "geometric_progress_m": null,
+      "pattern_ambiguous": true,
+      "start_reason": "ambiguous_geometry",
+      "end_reason": "ambiguous_geometry",
+      "fixes": 1
+    },
+    {
+      "state": "movimiento_candidato",
+      "activity_candidate": "movimiento_candidato",
+      "position_changes": 3,
+      "sampled_distance_m": 1276.4051893952355,
+      "geometric_progress_m": 1299.2300332193354,
+      "pattern_ambiguous": true,
+      "start_reason": "ambiguous_geometry",
+      "end_reason": "session_end",
+      "fixes": 4
+    },
+    {
+      "state": "interrumpido",
+      "activity_candidate": "movimiento_candidato",
+      "position_changes": 2,
+      "sampled_distance_m": 1406.040922237342,
+      "geometric_progress_m": 1808.6007029941811,
+      "pattern_ambiguous": true,
+      "start_reason": "session_start",
+      "end_reason": "geometry_backtrack",
+      "fixes": 3
+    },
+    {
+      "state": "estacionario",
+      "activity_candidate": "estacionario",
+      "position_changes": 5,
+      "sampled_distance_m": 5.490779793955708,
+      "geometric_progress_m": -0.4953975095512533,
+      "pattern_ambiguous": true,
+      "start_reason": "geometry_backtrack",
+      "end_reason": "session_end",
+      "fixes": 7
+    },
+    {
+      "state": "movimiento_candidato",
+      "activity_candidate": "movimiento_candidato",
+      "position_changes": 9,
+      "sampled_distance_m": 2970.063324301158,
+      "geometric_progress_m": 3208.085980903262,
+      "pattern_ambiguous": true,
+      "start_reason": "session_start",
+      "end_reason": "session_end",
+      "fixes": 10
+    }
+  ],
+  "prior_median_window_comparison": [
+    {
+      "fixes": 5,
+      "sampled_distance_m": 1323.76,
+      "geometric_progress_m": 1430.06,
+      "parent_segment_state": "movimiento_candidato"
+    }
+  ],
+  "deterministic_replay": true,
+  "private_report_sha256": "aba9b467f88bd6313d434e17dce2710e6f942af2f44e39bcb1b78bdadee54ab1",
+  "catalog_file_sha256": "30502df8428df296b29aa1d1ffb3bbe6f79efe0b90d551812a89ad106c579c3c",
+  "catalog_zip_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+  "catalog_imported_at": "2026-11-12T22:51:27.810417-05:00",
+  "code_sha256": "2f66d29ee8a20f9ac0fca44f0968df50b33e6908859a9aa18ec32a168028a8a9",
+  "summary_recipe_sha256": "793ee2ef850ee7d5bac9af959c6fdfcd12c3afc78bc5954f19009920d4bd03fe",
+  "network_requests": 0,
+  "operationally_verified": false,
+  "arrivals_boarding_travel_durations_inferred": false
+}

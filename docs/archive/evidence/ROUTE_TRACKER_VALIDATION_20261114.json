@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-14",
+  "scope": "Offline route tracker, saved-session I/O, unchanged 3A regressions and version metadata. Network blocked in pytest. No full GUI suite.",
+  "checks": [
+    {
+      "command": "pytest -q tests/test_route_tracker.py tests/test_local_pilot.py tests/test_reconstruction.py tests/test_reconstruction_store.py tests/test_phase2_1.py::test_version_is_semver_and_from_project_metadata",
+      "exit_code": 0,
+      "output": "........................................................................ [ 67%]\n..................................                                       [100%]\n106 passed in 21.19s"
+    },
+    {
+      "command": "ruff check .",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "ruff format --check .",
+      "exit_code": 0,
+      "output": "118 files already formatted"
+    },
+    {
+      "command": "pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ]
+}

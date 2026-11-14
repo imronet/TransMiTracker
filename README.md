@@ -14,8 +14,9 @@ queries scheduled services and provides an experimental offline GPS engine.
 
 ## Current status
 
-**Version 0.2.0 — Phase 3A delivered.** The application and documentation are
-under active development. The interface and most technical documents are in Spanish.
+**Version 0.3.0 — Experimental offline route tracker delivered.** The application
+and documentation are under active development. The interface and most technical
+documents are in Spanish.
 
 The last recorded Phase 3A validation passed **237 tests**, Ruff, formatting and
 `pip check` on Windows/Python 3.13.14. This is a historical validation result,
@@ -34,6 +35,9 @@ synthetic evaluation metrics and limitations.
 - User-defined walking allowances and warnings for unverified transfers.
 - Experimental offline GPS replay with provenance, conservative identity checks,
   trajectory segmentation, estimated crossings and uncertainty intervals.
+- [Manual offline route tracker](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
+  for saved GPS sessions: candidate vehicle segments and route geometry progress,
+  without requiring an exact static trip or stable `start_time`.
 - Separate SQLite stores for the static catalog, profiles and GPS evidence.
 - [Local GPS pilot preparation](docs/getting-started/LOCAL_GPS_PILOT.md): manual
   tooling tested offline; real capture remains blocked pending conditions review
@@ -44,7 +48,7 @@ synthetic evaluation metrics and limitations.
 
 Shared snapshot collection, independently verified operational identities,
 historical journey recommendations, arrival predictions and Telegram notifications
-remain future work. Phase 3B requires explicit approval before implementation.
+remain future work. Further collection or implementation requires explicit approval.
 There is no mobile app or deployed backend.
 
 ## Requirements and installation
