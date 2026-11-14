@@ -1,0 +1,3248 @@
+{
+  "reference_commit": "e6551a8108caf70abe746f72196601beb072de62",
+  "network_requests": 0,
+  "metadata": {
+    "sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+    "source_url": "https://gtfs.transmilenio.gov.co/GTFS.zip",
+    "imported_at": "2026-11-12T22:51:27.810417-05:00",
+    "zip_bytes": 180271992,
+    "batch_size": 10000,
+    "schema_version": 1
+  },
+  "db_file_sha256": "30502df8428df296b29aa1d1ffb3bbe6f79efe0b90d551812a89ad106c579c3c",
+  "feed_info": [
+    {
+      "feed_publisher_name": "Transmilenio S.A.",
+      "feed_start_date": "20260101",
+      "feed_version": "1",
+      "feed_end_date": "20261231",
+      "feed_lang": "es",
+      "feed_publisher_url": "https://www.transmilenio.gov.co/",
+      "feed_contact_email": "radicacion@transmilenio.gov.co"
+    }
+  ],
+  "inventory": {
+    "route_id": {
+      "observations": 24104,
+      "matched_observations": 24104,
+      "missing_values": 0,
+      "distinct": 559,
+      "matched_distinct": 559
+    },
+    "trip_id": {
+      "observations": 24104,
+      "matched_observations": 1729,
+      "missing_values": 0,
+      "distinct": 2258,
+      "matched_distinct": 165
+    },
+    "stop_id": {
+      "observations": 24104,
+      "matched_observations": 23166,
+      "missing_values": 0,
+      "distinct": 1651,
+      "matched_distinct": 1589
+    }
+  },
+  "trip_route": {
+    "conflict": 1463,
+    "consistent": 266
+  },
+  "association_reasons": {
+    "trip_id_not_in_catalog": 22375,
+    "trip_route_conflict": 1463,
+    "stop_sequence_conflict": 97,
+    "exact_catalog_references_only": 169
+  },
+  "full_exact_observations_by_route_pattern": {
+    "R024": {
+      "P0141": 24
+    },
+    "R059": {
+      "P0775": 12
+    },
+    "R055": {
+      "P0283": 7
+    },
+    "R047": {
+      "P1168": 12
+    },
+    "R027": {
+      "P1081": 21
+    },
+    "R132": {
+      "P0394": 11
+    },
+    "R033": {
+      "P1144": 9
+    },
+    "R129": {
+      "P0962": 1
+    },
+    "R079": {
+      "P0538": 12
+    },
+    "R013": {
+      "P0642": 12
+    },
+    "R078": {
+      "P1370": 12
+    },
+    "R071": {
+      "P1374": 12
+    },
+    "R123": {
+      "P0706": 12,
+      "P0974": 12
+    }
+  },
+  "exploratory_chain_count": 2107,
+  "cohort": {
+    "route_only_trip_absent": 1959,
+    "chains_with_any_usable_geometry": 2107,
+    "chains_with_one_pattern_candidate": 1160,
+    "chains_with_multiple_pattern_candidates": 947,
+    "chains_with_one_shape_candidate": 2107,
+    "route_only_trip_conflict": 126,
+    "exact_trip_route_references": 22,
+    "chains_full_exact_references_all_fixes": 14
+  },
+  "moving_sample_count": 40,
+  "moving_sample_categories": {
+    "ambiguous_coherent_patterns": 10,
+    "unique_geometric_pattern_candidate": 23,
+    "fits_without_coherent_progress": 1,
+    "no_fitting_unambiguous_shape": 6
+  },
+  "sample_results": [
+    {
+      "sample": "S01",
+      "tags": [
+        "cohort_median_path_length"
+      ],
+      "route_alias": "R352",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1324,
+      "candidate_patterns": 2,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0911",
+        "P1451"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 1.16,
+        "residual_median_m": 2.47,
+        "residual_max_m": 7.01,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          390.02,
+          186.41,
+          153.22,
+          700.41
+        ],
+        "net_progress_m": 1430.06
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0911",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.16,
+          "residual_median_m": 2.47,
+          "residual_max_m": 7.01,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            390.02,
+            186.41,
+            153.22,
+            700.41
+          ],
+          "net_progress_m": 1430.06,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P1451",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.16,
+          "residual_median_m": 2.47,
+          "residual_max_m": 7.01,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            390.02,
+            186.41,
+            153.22,
+            700.41
+          ],
+          "net_progress_m": 1430.06,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S02",
+      "tags": [
+        "previous_extreme_A"
+      ],
+      "route_alias": "R461",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 4535,
+      "candidate_patterns": 3,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0291",
+        "P0693",
+        "P0950"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 2.52,
+        "residual_median_m": 3.76,
+        "residual_max_m": 7.45,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          1374.39,
+          795.39,
+          671.9,
+          1694.52
+        ],
+        "net_progress_m": 4536.2
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0291",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 2.52,
+          "residual_median_m": 3.76,
+          "residual_max_m": 7.45,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1374.39,
+            795.39,
+            671.9,
+            1694.52
+          ],
+          "net_progress_m": 4536.2,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0693",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 2.52,
+          "residual_median_m": 3.76,
+          "residual_max_m": 7.45,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1374.39,
+            795.39,
+            671.9,
+            1694.52
+          ],
+          "net_progress_m": 4536.2,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0950",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 2.52,
+          "residual_median_m": 3.76,
+          "residual_max_m": 7.45,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1374.39,
+            795.39,
+            671.9,
+            1694.52
+          ],
+          "net_progress_m": 4536.2,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0291",
+        "P0693"
+      ]
+    },
+    {
+      "sample": "S03",
+      "tags": [
+        "previous_extreme_B"
+      ],
+      "route_alias": "R218",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 4461,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0572"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 3.13,
+        "residual_median_m": 3.94,
+        "residual_max_m": 4.98,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          1023.39,
+          918.95,
+          617.03,
+          1902.37
+        ],
+        "net_progress_m": 4461.74
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0572",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 3.13,
+          "residual_median_m": 3.94,
+          "residual_max_m": 4.98,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1023.39,
+            918.95,
+            617.03,
+            1902.37
+          ],
+          "net_progress_m": 4461.74,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S04",
+      "tags": [
+        "previous_extreme_C"
+      ],
+      "route_alias": "R466",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 4012,
+      "candidate_patterns": 2,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1156",
+        "P1235"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.04,
+        "residual_median_m": 0.46,
+        "residual_max_m": 3.78,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          1130.94,
+          909.5,
+          880.79,
+          1103.38
+        ],
+        "net_progress_m": 4024.62
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1156",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.04,
+          "residual_median_m": 0.46,
+          "residual_max_m": 3.78,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1130.94,
+            909.5,
+            880.79,
+            1103.38
+          ],
+          "net_progress_m": 4024.62,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P1235",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.04,
+          "residual_median_m": 0.46,
+          "residual_max_m": 3.78,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1130.94,
+            909.5,
+            880.79,
+            1103.38
+          ],
+          "net_progress_m": 4024.62,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S05",
+      "tags": [
+        "minimum_moving_chain"
+      ],
+      "route_alias": "R290",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 3,
+      "observed_path_length_rounded_m": 2,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "fits_without_coherent_progress",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": false,
+        "projection_rejections": {},
+        "residual_min_m": 0.37,
+        "residual_median_m": 0.46,
+        "residual_max_m": 1.3,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          -0.93,
+          1.0
+        ],
+        "net_progress_m": 0.07
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0233",
+          "all_fixes_fit": true,
+          "coherent_candidate": false,
+          "projection_rejections": {},
+          "residual_min_m": 0.37,
+          "residual_median_m": 0.46,
+          "residual_max_m": 1.3,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            -0.93,
+            1.0
+          ],
+          "net_progress_m": 0.07,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S06",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R024",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1342,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0141"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.31,
+        "residual_median_m": 2.39,
+        "residual_max_m": 3.5,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          634.52,
+          109.68,
+          160.26,
+          589.32
+        ],
+        "net_progress_m": 1493.78
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0141",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.31,
+          "residual_median_m": 2.39,
+          "residual_max_m": 3.5,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            634.52,
+            109.68,
+            160.26,
+            589.32
+          ],
+          "net_progress_m": 1493.78,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0141"
+      ]
+    },
+    {
+      "sample": "S07",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R059",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1733,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0775"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.26,
+        "residual_median_m": 0.5,
+        "residual_max_m": 1.32,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          695.49,
+          313.78,
+          131.26,
+          627.47
+        ],
+        "net_progress_m": 1767.99
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0775",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.26,
+          "residual_median_m": 0.5,
+          "residual_max_m": 1.32,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            695.49,
+            313.78,
+            131.26,
+            627.47
+          ],
+          "net_progress_m": 1767.99,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0775"
+      ]
+    },
+    {
+      "sample": "S08",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R055",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 4,
+      "observed_path_length_rounded_m": 648,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0283"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.63,
+        "residual_median_m": 1.65,
+        "residual_max_m": 4.92,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          285.53,
+          205.63,
+          338.84
+        ],
+        "net_progress_m": 830.0
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0283",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.63,
+          "residual_median_m": 1.65,
+          "residual_max_m": 4.92,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            285.53,
+            205.63,
+            338.84
+          ],
+          "net_progress_m": 830.0,
+          "published_stop_occurrences_matched": 4,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0283"
+      ]
+    },
+    {
+      "sample": "S09",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R047",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1826,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1168"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.6,
+        "residual_median_m": 4.05,
+        "residual_max_m": 5.43,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          363.78,
+          360.21,
+          276.43,
+          869.8
+        ],
+        "net_progress_m": 1870.22
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1168",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.6,
+          "residual_median_m": 4.05,
+          "residual_max_m": 5.43,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            363.78,
+            360.21,
+            276.43,
+            869.8
+          ],
+          "net_progress_m": 1870.22,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P1168"
+      ]
+    },
+    {
+      "sample": "S10",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R027",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1115,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1081"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.13,
+        "residual_median_m": 1.16,
+        "residual_max_m": 6.07,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          382.93,
+          446.56,
+          78.15,
+          277.97
+        ],
+        "net_progress_m": 1185.61
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1081",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.13,
+          "residual_median_m": 1.16,
+          "residual_max_m": 6.07,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            382.93,
+            446.56,
+            78.15,
+            277.97
+          ],
+          "net_progress_m": 1185.61,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P1081"
+      ]
+    },
+    {
+      "sample": "S11",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R132",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 2137,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0394"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.16,
+        "residual_median_m": 2.29,
+        "residual_max_m": 5.47,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          528.27,
+          742.42,
+          412.95,
+          614.32
+        ],
+        "net_progress_m": 2297.97
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0394",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.16,
+          "residual_median_m": 2.29,
+          "residual_max_m": 5.47,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            528.27,
+            742.42,
+            412.95,
+            614.32
+          ],
+          "net_progress_m": 2297.97,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0394"
+      ]
+    },
+    {
+      "sample": "S12",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R033",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 4,
+      "observed_path_length_rounded_m": 561,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "ambiguous_shape_branch": 2
+        },
+        "residual_min_m": 1.72,
+        "residual_median_m": 3.7,
+        "residual_max_m": 5.77,
+        "backward_pairs": 0,
+        "jump_pairs": 1,
+        "progress_deltas_m": [
+          24785.09
+        ],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1144",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 2
+          },
+          "residual_min_m": 1.72,
+          "residual_median_m": 3.7,
+          "residual_max_m": 5.77,
+          "backward_pairs": 0,
+          "jump_pairs": 1,
+          "progress_deltas_m": [
+            24785.09
+          ],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 4,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S13",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R079",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1138,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0538"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 1.38,
+        "residual_median_m": 3.7,
+        "residual_max_m": 5.26,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          476.35,
+          380.6,
+          208.27,
+          390.73
+        ],
+        "net_progress_m": 1455.96
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0538",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.38,
+          "residual_median_m": 3.7,
+          "residual_max_m": 5.26,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            476.35,
+            380.6,
+            208.27,
+            390.73
+          ],
+          "net_progress_m": 1455.96,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0538"
+      ]
+    },
+    {
+      "sample": "S14",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R013",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 58,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0642"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 3.15,
+        "residual_median_m": 5.37,
+        "residual_max_m": 6.98,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          22.66,
+          0.9,
+          31.68,
+          2.56
+        ],
+        "net_progress_m": 57.81
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0642",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 3.15,
+          "residual_median_m": 5.37,
+          "residual_max_m": 6.98,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            22.66,
+            0.9,
+            31.68,
+            2.56
+          ],
+          "net_progress_m": 57.81,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0642"
+      ]
+    },
+    {
+      "sample": "S15",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R078",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 2772,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1370"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.61,
+        "residual_median_m": 2.94,
+        "residual_max_m": 4.72,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          1009.28,
+          301.5,
+          643.03,
+          823.62
+        ],
+        "net_progress_m": 2777.44
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1370",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.61,
+          "residual_median_m": 2.94,
+          "residual_max_m": 4.72,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1009.28,
+            301.5,
+            643.03,
+            823.62
+          ],
+          "net_progress_m": 2777.44,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P1370"
+      ]
+    },
+    {
+      "sample": "S16",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R027",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 934,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1081"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.39,
+        "residual_median_m": 1.22,
+        "residual_max_m": 2.35,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          153.02,
+          167.73,
+          160.19,
+          489.26
+        ],
+        "net_progress_m": 970.2
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1081",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.39,
+          "residual_median_m": 1.22,
+          "residual_max_m": 2.35,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            153.02,
+            167.73,
+            160.19,
+            489.26
+          ],
+          "net_progress_m": 970.2,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P1081"
+      ]
+    },
+    {
+      "sample": "S17",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R123",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 2590,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0706"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.19,
+        "residual_median_m": 1.97,
+        "residual_max_m": 2.44,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          821.03,
+          713.26,
+          242.84,
+          1062.07
+        ],
+        "net_progress_m": 2839.21
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0706",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.19,
+          "residual_median_m": 1.97,
+          "residual_max_m": 2.44,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            821.03,
+            713.26,
+            242.84,
+            1062.07
+          ],
+          "net_progress_m": 2839.21,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0706"
+      ]
+    },
+    {
+      "sample": "S18",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R024",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1615,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "ambiguous_shape_branch": 4
+        },
+        "residual_min_m": 0.59,
+        "residual_median_m": 0.86,
+        "residual_max_m": 10.08,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0141",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 4
+          },
+          "residual_min_m": 0.59,
+          "residual_median_m": 0.86,
+          "residual_max_m": 10.08,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S19",
+      "tags": [
+        "all_fixes_exact_catalog_references"
+      ],
+      "route_alias": "R123",
+      "association_mode": "exact_trip_route_references",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1833,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0974"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 1.96,
+        "residual_median_m": 7.96,
+        "residual_max_m": 10.51,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          237.2,
+          210.36,
+          429.94,
+          1132.28
+        ],
+        "net_progress_m": 2009.78
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0974",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.96,
+          "residual_median_m": 7.96,
+          "residual_max_m": 10.51,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            237.2,
+            210.36,
+            429.94,
+            1132.28
+          ],
+          "net_progress_m": 2009.78,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0974"
+      ]
+    },
+    {
+      "sample": "S20",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R076",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1313,
+      "candidate_patterns": 5,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0092",
+        "P0145",
+        "P0202",
+        "P0437",
+        "P0665"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.2,
+        "residual_median_m": 3.77,
+        "residual_max_m": 6.25,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          578.22,
+          316.05,
+          232.89,
+          185.37
+        ],
+        "net_progress_m": 1312.54
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0092",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.2,
+          "residual_median_m": 3.77,
+          "residual_max_m": 6.25,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            578.22,
+            316.05,
+            232.89,
+            185.37
+          ],
+          "net_progress_m": 1312.54,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P0145",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.2,
+          "residual_median_m": 3.77,
+          "residual_max_m": 6.25,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            578.22,
+            316.05,
+            232.89,
+            185.37
+          ],
+          "net_progress_m": 1312.54,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0202",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.2,
+          "residual_median_m": 3.77,
+          "residual_max_m": 6.25,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            578.22,
+            316.05,
+            232.89,
+            185.37
+          ],
+          "net_progress_m": 1312.54,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0437",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.2,
+          "residual_median_m": 3.77,
+          "residual_max_m": 6.25,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            578.22,
+            316.05,
+            232.89,
+            185.37
+          ],
+          "net_progress_m": 1312.54,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0665",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.2,
+          "residual_median_m": 3.77,
+          "residual_max_m": 6.25,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            578.22,
+            316.05,
+            232.89,
+            185.37
+          ],
+          "net_progress_m": 1312.54,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S21",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R454",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 2263,
+      "candidate_patterns": 5,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0082",
+        "P0286",
+        "P0616",
+        "P1324",
+        "P1483"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.02,
+        "residual_median_m": 4.61,
+        "residual_max_m": 5.24,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          758.33,
+          283.2,
+          609.19,
+          712.14
+        ],
+        "net_progress_m": 2362.86
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0082",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.02,
+          "residual_median_m": 4.61,
+          "residual_max_m": 5.24,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            758.33,
+            283.2,
+            609.19,
+            712.14
+          ],
+          "net_progress_m": 2362.86,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P0286",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.02,
+          "residual_median_m": 4.61,
+          "residual_max_m": 5.24,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            758.33,
+            283.2,
+            609.19,
+            712.14
+          ],
+          "net_progress_m": 2362.86,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P0616",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.02,
+          "residual_median_m": 4.61,
+          "residual_max_m": 5.24,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            758.33,
+            283.2,
+            609.19,
+            712.14
+          ],
+          "net_progress_m": 2362.86,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P1324",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.02,
+          "residual_median_m": 4.61,
+          "residual_max_m": 5.24,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            758.33,
+            283.2,
+            609.19,
+            712.14
+          ],
+          "net_progress_m": 2362.86,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P1483",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.02,
+          "residual_median_m": 4.61,
+          "residual_max_m": 5.24,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            758.33,
+            283.2,
+            609.19,
+            712.14
+          ],
+          "net_progress_m": 2362.86,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S22",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R358",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 2143,
+      "candidate_patterns": 5,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0038",
+        "P0188",
+        "P0249",
+        "P0812",
+        "P1091"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 1.72,
+        "residual_median_m": 4.28,
+        "residual_max_m": 5.89,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          595.35,
+          637.22,
+          161.0,
+          794.0
+        ],
+        "net_progress_m": 2187.57
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0038",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.72,
+          "residual_median_m": 4.28,
+          "residual_max_m": 5.89,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            595.35,
+            637.22,
+            161.0,
+            794.0
+          ],
+          "net_progress_m": 2187.57,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0188",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.72,
+          "residual_median_m": 4.28,
+          "residual_max_m": 5.89,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            595.35,
+            637.22,
+            161.0,
+            794.0
+          ],
+          "net_progress_m": 2187.57,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0249",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.72,
+          "residual_median_m": 4.28,
+          "residual_max_m": 5.89,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            595.35,
+            637.22,
+            161.0,
+            794.0
+          ],
+          "net_progress_m": 2187.57,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P0812",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.72,
+          "residual_median_m": 4.28,
+          "residual_max_m": 5.89,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            595.35,
+            637.22,
+            161.0,
+            794.0
+          ],
+          "net_progress_m": 2187.57,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P1091",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.72,
+          "residual_median_m": 4.28,
+          "residual_max_m": 5.89,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            595.35,
+            637.22,
+            161.0,
+            794.0
+          ],
+          "net_progress_m": 2187.57,
+          "published_stop_occurrences_matched": 5,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": [
+        "P0038",
+        "P0188",
+        "P0812",
+        "P1091"
+      ]
+    },
+    {
+      "sample": "S23",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R262",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1294,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0228"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.38,
+        "residual_median_m": 1.98,
+        "residual_max_m": 7.17,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          491.55,
+          172.4,
+          177.73,
+          467.7
+        ],
+        "net_progress_m": 1309.38
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0228",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.38,
+          "residual_median_m": 1.98,
+          "residual_max_m": 7.17,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            491.55,
+            172.4,
+            177.73,
+            467.7
+          ],
+          "net_progress_m": 1309.38,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S24",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R244",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1677,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0817"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.91,
+        "residual_median_m": 1.28,
+        "residual_max_m": 2.94,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          655.29,
+          595.46,
+          180.19,
+          382.35
+        ],
+        "net_progress_m": 1813.29
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0817",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.91,
+          "residual_median_m": 1.28,
+          "residual_max_m": 2.94,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            655.29,
+            595.46,
+            180.19,
+            382.35
+          ],
+          "net_progress_m": 1813.29,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S25",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R508",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1446,
+      "candidate_patterns": 4,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0071",
+        "P0979",
+        "P1128",
+        "P1294"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 3.15,
+        "residual_median_m": 4.46,
+        "residual_max_m": 9.54,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          702.46,
+          244.19,
+          129.23,
+          427.63
+        ],
+        "net_progress_m": 1503.51
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0071",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 3.15,
+          "residual_median_m": 4.46,
+          "residual_max_m": 9.54,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            702.46,
+            244.19,
+            129.23,
+            427.63
+          ],
+          "net_progress_m": 1503.51,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0979",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 3.15,
+          "residual_median_m": 4.46,
+          "residual_max_m": 9.54,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            702.46,
+            244.19,
+            129.23,
+            427.63
+          ],
+          "net_progress_m": 1503.51,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P1128",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 3.15,
+          "residual_median_m": 4.46,
+          "residual_max_m": 9.54,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            702.46,
+            244.19,
+            129.23,
+            427.63
+          ],
+          "net_progress_m": 1503.51,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": false
+        },
+        {
+          "pattern_alias": "P1294",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 3.15,
+          "residual_median_m": 4.46,
+          "residual_max_m": 9.54,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            702.46,
+            244.19,
+            129.23,
+            427.63
+          ],
+          "net_progress_m": 1503.51,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S26",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R099",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 938,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "ambiguous_shape_branch": 1
+        },
+        "residual_min_m": 3.22,
+        "residual_median_m": 4.9,
+        "residual_max_m": 7.01,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          314.33,
+          102.65
+        ],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0440",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 1
+          },
+          "residual_min_m": 3.22,
+          "residual_median_m": 4.9,
+          "residual_max_m": 7.01,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            314.33,
+            102.65
+          ],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S27",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R323",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 4,
+      "observed_path_length_rounded_m": 1550,
+      "candidate_patterns": 2,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "ambiguous_shape_branch": 2
+        },
+        "residual_min_m": 0.74,
+        "residual_median_m": 6.03,
+        "residual_max_m": 10.04,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          574.8
+        ],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0338",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 2
+          },
+          "residual_min_m": 0.74,
+          "residual_median_m": 6.03,
+          "residual_max_m": 10.04,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            574.8
+          ],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0997",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 2
+          },
+          "residual_min_m": 0.74,
+          "residual_median_m": 6.03,
+          "residual_max_m": 10.04,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            574.8
+          ],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S28",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R046",
+      "association_mode": "route_only_trip_conflict",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1214,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0847"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.31,
+        "residual_median_m": 1.08,
+        "residual_max_m": 5.61,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          301.03,
+          36.21,
+          410.82,
+          718.16
+        ],
+        "net_progress_m": 1466.23
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0847",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.31,
+          "residual_median_m": 1.08,
+          "residual_max_m": 5.61,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            301.03,
+            36.21,
+            410.82,
+            718.16
+          ],
+          "net_progress_m": 1466.23,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S29",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R489",
+      "association_mode": "route_only_trip_conflict",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1369,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "ambiguous_shape_branch": 4
+        },
+        "residual_min_m": 1.02,
+        "residual_median_m": 3.28,
+        "residual_max_m": 5.44,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1069",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 4
+          },
+          "residual_min_m": 1.02,
+          "residual_median_m": 3.28,
+          "residual_max_m": 5.44,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S30",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R007",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 977,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0021"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.7,
+        "residual_median_m": 3.38,
+        "residual_max_m": 11.39,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          98.93,
+          436.55,
+          528.66,
+          174.36
+        ],
+        "net_progress_m": 1238.5
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0021",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.7,
+          "residual_median_m": 3.38,
+          "residual_max_m": 11.39,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            98.93,
+            436.55,
+            528.66,
+            174.36
+          ],
+          "net_progress_m": 1238.5,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S31",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R333",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1447,
+      "candidate_patterns": 2,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "ambiguous_shape_branch": 1
+        },
+        "residual_min_m": 0.96,
+        "residual_median_m": 3.27,
+        "residual_max_m": 5.27,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          394.03,
+          188.19,
+          444.67
+        ],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0293",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 1
+          },
+          "residual_min_m": 0.96,
+          "residual_median_m": 3.27,
+          "residual_max_m": 5.27,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            394.03,
+            188.19,
+            444.67
+          ],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0781",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 1
+          },
+          "residual_min_m": 0.96,
+          "residual_median_m": 3.27,
+          "residual_max_m": 5.27,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            394.03,
+            188.19,
+            444.67
+          ],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S32",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R387",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 2132,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1034"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 4.19,
+        "residual_median_m": 6.44,
+        "residual_max_m": 8.52,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          1018.95,
+          205.06,
+          398.66,
+          510.09
+        ],
+        "net_progress_m": 2132.76
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1034",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 4.19,
+          "residual_median_m": 6.44,
+          "residual_max_m": 8.52,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            1018.95,
+            205.06,
+            398.66,
+            510.09
+          ],
+          "net_progress_m": 2132.76,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S33",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R332",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 4,
+      "observed_path_length_rounded_m": 1303,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0110"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 1.66,
+        "residual_median_m": 7.88,
+        "residual_max_m": 23.85,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          53.06,
+          820.37,
+          571.12
+        ],
+        "net_progress_m": 1444.56
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0110",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.66,
+          "residual_median_m": 7.88,
+          "residual_max_m": 23.85,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            53.06,
+            820.37,
+            571.12
+          ],
+          "net_progress_m": 1444.56,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S34",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R412",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 88,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0774"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.68,
+        "residual_median_m": 1.96,
+        "residual_max_m": 2.68,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          53.43,
+          -2.06,
+          4.07,
+          28.23
+        ],
+        "net_progress_m": 83.67
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0774",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.68,
+          "residual_median_m": 1.96,
+          "residual_max_m": 2.68,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            53.43,
+            -2.06,
+            4.07,
+            28.23
+          ],
+          "net_progress_m": 83.67,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S35",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R496",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 688,
+      "candidate_patterns": 4,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0020",
+        "P0609",
+        "P0914",
+        "P1269"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 2.47,
+        "residual_median_m": 5.37,
+        "residual_max_m": 13.87,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          264.14,
+          160.44,
+          96.8,
+          221.91
+        ],
+        "net_progress_m": 743.3
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0020",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 2.47,
+          "residual_median_m": 5.37,
+          "residual_max_m": 13.87,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            264.14,
+            160.44,
+            96.8,
+            221.91
+          ],
+          "net_progress_m": 743.3,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0609",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 2.47,
+          "residual_median_m": 5.37,
+          "residual_max_m": 13.87,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            264.14,
+            160.44,
+            96.8,
+            221.91
+          ],
+          "net_progress_m": 743.3,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0914",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 2.47,
+          "residual_median_m": 5.37,
+          "residual_max_m": 13.87,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            264.14,
+            160.44,
+            96.8,
+            221.91
+          ],
+          "net_progress_m": 743.3,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P1269",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 2.47,
+          "residual_median_m": 5.37,
+          "residual_max_m": 13.87,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            264.14,
+            160.44,
+            96.8,
+            221.91
+          ],
+          "net_progress_m": 743.3,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S36",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R465",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 2640,
+      "candidate_patterns": 2,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1023",
+        "P1199"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.05,
+        "residual_median_m": 1.11,
+        "residual_max_m": 2.96,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          480.23,
+          789.17,
+          353.03,
+          1032.09
+        ],
+        "net_progress_m": 2654.52
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1023",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.05,
+          "residual_median_m": 1.11,
+          "residual_max_m": 2.96,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            480.23,
+            789.17,
+            353.03,
+            1032.09
+          ],
+          "net_progress_m": 2654.52,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P1199",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.05,
+          "residual_median_m": 1.11,
+          "residual_max_m": 2.96,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            480.23,
+            789.17,
+            353.03,
+            1032.09
+          ],
+          "net_progress_m": 2654.52,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S37",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R365",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 733,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P1045"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.14,
+        "residual_median_m": 2.51,
+        "residual_max_m": 3.78,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          602.48,
+          55.13,
+          41.02,
+          36.19
+        ],
+        "net_progress_m": 734.81
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P1045",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.14,
+          "residual_median_m": 2.51,
+          "residual_max_m": 3.78,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            602.48,
+            55.13,
+            41.02,
+            36.19
+          ],
+          "net_progress_m": 734.81,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S38",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R298",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 801,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0115"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 0.44,
+        "residual_median_m": 3.55,
+        "residual_max_m": 5.92,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          345.88,
+          114.26,
+          201.83,
+          405.02
+        ],
+        "net_progress_m": 1066.99
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0115",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 0.44,
+          "residual_median_m": 3.55,
+          "residual_max_m": 5.92,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            345.88,
+            114.26,
+            201.83,
+            405.02
+          ],
+          "net_progress_m": 1066.99,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S39",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R203",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1482,
+      "candidate_patterns": 2,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0324",
+        "P0352"
+      ],
+      "category": "ambiguous_coherent_patterns",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 1.88,
+        "residual_median_m": 2.69,
+        "residual_max_m": 8.13,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          867.83,
+          41.69,
+          674.35,
+          243.19
+        ],
+        "net_progress_m": 1827.06
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0324",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.88,
+          "residual_median_m": 2.69,
+          "residual_max_m": 8.13,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            867.83,
+            41.69,
+            674.35,
+            243.19
+          ],
+          "net_progress_m": 1827.06,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        },
+        {
+          "pattern_alias": "P0352",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.88,
+          "residual_median_m": 2.69,
+          "residual_max_m": 8.13,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            867.83,
+            41.69,
+            674.35,
+            243.19
+          ],
+          "net_progress_m": 1827.06,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S40",
+      "tags": [
+        "sha256_rank_sample"
+      ],
+      "route_alias": "R249",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 5,
+      "observed_path_length_rounded_m": 1222,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 1,
+      "coherent_shapes": 1,
+      "coherent_pattern_aliases": [
+        "P0024"
+      ],
+      "category": "unique_geometric_pattern_candidate",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": true,
+        "coherent_candidate": true,
+        "projection_rejections": {},
+        "residual_min_m": 1.64,
+        "residual_median_m": 7.71,
+        "residual_max_m": 9.23,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [
+          328.45,
+          381.9,
+          168.52,
+          610.01
+        ],
+        "net_progress_m": 1488.87
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0024",
+          "all_fixes_fit": true,
+          "coherent_candidate": true,
+          "projection_rejections": {},
+          "residual_min_m": 1.64,
+          "residual_median_m": 7.71,
+          "residual_max_m": 9.23,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [
+            328.45,
+            381.9,
+            168.52,
+            610.01
+          ],
+          "net_progress_m": 1488.87,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S41",
+      "tags": [
+        "stationary_new_time_control"
+      ],
+      "route_alias": "R554",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 2,
+      "observed_path_length_rounded_m": 0,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "ambiguous_shape_branch": 2
+        },
+        "residual_min_m": 1.06,
+        "residual_median_m": 1.06,
+        "residual_max_m": 1.06,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0072",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "ambiguous_shape_branch": 2
+          },
+          "residual_min_m": 1.06,
+          "residual_median_m": 1.06,
+          "residual_max_m": 1.06,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 0,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S42",
+      "tags": [
+        "maximum_speed_anomaly_control"
+      ],
+      "route_alias": "R552",
+      "association_mode": "route_only_trip_absent",
+      "fixes": 2,
+      "observed_path_length_rounded_m": 791830,
+      "candidate_patterns": 1,
+      "candidate_shapes": 1,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "no_fitting_unambiguous_shape",
+      "representative_lowest_median_residual": {
+        "all_fixes_fit": false,
+        "coherent_candidate": false,
+        "projection_rejections": {
+          "off_shape_or_missing_geometry": 1
+        },
+        "residual_min_m": 4.95,
+        "residual_median_m": 394721.16,
+        "residual_max_m": 789437.38,
+        "backward_pairs": 0,
+        "jump_pairs": 0,
+        "progress_deltas_m": [],
+        "net_progress_m": null
+      },
+      "by_pattern": [
+        {
+          "pattern_alias": "P0337",
+          "all_fixes_fit": false,
+          "coherent_candidate": false,
+          "projection_rejections": {
+            "off_shape_or_missing_geometry": 1
+          },
+          "residual_min_m": 4.95,
+          "residual_median_m": 394721.16,
+          "residual_max_m": 789437.38,
+          "backward_pairs": 0,
+          "jump_pairs": 0,
+          "progress_deltas_m": [],
+          "net_progress_m": null,
+          "published_stop_occurrences_matched": 2,
+          "service_active_all_reported_service_dates": true
+        }
+      ],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    },
+    {
+      "sample": "S43",
+      "tags": [
+        "route_change_control"
+      ],
+      "route_alias": "R417",
+      "association_mode": "route_changed_not_linked",
+      "fixes": 2,
+      "observed_path_length_rounded_m": 169,
+      "candidate_patterns": 0,
+      "candidate_shapes": 0,
+      "fitting_shapes": 0,
+      "coherent_shapes": 0,
+      "coherent_pattern_aliases": [],
+      "category": "route_changed_not_linked",
+      "representative_lowest_median_residual": null,
+      "by_pattern": [],
+      "coherent_patterns_also_matching_all_stops_and_service": []
+    }
+  ],
+  "per_route_sample_categories": {
+    "R352": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R461": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R218": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R466": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R290": {
+      "fits_without_coherent_progress": 1
+    },
+    "R024": {
+      "unique_geometric_pattern_candidate": 1,
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R059": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R055": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R047": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R027": {
+      "unique_geometric_pattern_candidate": 2
+    },
+    "R132": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R033": {
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R079": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R013": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R078": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R123": {
+      "unique_geometric_pattern_candidate": 2
+    },
+    "R076": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R454": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R358": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R262": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R244": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R508": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R099": {
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R323": {
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R046": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R489": {
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R007": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R333": {
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R387": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R332": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R412": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R496": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R465": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R365": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R298": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R203": {
+      "ambiguous_coherent_patterns": 1
+    },
+    "R249": {
+      "unique_geometric_pattern_candidate": 1
+    },
+    "R554": {
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R552": {
+      "no_fitting_unambiguous_shape": 1
+    },
+    "R417": {
+      "route_changed_not_linked": 1
+    }
+  },
+  "parameters": {
+    "max_offset_m": 60,
+    "projection_tie_m": 5,
+    "branch_separation_m": 30,
+    "backtrack_tolerance_m": 10,
+    "max_speed_mps": 35,
+    "gps_error_m": 8,
+    "minimum_net_progress_m": 10
+  },
+  "operationally_verified": false,
+  "travel_durations_accepted": 0,
+  "input_files": 28,
+  "published_route_stop_checks": {
+    "stop_not_in_published_route_patterns": 18659,
+    "stop_sequence_no_pattern": 22148,
+    "stop_serves_published_route": 5445,
+    "stop_sequence_one_pattern": 860,
+    "stop_sequence_multiple_patterns": 1096
+  },
+  "pattern_change_audit": {
+    "not_comparable_without_forcing_pattern": 21606,
+    "both_exact_trip_route": 240,
+    "pattern_changes": 0
+  },
+  "sample_coherent_and_all_stop_service_matches": 14,
+  "inputs_unchanged": true,
+  "input_manifest_digest": "55857e9bb28d22b30c11b416fa97558883367fc53fe4504c1dd9b217022372da"
+}

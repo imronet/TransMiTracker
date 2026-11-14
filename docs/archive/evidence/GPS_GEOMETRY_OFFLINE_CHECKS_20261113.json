@@ -1,0 +1,17 @@
+{
+    "checked_at":  "2026-11-13T23:32:56.9405602-05:00",
+    "scope":  "Read-only offline catalog and geometry diagnosis; no network or captures",
+    "reference_commit":  "e6551a8108caf70abe746f72196601beb072de62",
+    "compared_sample_results":  43,
+    "geometry_differences":  [
+
+                             ],
+    "input_hashes_unchanged":  true,
+    "protected_input_files":  28,
+    "catalog_opened_mode":  "ro",
+    "script_sha256":  "915abbbe5d82c6e5a21c7ad8958d0c25f9977a2a42b940cade5b021fd1193033",
+    "application_diff":  [
+
+                         ],
+    "all_passed":  true
+}

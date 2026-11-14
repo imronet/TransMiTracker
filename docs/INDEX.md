@@ -21,6 +21,7 @@
 ## Investigación y trabajo futuro
 
 - [Continuidad GPS offline: start_time, comparación de filtros y límites](research/GPS_CONTINUITY_OFFLINE.md)
+- [Correspondencia GTFS y progresión geométrica offline](research/GPS_GTFS_GEOMETRY_OFFLINE.md)
 - [Viabilidad de GPS real previa a 3B: fuentes, costes y condiciones](research/GPS_REAL_FEASIBILITY.md)
 - [Diseño de proveedores y créditos: no implementado](research/CROMA_INTEGRATION_DESIGN.md)
 - [Históricos operativos, snapshots y limitaciones de IDs](archive/phases/PHASE0_5_REPORT.md)
