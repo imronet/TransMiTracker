@@ -45,6 +45,7 @@ salidas consulte la guía de validación. No ejecute comandos históricos sobre 
 - [PHASE3A_REPORT.md](archive/phases/PHASE3A_REPORT.md)
 - [PHASE3B_P0_REPORT.md](archive/phases/PHASE3B_P0_REPORT.md)
 - [PHASE3B_P2_REPORT.md](archive/phases/PHASE3B_P2_REPORT.md)
+- [Primera sesión GPS real: agregados, QA y límites](archive/phases/PHASE3B_FIRST_REAL_REPORT.md)
 
 - [Catálogo de evidencias, hashes y excepciones de rutas](archive/evidence/INDEX.md)
 

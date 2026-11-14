@@ -1,5 +1,6 @@
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 import httpx
 import pytest
@@ -307,12 +308,13 @@ def test_paths_and_missing_status(tmp_path):
 
 @pytest.mark.parametrize("change", ["expired", "future", "directory", "endpoint", "conditions"])
 def test_permit_invalid_never_creates_client(mocked_pilot, monkeypatch, change):
-    root, _, args = mocked_pilot
+    root, state, args = mocked_pilot
     value = json.loads(args["permit"].read_text())
     if change == "expired":
-        value["expires_at"] = value["issued_at"]
+        state["time"] = 901
     elif change == "future":
         value["issued_at"] = "2030-01-01T00:00:00+00:00"
+        value["expires_at"] = "2030-01-01T00:15:00+00:00"
     elif change == "directory":
         value["directory"] = str(root / "other")
     elif change == "endpoint":
@@ -392,3 +394,55 @@ def test_session_data_ignored_by_git():
     )
     assert result.returncode == 0
     assert len(result.stdout.splitlines()) == 2
+
+
+@pytest.mark.parametrize("elapsed", [899, 900, 901])
+def test_real_fifteen_minute_window(mocked_pilot, elapsed):
+    root, state, args = mocked_pilot
+    original = json.loads(args["permit"].read_text())
+    state["time"] = elapsed
+    if elapsed < 900:
+        pilot.claim_permit(args["permit"], root / "session", count=12, interval=60, now=args["now"])
+    else:
+        with pytest.raises(ValueError, match="expired"):
+            pilot.claim_permit(
+                args["permit"], root / "session", count=12, interval=60, now=args["now"]
+            )
+    assert json.loads(args["permit"].read_text()) == original
+    assert state["calls"] == []
+
+
+def test_review_expires_after_seven_days(mocked_pilot):
+    root, _, args = mocked_pilot
+    value = json.loads(args["permit"].read_text())
+    value["review"]["reviewed_at"] = (args["now"]() - timedelta(days=7, seconds=1)).isoformat()
+    args["permit"].write_text(json.dumps(value))
+    with pytest.raises(ValueError, match="seven days"):
+        pilot.claim_permit(args["permit"], root / "session", count=12, interval=60, now=args["now"])
+    with pytest.raises(ValueError, match="seven days"):
+        pilot.create_permit(
+            value["review"], root / "session", root / "new.json", confirm=True, now=args["now"]
+        )
+    assert not args["permit"].with_suffix(".json.used").exists()
+
+
+@pytest.mark.parametrize("target", ["../public.json", "nested/../../escape.json"])
+def test_full_diagnostics_cannot_escape_private_root(tmp_path, monkeypatch, target):
+    private = tmp_path / "pilots"
+    private.mkdir()
+    monkeypatch.setattr(pilot, "PILOT_ROOT", private)
+    monkeypatch.setattr(pilot, "project_path", lambda p: Path(p).resolve())
+    output = private / target
+    with pytest.raises(SystemExit) as error:
+        pilot.main(["analyze", str(private / "missing"), "--output", str(output)])
+    assert error.value.code == 2
+    assert not output.resolve().exists()
+
+
+def test_full_diagnostic_private_destination(tmp_path, monkeypatch):
+    monkeypatch.setattr(pilot, "PILOT_ROOT", tmp_path)
+    monkeypatch.setattr(pilot, "project_path", lambda p: Path(p).resolve())
+    pilot.make_fixture(tmp_path / "input")
+    output = tmp_path / "reports/result.json"
+    assert pilot.main(["analyze", str(tmp_path / "input"), "--output", str(output)]) == 0
+    assert json.loads(output.read_text())["origins"] == ["synthetic_fixture"]

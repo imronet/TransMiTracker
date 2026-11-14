@@ -1,8 +1,9 @@
 # Piloto GPS local — preparación 3B-P2
 
-Herramienta manual aislada en `transmitracker.research.local_pilot`. El propietario
-autorizó implementación y pruebas offline, **no capturas reales**. La captura
-permanece bloqueada: requiere revisión resuelta y permiso temporal de una sesión.
+Herramienta manual aislada en `transmitracker.research.local_pilot`. Se completó
+una [primera sesión real autorizada](../archive/phases/PHASE3B_FIRST_REAL_REPORT.md).
+Su permiso quedó consumido. **No hay autorización para una segunda sesión.**
+Por defecto no hay red; toda nueva captura requiere otra decisión y permiso.
 
 Desde la raíz del proyecto en PowerShell, con el entorno ya instalado:
 
@@ -54,12 +55,14 @@ Tres timestamps de un ID tampoco demuestran identidad operativa.
 
 El bloqueo global de código de P0 se sustituyó por permiso local de un solo uso.
 La revisión [LOCAL_PILOT_CONDITIONS.json](../research/LOCAL_PILOT_CONDITIONS.json)
-dice unresolved: el comando de emisión falla sin hacer red. No cambie esa decisión
-sin resolver con evidencia la pregunta de conservación privada/consulta acotada.
+dice consumed_single_session: el comando de emisión falla sin hacer red. La primera
+decisión experimental del propietario aceptó expresamente la incertidumbre de
+licencia; no se afirmó una autorización individual de TMSA. No cambie esa decisión
+para repetir la sesión sin nueva autorización del propietario.
 No se exige automáticamente un convenio; consulte el [informe P2](../archive/phases/PHASE3B_P2_REPORT.md).
 
-Solo después de resolver la revisión y de que el propietario autorice ejecución,
-los comandos preparados son (no ejecutados en P2):
+Solo con nueva revisión/decisión y autorización expresa del propietario, los
+comandos de referencia para otra sesión serían (no ejecutarlos para repetir):
 
 ```powershell
 # Emisión offline, confirmación del operador y sesión nueva exacta.
@@ -98,3 +101,5 @@ entre chunks 15 s. No es un deadline duro de 15 s: una lectura en curso puede
 consumir además su timeout. No se intenta eludir mantenimiento, 403 o 429.
 
 Detalles de validación y condiciones: [informe 3B-P0](../archive/phases/PHASE3B_P0_REPORT.md).
+Los informes completos de `analyze --output` solo pueden escribirse dentro de
+data/pilots, también cuando los datos son sintéticos. No dirigirlos a docs/.

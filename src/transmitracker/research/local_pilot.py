@@ -592,13 +592,13 @@ def main(argv=None):
             )
             print(json.dumps({"stop_reason": result["stop_reason"]}))
             return 0 if result["stop_reason"] == "limit_reached" else 1
+        output = pilot_path(project_path(args.output))
         report = analyze(
             project_path(args.directory),
             routes=args.route,
             recent=args.recent,
             delayed=args.delayed,
         )
-        output = project_path(args.output)
         output.parent.mkdir(parents=True, exist_ok=True)
         write_json(output, report)
         return 0

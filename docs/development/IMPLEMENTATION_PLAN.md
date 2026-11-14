@@ -978,3 +978,17 @@ Máximo 12 posiciones, intervalo >=60 s, un manifiesto, sin reintentos ni parale
 se mantienen análisis y garantías del motor. Ctrl+C deja constancia y no permite
 reanudar el permiso. Retención propuesta de siete días hasta revisión del dueño,
 sin borrar automáticamente. [Informe P2](../archive/phases/PHASE3B_P2_REPORT.md).
+
+## 16. Primera sesión GPS real controlada — autorización consumida
+
+El propietario autoriza una sesión doméstica única, sin redistribución, manteniendo
+la incertidumbre sobre alcance exacto de CC BY-SA 4.0 y sin afirmar permiso individual
+del proveedor. Se corrigen QA de destino privado de informes y expiración real de
+15 minutos/revisión de siete días: 38 tests focalizados aprobados.
+
+Sesión 2026-11-13 22:38:52–22:49:54 Bogotá: un manifiesto y 12 posiciones HTTP 200,
+24.104 observaciones, sin reintentos. Se conserva evidencia privada reproducible.
+Hay novedades GPS y recurrencia candidata, pero start_time cambia junto al reloj GPS;
+no se validan identidades operativas ni duraciones. Motor 3A intacto. Permiso consumido
+y revisión de ejecución cerrada; **segunda captura requiere nueva autorización**.
+[Informe y agregados](../archive/phases/PHASE3B_FIRST_REAL_REPORT.md).

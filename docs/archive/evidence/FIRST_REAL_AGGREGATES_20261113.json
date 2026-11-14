@@ -1,0 +1,170 @@
+{
+  "purpose": "Non-identifying aggregates from the single authorized real session",
+  "execution": {
+    "started_at_utc": "2026-11-14T03:38:52.0753951Z",
+    "finished_at_utc": "2026-11-14T03:49:54.8197594Z",
+    "exit_code": 0,
+    "one_session_only": true
+  },
+  "stop_reason": "limit_reached",
+  "manifest_requests_attempted": 1,
+  "position_requests_attempted": 12,
+  "positions_saved": 12,
+  "manifest_http_status": 200,
+  "position_http_statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+  ],
+  "position_request_start_intervals_s": [
+    60.000258,
+    60.000497,
+    60.000157,
+    60.000194,
+    60.000422,
+    60.00022,
+    60.000154,
+    60.000544,
+    60.000111,
+    60.000573,
+    60.000158
+  ],
+  "failure_status": null,
+  "counts": {
+    "age_delayed": 3149,
+    "age_old": 490,
+    "age_recent": 20465,
+    "changed_position_pairs": 17239,
+    "decodable_snapshots": 12,
+    "descriptor_change": 17340,
+    "observations": 24104,
+    "observations_before_filter": 24104,
+    "observed_pair": 4506,
+    "reappearing_candidate_observations": 21846,
+    "repeated_gps_timestamps": 4506,
+    "snapshots": 12,
+    "unchanged_position_pairs": 4607
+  },
+  "new_gps_times_by_snapshot": [
+    2103,
+    2024,
+    1993,
+    0,
+    1978,
+    1959,
+    1945,
+    1928,
+    0,
+    1913,
+    1889,
+    1866
+  ],
+  "new_gps_times_after_baseline": 17495,
+  "feed_timestamps_utc": [
+    "2026-11-14T03:37:52+00:00",
+    "2026-11-14T03:39:45+00:00",
+    "2026-11-14T03:40:52+00:00",
+    "2026-11-14T03:40:52+00:00",
+    "2026-11-14T03:42:48+00:00",
+    "2026-11-14T03:43:22+00:00",
+    "2026-11-14T03:43:55+00:00",
+    "2026-11-14T03:45:51+00:00",
+    "2026-11-14T03:46:24+00:00",
+    "2026-11-14T03:46:57+00:00",
+    "2026-11-14T03:48:39+00:00",
+    "2026-11-14T03:49:45+00:00"
+  ],
+  "gps_timestamp_range_utc": [
+    "2026-09-03T13:49:59+00:00",
+    "2026-11-14T03:48:49+00:00"
+  ],
+  "gps_age_seconds_min_median_max": [
+    32.750895977020264,
+    86.74223303794861,
+    6184795.689182043
+  ],
+  "duplicate_timestamp_percent_all_observations": 18.694,
+  "duplicate_timestamp_percent_post_baseline": 20.481,
+  "unique_payloads": 11,
+  "candidate_ids_three_instants_count": 2122,
+  "candidate_ids_reappearing_count": 2206,
+  "plausible_displacement_candidates": 0,
+  "published_descriptor_field_changes": {
+    "start_time": 17340,
+    "route_id": 60
+  },
+  "start_time_equals_gps_clock_bogota_observations": 24104,
+  "pair_interval_s_min_median_max": [
+    0,
+    60.0,
+    1083
+  ],
+  "field_presence": {
+    "current_status": {
+      "present": 0,
+      "absent": 24104,
+      "explicit_null": 0
+    },
+    "current_stop_sequence": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "gps_timestamp": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "latitude": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "longitude": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "route_id": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "start_date": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "start_time": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "stop_id": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "trip_id": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    },
+    "vehicle_id": {
+      "present": 24104,
+      "absent": 0,
+      "explicit_null": 0
+    }
+  },
+  "real_operational_validation": false,
+  "arrivals_boarding_durations_inferred": false
+}

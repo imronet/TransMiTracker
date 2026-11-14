@@ -37,8 +37,8 @@ synthetic evaluation metrics and limitations.
 - Separate SQLite stores for the static catalog, profiles and GPS evidence.
 - [Local GPS pilot preparation](docs/getting-started/LOCAL_GPS_PILOT.md): manual
   tooling tested offline; real capture remains blocked pending conditions review
-  and separate execution approval. Phase 3B-P2 prepares an expiring single-session
-  permission; no real capture has been authorized or executed in this delivery.
+  and separate execution approval. One [bounded real session](docs/archive/phases/PHASE3B_FIRST_REAL_REPORT.md)
+  has now completed; its permission is consumed. No second session is authorized.
 
 ## Planned, not active
 

@@ -1,0 +1,15 @@
+{
+    "recorded_at":  "2026-11-13T22:43:32.7105969-05:00",
+    "scope":  "Two requested QA corrections before the single authorized capture",
+    "pytest_command":  "python -m pytest tests/test_local_pilot.py -q --basetemp=.cache/pilot-first-live-qa",
+    "pytest_result":  "38 passed in 1.24s",
+    "ruff_scope":  "local_pilot.py and test_local_pilot.py",
+    "ruff_result":  "All checks passed; one file reformatted, one unchanged",
+    "coverage_notes":  [
+                           "Analyzer CLI output resolved under data/pilots before reading captures",
+                           "Escaping and outside-root report destinations rejected",
+                           "Genuine issued permit unchanged; simulated clock checked at 899, 900 and 901 seconds",
+                           "Review older than seven days rejected for issuance and claim"
+                       ],
+    "real_network_during_tests":  false
+}

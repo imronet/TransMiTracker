@@ -1,0 +1,13 @@
+{
+    "decision":  "unresolved",
+    "scope":  "one_local_session_12_positions_60s_no_redistribution",
+    "reviewed_at":  "2026-11-13T22:21:28.9473031-05:00",
+    "evidence":  [
+                     "https://www.transmilenio.gov.co/comunicaciones/noticias-de-transmilenio/especiales-transmilenio/datos-abiertos-tiempo-real-transmilenio-conecta-operacion-sistema-tecnologia-ciudad",
+                     "https://www.transmilenio.gov.co/comunicaciones/publicaciones/2025/terminos-y-condiciones-en-el-sitio-web-de-transmilenio"
+                 ],
+    "rationale":  "Official publication invites exploration and reuse, while general website terms restrict copying without resolving their applicability to GTFS payloads. No feed-specific private temporary retention permission established. This record does not authorize capture.",
+    "open_question":  "Does the announced GTFS open-data reuse cover keeping at most 12 original VehiclePosition payloads privately for seven days for offline diagnosis, without redistribution or commercial use, and is a 60-second request interval compatible with the published service conditions?",
+    "retention_proposal":  "Owner reviews within seven days; no automatic deletion. Delete originals and identifying derived reports only after owner review; keep a non-identifying summary if appropriate.",
+    "execution_authorized":  false
+}

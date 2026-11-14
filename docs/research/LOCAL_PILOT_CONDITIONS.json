@@ -1,13 +1,33 @@
 {
-    "decision":  "unresolved",
+    "decision":  "consumed_single_session",
     "scope":  "one_local_session_12_positions_60s_no_redistribution",
-    "reviewed_at":  "2026-11-13T22:21:28.9473031-05:00",
+    "reviewed_at":  "2026-11-13T22:36:43.6299304-05:00",
     "evidence":  [
                      "https://www.transmilenio.gov.co/comunicaciones/noticias-de-transmilenio/especiales-transmilenio/datos-abiertos-tiempo-real-transmilenio-conecta-operacion-sistema-tecnologia-ciudad",
                      "https://www.transmilenio.gov.co/comunicaciones/publicaciones/2025/terminos-y-condiciones-en-el-sitio-web-de-transmilenio"
                  ],
-    "rationale":  "Official publication invites exploration and reuse, while general website terms restrict copying without resolving their applicability to GTFS payloads. No feed-specific private temporary retention permission established. This record does not authorize capture.",
+    "rationale":  "Owner explicitly authorizes exactly one personal bounded experiment without redistribution, accepting the documented uncertainty about exact CC BY-SA 4.0 coverage of GTFS-Realtime. This is an operator decision, not legal verification or individual authorization from TransMilenio.",
     "open_question":  "Does the announced GTFS open-data reuse cover keeping at most 12 original VehiclePosition payloads privately for seven days for offline diagnosis, without redistribution or commercial use, and is a 60-second request interval compatible with the published service conditions?",
     "retention_proposal":  "Owner reviews within seven days; no automatic deletion. Delete originals and identifying derived reports only after owner review; keep a non-identifying summary if appropriate.",
-    "execution_authorized":  false
+    "execution_authorized":  false,
+    "operator_decision":  {
+                              "source":  "Explicit owner instruction in this conversation",
+                              "maximum_sessions":  1,
+                              "maximum_positions":  12,
+                              "minimum_interval_s":  60,
+                              "maximum_manifest":  1,
+                              "redistribution":  false,
+                              "session_directory":  "E:\\Docs\\Documents\\My Python Scripts\\TransMiTracker\\data\\pilots\\first-real-20261113-223641-1613d2b6\\session",
+                              "second_session_requires_new_authorization":  true,
+                              "state":  "completed_limit_reached_no_second_session_authorized"
+                          },
+    "license_evidence":  {
+                             "official_open_data_publication":  "https://www.transmilenio.gov.co/comunicaciones/noticias-de-transmilenio/especiales-transmilenio/datos-abiertos-tiempo-real-transmilenio-conecta-operacion-sistema-tecnologia-ciudad",
+                             "public_cc_by_sa_reference":  "https://datosabiertos.bogota.gov.co/dataset/especificacion-gtfs-general-transport-feed-specification-sitp",
+                             "archived_metadata":  "docs/research/evidence/GPS_FEASIBILITY_20261113_METADATA.json",
+                             "license_url":  "https://creativecommons.org/licenses/by-sa/4.0/",
+                             "exact_realtime_license_confirmed":  false,
+                             "individual_provider_authorization_claimed":  false,
+                             "current_catalog_page_browser_query":  "Timed out; retained prior public metadata reference"
+                         }
 }
