@@ -9,16 +9,22 @@ Planning a commute requires more than a published timetable. TransMiTracker aims
 to help people decide when to leave home and understand their return journey,
 using defensible historical evidence and, eventually, operational data.
 
-That recommendation is a future goal. Today's application configures journeys,
-queries scheduled services and provides an experimental offline GPS engine.
+The application now offers an indicative departure recommendation from published
+static GTFS schedules. Historical and operational recommendations remain future work.
+It also configures journeys and provides an experimental offline GPS engine.
 
 ## Current status
 
-**Version 0.6.0 — Saved profiles connected to offline OD analysis.** The application
+**Version 0.7.0 — Static GTFS itinerary planning for saved profiles.** The application
 and documentation are under active development. The interface and most technical
 documents are in Spanish.
 
-Start with the [offline route tracker guide](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
+Start with [static planning in the desktop app](docs/getting-started/USAGE.md#planificación-estática-070).
+Choose a configured profile, then **Planificar con GTFS estático** and a departure
+date. Home → Work uses the saved arrival deadline; Work → Home requires an explicit
+or saved departure time. Queries leave profiles and preferences unchanged.
+
+The [offline route tracker guide](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
 for the CLI and standalone graphical viewer commands. They use saved snapshots and a local catalog;
 it does not collect live positions. See the
 [v0.3.0 delivery report](docs/archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md)
@@ -28,6 +34,10 @@ The conservative engine's earlier synthetic evaluation remains in the
 
 ## Available today
 
+- Static itinerary planning for one to three saved legs: latest feasible home
+  departure or earliest scheduled return arrival within an explicit search window.
+  Walks and buffers use the user's settings; unresolved frequencies do not become
+  exact departures. This is not a realtime prediction or a punctuality guarantee.
 - [Saved-profile OD adapter](docs/getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060):
   select a commute profile and leg without re-entering GTFS IDs. Profile stores
   stay read-only; catalog versions must match the saved GPS report.
@@ -114,6 +124,7 @@ An explicit synthetic diagnostic works without a downloaded feed:
 Start with the [documentation index](docs/INDEX.md).
 
 - [Current offline route tracker and PowerShell command](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
+- [Static planning, profile configuration and limitations](docs/getting-started/USAGE.md)
 - [Setup and catalog import](docs/getting-started/SETUP.md)
 - [Architecture and data boundaries](docs/architecture/OVERVIEW.md)
 - [Offline replay and development commands](docs/development/VALIDATION.md)

@@ -1,6 +1,11 @@
-# Índice de documentación — TransMiTracker 0.6.0
+# Índice de documentación — TransMiTracker 0.7.0
 
 ## Capacidad vigente
+
+La [planificación estática desde perfiles guardados](getting-started/USAGE.md#planificación-estática-070)
+busca una salida orientativa e itinerarios publicados desde la GUI, sin escribir
+perfiles ni preferencias. Reutiliza el catálogo local; no es predicción Realtime.
+[Validación focalizada y ejercicio real offline](archive/evidence/STATIC_PLANNING_VALIDATION_20261114.json).
 
 La [CLI de perfiles guardados](getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060)
 selecciona un perfil y tramo explícitos en solo lectura para alimentar OD con sus

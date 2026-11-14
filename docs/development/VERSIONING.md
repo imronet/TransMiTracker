@@ -15,6 +15,9 @@ algoritmo independiente `od-candidate-offline-0.1.0`. No modifica el rastreador,
 el algoritmo conservador 3A o los esquemas SQLite.
 El adaptador de perfiles guardados añade una capacidad compatible en **0.6.0**;
 la base de perfiles conserva su esquema 2 y OD su algoritmo 0.1.1. No migra datos.
+La planificación estática desde perfiles y su acción mínima en GUI añaden una
+capacidad compatible en **0.7.0** (MINOR). Se conservan esquemas, dependencias,
+contratos anteriores y algoritmos GPS/OD. Es orientación por horario, no predicción.
 
 `pyproject.toml` es la única fuente de verdad. `version.app_version()` la lee en
 el proyecto; en una distribución instalada utiliza los metadatos generados desde

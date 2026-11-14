@@ -13,6 +13,7 @@ from transmitracker.gui.controller import PROFILE_TITLES, DesktopController
 from transmitracker.gui.editor import ProfileEditor, entry
 from transmitracker.gui.help import Tooltip, help_link
 from transmitracker.gui.messages import result_text
+from transmitracker.gui.planning import PlanningPanel
 from transmitracker.gui.worker import UiWorker
 from transmitracker.profiles.models import ProfileKind
 from transmitracker.version import app_version
@@ -252,6 +253,11 @@ class TransMiTrackerApp(ctk.CTk):
                 size=16,
             )
             if saved:
+                ctk.CTkButton(
+                    block,
+                    text="Planificar con GTFS estático",
+                    command=lambda s=saved: self.open_static_planning(s),
+                ).pack(anchor="w", padx=18, pady=8)
                 self.label(
                     block,
                     f"Configurado · {len(saved.profile.legs)} tramo(s) · revisión {saved.revision}",
@@ -363,6 +369,14 @@ class TransMiTrackerApp(ctk.CTk):
             "Realtime pendiente de validación de identidad. Sin consultas al abrir la app.\nCroma, Telegram, recolección y predicción no están activados.",
             color=MUTED,
         )
+
+    def open_static_planning(self, stored):
+        page = self.new_page("Planificación estática")
+        if page is None:
+            return
+        self.planning_panel = PlanningPanel(self, page, stored)
+        self.planning_panel.pack(fill="x", expand=True)
+        self.after_idle(self.fit_text)
 
     def open_profile(self, kind, reload=False):
         if not self.snapshot or not self.can_leave():

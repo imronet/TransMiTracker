@@ -1,8 +1,8 @@
 # TransMiTracker — Implementation Plan
 
-**Estado vigente — v0.6.0:** perfiles guardados conectados al análisis OD experimental offline;
-véanse [uso](../getting-started/OFFLINE_ROUTE_TRACKER.md) y
-[adenda 20](#20-adaptador-de-perfiles-guardados-a-od--capacidad-autorizada).
+**Estado vigente — v0.7.0:** planificación orientativa con GTFS estático desde perfiles guardados;
+véanse [uso](../getting-started/USAGE.md#planificación-estática-070) y
+[adenda 21](#21-planificación-estática-desde-perfiles--camino-a).
 Las secciones y adendas anteriores conservan su contexto histórico. Croma es una
 alternativa futura y opcional; no se requiere para la capacidad actual. No hay
 autorización de nuevas capturas ni seguimiento continuo.
@@ -1060,3 +1060,24 @@ Ejercicio sintético aislado y comprobación real sin perfil de ruta compatible;
 [comandos, 90 pruebas pertinentes y evidencia](../getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060).
 Sin dependencias o tablas nuevas en los perfiles. Siguiente capacidad, adquisición
 y publicación requieren autorización; no se realiza commit/push automáticamente.
+
+## 21. Planificación estática desde perfiles — Camino A
+
+El propietario acepta v0.6.0 y autoriza avanzar RF-01/RF-02/RF-07 mediante horarios
+GTFS locales. Camino B (ampliar captura real) queda pospuesto. Producto 0.7.0:
+servicio independiente de widgets y acción mínima de GUI para perfiles configurados.
+Ida busca la salida más tardía compatible con límite y desplazamiento de día;
+regreso requiere salida explícita/habitual y no usa el límite de ida. Calendario,
+excepciones, medianoche, fechas civiles/de servicio y horas >24 se reutilizan.
+
+Aceptación: itinerarios explícitos de uno a tres tramos, transbordos con minutos
+del usuario, ventana acotada, margen sin adiciones implícitas, errores distinguibles,
+descarte de respuestas obsoletas y lectura sin modificar perfiles/preferencias.
+Frecuencias sin horas exactas no producen recomendaciones puntuales; ningún horario
+acredita puntualidad o conectividad peatonal. No cambia GPS, OD, adaptador de perfiles,
+esquemas, dependencias ni garantías operativas. Se preservan requisitos históricos.
+
+[Uso, cierre para QA y ejercicio real negativo](../getting-started/USAGE.md#planificación-estática-070);
+[agregados y reproducción](../archive/evidence/STATIC_PLANNING_VALIDATION_20261114.json).
+Sin red, nuevas capturas, predictor, Telegram ni scheduler. Otra fase/capacidad y
+cualquier captura requieren autorización; no se realiza commit/push automático.

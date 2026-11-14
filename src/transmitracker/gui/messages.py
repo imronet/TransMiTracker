@@ -1,6 +1,12 @@
 """Spanish presentation of domain codes; never render raw exception/secret values."""
 
 MESSAGES = {
+    "INVALID_PLANNING_DATE": "Revise la fecha local AAAA-MM-DD y la hora HH:MM.",
+    "DEPARTURE_TIME_REQUIRED": "Indique una hora de salida del trabajo o configure su salida habitual.",
+    "NO_SCHEDULED_SERVICE": "Sin servicio publicado compatible para esta fecha y selección.",
+    "TRANSFER_INCOMPATIBLE": "Los servicios publicados no permiten el transbordo con su caminata y buffer.",
+    "HORIZON_INSUFFICIENT": "El horizonte configurado no contiene una alternativa justificable. No se amplió automáticamente.",
+    "UNRESOLVED_ALTERNATIVES_EXCLUDED": "Se excluyeron alternativas sin hora exacta; la elección solo compara horarios explícitos.",
     "LEG_STRUCTURE_INVALID": "La ruta, el patrón, el sentido o las ocurrencias de origen/destino no coinciden. Se conservaron sus datos.",
     "INVALID_DRAFT": "El borrador contiene campos incompatibles; no se sobrescribió el anterior.",
     "DRAFT_REVISION_CONFLICT": "El borrador cambió en otra ventana. Recárguelo antes de guardar.",

@@ -1,0 +1,167 @@
+{
+  "date_bogota": "2026-11-14",
+  "product_version": "0.7.0",
+  "base_commit": "8464fdd75837c6d503979cd1612660a3fdf7c8c7",
+  "scope": "Path A: offline static GTFS planning for saved profiles and minimal main GUI integration. Path B postponed; no captures, Croma, predictions, new tables or dependencies.",
+  "python_version": "3.13.14",
+  "checks": [
+    {
+      "command": "python -m pytest -q -m 'not gui' tests/test_static_planning.py tests/test_planning_gui.py tests/test_catalog.py tests/test_profiles.py tests/test_gui_controller.py",
+      "exit_code": 0,
+      "passed": 91,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 77.647
+    },
+    {
+      "command": "python -m pytest -q -m gui tests/test_planning_gui.py",
+      "exit_code": 0,
+      "passed": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 25.442
+    },
+    {
+      "command": "python -m ruff check src/transmitracker/catalog/queries.py src/transmitracker/gui/app.py src/transmitracker/gui/controller.py src/transmitracker/gui/messages.py src/transmitracker/gui/planning.py src/transmitracker/profiles/planning.py tests/test_static_planning.py tests/test_planning_gui.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check src/transmitracker/catalog/queries.py src/transmitracker/gui/app.py src/transmitracker/gui/controller.py src/transmitracker/gui/messages.py src/transmitracker/gui/planning.py src/transmitracker/profiles/planning.py tests/test_static_planning.py tests/test_planning_gui.py",
+      "exit_code": 0,
+      "output": "8 files already formatted"
+    },
+    {
+      "command": "python -m pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ],
+  "new_synthetic_tests": 21,
+  "total_relevant_passed": 93,
+  "full_suite_executed": false,
+  "intermediate_validation": [
+    {
+      "result": "1 failed, 42 passed",
+      "reason": "Synthetic transfer fixture allowed an exact 15-minute connection; changed its walk to 16. Error classification distinguishes timed transfers inside the horizon."
+    },
+    {
+      "result": "2 failed, 13 passed, 2 setup errors",
+      "reason": "Ruff removed an unreferenced imported fixture; made its re-export explicit. These were fixture registration errors, not a successful GUI run."
+    },
+    {
+      "result": "92 passed, 1 setup error",
+      "reason": "Existing Windows GUI pytest protocol leaves previous collector setup active when mixing GUI and non-GUI modules. Separate documented commands completed without errors; runner unchanged."
+    }
+  ],
+  "synthetic_demonstration": {
+    "origin": "entirely_synthetic_not_personal",
+    "direct": {
+      "civil_departure_date": "2026-11-09",
+      "home_departure": "08:05",
+      "published_boarding": "08:10",
+      "published_arrival": "08:25",
+      "arrival_with_final_walk": "08:27",
+      "arrival_with_user_margin_and_deadline": "08:30"
+    },
+    "coverage": [
+      "one/two/three legs",
+      "latest feasible home departure",
+      "later boarding with earlier final arrival",
+      "walking and transfer buffer constraints",
+      "inactive profile days",
+      "calendar removal/addition",
+      "25h and 49h GTFS service dates",
+      "explicit and approximate frequencies",
+      "incompatible or absent catalog",
+      "no service",
+      "insufficient horizon",
+      "explicit and usual return departure",
+      "actual Tk dashboard action and controls",
+      "stale date/hour/page responses discarded",
+      "byte-for-byte query input preservation",
+      "selected itinerary checked against active exact stop_times rows"
+    ],
+    "gui": "Two real Windows Tk tests, isolated processes, no mocks replacing windows. Network blocked by autouse fixture."
+  },
+  "real_exercise": {
+    "source": "existing official local static catalog and two actual configured profiles; no synthetic fallback",
+    "catalog_version_zip_sha256": "c66c7af657371eac892bab4b327e3a1e7be5d19ae0e9e5b4355e231261e3a09d",
+    "catalog_imported_at": "2026-11-12T22:51:27.810417-05:00",
+    "catalog_source_url": "https://gtfs.transmilenio.gov.co/GTFS.zip",
+    "source_url_queried_this_task": false,
+    "results": [
+      {
+        "kind": "home_to_work",
+        "planning_date": "2026-11-17",
+        "profile_day_and_pattern_service_active": true,
+        "ok": false,
+        "codes": [
+          "ARRIVAL_DEADLINE_EXCEEDED"
+        ],
+        "has_usual_departure": false
+      },
+      {
+        "kind": "work_to_home",
+        "planning_date": "2026-11-17",
+        "profile_day_and_pattern_service_active": true,
+        "ok": false,
+        "codes": [
+          "DEPARTURE_TIME_REQUIRED"
+        ],
+        "has_usual_departure": false
+      }
+    ],
+    "all_input_bytes_unchanged": true,
+    "private_profiles_edited": false,
+    "network_requests": 0,
+    "outcome": "No real itinerary recommendation: explicit final-leg arrivals within the search do not meet the configured work deadline including walk and margin; the return profile has no saved departure. No personal clock was invented.",
+    "private_reproduction": "From project root with PYTHONPATH=src, python data/pilots/static-planning-20261114/exercise.py (requires existing personal data; refuses to overwrite real-results.json; choose a new private directory to repeat).",
+    "private_evidence_directory": "data/pilots/static-planning-20261114/",
+    "public_privacy": "No personal IDs, routes, stops, locations, clocks or profile payloads. Private database fingerprints are not published."
+  },
+  "bounds": {
+    "timezone": "America/Bogota",
+    "work_search": "max(civil midnight, deadline-window) through deadline; home departure on selected civil date; first ready time adds initial walk",
+    "return_search": "explicit or saved departure through departure+window; final arrival may be later",
+    "transfers": "all boardings within the single global horizon and after configured walking+buffer; spatial connectivity unverified",
+    "diagnostic_probe": "at most one additional 1440-minute per-leg query on a missing leg; not included in optimization",
+    "frequencies": "exact_times=1 enumerated; exact_times=0 excluded from point recommendations",
+    "safety": "only the configured margin; shown separately from scheduled arrival plus final walk"
+  },
+  "unchanged_contracts": [
+    "profile schema 2",
+    "catalog schema 1",
+    "Result contract version 1",
+    "GPS 3A",
+    "route tracker",
+    "OD analyzer",
+    "profile OD adapter"
+  ],
+  "code_sha256": {
+    "src/transmitracker/catalog/queries.py": "f16ec16de63b097e3cd584d92670fbc8e10449605696a908680ce5d55147fe54",
+    "src/transmitracker/gui/app.py": "ab1c17c5c22183972ba8bdcee093dab0310279e50ffe2291281b2397b207fe84",
+    "src/transmitracker/gui/controller.py": "2a3be7d2e3ee88fa353c28ca4cd9fac1357746fc781f409061b39a4143904a92",
+    "src/transmitracker/gui/messages.py": "80c325d75c7dfd0972aed714571181d25fad23155339976a7337996206d71741",
+    "src/transmitracker/gui/planning.py": "1f30af85ea072b2554f20befa29fb2899827de16d4d9fe54049d5fd6e7a26be7",
+    "src/transmitracker/profiles/planning.py": "990dbca03219dcf5860c77421780cb6c4d2d29b81b470c6a4cfea2d2b63fae9d",
+    "tests/test_static_planning.py": "5d9b6ca655b4bb1444ab35ee5a2a144986282b25edb63b7dd97dc7cf49ed8c11",
+    "tests/test_planning_gui.py": "e46bd748f798530ee2aa37f813d70d6183ba84820053b56df2dc88f4d3d74ff1"
+  },
+  "limitations": [
+    "Scheduled times do not verify real arrivals, availability or punctuality.",
+    "Optimization covers explicit times only inside the documented bounded horizon.",
+    "Transfers preserve user minutes; no spatial connection is assumed.",
+    "A valid static service date does not certify operational freshness."
+  ],
+  "delivery": "Prepared for QA Check; no commit or push. Further capabilities/captures require explicit authorization.",
+  "documentation_checks": {
+    "local_links_checked": 130,
+    "broken_links_or_heading_targets": [],
+    "external_links_queried": false,
+    "personal_leg_id_values_absent_from_public_evidence": true,
+    "protected_code_paths_unchanged": true
+  }
+}

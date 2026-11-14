@@ -1,7 +1,8 @@
 """Widget-independent orchestration over catalog/profile contracts; no SQL or HTTP."""
 
+import sqlite3
 from dataclasses import replace
-from datetime import datetime, time, timedelta
+from datetime import date, datetime, time, timedelta
 from pathlib import Path
 
 from transmitracker.catalog.common import BOGOTA
@@ -9,6 +10,8 @@ from transmitracker.catalog.queries import Catalog
 from transmitracker.gui.config import LocalConfig
 from transmitracker.profiles.contracts import Issue, Result, failure
 from transmitracker.profiles.models import Leg, ProfileKind, profile_from_dict
+from transmitracker.profiles.planning import StaticPlanner
+from transmitracker.profiles.reader import ReadOnlyProfileStore
 from transmitracker.profiles.services import CatalogService
 from transmitracker.profiles.store import ProfileStore
 
@@ -177,6 +180,36 @@ class DesktopController:
             return decoded
         with ProfileStore(self.store_path) as store:
             return store.validate(decoded.data, departure)
+
+    def plan_static(
+        self, profile_id, planning_day, departure_clock=None, *, expected_revision=None
+    ):
+        """Query saved data only; no bootstrap, preferences, saves or schedule checks."""
+        try:
+            day = date.fromisoformat(planning_day)
+            clock = time.fromisoformat(departure_clock) if departure_clock else None
+        except (ValueError, TypeError):
+            return failure("INVALID_PLANNING_DATE", "planning_date", "Review local date/time")
+        try:
+            with ReadOnlyProfileStore(self.store_path) as store:
+                loaded = store.load(profile_id)
+                if not loaded.ok:
+                    return loaded
+                stored = loaded.data
+                if expected_revision is not None and stored.revision != expected_revision:
+                    return failure("PROFILE_REVISION_CONFLICT", "profile", "Reload changed profile")
+                registered = store.catalog_path(stored.profile.catalog_sha256)
+                if not registered.ok:
+                    return registered
+            with Catalog(self.config.local(registered.data)) as catalog:
+                result = StaticPlanner(catalog).plan(stored.profile, day, clock)
+            return Result(
+                data=result.data, errors=result.errors, warnings=loaded.warnings + result.warnings
+            )
+        except (ValueError, OSError, sqlite3.Error):
+            return failure(
+                "CATALOG_UNAVAILABLE", "catalog", "Pinned catalog/profile store unavailable"
+            )
 
     def search_routes(self, query, sha=None):
         with Catalog(self._catalog_path(sha)) as catalog:

@@ -1,4 +1,4 @@
-# Arquitectura vigente — 0.6.0
+# Arquitectura vigente — 0.7.0
 
 ## Componentes y límites
 
@@ -16,6 +16,31 @@ La GUI reutiliza servicios de dominio; consultas SQLite usan conexiones propias.
 Los widgets permanecen en el hilo Tk. Perfiles con uno a tres tramos conservan
 patrón, ocurrencias y hash de catálogo. Calendarios, medianoche y horas >24 son
 programación estática. Caminatas del usuario no prueban conectividad espacial.
+
+## Planificación estática reutilizable
+
+`profiles/planning.py` ofrece `StaticPlanner.plan(Profile, date, time | None)` y
+devuelve `Result[StaticPlan]`, con pasos tipados y códigos de error. No depende de
+widgets, persistencia, GPS o red. Reutiliza `CatalogService.validate_structure`
+y la nueva consulta `Catalog.scheduled_connections`, que enumera alternativas
+sin colapsar viajes por destino. La lógica de calendario, plataformas, secuencias,
+horas extendidas y frecuencias sigue en `_candidates`; sus consumidores anteriores
+mantienen el comportamiento por defecto. `validate()`/`validate_destination()`
+siguen sirviendo a la consulta de ejemplo, pero su primer abordaje no resuelve
+el óptimo de varias conexiones.
+
+La búsqueda inversa retiene para cada abordaje la conexión posterior con menor
+llegada final, respetando caminata y buffer de transbordo; permite adelantamientos
+entre servicios sin selección codiciosa del primer viaje. Ida maximiza la salida
+viable, regreso minimiza llegada con salida fija. Se optimiza únicamente entre
+horarios explícitos del horizonte descrito en la [guía](../getting-started/USAGE.md#planificación-estática-070).
+No se añade margen implícito ni se certifican conexiones espaciales.
+
+`DesktopController.plan_static` abre `ReadOnlyProfileStore` y el catálogo fijado
+en lectura, comprueba revisión y hash, sin ejecutar bootstrap, guardar consultas,
+migrar ni escribir preferencias. `gui/planning.py` prepara el texto y widgets del
+panel mínimo. `UiWorker` mantiene SQLite fuera del hilo Tk y descarta respuestas
+por generación, fecha/hora y cambio de página. No cambian tablas ni contratos previos.
 
 ## Almacenamiento y versiones independientes
 

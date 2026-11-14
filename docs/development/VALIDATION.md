@@ -18,7 +18,21 @@ el verificador usa temporales exclusivos en .cache/verification y los casos GUI
 en Windows usan procesos separados. La última validación registrada en 3A fue
 237 aprobadas; no representa una ejecución en esta tarea documental.
 
-## Motor GPS sintético
+## Planificación estática (0.7.0)
+
+La planificación estática 0.7.0 se verifica de forma focalizada:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest -q -m 'not gui' tests/test_static_planning.py tests/test_planning_gui.py tests/test_catalog.py tests/test_profiles.py tests/test_gui_controller.py
+.\.venv\Scripts\python.exe -m pytest -q -m gui tests/test_planning_gui.py
+```
+
+Incluye ventanas Tk reales, fixtures sintéticos y bloqueo de red; no necesita feeds
+ni perfiles personales. El ejercicio real separado y su conservación de entradas
+se describen en la [guía](../getting-started/USAGE.md#planificación-estática-070) y
+[agregados](../archive/evidence/STATIC_PLANNING_VALIDATION_20261114.json).
+
+## Motor GPS sintético (replay)
 
 ```powershell
 .\.venv\Scripts\python.exe -m transmitracker.reconstruction evaluate --directory data/replay-NEW-RUN --output data/replay-NEW-RUN/evaluation.json

@@ -211,6 +211,7 @@ class Catalog:
         route_id=None,
         pattern_id=None,
         include_conditional=False,
+        all_departures=False,
     ):
         when = aware(when)
         if not 1 <= window_minutes <= 1440:
@@ -273,10 +274,13 @@ class Catalog:
                                 + max(0, math.ceil((low - earliest) / frequency["headway"]))
                                 * frequency["headway"]
                             )
-                            if departure < latest:
+                            while departure < latest and departure <= high:
                                 departures.append(
                                     (departure, "frequency_exact", frequency["headway"])
                                 )
+                                if not all_departures:
+                                    break
+                                departure += frequency["headway"]
                         elif earliest <= high and latest > low:
                             # This is an availability bound, never an invented exact departure.
                             departures.append(
@@ -299,6 +303,66 @@ class Catalog:
                         "headway_seconds": headway,
                     }
             service_day += timedelta(days=1)
+
+    def scheduled_connections(self, leg, when, *, window_minutes=120):
+        """All explicit alternatives for one saved leg, with the existing calendar rules.
+
+        Unlike destinations(), do not collapse trips by stop occurrence: a later
+        boarding may arrive earlier. Unresolved frequency/time rows have no exact
+        boarding/arrival and cannot be used to prove a timed itinerary.
+        """
+        self.validate_leg_structure(leg)
+        results = {}
+        names = {}
+        for candidate in self._candidates(
+            leg.origin_stop_id,
+            when,
+            window_minutes,
+            route_id=leg.route_id,
+            pattern_id=leg.pattern_id,
+            all_departures=True,
+        ):
+            if candidate["origin_sequence"] != leg.origin_sequence:
+                continue
+            destination = self.connection.execute(
+                "SELECT t.arrival,s.name FROM stop_times t JOIN stops s ON s.stop_id=t.stop_id WHERE t.trip_pk=? AND t.sequence=? AND t.stop_id=? AND t.drop_off_type=0",
+                (candidate["trip_pk"], leg.destination_sequence, leg.destination_stop_id),
+            ).fetchone()
+            if destination is None:
+                continue
+            offset = candidate["boarding_seconds"] - candidate["origin_departure"]
+            arrival = (
+                destination["arrival"] + offset if destination["arrival"] is not None else None
+            )
+            unresolved = candidate["basis"] == "frequency_window_estimated" or arrival is None
+            if arrival is not None and arrival < candidate["boarding_seconds"]:
+                continue
+            platform = candidate["origin_platform_id"]
+            if platform not in names:
+                names[platform] = self.connection.execute(
+                    "SELECT name FROM stops WHERE stop_id=?", (platform,)
+                ).fetchone()[0]
+            key = (
+                candidate["trip_id"],
+                candidate["service_date"],
+                candidate["boarding_at"],
+                platform,
+            )
+            results[key] = {
+                "trip_id": candidate["trip_id"],
+                "service_date": candidate["service_date"],
+                "boarding_at": None if unresolved else candidate["boarding_at"],
+                "arrival_at": None
+                if unresolved
+                else (candidate["midnight"] + timedelta(seconds=arrival)).isoformat(),
+                "availability_from": candidate["boarding_at"],
+                "time_basis": candidate["basis"],
+                "origin_platform_id": platform,
+                "origin_name": names[platform],
+                "destination_name": destination["name"],
+                "route_name": candidate["short_name"],
+            }
+        return sorted(results.values(), key=lambda r: (r["availability_from"], r["trip_id"]))
 
     def options(
         self, origin: str, when: datetime, *, window_minutes=120, include_conditional=False

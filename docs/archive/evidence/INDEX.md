@@ -1,5 +1,11 @@
 # Evidencias históricas y compatibilidad
 
+## Planificación estática desde perfiles — 2026-11-14
+
+[Pruebas focalizadas, GUI sintética y ejercicio oficial local](STATIC_PLANNING_VALIDATION_20261114.json).
+Solo agregados; los horarios, IDs y perfiles personales permanecen privados.
+Uso y cierre para QA en la [guía canónica](../../getting-started/USAGE.md#planificación-estática-070).
+
 ## Adaptador de perfiles guardados a OD — 2026-11-14
 
 [Pruebas, demostración sintética y compatibilidad real en solo lectura](PROFILE_OD_VALIDATION_20261114.json).
