@@ -1,0 +1,217 @@
+{
+  "reference_commit": "ffd25ea752fe3ce7540a3eaa117b00222813a046",
+  "network_requests": 0,
+  "alternative_computed_in_memory_only": true,
+  "operationally_verified": false,
+  "travel_durations_accepted": 0,
+  "observations": 24104,
+  "comparable_pairs": 21846,
+  "start_equals_gps_bogota": 24104,
+  "descriptor_changes": {
+    "start_time": 17340,
+    "route_id": 60
+  },
+  "change_combinations": {
+    "start_time": 17280,
+    "none": 4506,
+    "route_id,start_time": 60
+  },
+  "independent_anomalies_overlapping": {
+    "repeated_time": 4506,
+    "time_regression": 0,
+    "same_time_different_position": 0,
+    "position_changes": 17239,
+    "stationary_with_new_time": 101,
+    "missing_coordinates": 0,
+    "speed_above_35": 1,
+    "gap_above_300": 57,
+    "current_age_above_300": 449,
+    "current_age_negative": 0,
+    "bridges_missing_snapshot": 124,
+    "only_start_changed": 17280
+  },
+  "pipeline": {
+    "conservative": [
+      {
+        "filter": "comparable_pairs",
+        "survivors": 21846
+      },
+      {
+        "filter": "descriptor",
+        "survivors": 4506
+      },
+      {
+        "filter": "positive_time",
+        "survivors": 0
+      },
+      {
+        "filter": "coordinates",
+        "survivors": 0
+      },
+      {
+        "filter": "movement",
+        "survivors": 0
+      },
+      {
+        "filter": "speed",
+        "survivors": 0
+      },
+      {
+        "filter": "age",
+        "survivors": 0
+      },
+      {
+        "filter": "gap",
+        "survivors": 0
+      }
+    ],
+    "ignore_start_time_only": [
+      {
+        "filter": "comparable_pairs",
+        "survivors": 21846
+      },
+      {
+        "filter": "descriptor_without_start",
+        "survivors": 21786
+      },
+      {
+        "filter": "positive_time",
+        "survivors": 17280
+      },
+      {
+        "filter": "coordinates",
+        "survivors": 17280
+      },
+      {
+        "filter": "movement",
+        "survivors": 17179
+      },
+      {
+        "filter": "speed",
+        "survivors": 17178
+      },
+      {
+        "filter": "age",
+        "survivors": 17178
+      },
+      {
+        "filter": "gap",
+        "survivors": 17132
+      }
+    ]
+  },
+  "exploratory_pairs": 17132,
+  "exploratory_ids": 2164,
+  "ids_with_consecutive_exploratory_chain_at_least_three_fixes": 2107,
+  "consecutive_chain_pairs": {
+    "count": 2164,
+    "min": 1,
+    "median": 4.0,
+    "max": 4
+  },
+  "positive_dt_seconds": {
+    "count": 17340,
+    "min": 20,
+    "median": 60.0,
+    "max": 1083
+  },
+  "speed_mps_positive_dt": {
+    "count": 17340,
+    "min": 0.0,
+    "median": 4.30507508064213,
+    "max": 7918.296795002315
+  },
+  "route_changes_without_start_change": 0,
+  "start_changes_without_gps_time_change": 0,
+  "positive_dt_without_start_change": 0,
+  "examples": [
+    {
+      "anonymous_example": "A",
+      "selection": "largest sampled path lengths among consecutive exploratory chains; deliberately selected, not representative",
+      "fixes": 5,
+      "gps_intervals_s": [
+        102,
+        60,
+        40,
+        120
+      ],
+      "step_distances_rounded_10m": [
+        1370,
+        790,
+        670,
+        1690
+      ],
+      "mean_speeds_rounded_mps": [
+        13.5,
+        13.2,
+        16.8,
+        14.1
+      ],
+      "age_range_rounded_10s": [
+        40,
+        100
+      ],
+      "start_changes": 4
+    },
+    {
+      "anonymous_example": "B",
+      "selection": "largest sampled path lengths among consecutive exploratory chains; deliberately selected, not representative",
+      "fixes": 5,
+      "gps_intervals_s": [
+        98,
+        60,
+        40,
+        120
+      ],
+      "step_distances_rounded_10m": [
+        1020,
+        920,
+        620,
+        1900
+      ],
+      "mean_speeds_rounded_mps": [
+        10.4,
+        15.3,
+        15.4,
+        15.9
+      ],
+      "age_range_rounded_10s": [
+        40,
+        100
+      ],
+      "start_changes": 4
+    },
+    {
+      "anonymous_example": "C",
+      "selection": "largest sampled path lengths among consecutive exploratory chains; deliberately selected, not representative",
+      "fixes": 5,
+      "gps_intervals_s": [
+        100,
+        60,
+        60,
+        92
+      ],
+      "step_distances_rounded_10m": [
+        1130,
+        910,
+        870,
+        1100
+      ],
+      "mean_speeds_rounded_mps": [
+        11.3,
+        15.1,
+        14.6,
+        12.0
+      ],
+      "age_range_rounded_10s": [
+        50,
+        80
+      ],
+      "start_changes": 4
+    }
+  ],
+  "input_files_checked": 26,
+  "input_digest": "d0350ecdd949c826f19b49125668fded6840014d69f7e692e4c55226a4235b14",
+  "inputs_unchanged": true,
+  "official_counter_reproduced": true
+}

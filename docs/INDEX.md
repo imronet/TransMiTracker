@@ -5,8 +5,8 @@
 - [Presentación e instalación](../README.md)
 - [Preparar el catálogo y ejemplos](getting-started/SETUP.md)
 - [Uso de perfiles, estados y privacidad](getting-started/USAGE.md)
-- [Piloto GPS local 3B-P2: permiso temporal y captura bloqueada](getting-started/LOCAL_GPS_PILOT.md)
-- [Revisión pendiente de condiciones del piloto doméstico](research/LOCAL_PILOT_CONDITIONS.json)
+- [Piloto GPS local: primera sesión cerrada y análisis offline](getting-started/LOCAL_GPS_PILOT.md)
+- [Decisión experimental consumida y evidencia de licencia](research/LOCAL_PILOT_CONDITIONS.json)
 
 ## Para desarrollar
 
@@ -20,13 +20,15 @@
 
 ## Investigación y trabajo futuro
 
+- [Continuidad GPS offline: start_time, comparación de filtros y límites](research/GPS_CONTINUITY_OFFLINE.md)
 - [Viabilidad de GPS real previa a 3B: fuentes, costes y condiciones](research/GPS_REAL_FEASIBILITY.md)
 - [Diseño de proveedores y créditos: no implementado](research/CROMA_INTEGRATION_DESIGN.md)
 - [Históricos operativos, snapshots y limitaciones de IDs](archive/phases/PHASE0_5_REPORT.md)
 - [Diagnóstico temporal e identidad candidata](archive/phases/PHASE1B_REPORT.md)
 
-Fase 3A está entregada. 3B-P0/P2 autorizan exclusivamente preparación y pruebas offline;
-la captura real sigue bloqueada. El plan conserva requisitos originales y adendas:
+Fase 3A está entregada. La primera sesión GPS real terminó el 13/11/2026;
+su autorización está consumida y no se permite otra captura sin nueva autorización.
+El plan conserva requisitos originales y adendas:
 las posteriores precisan el alcance vigente sin borrar historia.
 No existe todavía precisión operativa real validada ni recolección continua.
 

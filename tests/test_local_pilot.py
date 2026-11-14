@@ -432,9 +432,12 @@ def test_full_diagnostics_cannot_escape_private_root(tmp_path, monkeypatch, targ
     private.mkdir()
     monkeypatch.setattr(pilot, "PILOT_ROOT", private)
     monkeypatch.setattr(pilot, "project_path", lambda p: Path(p).resolve())
+    session = private / "valid-synthetic-session"
+    pilot.make_fixture(session)
+    assert pilot.analyze(session)["counts"]["snapshots"] == 4
     output = private / target
     with pytest.raises(SystemExit) as error:
-        pilot.main(["analyze", str(private / "missing"), "--output", str(output)])
+        pilot.main(["analyze", str(session), "--output", str(output)])
     assert error.value.code == 2
     assert not output.resolve().exists()
 

@@ -1,0 +1,22 @@
+{
+  "recorded_at": "2026-11-13T23:12:20.3816345-05:00",
+  "scope": "Offline continuity diagnosis; valid synthetic-session QA; no capture or network",
+  "checks": [
+    {
+      "command": "pytest output confinement with valid synthetic session and valid private destination",
+      "exit_code": 0,
+      "output": "...                                                                      [100%]\n3 passed in 0.28s"
+    },
+    {
+      "command": "ruff check tests/test_local_pilot.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "ruff format --check tests/test_local_pilot.py",
+      "exit_code": 0,
+      "output": "1 file already formatted"
+    }
+  ],
+  "all_passed": true
+}
