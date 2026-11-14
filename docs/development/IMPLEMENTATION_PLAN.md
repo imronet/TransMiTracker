@@ -1,8 +1,8 @@
 # TransMiTracker — Implementation Plan
 
-**Estado vigente — v0.3.0:** rastreador experimental offline por ruta disponible;
+**Estado vigente — v0.4.0:** rastreador y visor experimental offline por ruta disponibles;
 véanse [uso](../getting-started/OFFLINE_ROUTE_TRACKER.md) y
-[adenda 17](#17-rastreador-experimental-offline-por-ruta--capacidad-autorizada).
+[adenda 18](#18-visor-gráfico-experimental-offline--capacidad-autorizada).
 Las secciones y adendas anteriores conservan su contexto histórico. Croma es una
 alternativa futura y opcional; no se requiere para la capacidad actual. No hay
 autorización de nuevas capturas ni seguimiento continuo.
@@ -1018,3 +1018,14 @@ Ruff/formato/pip check correctos y ejemplo con 12 snapshots existentes.
 [Informe y evidencia](../archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md).
 Capacidad disponible para revisión; siguiente ampliación o captura requiere
 autorización expresa. Se conservan todos los requisitos originales del plan.
+
+## 18. Visor gráfico experimental offline — capacidad autorizada
+
+Autorizada una ventana independiente CustomTkinter/Canvas para reportes existentes:
+selección de candidatos/segmentos, pasos manuales por observaciones originales y
+todos los shapes/patrones candidatos del catálogo en lectura. Modelos visuales
+separados de widgets, sin modificar el rastreador, motor 3A o GUI principal.
+Producto 0.4.0, sin dependencias nuevas, interpolaciones, adquisición ni predicción.
+Pruebas focalizadas, demo sintética y apertura del reporte real guardado:
+[uso, validación y límites](../getting-started/OFFLINE_ROUTE_TRACKER.md#visor-gráfico-independiente-040).
+No autoriza captura, seguimiento continuo o siguiente fase.

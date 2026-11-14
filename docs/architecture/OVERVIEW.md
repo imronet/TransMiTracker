@@ -1,4 +1,4 @@
-# Arquitectura vigente — 0.3.0
+# Arquitectura vigente — 0.4.0
 
 ## Componentes y límites
 
@@ -9,6 +9,7 @@
 | profiles/ | Modelos, contratos, validación estructural/temporal y persistencia de perfiles |
 | gui/ | CustomTkinter, controlador y trabajador de datos locales; sin adquisición al navegar |
 | research/ | Experimentos y diagnóstico acotado, separados de un colector de producción |
+| viewer/ | Visor independiente de reportes GPS offline; modelos visuales y Canvas local |
 | reconstruction/ | Motor GPS experimental por lotes y replay exclusivamente offline |
 
 La GUI reutiliza servicios de dominio; consultas SQLite usan conexiones propias.
@@ -60,3 +61,12 @@ ante discontinuidades y conserva todos los patrones de cada shape candidato.
 No consulta calendarios ni verifica identidad física o eventos de servicio.
 El reporte completo solo puede escribirse bajo `data/pilots`, en un archivo nuevo;
 la consola emite conteos. [Contrato de uso y estados](../getting-started/OFFLINE_ROUTE_TRACKER.md).
+
+El visor `viewer/` lee el JSON del rastreador; `data.py` valida pertenencia de
+observaciones a segmentos y prepara dataclasses inmutables sin Tk. `app.py`
+dibuja GPS observados y uniones visuales, sin recalcular trayectorias o métricas.
+Consulta todos los shapes/patrones de la ruta en SQLite de solo lectura, cotejando
+la versión GTFS registrada cuando está fijada en el reporte. No selecciona una
+alternativa geométrica ni usa interpolación. No importa widgets de la GUI principal,
+no escribe perfiles y no inicia adquisiciones. El control temporal avanza por
+observaciones originales en orden de captura; las regresiones no se ocultan.

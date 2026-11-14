@@ -6,6 +6,8 @@ y selección por ruta. Fase 3A usa **0.2.0**, una ampliación compatible con mot
 GPS offline y CLI independientes. Se usa `MAJOR.MINOR.PATCH`, conforme a Semantic Versioning.
 La entrega del rastreador experimental offline por ruta usa **0.3.0** por añadir
 una capacidad compatible nueva. No cambia el algoritmo ni el esquema GPS de 3A.
+El visor gráfico independiente añade otra capacidad compatible en **0.4.0**;
+no modifica reglas ni versión del algoritmo del rastreador.
 
 `pyproject.toml` es la única fuente de verdad. `version.app_version()` la lee en
 el proyecto; en una distribución instalada utiliza los metadatos generados desde

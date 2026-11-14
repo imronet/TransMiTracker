@@ -1,5 +1,12 @@
 # Evidencias históricas y compatibilidad
 
+## Visor gráfico offline — 2026-11-14
+
+[Validación focalizada y apertura real/sintética](OFFLINE_VIEWER_VALIDATION_20261114.json).
+La [captura del visor](../phases/screenshots/offline-viewer-synthetic-20261114.png)
+es exclusivamente sintética. La [guía existente](../../getting-started/OFFLINE_ROUTE_TRACKER.md#visor-gráfico-independiente-040)
+recoge uso, resultados y límites; no se publican pantallas ni payloads reales.
+
 ## Mantenimiento focalizado de v0.3.0 — 2026-11-14
 
 [Validación de limpieza y QA](MAINTENANCE_V030_20261114.json): hashes de las ocho

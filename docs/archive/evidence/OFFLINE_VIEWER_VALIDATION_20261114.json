@@ -1,0 +1,108 @@
+{
+  "date_bogota": "2026-11-14",
+  "product_version": "0.4.0",
+  "reference_commit": "5cacdf72cba0ab5b7b50d6cf168c6d8e9137bf9c",
+  "scope": "Independent offline CustomTkinter/Canvas viewer of existing route-tracker reports. No new research or acquisition.",
+  "checks": [
+    {
+      "command": "ruff format src/transmitracker/viewer tests/test_viewer.py tests/test_viewer_widgets.py",
+      "exit_code": 0,
+      "output": "1 file reformatted, 6 files left unchanged"
+    },
+    {
+      "command": "pytest -q tests/test_viewer.py tests/test_viewer_widgets.py tests/test_route_tracker.py tests/test_phase2_1.py::test_version_is_semver_and_from_project_metadata",
+      "exit_code": 0,
+      "output": "............................................                             [100%]\n44 passed in 5.45s"
+    },
+    {
+      "command": "ruff check src/transmitracker/viewer tests/test_viewer.py tests/test_viewer_widgets.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "ruff format --check src/transmitracker/viewer tests/test_viewer.py tests/test_viewer_widgets.py",
+      "exit_code": 0,
+      "output": "7 files already formatted"
+    },
+    {
+      "command": "pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ],
+  "synthetic_window": {
+    "mode": "synthetic",
+    "window_mapped": true,
+    "screenshot": "docs\\archive\\phases\\screenshots\\offline-viewer-synthetic-20261114.png",
+    "observed_markers": 7,
+    "visual_links": 5,
+    "network_requests": 0,
+    "callback_errors": 0
+  },
+  "saved_real_window": {
+    "mode": "saved_real_report",
+    "candidates": 3,
+    "observations_visited": 36,
+    "segments": 10,
+    "shapes": 1,
+    "originals_unchanged": true,
+    "report_sha256": "aba9b467f88bd6313d434e17dce2710e6f942af2f44e39bcb1b78bdadee54ab1",
+    "network_requests": 0,
+    "callback_errors": 0
+  },
+  "synthetic_screenshot_visually_inspected": true,
+  "screenshot_sha256": "463c8ae0eefe97613635ab4629156b6f4d5df50a252c9aafaec4092c1cafdea5",
+  "documentation": {
+    "markdown_files": 41,
+    "local_links": 181,
+    "broken_links": [],
+    "external_links_not_fetched": 58,
+    "protected_changed_paths": [],
+    "source_fingerprints": [
+      {
+        "file": "src/transmitracker/viewer/app.py",
+        "sha256": "aa4ceb660d39ea3b56d097f694482b178bce434c395757b9be66972ee7f5580b"
+      },
+      {
+        "file": "src/transmitracker/viewer/data.py",
+        "sha256": "97cfa2b7102a48db7b02973b65329c0277f95d2f242870713fe24927dac886b5"
+      },
+      {
+        "file": "src/transmitracker/viewer/demo.py",
+        "sha256": "d5761952555ab878e8929291f4f21cc7299349a965d73387d2925ad52fdf5d08"
+      },
+      {
+        "file": "src/transmitracker/viewer/__init__.py",
+        "sha256": "dadf4d24bb61920d02d23be84f7b95d1c1b433fc7e6a2a5a455e4d0fcdc8f4dc"
+      },
+      {
+        "file": "src/transmitracker/viewer/__main__.py",
+        "sha256": "92e7a47ae609fa9617881294770d28d4050efd61447a79da718541ceecd0469e"
+      }
+    ],
+    "screenshot_sha256": "463c8ae0eefe97613635ab4629156b6f4d5df50a252c9aafaec4092c1cafdea5",
+    "reference_commit": "5cacdf72cba0ab5b7b50d6cf168c6d8e9137bf9c"
+  },
+  "constraints": {
+    "network_requests": 0,
+    "new_gps_captures": 0,
+    "new_dependencies": 0,
+    "tracker_and_3a_unchanged": true,
+    "main_gui_profiles_catalog_unchanged": true,
+    "real_screenshot_published": false,
+    "commit_or_push_performed": false
+  },
+  "limitations": [
+    "Candidate IDs and shape/pattern association are not verified operational identities.",
+    "The viewer trusts local report metrics and does not revalidate the original PBs.",
+    "Straight dashed links are drawing aids only; no interpolated/extrapolated GPS positions.",
+    "All candidate shapes are shown; shared patterns and unresolved geometry remain ambiguous.",
+    "No full GUI suite, large-lot performance test, ETA, verified durations or arrivals.",
+    "External links were not fetched."
+  ],
+  "reproduction": {
+    "synthetic": "python -m transmitracker.viewer --demo",
+    "private_report": "python -m transmitracker.viewer PRIVATE_REPORT.json --catalog LOCAL_CATALOG.sqlite3",
+    "guide": "docs/getting-started/OFFLINE_ROUTE_TRACKER.md"
+  }
+}

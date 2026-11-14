@@ -14,12 +14,12 @@ queries scheduled services and provides an experimental offline GPS engine.
 
 ## Current status
 
-**Version 0.3.0 — Experimental offline route tracker delivered.** The application
+**Version 0.4.0 — Standalone experimental offline GPS viewer delivered.** The application
 and documentation are under active development. The interface and most technical
 documents are in Spanish.
 
 Start with the [offline route tracker guide](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
-for the manual PowerShell command. It uses saved snapshots and a local catalog;
+for the CLI and standalone graphical viewer commands. They use saved snapshots and a local catalog;
 it does not collect live positions. See the
 [v0.3.0 delivery report](docs/archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md)
 for the saved real example and its historical validation (106 relevant tests).
@@ -28,6 +28,9 @@ The conservative engine's earlier synthetic evaluation remains in the
 
 ## Available today
 
+- [Standalone offline GPS viewer](docs/getting-started/OFFLINE_ROUTE_TRACKER.md#visor-gráfico-independiente-040):
+  local Canvas, candidate selection, segments and manual observation stepping.
+  All route geometries remain visible; no web maps or interpolated GPS positions.
 - [Manual offline route tracker](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
   for saved GPS sessions: candidate vehicle segments and route geometry progress,
   without requiring an exact static trip or stable `start_time`.

@@ -3,6 +3,8 @@
 Disponible desde 0.3.0. Procesa una sesión **ya guardada** por `route_id` exacto;
 no descarga datos ni activa seguimiento. No exige viaje GTFS exacto ni estabilidad
 de `start_time`. El motor conservador 3A mantiene sus reglas sin cambios.
+Desde **0.4.0** también puede explorarse el reporte con el
+[visor gráfico independiente](#visor-gráfico-independiente-040).
 
 ## Ejecución manual en PowerShell
 
@@ -115,3 +117,80 @@ Son controles exploratorios, sin garantías operativas. El reporte declara
 `operationally_verified=false` y ninguna llegada, embarque o duración inferida.
 
 No hay scheduler, captura, Croma, predictor ni integración nueva en la GUI.
+
+## Visor gráfico independiente (0.4.0)
+
+Ventana CustomTkinter con Canvas local, separada de la GUI principal. No requiere
+mapas web, claves ni dependencias adicionales. Ejemplo completamente sintético:
+
+```powershell
+$env:PYTHONPATH = Join-Path (Get-Location).Path 'src'
+$env:PYTHONUTF8 = '1'
+.\.venv\Scripts\python.exe -m transmitracker.viewer --demo
+```
+
+Para abrir el reporte real privado **existente** con el catálogo local:
+
+```powershell
+$exampleRoot = 'data/pilots/first-real-20261113-223641-1613d2b6/route-tracker-20261114'
+.\.venv\Scripts\python.exe -m transmitracker.viewer `
+  "$exampleRoot/report.json" --catalog data/catalog/official_20261112.sqlite3
+```
+
+Sin argumentos se abre una ventana vacía: **Abrir reporte privado** permite elegir
+el JSON y **Catálogo local…**, un SQLite. Sin catálogo se muestran solo los GPS;
+no se inventa un trazado. Si el reporte fija un catálogo, se compara el hash GTFS
+registrado en sus metadatos; otra versión se rechaza. Esto no verifica por sí solo
+la integridad física del SQLite. El catálogo siempre se abre en modo lectura.
+
+Seleccionar un candidato por ID/fuente y un segmento en el panel izquierdo.
+**Anterior**, **Siguiente** y el deslizador recorren observaciones originales por
+orden de captura, incluyendo repeticiones y regresiones GPS; no son reproducción
+animada ni una escala de tiempo interpolada. Seleccionar un segmento lleva a su
+primera observación. El aro blanco marca la observación actual. Los timestamps
+del panel (GPS, recepción y feed) se presentan en America/Bogota.
+
+Los puntos de color son GPS observados. Las uniones punteadas son ayudas de lectura
+entre muestras del **mismo segmento**; no son posiciones intermedias ni cruzan
+interrupciones. Gris identifica observaciones sin segmento. Las posiciones
+ausentes, inválidas o declaradas extrapoladas no se dibujan como GPS observado.
+Los colores distinguen movimiento candidato, bajo movimiento, interrupción,
+ambigüedad y descarte. Las métricas del panel corresponden al **segmento completo**,
+no solo al prefijo visible del control temporal.
+
+Los trazados grises son todos los shapes utilizables de la ruta, sin selección
+arbitraria. El panel conserva patrones compartidos y alternativas/motivos de
+proyección del reporte; no recalcula correspondencias ni resuelve ramas. Usar
+**Encuadrar GPS**, **Ruta completa**, zoom o arrastre para explorar el dibujo.
+La proyección local sirve para dibujar; no estima precisión ni nuevas distancias.
+
+El visor valida formato y consistencia de los segmentos, pero confía en los datos
+y métricas del reporte local; no vuelve a verificar los PB ni ejecuta el rastreador.
+No escribe reportes, preferencias o exportaciones. Los IDs y posiciones son
+visibles únicamente en la ventana privada: no compartir capturas reales.
+Un reporte inválido produce un mensaje seguro; al abrir desde la ventana se
+conserva la vista anterior. Si Tk no puede iniciarse, la CLI termina con error.
+
+### Validación de entrega — 2026-11-14
+
+**44 pruebas focalizadas aprobadas**, incluida una prueba con ventana Tk real,
+las 25 pruebas del rastreador y el contrato de versión. Ruff y formato correctos
+en los siete archivos Python nuevos; `pip check` correcto en Python 3.13.
+Sin suite completa ni cambios de reglas del rastreador, motor 3A, GUI principal,
+perfiles o catálogo. La versión de producto aumenta a 0.4.0 por esta capacidad
+compatible; el algoritmo del rastreador conserva su versión.
+
+Se abrió la demostración sintética y se comprobó selección, slider, cortes y
+ambigüedad en widgets reales. Luego se abrió el reporte privado: **3 candidatos,
+36 observaciones recorridas, 10 segmentos y un shape**; reporte y SQLite sin
+cambios de hash, cero errores de callbacks y red bloqueada. Esto prueba lectura
+y visualización, sin identidad operativa, llegadas, duraciones o ETA verificadas.
+
+[Captura exclusivamente sintética](../archive/phases/screenshots/offline-viewer-synthetic-20261114.png)
+y [evidencia de pruebas y comprobaciones](../archive/evidence/OFFLINE_VIEWER_VALIDATION_20261114.json).
+Las fuentes están en `src/transmitracker/viewer/`; preparación de datos en `data.py`,
+widgets en `app.py`, demo en `demo.py` y entrada independiente en `__main__.py`.
+Los tests nuevos son `tests/test_viewer.py` y `tests/test_viewer_widgets.py`.
+Quedan fuera de alcance mapas geográficos de fondo, grandes lotes de producción,
+identidad permanente, nuevos análisis y adquisición. Entrega preparada para QA;
+ningún commit/push ni autorización de la siguiente capacidad.

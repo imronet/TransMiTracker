@@ -1,9 +1,10 @@
-# Índice de documentación — TransMiTracker 0.3.0
+# Índice de documentación — TransMiTracker 0.4.0
 
 ## Capacidad vigente
 
-El rastreador experimental por ruta procesa sesiones guardadas, sin red ni
-seguimiento en vivo. Empezar por su [comando PowerShell y uso](getting-started/OFFLINE_ROUTE_TRACKER.md).
+El rastreador por ruta y su visor gráfico independiente procesan reportes/sesiones
+guardados, sin red ni seguimiento en vivo. Empezar por su
+[comando PowerShell y uso](getting-started/OFFLINE_ROUTE_TRACKER.md#visor-gráfico-independiente-040).
 El [informe de entrega](archive/phases/PHASE3B_ROUTE_TRACKER_REPORT.md) conserva
 el ejemplo real offline y las pruebas históricas de v0.3.0.
 No existe precisión operativa validada ni recolección continua. La primera sesión
@@ -14,7 +15,7 @@ real está cerrada; otra captura requiere nueva autorización.
 - [Presentación e instalación](../README.md)
 - [Preparar el catálogo y ejemplos](getting-started/SETUP.md)
 - [Uso de perfiles, estados y privacidad](getting-started/USAGE.md)
-- [Rastreador offline por ruta: comando y resultados candidatos](getting-started/OFFLINE_ROUTE_TRACKER.md)
+- [Rastreador y visor offline por ruta: comandos y resultados candidatos](getting-started/OFFLINE_ROUTE_TRACKER.md)
 
 ## Para desarrollar
 
