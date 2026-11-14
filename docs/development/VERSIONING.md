@@ -13,6 +13,8 @@ conservando validaciones y contratos. Se aplica PATCH por ser una corrección co
 El analizador OD offline añade una capacidad compatible en **0.5.0** (MINOR), con
 algoritmo independiente `od-candidate-offline-0.1.0`. No modifica el rastreador,
 el algoritmo conservador 3A o los esquemas SQLite.
+El adaptador de perfiles guardados añade una capacidad compatible en **0.6.0**;
+la base de perfiles conserva su esquema 2 y OD su algoritmo 0.1.1. No migra datos.
 
 `pyproject.toml` es la única fuente de verdad. `version.app_version()` la lee en
 el proyecto; en una distribución instalada utiliza los metadatos generados desde

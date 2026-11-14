@@ -1,0 +1,139 @@
+{
+  "date_bogota": "2026-11-14",
+  "product_version": "0.6.0",
+  "adapter": "profile-od-adapter-0.1.0",
+  "od_algorithm_unchanged": "od-candidate-offline-0.1.1",
+  "reference_commit": "05732e9a394bcf421ad2260df2374a6790275a7f",
+  "scope": "Read-only selection of one configured profile and one explicit 1-based leg, delegating to existing OD analyze(). No GUI or reconstruction changes.",
+  "checks": [
+    {
+      "command": "ruff format src/transmitracker/profiles/reader.py src/transmitracker/research/profile_od.py tests/test_profile_od.py",
+      "exit_code": 0,
+      "output": "1 file reformatted, 2 files left unchanged"
+    },
+    {
+      "command": "pytest -q tests/test_profile_od.py tests/test_profiles.py tests/test_phase2_1.py tests/test_od_analyzer.py",
+      "exit_code": 0,
+      "output": "........................................................................ [ 80%]\n..................                                                       [100%]\n90 passed in 95.40s (0:01:35)"
+    },
+    {
+      "command": "ruff check src/transmitracker/profiles/reader.py src/transmitracker/research/profile_od.py tests/test_profile_od.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "ruff format --check src/transmitracker/profiles/reader.py src/transmitracker/research/profile_od.py tests/test_profile_od.py",
+      "exit_code": 0,
+      "output": "3 files already formatted"
+    },
+    {
+      "command": "pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ],
+  "new_synthetic_tests": 20,
+  "read_only_contract": {
+    "writer_constructor_not_called": true,
+    "sqlite_mode": "ro",
+    "query_only": true,
+    "read_transaction": true,
+    "supported_profile_schema": 2,
+    "missing_database_not_created": true,
+    "profile_schema_and_bytes_unchanged_in_tests": true,
+    "writes_and_user_version_changes_rejected": true,
+    "drafts_excluded_from_configured_profiles": true,
+    "profile_leg_identifiers_and_direction_preserved": true
+  },
+  "synthetic_demonstration": {
+    "synthetic_examples": [
+      {
+        "origin": "entirely_synthetic",
+        "profile_kind": "home_to_work",
+        "leg_index": 1,
+        "summary": {
+          "candidates": 1,
+          "crossing_candidates": 2,
+          "duration_candidates": 1,
+          "reasons": {
+            "operational_identity_not_verified": 1
+          },
+          "segment_statuses": {
+            "candidate_interval": 1
+          },
+          "segments": 1
+        },
+        "matches_direct_od": true,
+        "matches_repeated_analysis": true
+      },
+      {
+        "origin": "entirely_synthetic",
+        "profile_kind": "work_to_home",
+        "leg_index": 2,
+        "summary": {
+          "candidates": 1,
+          "crossing_candidates": 2,
+          "duration_candidates": 1,
+          "reasons": {
+            "operational_identity_not_verified": 1
+          },
+          "segment_statuses": {
+            "candidate_interval": 1
+          },
+          "segments": 1
+        },
+        "matches_direct_od": true,
+        "matches_repeated_analysis": true
+      }
+    ],
+    "synthetic_store_unchanged": true,
+    "personal_store_still_unchanged": true,
+    "previous_real_od_reports_unchanged": true,
+    "no_personal_route_invented": true,
+    "network_requests": 0,
+    "new_gps_captures": 0
+  },
+  "real_compatibility_check": {
+    "mode": "read_only_personal_compatibility_check",
+    "configured_profiles": 2,
+    "profiles_matching_all_catalog_hashes": 2,
+    "legs_matching_report_route": 0,
+    "compatible_exact_legs": 0,
+    "profile_database_unchanged": true,
+    "network_requests": 0,
+    "new_gps_captures": 0
+  },
+  "interpretation": "Both synthetic examples reproduce direct OD analytical results and repeated runs. Two actual saved profiles match the catalog hash but none has a leg matching the existing real tracker report route. No personal journey was fabricated or edited; the previous real OD exercise remains separate.",
+  "documentation": {
+    "reference_commit": "05732e9a394bcf421ad2260df2374a6790275a7f",
+    "local_links": 194,
+    "broken_links": [],
+    "external_links_not_fetched": 58,
+    "protected_changed_paths": [],
+    "reader_sha256": "7215a159d71cdce1d187e1b7c8cd801640b4d792a586812533fed3157d28a14d",
+    "adapter_sha256": "ffe76fc8eff6eaba6c13e1c16424aed552e68eb4145025b4ab37809e29db9ba4"
+  },
+  "private_demo_directory": "data/pilots/profile-od-integration-20261114/",
+  "reproduction": {
+    "list": "python -m transmitracker.research.profile_od list --profiles EXISTING_PROFILE_STORE.sqlite3",
+    "analyze": "python -m transmitracker.research.profile_od analyze --profiles EXISTING_PROFILE_STORE.sqlite3 --profile-kind home_to_work --leg 1 --report SAVED_TRACKER_REPORT.json --catalog MATCHING_CATALOG.sqlite3 --output data/pilots/NEW_OUTPUT/result.json",
+    "guide": "docs/getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060"
+  },
+  "constraints": {
+    "network_requests": 0,
+    "new_gps_captures": 0,
+    "new_dependencies": 0,
+    "new_tables_or_migrations_in_original_profile_store": 0,
+    "operational_acceptance_changed": false,
+    "real_profiles_or_private_payloads_published": false,
+    "commit_or_push_performed": false
+  },
+  "limitations": [
+    "This is one leg's experimental analysis, not a whole-profile duration or travel recommendation.",
+    "A matching catalog and saved profile do not establish operational identity, arrivals, boarding, waiting or walking times.",
+    "Profile schema 1 and incomplete/incompatible schemas are rejected without migration.",
+    "An explicit old pinned catalog remains usable when all hashes match, but pending_migration is preserved.",
+    "No compatible personal leg was available for the existing real report; all new positive analytical examples are synthetic.",
+    "No full GUI suite or network verification of external links was performed."
+  ]
+}

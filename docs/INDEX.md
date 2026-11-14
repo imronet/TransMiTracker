@@ -1,6 +1,10 @@
-# Índice de documentación — TransMiTracker 0.5.0
+# Índice de documentación — TransMiTracker 0.6.0
 
 ## Capacidad vigente
+
+La [CLI de perfiles guardados](getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060)
+selecciona un perfil y tramo explícitos en solo lectura para alimentar OD con sus
+IDs existentes, sin integración adicional en la GUI.
 
 El [analizador origen–destino offline](getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050)
 evalúa cruces e intervalos candidatos dentro de segmentos existentes, sin validar

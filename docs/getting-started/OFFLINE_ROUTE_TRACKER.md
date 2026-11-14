@@ -326,3 +326,94 @@ $s = Get-Content "$folder/selection-0.json" -Raw | ConvertFrom-Json
 Los originales y análisis previos se conservan. Entrega lista para revisión del
 propietario; no habilita otra captura, predicción, GUI o siguiente capacidad.
 Sin red, Croma, modificaciones al motor 3A/rastreador, commit ni push.
+
+## Perfiles guardados como entrada OD (0.6.0)
+
+Adaptador manual `research.profile_od`, independiente de la GUI principal. Lee
+perfiles configurados con sus contratos existentes y ejecuta el mismo `analyze()`
+OD para **un solo tramo explícito**. No añade reglas de reconstrucción o medición.
+
+Listado seguro de tipos, revisiones, estados e índices de tramos (sin IDs privados):
+
+```powershell
+$env:PYTHONPATH = Join-Path (Get-Location).Path 'src'
+$env:PYTHONUTF8 = '1'
+.\.venv\Scripts\python.exe -m transmitracker.research.profile_od list `
+  --profiles data/gui/profiles.sqlite3
+.\.venv\Scripts\python.exe -m transmitracker.research.profile_od list `
+  --profiles data/gui/profiles.sqlite3 --profile-kind work_to_home
+```
+
+`home_to_work` es Casa → Trabajo; `work_to_home`, Trabajo → Casa. También se puede
+seleccionar con `--profile-id`, alternativamente al tipo. Los borradores no se
+enumeran como configurados. Los índices empiezan en **1** y no se elige el primero
+por defecto. Para analizar, indicar el perfil y el índice, sin introducir IDs GTFS:
+
+```powershell
+.\.venv\Scripts\python.exe -m transmitracker.research.profile_od analyze `
+  --profiles data/gui/profiles.sqlite3 --profile-kind home_to_work --leg 1 `
+  --report data/pilots/SESION/reporte-ruta.json `
+  --catalog data/catalog/CATALOGO_COMPATIBLE.sqlite3 `
+  --output data/pilots/RESULTADO_NUEVO/perfil-tramo.json
+```
+
+El SQLite debe existir, tener esquema 2 y las columnas necesarias. El lector abre
+`mode=ro`, activa `query_only` y una transacción de lectura; **no ejecuta el
+constructor inicializador de ProfileStore**, migraciones o escrituras de versión.
+Reutiliza su lectura/deserialización/estado y añade comprobaciones de consistencia
+del perfil. No altera revisiones, borradores, registro o catálogo activo.
+
+El hash fijado por perfil y reporte debe coincidir con el del catálogo proporcionado.
+Un perfil `pending_migration` conserva ese estado: puede evaluarse con su versión
+antigua fijada si también coincide con el reporte, pero nunca con otra versión por
+remapeo implícito. Los hashes identifican versiones, sin validar identidad operativa.
+
+El `Leg` se conserva completo: ruta, patrón, origen/destino, ocurrencias y sentido.
+Se valida su estructura y se compara con la selección exacta exigida por OD. Si el
+perfil admite una estación padre por familia y OD requiere un andén exacto, se
+rechaza con `PROFILE_OD_EXACT_LEG_MISMATCH`; no se sustituye silenciosamente.
+No se suman tiempos de otros tramos, transbordos, esperas ni caminatas.
+
+La salida privada exclusiva bajo `data/pilots` contiene perfil/revisión/estado,
+índice y `Leg`, hashes y procedencia, versión OD y resultado analítico completo.
+La consola solo muestra tipo, índice, estado y agregados. Esquema/base ausente,
+perfil inexistente, índice inválido y hashes incompatibles producen error seguro.
+No se admite sobrescribir el almacén o un resultado existente.
+
+### Entrega del adaptador — 2026-11-14
+
+**90 pruebas pertinentes aprobadas en 95,40 s**, incluidas 20 nuevas; Ruff, formato
+y `pip check` correctos en Python 3.13. Cubren ambas clases de perfil, tramo
+intermedio, borradores, catálogos, estados de migración, dirección/ocurrencias,
+ausencia de escrituras, igualdad con OD directo, reproducibilidad e indeterminación
+por recruce. Sin suite completa ni ventanas GUI. Producto 0.6.0 por capacidad
+compatible; OD conserva `od-candidate-offline-0.1.1`, sin modificar sus reglas.
+
+Comprobación real de solo lectura: **dos perfiles configurados**, ambos con el hash
+del catálogo esperado, pero **ningún tramo para la ruta del reporte disponible**.
+La base personal y su directorio quedaron sin cambios. No se inventó un recorrido
+personal ni se ejecutó un análisis de esos perfiles sobre una ruta incompatible.
+El ejercicio real anterior sigue separado, con cero duraciones candidatas.
+
+La demostración usa perfiles, catálogo y GPS **totalmente sintéticos** y aislados
+en `data/pilots/profile-od-integration-20261114/`. Casa → Trabajo tiene un tramo;
+Trabajo → Casa tiene tres y se seleccionó el segundo. Cada ejecución produjo un
+intervalo candidato sintético, sin aceptación operativa, y coincide con OD directo.
+Para repetir el ejemplo con un archivo de salida **nuevo**:
+
+```powershell
+$folder = 'data/pilots/profile-od-integration-20261114'
+$demo = Get-Content "$folder/synthetic-inputs.json" -Raw | ConvertFrom-Json
+.\.venv\Scripts\python.exe -m transmitracker.research.profile_od analyze `
+  --profiles $demo.profiles --profile-kind work_to_home --leg 2 `
+  --report $demo.report --catalog $demo.catalog `
+  --output "$folder/reproduccion-NUEVA.json"
+```
+
+Receta aislada `prepare_synthetic.py`, listado y reportes de demo en ese directorio.
+[Evidencia QA no identificable](../archive/evidence/PROFILE_OD_VALIDATION_20261114.json).
+Archivos nuevos: `profiles/reader.py`, `research/profile_od.py` y
+`tests/test_profile_od.py`. No se cambian el almacén escritor, servicios, GUI,
+motor 3A, rastreador o analizador OD. Sin red, capturas, dependencias o tablas
+nuevas en los perfiles, commit o push. Entrega preparada para revisión de QA;
+no autoriza la siguiente capacidad.

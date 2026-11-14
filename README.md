@@ -14,7 +14,7 @@ queries scheduled services and provides an experimental offline GPS engine.
 
 ## Current status
 
-**Version 0.5.0 — Experimental offline origin–destination analysis delivered.** The application
+**Version 0.6.0 — Saved profiles connected to offline OD analysis.** The application
 and documentation are under active development. The interface and most technical
 documents are in Spanish.
 
@@ -28,6 +28,9 @@ The conservative engine's earlier synthetic evaluation remains in the
 
 ## Available today
 
+- [Saved-profile OD adapter](docs/getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060):
+  select a commute profile and leg without re-entering GTFS IDs. Profile stores
+  stay read-only; catalog versions must match the saved GPS report.
 - [Offline origin–destination analysis](docs/getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050):
   explicit GTFS stop occurrences, supported candidate crossings and bounded candidate
   durations when evidence suffices. These are not operationally validated travel times.

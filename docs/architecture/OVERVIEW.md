@@ -1,4 +1,4 @@
-# Arquitectura vigente — 0.5.0
+# Arquitectura vigente — 0.6.0
 
 ## Componentes y límites
 
@@ -85,3 +85,10 @@ La nueva capa distingue soporte de cruce, orden temporal e intervalo admisible,
 manteniendo los límites conservadores y sin resolver variantes por proximidad.
 JSON privado exclusivo en `data/pilots`; sin persistencia adicional o integración
 con GUI/perfiles. [Contrato, comandos y límites](../getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050).
+
+El adaptador `research/profile_od.py` pasa un `Leg` guardado a `od_analyzer.analyze`
+sin alterar sus reglas. `profiles/reader.py` reutiliza la lectura del almacén con
+un constructor separado, conexión `mode=ro` y `query_only`; no ejecuta el esquema
+del escritor ni migra versiones. Preserva StoredProfile/revisión/estado y valida
+hashes y selección exacta, incluido sentido. Listado y análisis son CLI separadas
+de la GUI principal; los reportes completos son archivos privados nuevos.

@@ -1,8 +1,8 @@
 # TransMiTracker — Implementation Plan
 
-**Estado vigente — v0.5.0:** rastreador, visor y analizador OD experimental offline disponibles;
+**Estado vigente — v0.6.0:** perfiles guardados conectados al análisis OD experimental offline;
 véanse [uso](../getting-started/OFFLINE_ROUTE_TRACKER.md) y
-[adenda 19](#19-análisis-experimental-origendestino-offline--capacidad-autorizada).
+[adenda 20](#20-adaptador-de-perfiles-guardados-a-od--capacidad-autorizada).
 Las secciones y adendas anteriores conservan su contexto histórico. Croma es una
 alternativa futura y opcional; no se requiere para la capacidad actual. No hay
 autorización de nuevas capturas ni seguimiento continuo.
@@ -1045,3 +1045,18 @@ requisitos originales de persistencia y medición validada para trabajo posterio
 [Uso, 115 pruebas pertinentes y ejercicio real negativo](../getting-started/OFFLINE_ROUTE_TRACKER.md#análisis-experimental-origendestino-050).
 No se obtuvo una duración admisible ni se relajaron filtros. La siguiente capacidad
 y cualquier nueva captura requieren autorización expresa.
+
+## 20. Adaptador de perfiles guardados a OD — capacidad autorizada
+
+CLI manual para listar configurados y seleccionar tipo/ID de perfil e índice de
+un solo tramo. Lectura SQLite `mode=ro`, sin inicialización del esquema, revisiones,
+migraciones o actualización del catálogo activo. Reutiliza Profile/Leg/StoredProfile,
+deserialización y validación existentes; el perfil, reporte y catálogo deben tener
+el mismo hash y las ocurrencias/sentido se conservan exactamente.
+
+Producto 0.6.0, sin alterar OD, 3A, rastreador o GUI. No hay selección automática
+de IDs/tramos, análisis implícito de todos los tramos ni cálculo de esperas o totales.
+Ejercicio sintético aislado y comprobación real sin perfil de ruta compatible;
+[comandos, 90 pruebas pertinentes y evidencia](../getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060).
+Sin dependencias o tablas nuevas en los perfiles. Siguiente capacidad, adquisición
+y publicación requieren autorización; no se realiza commit/push automáticamente.

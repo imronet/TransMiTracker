@@ -1,5 +1,11 @@
 # Evidencias históricas y compatibilidad
 
+## Adaptador de perfiles guardados a OD — 2026-11-14
+
+[Pruebas, demostración sintética y compatibilidad real en solo lectura](PROFILE_OD_VALIDATION_20261114.json).
+Solo agregados; los perfiles/reportes privados no se publican. Comandos y cierre
+breve en la [guía existente](../../getting-started/OFFLINE_ROUTE_TRACKER.md#perfiles-guardados-como-entrada-od-060).
+
 ## Analizador OD candidato — 2026-11-14
 
 [Pruebas y ejercicio offline sobre el reporte real](OD_ANALYZER_VALIDATION_20261114.json).
