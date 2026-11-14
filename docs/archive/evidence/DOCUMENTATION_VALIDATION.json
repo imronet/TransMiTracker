@@ -1,0 +1,47 @@
+{
+    "purpose":  "Local static documentation validation only; no tests, downloads or operational validation",
+    "checked_at":  "2026-11-13T20:29:05.5416731-05:00",
+    "markdown_files":  31,
+    "local_links_checked":  109,
+    "external_links_not_requested":  32,
+    "original_files_hash_checked":  49,
+    "original_json_preserved":  30,
+    "reports_preserved":  7,
+    "command_inputs_checked":  [
+                                   "requirements-lock.txt",
+                                   "requirements.txt",
+                                   "requirements-dev.txt",
+                                   "pyproject.toml",
+                                   "src/transmitracker/gui/__main__.py",
+                                   "src/transmitracker/catalog/__main__.py",
+                                   "src/transmitracker/reconstruction/__main__.py",
+                                   "src/transmitracker/__main__.py",
+                                   "scripts/verify_phase0.py",
+                                   "scripts/demo_phase2_1.py",
+                                   "scripts/build_fixtures.py"
+                               ],
+    "consumer_references_checked":  [
+                                        "docs/endpoints.json",
+                                        "docs/LIVE_DIAGNOSTIC.json",
+                                        "docs/PHASE0_5_ANALYSIS.json",
+                                        "docs/PHASE0_5_SOURCE_RESEARCH.json",
+                                        "docs/PHASE0_5_SYNTHETIC_REPLAY.json",
+                                        "docs/PHASE1A_DEMO.json",
+                                        "docs/PHASE1A_IMPORT.json",
+                                        "docs/PHASE1B_PROVIDER_REVIEW.json",
+                                        "docs/PHASE2_1_REAL_CATALOG_QA.json",
+                                        "docs/PHASE2_REAL_CATALOG_DEMO.json",
+                                        "docs/PHASE3A_SYNTHETIC_EVALUATION.json",
+                                        "docs/SAVED_FEED_ANALYSIS.json",
+                                        "docs/SOURCE_RESEARCH.json",
+                                        "docs/VALIDATION_RESULTS.json"
+                                    ],
+    "readme_lines":  127,
+    "source_scripts_tests_dependencies_unchanged":  true,
+    "product_version_unchanged":  true,
+    "pytest_executed":  false,
+    "failures":  [
+
+                 ],
+    "all_passed":  true
+}

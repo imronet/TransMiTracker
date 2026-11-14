@@ -1,0 +1,349 @@
+{
+    "purpose":  "Documentation relocation integrity, not a new operational/test validation",
+    "files":  [
+                  {
+                      "original":  "docs/CROMA_INTEGRATION_DESIGN.md",
+                      "current":  "docs/research/CROMA_INTEGRATION_DESIGN.md",
+                      "before_sha256":  "40350c1d42ce4e257a792b73ba6a65ed0c4580b9c5ed8b4a3418f5d758909200",
+                      "after_sha256":  "40350c1d42ce4e257a792b73ba6a65ed0c4580b9c5ed8b4a3418f5d758909200",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/endpoints.json",
+                      "current":  "docs/endpoints.json",
+                      "before_sha256":  "edb4f477492df75abbd9c5b99d56a5255964d71f7aefd38bf1a992761daf5937",
+                      "after_sha256":  "edb4f477492df75abbd9c5b99d56a5255964d71f7aefd38bf1a992761daf5937",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/IMPLEMENTATION_PLAN.md",
+                      "current":  "docs/development/IMPLEMENTATION_PLAN.md",
+                      "before_sha256":  "3da1b22d2285889fa30e828e3d406cf9cec3d0d998d341dc9348273f87353d6b",
+                      "after_sha256":  "3da1b22d2285889fa30e828e3d406cf9cec3d0d998d341dc9348273f87353d6b",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/LIVE_DIAGNOSTIC.json",
+                      "current":  "docs/LIVE_DIAGNOSTIC.json",
+                      "before_sha256":  "dc5027f285aa2b27193c788c1696ae067409a60ed2676343f52e28dc277bf858",
+                      "after_sha256":  "dc5027f285aa2b27193c788c1696ae067409a60ed2676343f52e28dc277bf858",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/OFFLINE_DIAGNOSTIC.json",
+                      "current":  "docs/OFFLINE_DIAGNOSTIC.json",
+                      "before_sha256":  "93faf89bb433c508fe6a0a30eb444bf15eed8ab0e71a1a0ce837228ce1434fdd",
+                      "after_sha256":  "93faf89bb433c508fe6a0a30eb444bf15eed8ab0e71a1a0ce837228ce1434fdd",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE0_5_ANALYSIS.json",
+                      "current":  "docs/PHASE0_5_ANALYSIS.json",
+                      "before_sha256":  "e103a4c739078b950599ca6d3e5f40b42f35fec33ef10d486108325f7220a973",
+                      "after_sha256":  "e103a4c739078b950599ca6d3e5f40b42f35fec33ef10d486108325f7220a973",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE0_5_REPORT.md",
+                      "current":  "docs/archive/phases/PHASE0_5_REPORT.md",
+                      "before_sha256":  "fda59656cf1def65e1d05b29bf7e2a2113db3583d0da8b50324efa8e3dd32cc5",
+                      "after_sha256":  "fda59656cf1def65e1d05b29bf7e2a2113db3583d0da8b50324efa8e3dd32cc5",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE0_5_SOURCE_RESEARCH.json",
+                      "current":  "docs/PHASE0_5_SOURCE_RESEARCH.json",
+                      "before_sha256":  "071ea04fa954de64971ce476d071f139798c94f032e75c1b6ae00fdd8fdc8bb1",
+                      "after_sha256":  "071ea04fa954de64971ce476d071f139798c94f032e75c1b6ae00fdd8fdc8bb1",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE0_5_SYNTHETIC_REPLAY.json",
+                      "current":  "docs/PHASE0_5_SYNTHETIC_REPLAY.json",
+                      "before_sha256":  "f0c5d5488be3326ce7625f401ab10964739fe1f8e1fb5340867de79a00df8e31",
+                      "after_sha256":  "f0c5d5488be3326ce7625f401ab10964739fe1f8e1fb5340867de79a00df8e31",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE0_5_VALIDATION_RESULTS.json",
+                      "current":  "docs/PHASE0_5_VALIDATION_RESULTS.json",
+                      "before_sha256":  "69c717dee5a999199d81ed5d53b9eebbe63e7c44676b8dbfb94e3b9f7c7457c1",
+                      "after_sha256":  "69c717dee5a999199d81ed5d53b9eebbe63e7c44676b8dbfb94e3b9f7c7457c1",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE0_REPORT.md",
+                      "current":  "docs/archive/phases/PHASE0_REPORT.md",
+                      "before_sha256":  "ac49d51f759b64536d8902c8411f6d87f34876d31a8cb0054ba1737cca1ab407",
+                      "after_sha256":  "ac49d51f759b64536d8902c8411f6d87f34876d31a8cb0054ba1737cca1ab407",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1A_DEMO.json",
+                      "current":  "docs/PHASE1A_DEMO.json",
+                      "before_sha256":  "42307dd5f7b1798f7cfc8cf3ef655c19836901e84f12a3330fcc8d31f3119cd2",
+                      "after_sha256":  "42307dd5f7b1798f7cfc8cf3ef655c19836901e84f12a3330fcc8d31f3119cd2",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1A_IMPORT.json",
+                      "current":  "docs/PHASE1A_IMPORT.json",
+                      "before_sha256":  "f894be28dac9cd10a349ce3ec4ea590f536f8f581303f6d40bb371e7672f8153",
+                      "after_sha256":  "f894be28dac9cd10a349ce3ec4ea590f536f8f581303f6d40bb371e7672f8153",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1A_REPORT.md",
+                      "current":  "docs/archive/phases/PHASE1A_REPORT.md",
+                      "before_sha256":  "7e5209aade7210d92dafac72c592bd897918d66f940208d051216575e917bcd9",
+                      "after_sha256":  "7e5209aade7210d92dafac72c592bd897918d66f940208d051216575e917bcd9",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1A_VALIDATION_RESULTS.json",
+                      "current":  "docs/PHASE1A_VALIDATION_RESULTS.json",
+                      "before_sha256":  "8c069bc8b56a6a7ff2e222c0db2173bb325f5b162c75d2c278371ff270ad8f61",
+                      "after_sha256":  "8c069bc8b56a6a7ff2e222c0db2173bb325f5b162c75d2c278371ff270ad8f61",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1B_EXPERIMENT_POLICY.json",
+                      "current":  "docs/PHASE1B_EXPERIMENT_POLICY.json",
+                      "before_sha256":  "d99c80d61bd04a3d65b8154fef16587bb5d1f034cea2f8973ae3be135abf4ef4",
+                      "after_sha256":  "d99c80d61bd04a3d65b8154fef16587bb5d1f034cea2f8973ae3be135abf4ef4",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1B_PROFILE_EXAMPLES.json",
+                      "current":  "docs/PHASE1B_PROFILE_EXAMPLES.json",
+                      "before_sha256":  "c7b571eda8af8f02eae29789006f80073bbac64d0703162a9d8dde1ad9488eae",
+                      "after_sha256":  "c7b571eda8af8f02eae29789006f80073bbac64d0703162a9d8dde1ad9488eae",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1B_PROVIDER_REVIEW.json",
+                      "current":  "docs/PHASE1B_PROVIDER_REVIEW.json",
+                      "before_sha256":  "f54ac8718b895e00bc2b1bbee5078609f4aebf7fb4a37cb57ecead5de4f423f3",
+                      "after_sha256":  "f54ac8718b895e00bc2b1bbee5078609f4aebf7fb4a37cb57ecead5de4f423f3",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1B_REAL_SAVED_ANALYSIS.json",
+                      "current":  "docs/PHASE1B_REAL_SAVED_ANALYSIS.json",
+                      "before_sha256":  "19c3a1f64c13f61ab1012063fbb1e88a1040c3779839df692fc5da3fecb31242",
+                      "after_sha256":  "19c3a1f64c13f61ab1012063fbb1e88a1040c3779839df692fc5da3fecb31242",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1B_REPORT.md",
+                      "current":  "docs/archive/phases/PHASE1B_REPORT.md",
+                      "before_sha256":  "db93b5aff184ed3f61f1c24ae5d97a190f189336d80f8de2a2b3b53cb469e052",
+                      "after_sha256":  "db93b5aff184ed3f61f1c24ae5d97a190f189336d80f8de2a2b3b53cb469e052",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1B_SYNTHETIC_TEMPORAL.json",
+                      "current":  "docs/PHASE1B_SYNTHETIC_TEMPORAL.json",
+                      "before_sha256":  "28b38c4d805e990b874bfd457418c5243bb47e1e63d200d53d0fd41d4dd1a206",
+                      "after_sha256":  "28b38c4d805e990b874bfd457418c5243bb47e1e63d200d53d0fd41d4dd1a206",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE1B_VALIDATION_RESULTS.json",
+                      "current":  "docs/PHASE1B_VALIDATION_RESULTS.json",
+                      "before_sha256":  "c762c389a606e034e4e5e682454ebe55573427455488c8b02e3c31ecf7673ae2",
+                      "after_sha256":  "c762c389a606e034e4e5e682454ebe55573427455488c8b02e3c31ecf7673ae2",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE2_1_REAL_CATALOG_QA.json",
+                      "current":  "docs/PHASE2_1_REAL_CATALOG_QA.json",
+                      "before_sha256":  "e773cfa042fc125a8e40418aeaa369b3f7691f95bf9aff6b59f5dadb6daf746d",
+                      "after_sha256":  "e773cfa042fc125a8e40418aeaa369b3f7691f95bf9aff6b59f5dadb6daf746d",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE2_1_REPORT.md",
+                      "current":  "docs/archive/phases/PHASE2_1_REPORT.md",
+                      "before_sha256":  "e8d08a2fa533f198ef6e6f962ab14e82950c362e03d987d3b98d379812229355",
+                      "after_sha256":  "e8d08a2fa533f198ef6e6f962ab14e82950c362e03d987d3b98d379812229355",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE2_1_VALIDATION_RESULTS.json",
+                      "current":  "docs/PHASE2_1_VALIDATION_RESULTS.json",
+                      "before_sha256":  "7b1251efa81716f3e30a56cdb8ea1e08010c9713ca5c041d3efcc75703a2d00b",
+                      "after_sha256":  "7b1251efa81716f3e30a56cdb8ea1e08010c9713ca5c041d3efcc75703a2d00b",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE2_REAL_CATALOG_DEMO.json",
+                      "current":  "docs/PHASE2_REAL_CATALOG_DEMO.json",
+                      "before_sha256":  "02162c277b080479451f92b14326196cbd18dfedf82c2d6157e4398d79456fda",
+                      "after_sha256":  "02162c277b080479451f92b14326196cbd18dfedf82c2d6157e4398d79456fda",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE2_REPORT.md",
+                      "current":  "docs/archive/phases/PHASE2_REPORT.md",
+                      "before_sha256":  "7eebbee608237eeab803171f4bc5dc1a9f8f0f40039d35215b5514720aa91aff",
+                      "after_sha256":  "7eebbee608237eeab803171f4bc5dc1a9f8f0f40039d35215b5514720aa91aff",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE2_VALIDATION_RESULTS.json",
+                      "current":  "docs/PHASE2_VALIDATION_RESULTS.json",
+                      "before_sha256":  "c8e1e099fa56bebac46f1f906391fcf197d81fe73a9af85c3a86e44d6edc9cb7",
+                      "after_sha256":  "c8e1e099fa56bebac46f1f906391fcf197d81fe73a9af85c3a86e44d6edc9cb7",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_INPUT_INTEGRITY.json",
+                      "current":  "docs/PHASE3A_INPUT_INTEGRITY.json",
+                      "before_sha256":  "9b2fb29671edcc180a1ff65c2e19ef68a7ef32b12675d947daf8915650ba28ba",
+                      "after_sha256":  "9b2fb29671edcc180a1ff65c2e19ef68a7ef32b12675d947daf8915650ba28ba",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_PARADERO_REVIEW.json",
+                      "current":  "docs/PHASE3A_PARADERO_REVIEW.json",
+                      "before_sha256":  "32ba4bdd51c04f59488ca9e03d10260a001f409b04b379544b8c4ee6ddd70a40",
+                      "after_sha256":  "32ba4bdd51c04f59488ca9e03d10260a001f409b04b379544b8c4ee6ddd70a40",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_REAL_SAVED_REPLAY.json",
+                      "current":  "docs/PHASE3A_REAL_SAVED_REPLAY.json",
+                      "before_sha256":  "87004cacde800a66fae594059766d51c0fc10c7f56b03eb6685345c0a8fa6852",
+                      "after_sha256":  "87004cacde800a66fae594059766d51c0fc10c7f56b03eb6685345c0a8fa6852",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_REPORT.md",
+                      "current":  "docs/archive/phases/PHASE3A_REPORT.md",
+                      "before_sha256":  "436a453d958fac29edc7a2947564f238768982de4a9e3e37e1a7f61760acaa9e",
+                      "after_sha256":  "436a453d958fac29edc7a2947564f238768982de4a9e3e37e1a7f61760acaa9e",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_SYNTHETIC_EVALUATION.json",
+                      "current":  "docs/PHASE3A_SYNTHETIC_EVALUATION.json",
+                      "before_sha256":  "22b47993163ba8a561d5ee04be32e802b5931a4bd3c161e00c0e2ff7cf3e814f",
+                      "after_sha256":  "22b47993163ba8a561d5ee04be32e802b5931a4bd3c161e00c0e2ff7cf3e814f",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_VALIDATION_INITIAL_FAILURE.json",
+                      "current":  "docs/PHASE3A_VALIDATION_INITIAL_FAILURE.json",
+                      "before_sha256":  "10c66cf08bbdf144762bc53998b62f6645e8420c5fe2329b78d712fe5aca5738",
+                      "after_sha256":  "10c66cf08bbdf144762bc53998b62f6645e8420c5fe2329b78d712fe5aca5738",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_VALIDATION_RESULTS.json",
+                      "current":  "docs/PHASE3A_VALIDATION_RESULTS.json",
+                      "before_sha256":  "f56980e44da9691c8c786aeb9acdbf126128b0c10afc1eb688a9163ee8ee5cd4",
+                      "after_sha256":  "f56980e44da9691c8c786aeb9acdbf126128b0c10afc1eb688a9163ee8ee5cd4",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/PHASE3A_VALIDATION_TEMP_COLLISION.json",
+                      "current":  "docs/PHASE3A_VALIDATION_TEMP_COLLISION.json",
+                      "before_sha256":  "9969649664cf1a1cb4a155591414085cffe5da13484ba103121d21beee0ecfe6",
+                      "after_sha256":  "9969649664cf1a1cb4a155591414085cffe5da13484ba103121d21beee0ecfe6",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/SAVED_FEED_ANALYSIS.json",
+                      "current":  "docs/SAVED_FEED_ANALYSIS.json",
+                      "before_sha256":  "39dda49961afdf0050a45cc3bc4033b6851c9953b4b71425be816d22f38a5024",
+                      "after_sha256":  "39dda49961afdf0050a45cc3bc4033b6851c9953b4b71425be816d22f38a5024",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/SOURCE_RESEARCH.json",
+                      "current":  "docs/SOURCE_RESEARCH.json",
+                      "before_sha256":  "701811b0f6d7b54363a35f32eb3b85c0facc95032273fe8e415b581bda80851e",
+                      "after_sha256":  "701811b0f6d7b54363a35f32eb3b85c0facc95032273fe8e415b581bda80851e",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/USAGE.md",
+                      "current":  "docs/getting-started/USAGE.md",
+                      "before_sha256":  "8a7b46a0f04bc97735dc14f418729125e0e70ab1b6cc21e9ae44140fc821381b",
+                      "after_sha256":  "8a7b46a0f04bc97735dc14f418729125e0e70ab1b6cc21e9ae44140fc821381b",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/VALIDATION_RESULTS.json",
+                      "current":  "docs/VALIDATION_RESULTS.json",
+                      "before_sha256":  "1f03975357b1dfc54fa729e09a7198d0064cd50b6acd011d19d34b6e960f9887",
+                      "after_sha256":  "1f03975357b1dfc54fa729e09a7198d0064cd50b6acd011d19d34b6e960f9887",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/VERSIONING.md",
+                      "current":  "docs/development/VERSIONING.md",
+                      "before_sha256":  "64eb0e9603c8a09f53777d79bf7f946bc8b4928027bb546dd707552005be29bd",
+                      "after_sha256":  "64eb0e9603c8a09f53777d79bf7f946bc8b4928027bb546dd707552005be29bd",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2-dashboard-dark.png",
+                      "current":  "docs/archive/phases/screenshots/phase2-dashboard-dark.png",
+                      "before_sha256":  "00f4b62a20ca6167f8deb913b6e2c8209a4c4de1bab166cff92bf51ce2c41b0e",
+                      "after_sha256":  "00f4b62a20ca6167f8deb913b6e2c8209a4c4de1bab166cff92bf51ce2c41b0e",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2-profile-dark.png",
+                      "current":  "docs/archive/phases/screenshots/phase2-profile-dark.png",
+                      "before_sha256":  "dc774bc6dceabcebc510e661a1f3b14d8a66cfdbd3a3c85d950f606458998574",
+                      "after_sha256":  "dc774bc6dceabcebc510e661a1f3b14d8a66cfdbd3a3c85d950f606458998574",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2-settings-light.png",
+                      "current":  "docs/archive/phases/screenshots/phase2-settings-light.png",
+                      "before_sha256":  "a9e2a492cc78c21bfae4d85be9f3dd6c2f89338aaf590aa14b7c84a04060a9a0",
+                      "after_sha256":  "a9e2a492cc78c21bfae4d85be9f3dd6c2f89338aaf590aa14b7c84a04060a9a0",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2_1-dashboard.png",
+                      "current":  "docs/archive/phases/screenshots/phase2_1-dashboard.png",
+                      "before_sha256":  "ac4df50576be2fd4c36d4f9b237aca295f28f641ad7f0ffda64b635288c4aa56",
+                      "after_sha256":  "ac4df50576be2fd4c36d4f9b237aca295f28f641ad7f0ffda64b635288c4aa56",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2_1-profile.png",
+                      "current":  "docs/archive/phases/screenshots/phase2_1-profile.png",
+                      "before_sha256":  "692e59740a1e92c907f03a5addf9629db796ae329453b64905515828dfe74af7",
+                      "after_sha256":  "692e59740a1e92c907f03a5addf9629db796ae329453b64905515828dfe74af7",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2_1-route-first.png",
+                      "current":  "docs/archive/phases/screenshots/phase2_1-route-first.png",
+                      "before_sha256":  "a8577372f59187cadc2e334df5d6a76baa00d6c669959a3d3d5b11706229ff3d",
+                      "after_sha256":  "a8577372f59187cadc2e334df5d6a76baa00d6c669959a3d3d5b11706229ff3d",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2_1-saved.png",
+                      "current":  "docs/archive/phases/screenshots/phase2_1-saved.png",
+                      "before_sha256":  "92a7b08c81dc934e1311d2c4528d591c1d961ad009e61c56a0f00cd26be085b5",
+                      "after_sha256":  "92a7b08c81dc934e1311d2c4528d591c1d961ad009e61c56a0f00cd26be085b5",
+                      "unchanged":  true
+                  },
+                  {
+                      "original":  "docs/screenshots/phase2_1-settings.png",
+                      "current":  "docs/archive/phases/screenshots/phase2_1-settings.png",
+                      "before_sha256":  "910b2025b17911c04c2e6852563ef1a12644c6228cbc2f7f6790932bd66ece28",
+                      "after_sha256":  "910b2025b17911c04c2e6852563ef1a12644c6228cbc2f7f6790932bd66ece28",
+                      "unchanged":  true
+                  }
+              ],
+    "all_unchanged":  true
+}

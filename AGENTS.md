@@ -13,7 +13,12 @@ TransMiTracker is developed with AI assistance under human supervision.
 ## Development standards
 
 - Preserve existing tests and architectural contracts.
-- Run the project's verification suite before declaring a phase complete.
+- Run verification appropriate to the change before declaring a phase complete; documentation-only maintenance follows the documentation policy without a default full-suite run.
 - Document limitations and distinguish synthetic tests from real operational validation.
 - Do not commit credentials, personal profiles, local databases or other sensitive information.
 - Require explicit human approval before starting the next implementation phase.
+
+## Documentation maintenance
+
+- Future Codex tasks must follow [the documentation policy](docs/development/DOCUMENTATION_POLICY.md).
+- Preserve historical evidence and use the canonical locations linked from [the index](docs/INDEX.md).
