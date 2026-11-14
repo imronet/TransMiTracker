@@ -8,6 +8,8 @@ La entrega del rastreador experimental offline por ruta usa **0.3.0** por añadi
 una capacidad compatible nueva. No cambia el algoritmo ni el esquema GPS de 3A.
 El visor gráfico independiente añade otra capacidad compatible en **0.4.0**;
 no modifica reglas ni versión del algoritmo del rastreador.
+**0.4.1** corrige el cambio entre pares reporte–catálogo en una misma ventana,
+conservando validaciones y contratos. Se aplica PATCH por ser una corrección compatible.
 
 `pyproject.toml` es la única fuente de verdad. `version.app_version()` la lee en
 el proyecto; en una distribución instalada utiliza los metadatos generados desde

@@ -1,4 +1,4 @@
-# Índice de documentación — TransMiTracker 0.4.0
+# Índice de documentación — TransMiTracker 0.4.1
 
 ## Capacidad vigente
 

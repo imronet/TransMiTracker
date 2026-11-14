@@ -45,6 +45,9 @@ class Viewer(ctk.CTk):
         ctk.CTkButton(toolbar, text="Catálogo local…", command=self.open_catalog).pack(
             side="left", padx=6
         )
+        ctk.CTkButton(toolbar, text="Abrir reporte y catálogo", command=self.open_pair).pack(
+            side="left", padx=6
+        )
         self.heading = ctk.CTkLabel(
             toolbar, text="Abra un reporte existente; no hay adquisición de datos."
         )
@@ -134,6 +137,12 @@ class Viewer(ctk.CTk):
         self.scene = scene
         self.candidate_index = None
         self.segment_index = None
+        self.cursor = 0
+        self.zoom, self.pan = 1, (0, 0)
+        self.fit_route = True
+        self.drag_start = None
+        self.slider.configure(to=1, number_of_steps=1, state="disabled")
+        self.slider.set(0)
         self.vehicles.delete(*self.vehicles.get_children())
         self.segments.delete(*self.segments.get_children())
         origin = "SINTÉTICO" if scene.synthetic else "PRIVADO · procedencia en reporte"
@@ -165,6 +174,23 @@ class Viewer(ctk.CTk):
                 self.load_file(path, self.catalog_path)
             except ViewerError as error:
                 self.notice.configure(text=str(error) + " Vista anterior conservada.")
+
+    def open_pair(self):
+        report = filedialog.askopenfilename(
+            title="Nuevo reporte privado del rastreador", filetypes=[("JSON", "*.json")]
+        )
+        if not report:
+            return
+        catalog = filedialog.askopenfilename(
+            title="Catálogo asociado al nuevo reporte",
+            filetypes=[("SQLite", "*.sqlite3 *.sqlite *.db"), ("Todos", "*.*")],
+        )
+        if not catalog:
+            return
+        try:
+            self.load_file(report, catalog)
+        except ViewerError as error:
+            self.notice.configure(text=str(error) + " Vista anterior conservada.")
 
     def open_catalog(self):
         path = filedialog.askopenfilename(

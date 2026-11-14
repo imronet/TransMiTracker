@@ -1,4 +1,4 @@
-# Arquitectura vigente — 0.4.0
+# Arquitectura vigente — 0.4.1
 
 ## Componentes y límites
 

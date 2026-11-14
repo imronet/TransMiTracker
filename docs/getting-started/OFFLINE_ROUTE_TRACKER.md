@@ -143,6 +143,16 @@ no se inventa un trazado. Si el reporte fija un catálogo, se compara el hash GT
 registrado en sus metadatos; otra versión se rechaza. Esto no verifica por sí solo
 la integridad física del SQLite. El catálogo siempre se abre en modo lectura.
 
+Para cambiar entre sesiones con diferentes versiones de catálogo, usar
+**Abrir reporte y catálogo** (desde 0.4.1). Elegir primero el reporte y después
+su catálogo: se valida el conjunto con las mismas comprobaciones de formato y
+hash. Solo al aceptar ambos se sustituyen las rutas de archivos, geometrías y
+candidatos; selección, deslizador y encuadre vuelven al inicio. Si se cancela
+cualquiera de los diálogos o falla la validación, se conserva el par y la vista
+anteriores. Los errores se muestran sin sustituir el catálogo automáticamente.
+Las acciones individuales siguen usando el catálogo/reporte ya abierto; en una
+ventana sin catálogo, **Abrir reporte privado** conserva el modo de solo GPS.
+
 Seleccionar un candidato por ID/fuente y un segmento en el panel izquierdo.
 **Anterior**, **Siguiente** y el deslizador recorren observaciones originales por
 orden de captura, incluyendo repeticiones y regresiones GPS; no son reproducción
@@ -172,6 +182,17 @@ Un reporte inválido produce un mensaje seguro; al abrir desde la ventana se
 conserva la vista anterior. Si Tk no puede iniciarse, la CLI termina con error.
 
 ### Validación de entrega — 2026-11-14
+
+**Corrección 0.4.1:** 28 pruebas focalizadas aprobadas (17 de preparación de datos,
+10 con ventanas Tk reales y una de versión); Ruff y formato correctos en los dos
+archivos Python modificados. Los nuevos casos usan exclusivamente reportes y
+SQLite sintéticos: cambio A → B con hashes diferentes, rechazo B/A, archivos
+ausentes/JSON inválido, cancelación de ambos diálogos, conservación de la escena,
+reinicio de controles/dibujo y sesiones vacías. Sin suite completa, red, GPS real,
+dependencias nuevas ni cambios en `viewer.data.load()`, rastreador o motor 3A.
+PATCH preparado para QA; sin commit ni push en esta corrección.
+
+Validación original de **0.4.0**, conservada como contexto:
 
 **44 pruebas focalizadas aprobadas**, incluida una prueba con ventana Tk real,
 las 25 pruebas del rastreador y el contrato de versión. Ruff y formato correctos

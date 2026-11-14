@@ -1,6 +1,6 @@
 # TransMiTracker — Implementation Plan
 
-**Estado vigente — v0.4.0:** rastreador y visor experimental offline por ruta disponibles;
+**Estado vigente — v0.4.1:** rastreador y visor experimental offline por ruta disponibles;
 véanse [uso](../getting-started/OFFLINE_ROUTE_TRACKER.md) y
 [adenda 18](#18-visor-gráfico-experimental-offline--capacidad-autorizada).
 Las secciones y adendas anteriores conservan su contexto histórico. Croma es una

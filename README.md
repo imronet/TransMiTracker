@@ -14,7 +14,7 @@ queries scheduled services and provides an experimental offline GPS engine.
 
 ## Current status
 
-**Version 0.4.0 — Standalone experimental offline GPS viewer delivered.** The application
+**Version 0.4.1 — Standalone experimental offline GPS viewer delivered.** The application
 and documentation are under active development. The interface and most technical
 documents are in Spanish.
 
