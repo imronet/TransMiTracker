@@ -7,6 +7,8 @@ Solo agregados; los horarios, IDs y perfiles personales permanecen privados.
 Uso y cierre para QA en la [guía canónica](../../getting-started/USAGE.md#planificación-estática-070).
 La [corrección de segundos y diagnósticos de horas ausentes](STATIC_PLANNING_QA_FIX_VALIDATION_20261114.json)
 conserva la evidencia inicial y usa exclusivamente catálogos/perfiles sintéticos.
+La [corrección focalizada de frecuencia vencida y hora habitual intacta](STATIC_PLANNING_FREQUENCY_CLOCK_FIX_20261114.json)
+comprueba límites exclusivos, paradas posteriores y microsegundos en Tk real.
 
 ## Adaptador de perfiles guardados a OD — 2026-11-14
 

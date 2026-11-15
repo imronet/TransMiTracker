@@ -68,10 +68,14 @@ temprana compatible; no aplica el límite de llegada de ida. Si falta esa hora,
 la consulta la solicita sin inventarla. Edite/guarde el perfil aparte para cambiar
 sus tolerancias o ventana; consultar no guarda ni modifica esos datos.
 
-La hora de regreso admite **HH:MM** o **HH:MM:SS** estrictos. La salida habitual
-precargada conserva sus segundos; una edición HH:MM significa segundos cero.
+La edición de la hora de regreso admite **HH:MM** o **HH:MM:SS** estrictos. Sin
+editar el campo precargado, se usa directamente la hora habitual guardada, incluidos
+sus microsegundos; cambiar solo la fecha no la convierte en una edición de hora.
+Una edición HH:MM significa segundos cero.
 Un formato inválido produce error sin recurrir silenciosamente a la hora guardada.
 Vaciar el campo solicita una salida explícita y no cambia el perfil.
+Escribir fracciones manualmente no amplía el parser: si editó y quiere recuperar
+el valor guardado con microsegundos, vuelva a abrir el panel sin editar la hora.
 
 El resultado muestra caminatas, abordajes y llegadas programados, fechas de servicio
 GTFS, transbordos con buffers, margen configurado y fecha de importación del catálogo.
@@ -110,6 +114,10 @@ pero **no está demostrado que haya un abordaje dentro de la ventana elegida**.
 La revisión usa un rango de fechas acotado por las horas GTFS/ventanas de frecuencia
 publicadas; no prueba disponibilidad fuera de ese ámbito ni resuelve offsets sin
 ancla. Una alternativa explícita válida conserva prioridad sobre este diagnóstico.
+En la primera ocurrencia de un viaje por frecuencia, el intervalo publicado es
+`[start, end)`: una consulta que empieza en `end` o después queda excluida. Se
+identifica la primera secuencia real, aunque no sea 1. Ese final no se impone a
+paradas posteriores cuyo desplazamiento temporal siga siendo desconocido.
 
 ### Validación y cierre para QA — 2026-11-14
 
@@ -146,6 +154,17 @@ Ruff y formato correctos. La comprobación final de frecuencias repite dos casos
 del lote inicial y añade el caso de ancla ausente con ventana de 25 horas.
 Se conserva 0.7.0 pendiente de aceptación; no se amplía la fase ni se repite el
 ejercicio con perfiles personales. No hay commit/push de esta corrección.
+
+Corrección focalizada posterior a `72bf350`: se descartan frecuencias vencidas en
+la primera parada y se conserva la hora habitual intacta con microsegundos mediante
+el contrato existente `departure_clock=None`. Sin cambios en búsqueda de itinerarios,
+parser explícito, esquemas o dependencias. Regresiones y resultados en la
+[evidencia focalizada](../archive/evidence/STATIC_PLANNING_FREQUENCY_CLOCK_FIX_20261114.json).
+Resultado: **57 pruebas focalizadas aprobadas**, incluidas cuatro con Tk real
+y diez casos nuevos. Ruff y formato correctos; solo fixtures sintéticos, sin
+repetir la suite completa ni utilizar perfiles personales.
+Continúa pendiente la aceptación de v0.7.0; no se autoriza otra fase ni se hace
+commit/push en esta tarea.
 
 ## Catálogo, configuración y privacidad
 

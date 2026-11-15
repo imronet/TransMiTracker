@@ -479,3 +479,50 @@ def test_missing_frequency_anchor_still_checks_published_25h_service_date(tmp_pa
         assert result.errors[0].code == "SCHEDULE_TIME_UNRESOLVED"
         assert result.warnings[0].code == "SCHEDULE_WINDOW_UNVERIFIED"
         assert result.data is None
+
+
+@pytest.fixture(scope="module")
+def unanchored_frequency_path(tmp_path_factory):
+    root = tmp_path_factory.mktemp("unanchored-frequency")
+    with incomplete_catalog(root, "frequency", prior="", after=""):
+        pass
+    return root / "incomplete.sqlite3"
+
+
+@pytest.mark.parametrize(
+    "first,day,departure,code",
+    [
+        (True, date(2026, 11, 9), time(8, 30), "NO_SCHEDULED_SERVICE"),
+        (True, date(2026, 11, 9), time(8, 10), "NO_SCHEDULED_SERVICE"),
+        (True, date(2026, 11, 9), time(8), "SCHEDULE_TIME_UNRESOLVED"),
+        (True, date(2026, 11, 9), time(7, 50), "SCHEDULE_TIME_UNRESOLVED"),
+        (True, date(2026, 11, 9), time(7, 49, 59), "NO_SCHEDULED_SERVICE"),
+        (True, date(2026, 11, 9), time(8, 9, 59), "SCHEDULE_TIME_UNRESOLVED"),
+        (False, date(2026, 11, 9), time(8, 30), "SCHEDULE_TIME_UNRESOLVED"),
+        (True, date(2026, 11, 8), time(8), "NO_SCHEDULED_SERVICE"),
+        (True, date(2026, 11, 12), time(8), "NO_SCHEDULED_SERVICE"),
+    ],
+)
+def test_frequency_end_applies_only_to_exact_first_occurrence(
+    unanchored_frequency_path, first, day, departure, code
+):
+    with Catalog(unanchored_frequency_path) as catalog:
+        leg = leg_for(catalog, "MAIN", "0006" if first else "0001", "0004", 10 if first else 20, 30)
+        profile = replace(
+            incomplete_profile(catalog),
+            kind=ProfileKind.TO_HOME,
+            legs=(leg,),
+            departure_window_minutes=10,
+        )
+        if first:
+            assert leg.origin_sequence == 10  # First does not mean sequence=1.
+        when = datetime.combine(day, departure, BOGOTA)
+        before = catalog.scheduled_connections(leg, when, window_minutes=10)
+        result = StaticPlanner(catalog).plan(profile, day, departure)
+        assert not result.ok and result.data is None
+        assert result.errors[0].code == code
+        assert bool(result.warnings) == (code == "SCHEDULE_TIME_UNRESOLVED")
+        assert catalog.has_unresolved_boarding(leg, when, when + timedelta(minutes=10)) == (
+            code == "SCHEDULE_TIME_UNRESOLVED"
+        )
+        assert before == catalog.scheduled_connections(leg, when, window_minutes=10) == []

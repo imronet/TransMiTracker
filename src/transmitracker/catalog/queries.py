@@ -335,7 +335,9 @@ class Catalog:
         for _, services, _, low, high in self._service_windows(when, end, unresolved=True):
             rows = self.connection.execute(
                 f"""
-                SELECT t.trip_pk,t.first_departure FROM trips t
+                SELECT t.trip_pk,t.first_departure,
+                       o.sequence=(SELECT MIN(sequence) FROM stop_times WHERE trip_pk=t.trip_pk) AS origin_is_first
+                FROM trips t
                 JOIN stop_times o ON o.trip_pk=t.trip_pk
                 JOIN stop_times d ON d.trip_pk=t.trip_pk
                 WHERE t.route_id=? AND t.pattern_id=? AND t.direction_id IS ?
@@ -372,6 +374,13 @@ class Catalog:
                     "SELECT start,end FROM frequencies WHERE trip_pk=?", (row["trip_pk"],)
                 ).fetchall()
                 if frequencies:
+                    if row["origin_is_first"]:
+                        # Frequency windows describe this exact occurrence, even
+                        # without a template anchor. start is inclusive, end is
+                        # exclusive; later stops may have an unknown offset.
+                        if any(f["start"] <= high and low < f["end"] for f in frequencies):
+                            return True
+                        continue
                     # Template clocks are relative to the first departure, not
                     # absolute clocks for frequency instances. Without that anchor,
                     # only the published start supplies a lower bound; end is not

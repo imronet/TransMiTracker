@@ -215,13 +215,16 @@ def test_changed_date_and_closed_page_discard_worker_results(planning_window, mo
 
 
 @pytest.mark.gui
-def test_saved_seconds_survive_real_panel_controller_service_flow(saved_desktop):
+@pytest.mark.parametrize("microseconds", [0, 500000])
+def test_saved_seconds_survive_real_panel_controller_service_flow(
+    saved_desktop, monkeypatch, microseconds
+):
     controller, _, returning = saved_desktop
     with Catalog(controller.config.root / "catalog.sqlite3") as catalog:
         profile = replace(
             returning,
             legs=(leg_for(catalog, "EVENING_LATE", b=20),),
-            usual_departure=time(17, 30, 45),
+            usual_departure=time(17, 30, 45, microseconds),
             initial_walk_minutes=0,
         )
     assert controller.save_configuration(primitive(profile), 1).ok
@@ -234,15 +237,28 @@ def test_saved_seconds_survive_real_panel_controller_service_flow(saved_desktop)
             s for s in app.snapshot["profiles"].data if s.profile.profile_id == profile.profile_id
         )
         before = contents(controller)
+        sent_clocks = []
+        original_plan = app.controller.plan_static
+
+        def observed_plan(profile_id, day, departure_clock=None, **kwargs):
+            sent_clocks.append(departure_clock)
+            return original_plan(profile_id, day, departure_clock, **kwargs)
+
+        monkeypatch.setattr(app.controller, "plan_static", observed_plan)
         app.open_static_planning(stored)
         panel = app.planning_panel
-        assert panel.clock.get() == "17:30:45"
+        original_text = profile.usual_departure.isoformat()
+        assert panel.clock.get() == original_text
+        assert not panel.clock_edited
         panel.day_var.set("2026-11-09")
+        assert not panel.clock_edited  # Date edits do not edit the saved clock.
         panel.button.invoke()
         pump(app, lambda: panel.last_result is not None)
         plan = panel.last_result.data
         assert panel.last_result.ok
-        assert plan.departure_at == "2026-11-09T17:30:45-05:00"
+        assert plan.departure_at == f"2026-11-09T{original_text}-05:00"
+        assert sent_clocks[-1] is None
+        assert stored.revision == 2
         assert plan.steps[0].trip_id == "EVENING_LATE"
         assert plan.steps[0].boarding_at == "2026-11-09T17:31:00-05:00"
         for clock, departure, trip in (
@@ -255,6 +271,8 @@ def test_saved_seconds_survive_real_panel_controller_service_flow(saved_desktop)
             assert panel.last_result.ok
             assert panel.last_result.data.departure_at == f"2026-11-09T{departure}-05:00"
             assert panel.last_result.data.steps[0].trip_id == trip
+            assert sent_clocks[-1] == clock
+            assert panel.clock_edited
         for clock, code in (
             ("17:30:70", "INVALID_CLOCK"),
             ("173045", "INVALID_CLOCK"),
@@ -265,6 +283,16 @@ def test_saved_seconds_survive_real_panel_controller_service_flow(saved_desktop)
             pump(app, lambda: panel.last_result is not None)
             assert panel.last_result.errors[0].code == code
             assert panel.last_result.data is None
+            assert sent_clocks[-1] == clock
+        if microseconds:
+            # Retyping the original fractional text is an explicit edit, even
+            # when it equals the prefill. It must not bypass the strict parser.
+            panel.clock_var.set(original_text)
+            panel.button.invoke()
+            pump(app, lambda: panel.last_result is not None)
+            assert panel.last_result.errors[0].code == "INVALID_CLOCK"
+            assert panel.last_result.data is None
+            assert sent_clocks[-1] == original_text
         assert contents(controller) == before
     finally:
         app.close()

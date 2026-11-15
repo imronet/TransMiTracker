@@ -72,6 +72,7 @@ class PlanningPanel(ctk.CTkFrame):
         self.day_var = tk.StringVar(value=self.day.get())
         self.day.configure(textvariable=self.day_var)
         self.clock = None
+        self.clock_edited = False
         if stored.profile.kind == ProfileKind.TO_HOME:
             usual = stored.profile.usual_departure
             self.clock = entry(
@@ -83,7 +84,7 @@ class PlanningPanel(ctk.CTkFrame):
             )
             self.clock_var = tk.StringVar(value=self.clock.get())
             self.clock.configure(textvariable=self.clock_var)
-            self.clock_var.trace_add("write", self.changed)
+            self.clock_var.trace_add("write", self.clock_changed)
         else:
             deadline = stored.profile.arrival_deadline
             host.label(
@@ -96,6 +97,10 @@ class PlanningPanel(ctk.CTkFrame):
         )
         self.button.pack(anchor="w", padx=18, pady=8)
         self.output = host.label(self, "Seleccione fecha y consulte. No se necesitan datos GPS.")
+
+    def clock_changed(self, *args):
+        self.clock_edited = True
+        self.changed()
 
     def changed(self, *args):
         self.generation += 1
@@ -110,6 +115,10 @@ class PlanningPanel(ctk.CTkFrame):
         generation = self.generation
         day = self.day.get()
         clock = self.clock.get() if self.clock else None
+        if not self.clock_edited and self.stored.profile.usual_departure is not None:
+            # Preserve the stored time, including microseconds. Edited text
+            # always goes through the controller's strict explicit-clock parser.
+            clock = None
         self.output.configure(text="Consultando exclusivamente el catálogo local…")
         controller = self.host.controller
 

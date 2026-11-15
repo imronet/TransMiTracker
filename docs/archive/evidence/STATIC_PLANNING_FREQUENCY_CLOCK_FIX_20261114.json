@@ -1,0 +1,100 @@
+{
+  "date_bogota": "2026-11-14",
+  "product_version": "0.7.0",
+  "base_commit": "72bf350b617b2c4ec907e14fd832fee6ccc04778",
+  "scope": "Only auxiliary frequency-expiry diagnosis at the exact first occurrence and use of an untouched stored departure clock in the planning panel.",
+  "checks": [
+    {
+      "command": "python -m pytest -q -m 'not gui' tests/test_static_planning.py tests/test_planning_gui.py --tb=short",
+      "exit_code": 0,
+      "passed": 53,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 96.64
+    },
+    {
+      "command": "python -m pytest -q -m gui tests/test_planning_gui.py --tb=short",
+      "exit_code": 0,
+      "passed": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 42.388
+    },
+    {
+      "command": "python -m ruff check src/transmitracker/catalog/queries.py src/transmitracker/gui/planning.py tests/test_planning_gui.py tests/test_static_planning.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check src/transmitracker/catalog/queries.py src/transmitracker/gui/planning.py tests/test_planning_gui.py tests/test_static_planning.py",
+      "exit_code": 0,
+      "output": "4 files already formatted"
+    }
+  ],
+  "total_relevant_passed": 57,
+  "new_cases": 10,
+  "full_suite_executed": false,
+  "frequency_regressions": {
+    "entirely_synthetic": true,
+    "published_window": "[08:00,08:10)",
+    "first_sequence_tested": 10,
+    "first_stop_0830_0840": "NO_SCHEDULED_SERVICE",
+    "first_stop_exact_0810_end": "NO_SCHEDULED_SERVICE",
+    "first_stop_intersects_window": "SCHEDULE_TIME_UNRESOLVED; no point boarding created",
+    "first_stop_query_ends_exactly_0800_start": "SCHEDULE_TIME_UNRESOLVED",
+    "first_stop_query_ends_before_0800_start": "NO_SCHEDULED_SERVICE",
+    "later_stop_0830_unknown_offset": "SCHEDULE_TIME_UNRESOLVED; first-stop end not applied downstream",
+    "inactive_calendar_and_removed_exception": "NO_SCHEDULED_SERVICE",
+    "previous_25h_regression_preserved": true,
+    "explicit_valid_itinerary_and_incomplete_alternative_coexistence_preserved": true,
+    "implementation": "Compare selected origin sequence with MIN(sequence) of the same trip. Only that occurrence uses start <= query_end and query_start < end. Calendar, pattern, stops and permissions stay unchanged."
+  },
+  "real_tk_regressions_on_synthetic_profiles": {
+    "saved_departures": [
+      "17:30:45",
+      "17:30:45.500000"
+    ],
+    "same_exact_departure_in_plan": true,
+    "initial_walk_minutes": 0,
+    "earlier_173020_boarding_rejected": true,
+    "selected_later_boarding": "17:31:00",
+    "untouched_clock_sent_to_real_controller": null,
+    "date_change_does_not_mark_clock_edited": true,
+    "explicit_edits": {
+      "17:30": "17:30:00",
+      "17:30:30": "17:30:30"
+    },
+    "invalid_edit": "INVALID_CLOCK; no fallback",
+    "retyping_original_fractional_text_after_edit": "INVALID_CLOCK; not treated as untouched",
+    "empty_without_usual_departure": "DEPARTURE_TIME_REQUIRED",
+    "profile_catalog_preferences_bytes_and_profile_revision_unchanged": true,
+    "worker_thread_and_stale_response_tests_preserved": true,
+    "flow": "actual Tk panel -> existing DesktopController.plan_static -> unchanged StaticPlanner -> local synthetic SQLite",
+    "spy_note": "A forwarding observer records the clock argument; actual controller and service execute. No fake GUI or timetable results."
+  },
+  "scope_checks": {
+    "catalog_AST_changed_methods": [
+      "has_unresolved_boarding"
+    ],
+    "all_other_catalog_method_ASTs_identical_to_base": true,
+    "controller_contract_and_explicit_parser_unchanged": true,
+    "itinerary_search_GPS_tracker_OD_schema_dependencies_unchanged": true
+  },
+  "limitations": [
+    "Overlap with an incomplete frequency remains uncertainty, not a confirmed departure.",
+    "Unknown downstream offsets are intentionally not bounded by the first-stop end.",
+    "Typed edits still accept HH:MM or HH:MM:SS only; stored fractions are reused through departure_clock=None."
+  ],
+  "network_requests": 0,
+  "real_profiles_used_or_modified": false,
+  "new_GPS_captures": 0,
+  "code_sha256": {
+    "src/transmitracker/catalog/queries.py": "2b0373763bf232c3b2858c427f811155c1b35871b769506b7740adbacb98993d",
+    "src/transmitracker/gui/planning.py": "361e98ef198a495e56496460feaa0b970c09630c7e9e1bffdb7135009e1d576c",
+    "tests/test_planning_gui.py": "23ed896ed0cc9de4eac44168d5e40945af9b44abb30b73b3106accc07a65720b",
+    "tests/test_static_planning.py": "0d1dd0c3fe15524c6f515faed6606a673e64fe7d89a3a7058cb8789028e08943"
+  },
+  "status": "Prepared for QA Check; v0.7.0 acceptance pending. No commit/push or new phase."
+}
