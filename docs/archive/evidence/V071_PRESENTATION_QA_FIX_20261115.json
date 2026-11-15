@@ -1,0 +1,52 @@
+{
+  "date_bogota": "2026-11-15",
+  "version": "0.7.1",
+  "base_commit": "bc2a0b2f81564749b88632b25e8e5127ffe1700b",
+  "scope": "Two presentation corrections only; no itinerary or diagnostic search algorithms changed.",
+  "checks": [
+    {
+      "command": "python -m pytest -q -m 'not gui' tests/test_stabilization.py --tb=short",
+      "passed": 17,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 7.79,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m pytest -q -m gui tests/test_stabilization.py -k positive_edit --tb=short",
+      "passed": 2,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 14.218,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff check src/transmitracker/gui/planning.py tests/test_stabilization.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check src/transmitracker/gui/planning.py tests/test_stabilization.py",
+      "exit_code": 0,
+      "output": "2 files already formatted"
+    }
+  ],
+  "total_passed": 19,
+  "real_Tk_cases": 2,
+  "full_suite_executed": false,
+  "heading_regression": "For both date and clock edits: real positive consultation -> neutral pending heading -> worker-gated new consultation -> real positive result -> new request without editing -> controlled worker failure. Titles, colors, cleared cards, invalidated data, sanitized errors and unchanged input bytes asserted.",
+  "window_regressions": "Inactive profile and initial walk outside window use real StaticPlanner.consult. Any call to scheduled_connections fails the test. Their rendered text says Ventana configurada and No se buscaron abordajes, and never realmente examinada.",
+  "privacy": {
+    "synthetic_only": true,
+    "real_profiles_used_or_modified": false,
+    "network_requests": 0,
+    "new_GPS_captures": 0
+  },
+  "preserved": "Domain codes, stale-response checks, algorithm, schemas, previous discarded-itinerary behavior and historical reports unchanged.",
+  "code_hash_mode": "SHA-256 of UTF-8 source normalized to LF",
+  "code_sha256": {
+    "src/transmitracker/gui/planning.py": "10a67da926758d9dbc22071e626f6dc7193ade7713eb48ab6bd6358eaea594b7",
+    "tests/test_stabilization.py": "e442b1b0b15744024a36f8cdb25ab8d70bd158590519f373489f2be882452401"
+  },
+  "status": "Prepared for reevaluation of v0.7.1; owner acceptance pending; no commit or push."
+}

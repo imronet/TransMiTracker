@@ -1,5 +1,6 @@
 """v0.7.1: complete discarded evidence and real desktop presentation, offline."""
 
+import threading
 from dataclasses import replace
 from datetime import date, datetime, time, timedelta
 
@@ -7,6 +8,7 @@ import customtkinter as ctk
 import pytest
 from test_gui_widgets import pump
 from test_planning_gui import contents, descendants
+from test_planning_gui import planning_window as planning_window
 from test_planning_gui import saved_desktop as saved_desktop
 from test_static_planning import leg_for, work_profile
 from test_static_planning import planning_catalog_path as planning_catalog_path
@@ -114,8 +116,13 @@ def test_opening_current_store_and_reading_dashboard_is_byte_stable(saved_deskto
     assert contents(controller) == before
 
 
-def test_initial_walk_outside_window_has_a_specific_explanation(planning_catalog_path):
+def test_initial_walk_outside_window_has_a_specific_explanation(planning_catalog_path, monkeypatch):
     with Catalog(planning_catalog_path) as catalog:
+
+        def unexpected_query(*args, **kwargs):
+            pytest.fail("Boarding search must not start")
+
+        monkeypatch.setattr(catalog, "scheduled_connections", unexpected_query)
         profile = replace(
             work_profile(catalog),
             kind=ProfileKind.TO_HOME,
@@ -126,6 +133,81 @@ def test_initial_walk_outside_window_has_a_specific_explanation(planning_catalog
         assert result.errors[0].code == "HORIZON_INSUFFICIENT"
         assert result.data is None and result.diagnostic.discarded is None
         assert "caminata inicial termina después" in diagnostic_text(result.diagnostic)
+        assert "No se buscaron abordajes" in diagnostic_text(result.diagnostic)
+        assert "Ventana configurada" in diagnostic_text(result.diagnostic)
+        assert "realmente examinada" not in diagnostic_text(result.diagnostic)
+
+
+def test_inactive_profile_shows_configured_window_without_claiming_a_search(
+    planning_catalog_path, monkeypatch
+):
+    with Catalog(planning_catalog_path) as catalog:
+
+        def unexpected_query(*args, **kwargs):
+            pytest.fail("Boarding search must not start for an inactive profile")
+
+        monkeypatch.setattr(catalog, "scheduled_connections", unexpected_query)
+        result = StaticPlanner(catalog).consult(work_profile(catalog), date(2026, 11, 8))
+        assert result.errors[0].code == "PROFILE_INACTIVE_DAY"
+        text = diagnostic_text(result.diagnostic)
+        assert "Ventana configurada" in text and "No se buscaron abordajes" in text
+        assert "perfil no está activo" in text and "realmente examinada" not in text
+
+
+@pytest.mark.gui
+@pytest.mark.parametrize("field", ["date", "clock"])
+def test_positive_edit_query_and_worker_error_reset_heading(planning_window, monkeypatch, field):
+    app, controller, _, returning = planning_window
+    stored = next(
+        s for s in app.snapshot["profiles"].data if s.profile.profile_id == returning.profile_id
+    )
+    app.open_static_planning(stored)
+    panel = app.planning_panel
+    panel.day_var.set("2026-11-09")
+    panel.clock_var.set("07:55")
+    before = contents(controller)
+    panel.request()
+    pump(app, lambda: panel.last_result is not None)
+    assert panel.last_result.ok
+    positive_color = panel.result_title.cget("text_color")
+    assert panel.result_title.cget("text") == "Itinerario programado encontrado"
+    if field == "date":
+        panel.day_var.set("2026-11-10")
+    else:
+        panel.clock_var.set("07:56")
+    assert panel.result_title.cget("text") == "Consulta pendiente"
+    assert panel.result_title.cget("text_color") != positive_color
+    assert panel.last_result is None and not panel.detail_area.winfo_children()
+    entered, release = threading.Event(), threading.Event()
+    original = app.controller.plan_static
+
+    def delayed(*args, **kwargs):
+        entered.set()
+        assert release.wait(5)
+        return original(*args, **kwargs)
+
+    monkeypatch.setattr(app.controller, "plan_static", delayed)
+    try:
+        panel.request()
+        pump(app, entered.is_set)
+        assert panel.result_title.cget("text") == "Consultando horarios publicados"
+        assert panel.result_title.cget("text_color") != positive_color
+    finally:
+        release.set()
+    pump(app, lambda: panel.last_result is not None)
+    assert panel.last_result.ok
+
+    def broken(*args, **kwargs):
+        raise RuntimeError("PRIVATE_WORKER_ERROR")
+
+    monkeypatch.setattr(app.controller, "plan_static", broken)
+    panel.request()  # No edit: a new request must also clear the successful heading.
+    assert panel.result_title.cget("text") == "Consultando horarios publicados"
+    pump(app, lambda: panel.result_title.cget("text") == "Error en la consulta")
+    assert panel.result_title.cget("text_color") != positive_color
+    assert panel.last_result is None and not panel.detail_area.winfo_children()
+    assert "PRIVATE_WORKER_ERROR" not in panel.output.cget("text")
+    assert contents(controller) == before
 
 
 @pytest.mark.parametrize(

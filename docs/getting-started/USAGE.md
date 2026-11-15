@@ -8,11 +8,18 @@ advertencias. **Ver detalles técnicos** permite consultar códigos originales; 
 es necesario interpretarlos para usar la vista principal.
 
 Si el límite de llegada impide recomendar una salida, **Qué se pudo comprobar**
-muestra fecha, horizonte real, disponibilidad tras caminar, tramos, tolerancias,
+muestra fecha, ventana configurada, disponibilidad tras caminar, tramos, tolerancias,
 restricción y procedencia. Cuando se demuestra una cadena completa tardía se presenta
 como **Alternativa programada descartada — no cumple las condiciones**, con diferencia
 frente al límite. Nunca es una recomendación. Si no se demuestra la conexión entre
 todos los tramos, no se muestra una llegada final del recorrido.
+
+La ventana configurada no implica que se haya ejecutado una búsqueda. Si el perfil
+está inactivo o la caminata inicial termina después de su cierre, el diagnóstico
+indica expresamente que no se buscaron abordajes. Al editar fecha/hora el encabezado
+pasa a **Consulta pendiente**; durante la petición muestra **Consultando horarios
+publicados** y, si falla el trabajador, **Error en la consulta**, sin conservar el
+estado positivo anterior. [Regresiones focalizadas de presentación](../archive/evidence/V071_PRESENTATION_QA_FIX_20261115.json).
 
 Una caminata inicial que termina después de la ventana se explica como limitación
 del horizonte, sin afirmar ausencia de buses. Revisa **Ventana de búsqueda y ayuda**

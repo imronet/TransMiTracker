@@ -67,10 +67,12 @@ def diagnostic_text(diagnostic):
     lines = [
         f"Fecha consultada: {diagnostic.planning_date} · {diagnostic.leg_count} tramo(s)",
         f"Hora límite: {stamp(diagnostic.deadline)}",
-        f"Ventana realmente examinada: {stamp(diagnostic.search_start)} → {stamp(diagnostic.boarding_horizon_end)}",
+        f"Ventana configurada: {stamp(diagnostic.search_start)} → {stamp(diagnostic.boarding_horizon_end)}",
         f"Disponibilidad inicial tras caminar: {stamp(diagnostic.first_ready_at)}",
         f"Caminata inicial: {diagnostic.initial_walk_minutes} min · final: {diagnostic.final_walk_minutes} min · margen: {diagnostic.safety_margin_minutes} min",
     ]
+    if diagnostic.incomplete_field == "active_weekdays":
+        lines.append("No se buscaron abordajes: el perfil no está activo en la fecha elegida.")
     for i, (walk, buffer) in enumerate(diagnostic.transfer_minutes, 1):
         lines.append(
             f"Transbordo {i}: caminata {walk} min + tolerancia {buffer} min. Recorrido a pie no verificado."
@@ -94,7 +96,7 @@ def diagnostic_text(diagnostic):
         > datetime.fromisoformat(diagnostic.boarding_horizon_end)
     ):
         lines.append(
-            "La caminata inicial termina después del final de la ventana. Con estos ajustes no queda intervalo para buscar un abordaje; revisa la ventana en el editor. Esto no demuestra ausencia de servicio."
+            "La caminata inicial termina después del final de la ventana. No se buscaron abordajes: con estos ajustes no queda intervalo para buscar; revisa la ventana en el editor. Esto no demuestra ausencia de servicio."
         )
     if diagnostic.discarded:
         lines.append(
@@ -268,13 +270,18 @@ class PlanningPanel(ctk.CTkFrame):
         self.clock_edited = True
         self.changed()
 
+    def reset_result(self, title, text, color=("#17283c", "#edf3fc")):
+        self.last_result = None
+        self.clear_details()
+        self.result_title.configure(text=title, text_color=color)
+        self.output.configure(text=text)
+
     def changed(self, *args):
         self.generation += 1
         self.last_result = None
         self.host.worker.invalidate(self.key)
         if hasattr(self, "output"):
-            self.clear_details()
-            self.output.configure(text="Fecha u hora modificada; vuelva a consultar.")
+            self.reset_result("Consulta pendiente", "Fecha u hora modificada; vuelva a consultar.")
 
     def request(self):
         self.generation += 1
@@ -286,8 +293,9 @@ class PlanningPanel(ctk.CTkFrame):
             # Preserve the stored time, including microseconds. Edited text
             # always goes through the controller's strict explicit-clock parser.
             clock = None
-        self.clear_details()
-        self.output.configure(text="Consultando exclusivamente el catálogo local…")
+        self.reset_result(
+            "Consultando horarios publicados", "Consultando exclusivamente el catálogo local…"
+        )
         controller = self.host.controller
         profile_id, revision = self.stored.profile.profile_id, self.stored.revision
 
@@ -300,7 +308,7 @@ class PlanningPanel(ctk.CTkFrame):
                 return
             self.last_result = value
             if error:
-                self.output.configure(text=error)
+                self.reset_result("Error en la consulta", error, ("#8e361b", "#ffbb98"))
             else:
                 self.show_result(value)
             self.host.fit_text()

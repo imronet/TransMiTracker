@@ -8,6 +8,9 @@ Las capturas [clara positiva](screenshots/stabilization-071-20261114/light-posit
 vistas de detalle son exclusivamente sintéticas. Matriz y comandos en el
 [informe consolidado](../phases/V071_STABILIZATION_REPORT.md). No se sobrescribió
 la evidencia anterior ni se repitieron capturas GPS.
+La [corrección focalizada de presentación del 2026-11-15](V071_PRESENTATION_QA_FIX_20261115.json)
+verifica encabezados al editar/consultar/fallar y distingue ventana configurada de
+búsqueda no iniciada, con fixtures sintéticos y Tk real. Pendiente de reevaluación de QA.
 
 ## Planificación estática desde perfiles — 2026-11-14
 
