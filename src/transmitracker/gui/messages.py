@@ -1,4 +1,6 @@
-"""Spanish presentation of domain codes; never render raw exception/secret values."""
+"""Central user presentation; technical codes remain available separately."""
+
+import re
 
 MESSAGES = {
     "INVALID_PLANNING_DATE": "Revise la fecha local AAAA-MM-DD y la hora HH:MM.",
@@ -43,9 +45,88 @@ MESSAGES = {
 }
 
 
-def result_text(result):
-    issues = result.errors + result.warnings
-    return "\n".join(
-        f"{item.field} · {MESSAGES.get(item.code, 'Revise este campo o recurso local.')} [{item.code}]"
-        for item in issues
+MESSAGES.update(
+    {
+        "ARRIVAL_DEADLINE_EXCEEDED": "No encontramos una alternativa programada que permita cumplir tu hora límite de llegada. Revisa el límite, las caminatas y la ventana de búsqueda; no cambiamos tus ajustes.",
+        "NO_SCHEDULED_SERVICE": "No hay servicio publicado compatible en el ámbito consultado. Revisa fecha, patrón y paradas; esto no significa que todo el sistema carezca de buses.",
+        "SCHEDULE_TIME_UNRESOLVED": "Faltan horas publicadas o solo hay frecuencias sin salida exacta. No podemos justificar una hora puntual. Revisa la disponibilidad horaria del catálogo.",
+        "HORIZON_INSUFFICIENT": "La ventana de búsqueda no permite demostrar una alternativa compatible. Puedes revisarla en el editor y guardarla si decides cambiarla; no se amplía automáticamente.",
+        "TRANSFER_INCOMPATIBLE": "No se pudo encadenar el servicio con la caminata y tolerancia configuradas. Revisa los tramos y tiempos del transbordo.",
+        "PROFILE_INACTIVE_DAY": "Tu perfil no está activo en la fecha elegida. Elige otro día o revisa los días activos en el editor.",
+        "DEPARTURE_TIME_REQUIRED": "Indica a qué hora sales del trabajo o configura una salida habitual. Sin esa hora no calculamos una llegada absoluta.",
+        "TRANSFER_PATH_UNVERIFIED": "No se ha comprobado el recorrido a pie entre estos tramos. El cálculo utiliza tus minutos configurados. Este aviso no significa que el transbordo sea imposible.",
+    }
+)
+
+FIELD_LABELS = {
+    "departure_window_minutes": "Ventana de búsqueda de buses programados",
+    "planning_date": "Fecha de salida",
+    "departure_clock": "Salida del trabajo",
+    "arrival_deadline": "Hora límite de llegada",
+    "active_weekdays": "Días activos",
+    "initial_walk_minutes": "Caminata inicial",
+    "final_walk_minutes": "Caminata final",
+    "safety_margin_minutes": "Margen de seguridad",
+    "catalog": "Catálogo local",
+    "catalog_sha256": "Versión del catálogo",
+    "profile": "Perfil guardado",
+    "legs": "Tramos del recorrido",
+    "transfers": "Transbordos",
+    "origin_stop_id": "Origen",
+    "destination_stop_id": "Destino",
+    "route_id": "Ruta",
+    "pattern_id": "Patrón",
+    "notification_time": "Hora de aviso",
+    "arrival_day_offset": "Día de llegada",
+    "schedule": "Horario publicado",
+}
+
+
+def field_label(field):
+    match = re.match(r"^(legs|transfers)\.(\d+)(?:\.(.*))?$", field)
+    if match:
+        group, value, suffix = match.groups()
+        index = int(value)
+        label = (
+            f"{'Primer' if index == 0 else 'Segundo'} transbordo: conexión entre el tramo {index + 1} y el tramo {index + 2}"
+            if group == "transfers"
+            else f"Tramo {index + 1}"
+        )
+        return label + (
+            " · " + FIELD_LABELS.get(suffix, "Selección del recorrido") if suffix else ""
+        )
+    return FIELD_LABELS.get(field, "Consulta local")
+
+
+def result_text(result, profile=None):
+    lines = []
+    for item in result.errors + result.warnings:
+        message = MESSAGES.get(
+            item.code,
+            "No se pudo completar esta comprobación local. Revisa los datos y el archivo asociado.",
+        )
+        match = re.fullmatch(r"transfers\.(\d+)", item.field)
+        if item.code == "TRANSFER_PATH_UNVERIFIED" and profile and match:
+            index = int(match[1])
+            if index < len(profile.transfers):
+                transfer = profile.transfers[index]
+                message += f" Caminata: {transfer.walking_minutes} min; tolerancia: {transfer.buffer_minutes} min."
+        lines.append(f"{field_label(item.field)} · {message}")
+    return "\n".join(lines)
+
+
+def technical_text(result):
+    return "\n".join(f"{item.field} · {item.code}" for item in result.errors + result.warnings)
+
+
+def window_help(kind):
+    interval = (
+        "Intervalo anterior al límite de llegada"
+        if getattr(kind, "value", kind) == "home_to_work"
+        else "Intervalo posterior a la salida del trabajo"
+    )
+    return (
+        f"{interval} dentro del cual se examinan abordajes publicados, sujeto a las demás restricciones. "
+        "No es espera estimada ni duración del viaje, no garantiza buses y no se amplía por cada transbordo. "
+        "Una ventana insuficiente puede impedir encontrar una alternativa."
     )

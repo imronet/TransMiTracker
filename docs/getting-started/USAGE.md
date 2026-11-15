@@ -1,5 +1,29 @@
 # Configurar recorridos habituales
 
+## Estabilización 0.7.1
+
+El dashboard identifica la versión del producto y el modo GTFS estático. La consulta
+separa el resultado principal, las tarjetas de cada tramo, caminatas/margen y las
+advertencias. **Ver detalles técnicos** permite consultar códigos originales; no
+es necesario interpretarlos para usar la vista principal.
+
+Si el límite de llegada impide recomendar una salida, **Qué se pudo comprobar**
+muestra fecha, horizonte real, disponibilidad tras caminar, tramos, tolerancias,
+restricción y procedencia. Cuando se demuestra una cadena completa tardía se presenta
+como **Alternativa programada descartada — no cumple las condiciones**, con diferencia
+frente al límite. Nunca es una recomendación. Si no se demuestra la conexión entre
+todos los tramos, no se muestra una llegada final del recorrido.
+
+Una caminata inicial que termina después de la ventana se explica como limitación
+del horizonte, sin afirmar ausencia de buses. Revisa **Ventana de búsqueda y ayuda**
+en el editor: puedes cambiarla mediante edición y guardado explícitos, sin ajustes
+automáticos. Las advertencias identifican primer/segundo transbordo, conservan
+caminata y tolerancia, y no significan que una conexión sea imposible.
+
+El contenido largo se desplaza verticalmente. Se revisaron temas claro/oscuro,
+ventanas de 1180×820 y 900×650, guardado/reinicio, consultas positivas y negativas.
+[Informe consolidado, evidencia y límites de la revisión](../archive/phases/V071_STABILIZATION_REPORT.md).
+
 Abra la GUI con `python -m transmitracker.gui` desde el entorno del proyecto,
 con `PYTHONPATH` apuntando a `src`. Los comandos completos están en README.
 

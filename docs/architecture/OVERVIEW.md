@@ -1,4 +1,4 @@
-# Arquitectura vigente — 0.7.0
+# Arquitectura vigente — 0.7.1
 
 ## Componentes y límites
 
@@ -41,6 +41,20 @@ en lectura, comprueba revisión y hash, sin ejecutar bootstrap, guardar consulta
 migrar ni escribir preferencias. `gui/planning.py` prepara el texto y widgets del
 panel mínimo. `UiWorker` mantiene SQLite fuera del hilo Tk y descarta respuestas
 por generación, fecha/hora y cambio de página. No cambian tablas ni contratos previos.
+
+En 0.7.1 `StaticPlanner.consult()` añade un `PlanningResult`, subtipo compatible de
+`Result[StaticPlan]`, con `diagnostic` opcional y serializable. `plan()` mantiene su
+contrato y decisiones; un fallo conserva `ok=False` y `data=None`. El diagnóstico
+usa la misma búsqueda inversa y construcción del itinerario, separadas en métodos
+reutilizables, con un máximo de una consulta adicional por tramo dentro del horizonte
+original. Solo se muestra una alternativa tardía si todos los tramos y transbordos
+son justificables; su estado es descartado y no recomendado. Si solo se conocen
+llegadas aisladas, no se fabrica una llegada final.
+
+`gui/messages.py` traduce códigos/campos de forma centralizada sin mostrar mensajes
+crudos de excepciones. `technical_text()` conserva códigos para la vista opcional;
+las tarjetas principales muestran causas y acciones. La apertura repetida del
+almacén de perfiles ya no reasigna su versión 2 si coincide; no hay migración nueva.
 
 ## Almacenamiento y versiones independientes
 

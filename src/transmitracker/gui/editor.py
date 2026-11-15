@@ -9,7 +9,7 @@ import customtkinter as ctk
 from transmitracker.catalog.common import BOGOTA
 from transmitracker.gui.controller import PROFILE_TITLES, parse_departure
 from transmitracker.gui.help import Tooltip
-from transmitracker.gui.messages import result_text
+from transmitracker.gui.messages import result_text, window_help
 from transmitracker.profiles.contracts import primitive
 from transmitracker.profiles.models import PatternChoice, ProfileKind
 
@@ -17,7 +17,7 @@ from transmitracker.profiles.models import PatternChoice, ProfileKind
 def entry(parent, label, value, row, column=0, width=160):
     frame = ctk.CTkFrame(parent, fg_color="transparent")
     frame.grid(row=row, column=column, sticky="ew", padx=8, pady=6)
-    ctk.CTkLabel(frame, text=label, anchor="w").pack(fill="x")
+    ctk.CTkLabel(frame, text=label, anchor="w", justify="left", wraplength=260).pack(fill="x")
     widget = ctk.CTkEntry(frame, width=width, height=34)
     widget.insert(0, str(value))
     widget.pack(fill="x", pady=(3, 0))
@@ -587,7 +587,8 @@ class ProfileEditor(ctk.CTkScrollableFrame):
         )
         ctk.CTkLabel(
             top,
-            text="Configure su recorrido habitual sin fecha ni salida ficticia.\nLas recomendaciones se implementarán en una fase posterior.",
+            text="Guarda tu recorrido habitual. Después podrás planificar con horarios GTFS estáticos desde el dashboard.",
+            wraplength=580,
             justify="left",
             anchor="w",
         ).grid(row=0, column=0, columnspan=2, sticky="ew", padx=16, pady=12)
@@ -598,17 +599,17 @@ class ProfileEditor(ctk.CTkScrollableFrame):
         advanced = ctk.CTkFrame(self, corner_radius=12)
         self.window = entry(
             advanced,
-            "Horizonte de búsqueda de buses programados · minutos ⓘ",
+            "Ventana de búsqueda de buses programados (minutos)",
             self.saved.get("departure_window_minutes", 120),
             0,
         )
         Tooltip(
             self.window,
-            "Solo limita la búsqueda opcional de horarios publicados. No es tiempo esperado de espera ni una estadística histórica.",
+            window_help(kind),
         )
         ctk.CTkLabel(
             advanced,
-            text="La espera histórica aún no está disponible. Este ajuste no estima esperas.",
+            text=window_help(kind),
             wraplength=650,
         ).grid(row=1, column=0, padx=12, pady=8)
 
@@ -618,9 +619,9 @@ class ProfileEditor(ctk.CTkScrollableFrame):
             else:
                 advanced.grid(row=10, column=0, sticky="ew", padx=10, pady=8)
 
-        ctk.CTkButton(self, text="Opciones avanzadas ⓘ", command=toggle_advanced, width=180).grid(
-            row=9, column=0, sticky="w", padx=10, pady=8
-        )
+        ctk.CTkButton(
+            self, text="Ventana de búsqueda y ayuda", command=toggle_advanced, width=220
+        ).grid(row=9, column=0, sticky="w", padx=10, pady=8)
         self.legs_area = ctk.CTkFrame(self, fg_color="transparent")
         self.legs_area.grid(row=4, column=0, sticky="ew", padx=10)
         self.legs_area.grid_columnconfigure(0, weight=1)
@@ -786,7 +787,10 @@ class ProfileEditor(ctk.CTkScrollableFrame):
                 frame.grid_columnconfigure((0, 1), weight=1)
                 transfer = transfers[index - 1] if index - 1 < len(transfers) else {}
                 walk = entry(
-                    frame, "Transbordo · caminata (min)", transfer.get("walking_minutes", 0), 0
+                    frame,
+                    f"Transbordo {index} · caminata (min)",
+                    transfer.get("walking_minutes", 0),
+                    0,
                 )
                 buffer = entry(
                     frame, "Transbordo · tolerancia (min)", transfer.get("buffer_minutes", 0), 0, 1
@@ -795,7 +799,7 @@ class ProfileEditor(ctk.CTkScrollableFrame):
                     widget.bind("<KeyRelease>", lambda _e, i=index: self.temporal_changed(i))
                 ctk.CTkLabel(
                     frame,
-                    text="Conexión espacial no verificada. La proximidad no prueba conectividad.",
+                    text=f"Transbordo {index} · tramo {index} → tramo {index + 1}. No se ha comprobado el recorrido a pie. Se usan tus minutos de caminata y tolerancia; el aviso no significa que sea imposible.",
                     text_color=("#845100", "#ffd18a"),
                     wraplength=650,
                 ).grid(row=1, column=0, columnspan=2, padx=10, pady=5)

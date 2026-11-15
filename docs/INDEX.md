@@ -1,6 +1,11 @@
-# Índice de documentación — TransMiTracker 0.7.0
+# Índice de documentación — TransMiTracker 0.7.1
 
 ## Capacidad vigente
+
+La estabilización 0.7.1 presenta resultados por tarjetas, mensajes comprensibles y
+diagnósticos acotados de alternativas descartadas. [Informe consolidado, matriz de
+cierre y limitaciones](archive/phases/V071_STABILIZATION_REPORT.md). Pendiente de
+aceptación del propietario; el Camino B sigue pospuesto.
 
 La [planificación estática desde perfiles guardados](getting-started/USAGE.md#planificación-estática-070)
 busca una salida orientativa e itinerarios publicados desde la GUI, sin escribir

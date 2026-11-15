@@ -1,5 +1,14 @@
 # Evidencias históricas y compatibilidad
 
+## Estabilización integral 0.7.1 — 2026-11-14
+
+[Resultados focalizados y agregados privados no identificables](V071_STABILIZATION_VALIDATION_20261114.json).
+Las capturas [clara positiva](screenshots/stabilization-071-20261114/light-positive.png),
+[oscura negativa](screenshots/stabilization-071-20261114/dark-negative.png) y sus
+vistas de detalle son exclusivamente sintéticas. Matriz y comandos en el
+[informe consolidado](../phases/V071_STABILIZATION_REPORT.md). No se sobrescribió
+la evidencia anterior ni se repitieron capturas GPS.
+
 ## Planificación estática desde perfiles — 2026-11-14
 
 [Pruebas focalizadas, GUI sintética y ejercicio oficial local](STATIC_PLANNING_VALIDATION_20261114.json).

@@ -13,7 +13,9 @@ def main():
         "--demo", action="store_true", help="Abre el espacio separado de ejemplos técnicos"
     )
     examples.add_argument(
-        "--qa-demo", action="store_true", help="Ejemplos técnicos separados de Fase 2.1"
+        "--qa-demo",
+        action="store_true",
+        help="Ejemplos sintéticos separados de los perfiles personales",
     )
     args = parser.parse_args()
     app = TransMiTrackerApp(

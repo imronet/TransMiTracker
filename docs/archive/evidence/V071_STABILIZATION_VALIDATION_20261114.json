@@ -1,0 +1,314 @@
+{
+  "date_bogota": "2026-11-14",
+  "version": "0.7.1",
+  "base_commit": "03a2f3d15268cd4452eff9306cd96c3ce044ae77",
+  "status": "Ready for independent QA; owner acceptance pending; no new phase or commit/push.",
+  "distinct_passing_cases": 117,
+  "distinct_gui_cases": 11,
+  "new_cases": 19,
+  "full_suite_executed": false,
+  "checks": [
+    {
+      "command": "python -m pytest -q -m 'not gui' tests/test_stabilization.py tests/test_static_planning.py tests/test_planning_gui.py tests/test_gui_controller.py tests/test_phase2_1.py --tb=short",
+      "xml": ".cache/stabilization-initial.xml",
+      "passed": 104,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 278.302,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m pytest -q -m 'not gui' tests/test_stabilization.py tests/test_gui_controller.py tests/test_phase2_1.py --tb=short",
+      "xml": ".cache/stabilization-final.xml",
+      "passed": 52,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 80.185,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m pytest -q -m gui tests/test_stabilization.py tests/test_planning_gui.py tests/test_gui_widgets.py --tb=short",
+      "xml": ".cache/stabilization-gui-final.xml",
+      "passed": 10,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 143.511,
+      "exit_code": 1
+    },
+    {
+      "command": "python -m pytest -q tests/test_gui_widgets.py::test_widget_pipeline_save_close_reopen tests/test_stabilization.py::test_initial_walk_outside_window_has_a_specific_explanation --tb=short",
+      "xml": ".cache/stabilization-restart.xml",
+      "passed": 1,
+      "failures": 1,
+      "errors": 0,
+      "seconds": 21.255,
+      "exit_code": 1
+    },
+    {
+      "command": "python -m pytest -q tests/test_gui_widgets.py::test_widget_pipeline_save_close_reopen --tb=short",
+      "xml": ".cache/stabilization-reopen-final.xml",
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 18.975,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff check src/transmitracker/gui/__main__.py src/transmitracker/gui/app.py src/transmitracker/gui/controller.py src/transmitracker/gui/editor.py src/transmitracker/gui/messages.py src/transmitracker/gui/planning.py src/transmitracker/profiles/planning.py src/transmitracker/profiles/store.py tests/test_gui_controller.py tests/test_gui_widgets.py scripts/smoke_stabilization.py tests/test_stabilization.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check src/transmitracker/gui/__main__.py src/transmitracker/gui/app.py src/transmitracker/gui/controller.py src/transmitracker/gui/editor.py src/transmitracker/gui/messages.py src/transmitracker/gui/planning.py src/transmitracker/profiles/planning.py src/transmitracker/profiles/store.py tests/test_gui_controller.py tests/test_gui_widgets.py scripts/smoke_stabilization.py tests/test_stabilization.py",
+      "exit_code": 0,
+      "output": "12 files already formatted"
+    },
+    {
+      "command": "python -m pip check",
+      "exit_code": 0,
+      "output": "No broken requirements found."
+    }
+  ],
+  "test_accounting": "Cases are deduplicated by pytest classname/name across runs. Intermediate failures remain recorded; the final real restart is a separate successful run, not an automatic retry or skipped assertion.",
+  "intermediate_corrections": [
+    "Initial GUI batch: 7 failures and 4 passes. Six byte-integrity failures led to avoiding redundant user_version writes and using the read-only registry reader.",
+    "WindowsApps intermittently failed reading existing Tcl scripts when creating a second Tk in one process. A local library copy alone did not resolve it. Restart validation now starts a new process and preserves all original assertions.",
+    "The first isolated restart attempt needed src on sys.path; this was corrected before its final successful run.",
+    "Initial desktop screenshots were rejected and moved to ignored private storage. Only PrintWindow-rendered synthetic HWND images are public.",
+    "The first additional-view smoke timed out during an unnecessary repeated negative query after producing its required views. The additional mode now performs only the requested views; its final run completed without callback errors."
+  ],
+  "domain_contract": {
+    "plan_contract_unchanged": true,
+    "consult_result": "PlanningResult: compatible Result subtype with optional diagnostic; failures retain ok=False and data=None",
+    "new_diagnostic_queries_max": 3,
+    "same_original_horizon": true,
+    "same_connection_search_reused": true,
+    "discarded_requires_complete_chain": true,
+    "no_isolated_leg_arrival_as_final_arrival": true,
+    "late_chain_never_a_recommendation": true,
+    "codes_and_schemas_unchanged": true
+  },
+  "visual_review": {
+    "actual_windows_tk": true,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "window_sizes": [
+      [
+        1180,
+        820
+      ],
+      [
+        900,
+        650
+      ]
+    ],
+    "rendering": "PrintWindow of the synthetic application client HWND; .NET PNG encoding; no new dependency",
+    "images_reviewed": 20,
+    "result": "All listed PNGs inspected: readable labels, scrollable long results, visible warning/negative states, no observed overlaps at tested sizes",
+    "screenshots": [
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/light-dashboard.png",
+        "sha256": "01aa9955f048a3e751048fcb3ffa5ec2edca44fbd5d789fff6abdb5837802a1c",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/light-work-editor.png",
+        "sha256": "d30ab78c4aeb1da42822520a2e171f28c5c6d2ca34c337971c5bf0baac2f96fa",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/light-return-editor.png",
+        "sha256": "83fa3fd2f2d86d52c601a7627af8febe9c62aadad693e1f7415dce3be5b92698",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/light-positive.png",
+        "sha256": "e382567d83326f3eadbb7a544c9b095ffee57ab630bc718b40c0960066cbb359",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/light-positive-detail.png",
+        "sha256": "9a45336776b52df86526c4e5ef7837e29b0f98a755e1b48af92ed0594fc9de3e",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/light-negative.png",
+        "sha256": "85dda457f6167bd7477eacf9b2a654a2e7f9eb5e0d0ef69c32715b846e418cff",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/light-negative-detail.png",
+        "sha256": "a2aa3e7d4932139af909d1fa5b52802930046df8808e7aad6dd04ad86c53a2ba",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/dark-dashboard.png",
+        "sha256": "e1a9b9ff25bda134597b2034504e220323d511dcb6095788d95419745834181c",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/dark-work-editor.png",
+        "sha256": "5ba4fcaea86b53df2490762b1744028ca727c99f578b70c50da9a98f67fddbab",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/dark-return-editor.png",
+        "sha256": "bf6af1d4103770ce0b96ccf0a6617ed90bd0321a8a19c953065eb27b377fdd0a",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/dark-positive.png",
+        "sha256": "450615be1e2b31c1d13d12568f049bb397c31f6d12a75730d3aedf272be54219",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/dark-positive-detail.png",
+        "sha256": "89db1754f69bcba8b1f41e851ad3698b203709184426ac54e64d58e1fef9877f",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/dark-negative.png",
+        "sha256": "a701b13cfd24d96ca3438fca14c157eb71ee58997da9010e9a092f6d5124774c",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/dark-negative-detail.png",
+        "sha256": "69007e3e786bbb7bca8f9b02945ec94a55461c58a6ce88a5b53108c16f5f4b2c",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/additional/light-work-editor-lower.png",
+        "sha256": "99fcf94c878c9eb791839a753abbb53bac53b3f2db91d3ced336d194d1b84eae",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/additional/light-return-editor-lower.png",
+        "sha256": "3280d7e8e9058c7024958350657a7e3893c8eda408c57ec02a24443d68bbd5bb",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/additional/light-positive-small.png",
+        "sha256": "852603d941359a83ec8616866ccc40b9049f65bc1187396cd3754b2fd570b136",
+        "width": 900,
+        "height": 650
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/additional/dark-work-editor-lower.png",
+        "sha256": "35bd5f8960cda89e1ded94d98920e1dc5e360c9a7d0a9dd28c454a8bfbd886e7",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/additional/dark-return-editor-lower.png",
+        "sha256": "fef6283d81ebdf7c10ee43c788c9d40fa923e15fef1d7ab4fbd87f768d73e9a0",
+        "width": 1180,
+        "height": 820
+      },
+      {
+        "file": "docs/archive/evidence/screenshots/stabilization-071-20261114/additional/dark-positive-small.png",
+        "sha256": "fc382049c2cf76ea0c7663115cbd649eeb6b73ccc8b8a4173a72b6b223e5bb64",
+        "width": 900,
+        "height": 650
+      }
+    ],
+    "original_desktop_images_public": false
+  },
+  "real_offline_exercise": {
+    "profiles": [
+      {
+        "kind": "home_to_work",
+        "codes": [
+          "ARRIVAL_DEADLINE_EXCEEDED"
+        ],
+        "diagnostic_available": true,
+        "full_discarded_chain": false,
+        "incomplete_field": "transfers.0",
+        "initial_walk_after_window": false,
+        "used_stored_departure": false
+      },
+      {
+        "kind": "work_to_home",
+        "codes": [
+          "HORIZON_INSUFFICIENT"
+        ],
+        "diagnostic_available": true,
+        "full_discarded_chain": false,
+        "incomplete_field": "departure_window_minutes",
+        "initial_walk_after_window": true,
+        "used_stored_departure": true
+      }
+    ],
+    "valid_profile_and_pattern_service_date_used": true,
+    "private_details": "data/pilots/stabilization-real-20261114/results.json",
+    "input_bytes_unchanged": true,
+    "no_time_fabricated": true,
+    "recommended_personal_itineraries": 0,
+    "public_data": "Aggregate causes only; no profile IDs, route IDs, stop IDs, times or raw payloads.",
+    "user_facing_diagnostics_rendered_and_asserted_offline": true
+  },
+  "environment": {
+    "python": "3.13.14",
+    "tcl_scripts_copied_locally": true,
+    "installed_files_compared": 1027,
+    "all_copied_files_identical": true,
+    "copy_directory": ".cache/tk-runtime",
+    "new_dependencies": false,
+    "limitation": "Successive Tk roots in one WindowsApps process are not guaranteed; the normal application restart was validated in a fresh process."
+  },
+  "integrity": {
+    "profile_catalog_preferences_unchanged_in_real_query": true,
+    "synthetic_bytes_and_revision_assertions_passed": true,
+    "drafts_and_existing_migration_regressions_passed": true,
+    "gps_tracker_viewer_od_unchanged": true,
+    "new_capture_requests": 0,
+    "external_network_requests": 0,
+    "croma_requests": 0,
+    "new_production_databases_or_schema_migrations": false
+  },
+  "code_hash_mode": "SHA-256 of UTF-8 source normalized to LF",
+  "code_sha256": {
+    "src/transmitracker/gui/__main__.py": "a684986d0dd5d96a4a2f1a32ffb30d583d102a1ed124dffdbefc56d1c5bab585",
+    "src/transmitracker/gui/app.py": "4a1918c12f2ec91ee3c4d53f5a1242319d1c7f05c7ff13b03e34116af694091f",
+    "src/transmitracker/gui/controller.py": "e17a95d265d02f5016ddd0e7cfc2076f956d5cdc3d365ebd6f33c742fb0d5deb",
+    "src/transmitracker/gui/editor.py": "ba3d3d3ef86f633525664074658275500e7ee1c1ac0afc481c8041a8553f8025",
+    "src/transmitracker/gui/messages.py": "0922d59695f80218a25eacd366c548c455058dc6cf0ae579a897b02951da52af",
+    "src/transmitracker/gui/planning.py": "56709f0cc3779b185d468d71a1cc46fd379f1564b11a302113aedb06ce6de9d3",
+    "src/transmitracker/profiles/planning.py": "82221cd4ea1fb8743791f41018bfa284ce578fe32601e9884d38c9ff46dde3ed",
+    "src/transmitracker/profiles/store.py": "823820edfe98e9a5705ddfbf77d613f3a522076da82cccf31f11be3a5eb0a51b",
+    "tests/test_gui_controller.py": "9cd892e334c143843c513a4394e7e292affdf8ae1f5e6f5e6b2c2b37bb99d3b5",
+    "tests/test_gui_widgets.py": "486091841585f718009cfaafc5151f28426bce15aebfd8c96fc849f17f1ce919",
+    "scripts/smoke_stabilization.py": "4643858694d6dacbf8d2cea147d430447255e5c596dee4100012d998103ed1c1",
+    "tests/test_stabilization.py": "b76afbb9d2d6d721adb5fed7e243da98870e5012069e60d67b7df57a3eeaf601"
+  },
+  "limits": [
+    "GTFS schedules do not certify punctuality or pedestrian paths.",
+    "No personal successful recommendation demonstrated: work chain not fully justified, return horizon exhausted by initial walk.",
+    "Owner may revise saved configuration explicitly; the application never adjusts it silently.",
+    "GPS expansion, predictor, provider integrations, scheduler and Telegram remain out of scope."
+  ],
+  "documentation_checks": {
+    "local_links_and_anchors_checked": 145,
+    "errors": 0,
+    "external_links_requested": false,
+    "historical_JSON_modified": false,
+    "out_of_scope_GPS_modules_modified": false
+  }
+}

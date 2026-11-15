@@ -1,5 +1,7 @@
 """Actual Tk windows, separate from controller/services; no real HTTP allowed."""
 
+import subprocess
+import sys
 import time
 
 import customtkinter as ctk
@@ -116,7 +118,31 @@ def test_widget_pipeline_save_close_reopen(window):
     pump(app, lambda: editor.revision == 1)
     assert "guardado" in editor.status.cget("text")
     app.close()
-    reopened = TransMiTrackerApp(app.controller.config.root)
+    # A normal application restart gets a fresh Tcl interpreter in a NEW process.
+    # Recreating Tk in the same WindowsApps process intermittently fails loading
+    # existing Tcl scripts. Keep every persisted-state assertion, without retries.
+    script = """import sys, socket
+from pathlib import Path
+sys.path.insert(0, 'tests')
+sys.path.insert(0, 'src')
+def blocked(*args, **kwargs): raise AssertionError('Network forbidden')
+socket.socket.connect = blocked
+socket.create_connection = blocked
+from test_gui_widgets import check_reopened_profile
+check_reopened_profile(Path(sys.argv[1]))
+"""
+    completed = subprocess.run(
+        [sys.executable, "-c", script, str(app.controller.config.root)],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        timeout=120,
+    )
+    assert completed.returncode == 0, completed.stdout + completed.stderr
+
+
+def check_reopened_profile(root):
+    reopened = TransMiTrackerApp(root)
     failures = []
     reopened.report_callback_exception = lambda *args: failures.append(args)
     try:

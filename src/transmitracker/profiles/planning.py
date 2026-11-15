@@ -8,7 +8,7 @@ from datetime import date, datetime, time, timedelta
 from transmitracker.catalog import CatalogError
 from transmitracker.catalog.common import BOGOTA
 from transmitracker.catalog.queries import Catalog
-from transmitracker.profiles.contracts import Issue, Result, failure
+from transmitracker.profiles.contracts import Issue, Result, failure, primitive
 from transmitracker.profiles.models import Profile, ProfileKind
 from transmitracker.profiles.services import CatalogService
 
@@ -62,9 +62,150 @@ class StaticPlan:
     disclaimer: str = DISCLAIMER
 
 
+@dataclass(frozen=True)
+class PlanningDiagnostic:
+    planning_date: str
+    deadline: str | None
+    search_start: str | None
+    boarding_horizon_end: str | None
+    first_ready_at: str | None
+    leg_count: int
+    window_minutes: int
+    initial_walk_minutes: int
+    final_walk_minutes: int
+    safety_margin_minutes: int
+    transfer_minutes: tuple[tuple[int, int], ...]
+    discarded: StaticPlan | None = None
+    lateness_seconds: float | None = None
+    status: str = "no_complete_discarded_itinerary_demonstrated"
+    incomplete_field: str | None = None
+    explicit_options_per_leg: tuple[int, ...] = ()
+    catalog_imported_at: str | None = None
+
+
+@dataclass(frozen=True)
+class PlanningResult(Result[StaticPlan]):
+    """Additive consultation envelope; plan() and Result's existing fields stay intact."""
+
+    diagnostic: PlanningDiagnostic | None = None
+
+    def to_dict(self):
+        result = super().to_dict()
+        result["diagnostic"] = primitive(self.diagnostic)
+        return result
+
+
 class StaticPlanner:
     def __init__(self, catalog: Catalog):
         self.catalog = catalog
+
+    def consult(self, profile, planning_day, departure_clock=None):
+        """Keep the recommendation decision; attach bounded evidence separately."""
+        result = self.plan(profile, planning_day, departure_clock)
+        diagnostic = None
+        if not result.ok and CatalogService(self.catalog).validate_structure(profile).ok:
+            diagnostic = self._diagnose(profile, planning_day, departure_clock, result)
+        return PlanningResult(
+            data=result.data, errors=result.errors, warnings=result.warnings, diagnostic=diagnostic
+        )
+
+    def _diagnose(self, profile, day, clock, result):
+        if type(day) is not date:
+            return None
+        midnight = datetime.combine(day, time(), BOGOTA)
+        deadline = start = end = ready = None
+        if profile.kind == ProfileKind.TO_WORK:
+            deadline = datetime.combine(
+                day + timedelta(days=profile.arrival_day_offset), profile.arrival_deadline, BOGOTA
+            )
+            start = max(midnight, deadline - timedelta(minutes=profile.departure_window_minutes))
+            end = deadline
+        elif isinstance(clock or profile.usual_departure, time):
+            start = datetime.combine(day, clock or profile.usual_departure, BOGOTA)
+            end = start + timedelta(minutes=profile.departure_window_minutes)
+        if start:
+            ready = start + timedelta(minutes=profile.initial_walk_minutes)
+        discarded = None
+        lateness = None
+        incomplete_field = result.errors[0].field
+        counts = []
+        # At most one additional query per leg, within the ORIGINAL horizon.
+        # Only arrival-limit failures may supply a late full itinerary, never
+        # an isolated final-leg arrival. The same connection search is reused.
+        if (
+            result.errors[0].code == "ARRIVAL_DEADLINE_EXCEEDED"
+            and ready
+            and end
+            and ready <= end
+            and start.date() == day
+        ):
+            minutes = max(1, math.ceil((end - ready).total_seconds() / 60))
+            options = []
+            for leg in profile.legs:
+                rows = self.catalog.scheduled_connections(leg, ready, window_minutes=minutes)
+                exact = [
+                    r
+                    for r in rows
+                    if r["boarding_at"]
+                    and r["arrival_at"]
+                    and datetime.fromisoformat(r["boarding_at"]) <= end
+                ]
+                counts.append(len(exact))
+                if not exact:
+                    incomplete_field = f"legs.{len(options)}"
+                    break
+                options.append(exact)
+            if len(options) == len(profile.legs):
+                final = timedelta(
+                    minutes=profile.final_walk_minutes + profile.safety_margin_minutes
+                )
+                chains, _, incomplete_field = self._chains(options, profile, final, None, end)
+                chains = [
+                    c
+                    for c in chains
+                    if (
+                        datetime.fromisoformat(c[0]["boarding_at"])
+                        - timedelta(minutes=profile.initial_walk_minutes)
+                    ).date()
+                    == day
+                ]
+                if chains:
+                    chosen = min(
+                        chains,
+                        key=lambda c: (c[-1]["arrival_at"], c[0]["boarding_at"], c[0]["trip_id"]),
+                    )
+                    departure = datetime.fromisoformat(chosen[0]["boarding_at"]) - timedelta(
+                        minutes=profile.initial_walk_minutes
+                    )
+                    discarded = self._itinerary(
+                        profile, day, chosen, departure, deadline, start, end
+                    )
+                    lateness = (
+                        datetime.fromisoformat(discarded.arrival_with_margin_at) - deadline
+                    ).total_seconds()
+                    if lateness <= 0:
+                        discarded = lateness = None
+        return PlanningDiagnostic(
+            day.isoformat(),
+            deadline.isoformat() if deadline else None,
+            start.isoformat() if start else None,
+            end.isoformat() if end else None,
+            ready.isoformat() if ready else None,
+            len(profile.legs),
+            profile.departure_window_minutes,
+            profile.initial_walk_minutes,
+            profile.final_walk_minutes,
+            profile.safety_margin_minutes,
+            tuple((t.walking_minutes, t.buffer_minutes) for t in profile.transfers),
+            discarded,
+            lateness,
+            "discarded_not_recommendation"
+            if discarded
+            else "no_complete_discarded_itinerary_demonstrated",
+            incomplete_field=incomplete_field,
+            explicit_options_per_leg=tuple(counts),
+            catalog_imported_at=self.catalog.info()["imported_at"],
+        )
 
     def plan(
         self, profile: Profile, planning_day: date, departure_clock: time | None = None
@@ -149,51 +290,14 @@ class StaticPlanner:
                 options.append(exact)
         except (CatalogError, ValueError):
             return failure("LEG_SERVICE_INVALID", "legs", "Incompatible static selection")
-        # Reverse dynamic search. Suffix minima retain the earliest final arrival
-        # among all boardings after each transfer-ready time, including overtaking.
-        chains = [
-            (r,)
-            for r in options[-1]
-            if not deadline or datetime.fromisoformat(r["arrival_at"]) + final <= deadline
-        ]
+        chains, code, field = self._chains(options, profile, final, deadline, end)
         if not chains:
             unresolved = self._missing_boarding(profile, query_start, end)
             if unresolved is not None:
                 return unresolved
-            return failure(
-                "ARRIVAL_DEADLINE_EXCEEDED",
-                "arrival_deadline",
-                "All explicit arrivals miss the configured deadline",
-            )
-        for index in range(len(options) - 2, -1, -1):
-            chains.sort(key=lambda c: (c[0]["boarding_at"], c[-1]["arrival_at"]))
-            boardings = [datetime.fromisoformat(c[0]["boarding_at"]) for c in chains]
-            best = [None] * len(chains)
-            for i in range(len(chains) - 1, -1, -1):
-                best[i] = min(
-                    (chains[i], best[i + 1]) if i + 1 < len(chains) else (chains[i],),
-                    key=lambda c: (c[-1]["arrival_at"], c[0]["boarding_at"]),
-                )
-            transfer = profile.transfers[index]
-            delay = timedelta(minutes=transfer.walking_minutes + transfer.buffer_minutes)
-            combined, within_horizon = [], False
-            for row in options[index]:
-                ready = datetime.fromisoformat(row["arrival_at"]) + delay
-                within_horizon |= ready <= end
-                position = bisect_left(boardings, ready)
-                if position < len(best):
-                    combined.append((row, *best[position]))
-            if not combined:
-                unresolved = self._missing_boarding(profile, query_start, end)
-                if unresolved is not None:
-                    return unresolved
-                code = "TRANSFER_INCOMPATIBLE" if within_horizon else "HORIZON_INSUFFICIENT"
-                if uncertain:
-                    code = "SCHEDULE_TIME_UNRESOLVED"
-                return failure(
-                    code, f"transfers.{index}", "No compatible timed transfer within the search"
-                )
-            chains = combined
+            if uncertain and code != "ARRIVAL_DEADLINE_EXCEEDED":
+                code = "SCHEDULE_TIME_UNRESOLVED"
+            return failure(code, field, "No admissible complete itinerary in the search")
         if deadline:
             chains = [
                 c
@@ -217,7 +321,77 @@ class StaticPlanner:
         else:
             chosen = min(chains, key=lambda c: (c[-1]["arrival_at"], c[0]["boarding_at"]))
             departure = requested_departure
-        ready, steps = departure + initial, []
+        warnings = list(checked.warnings)
+        if uncertain:
+            warnings.append(
+                Issue(
+                    "UNRESOLVED_ALTERNATIVES_EXCLUDED",
+                    "schedule",
+                    "Only explicit alternatives participate in the optimum",
+                )
+            )
+        return Result(
+            data=self._itinerary(profile, planning_day, chosen, departure, deadline, start, end),
+            warnings=tuple(warnings),
+        )
+
+    def _missing_boarding(self, profile, when, until, indices=None):
+        for index in indices if indices is not None else range(len(profile.legs)):
+            if self.catalog.has_unresolved_boarding(profile.legs[index], when, until):
+                field = f"legs.{index}"
+                return Result(
+                    errors=(
+                        Issue(
+                            "SCHEDULE_TIME_UNRESOLVED",
+                            field,
+                            "Active service has incomplete boarding times",
+                        ),
+                    ),
+                    warnings=(
+                        Issue(
+                            "SCHEDULE_WINDOW_UNVERIFIED",
+                            field,
+                            "Missing times prevent confirming membership in the selected window",
+                        ),
+                    ),
+                )
+        return None
+
+    @staticmethod
+    def _chains(options, profile, final, deadline, end):
+        chains = [
+            (r,)
+            for r in options[-1]
+            if not deadline or datetime.fromisoformat(r["arrival_at"]) + final <= deadline
+        ]
+        if not chains:
+            return [], "ARRIVAL_DEADLINE_EXCEEDED", "arrival_deadline"
+        for index in range(len(options) - 2, -1, -1):
+            chains.sort(key=lambda c: (c[0]["boarding_at"], c[-1]["arrival_at"]))
+            boardings = [datetime.fromisoformat(c[0]["boarding_at"]) for c in chains]
+            best = [None] * len(chains)
+            for i in range(len(chains) - 1, -1, -1):
+                best[i] = min(
+                    (chains[i], best[i + 1]) if i + 1 < len(chains) else (chains[i],),
+                    key=lambda c: (c[-1]["arrival_at"], c[0]["boarding_at"]),
+                )
+            transfer = profile.transfers[index]
+            delay = timedelta(minutes=transfer.walking_minutes + transfer.buffer_minutes)
+            combined, within_horizon = [], False
+            for row in options[index]:
+                ready = datetime.fromisoformat(row["arrival_at"]) + delay
+                within_horizon |= ready <= end
+                position = bisect_left(boardings, ready)
+                if position < len(best):
+                    combined.append((row, *best[position]))
+            if not combined:
+                code = "TRANSFER_INCOMPATIBLE" if within_horizon else "HORIZON_INSUFFICIENT"
+                return [], code, f"transfers.{index}"
+            chains = combined
+        return chains, None, None
+
+    def _itinerary(self, profile, planning_day, chosen, departure, deadline, start, end):
+        ready, steps = departure + timedelta(minutes=profile.initial_walk_minutes), []
         for index, (row, leg) in enumerate(zip(chosen, profile.legs, strict=True)):
             walk = buffer = 0
             if index:
@@ -251,56 +425,25 @@ class StaticPlanner:
             )
             ready = datetime.fromisoformat(row["arrival_at"])
         info = self.catalog.info()
-        warnings = list(checked.warnings)
-        if uncertain:
-            warnings.append(
-                Issue(
-                    "UNRESOLVED_ALTERNATIVES_EXCLUDED",
-                    "schedule",
-                    "Only explicit alternatives participate in the optimum",
-                )
-            )
-        return Result(
-            data=StaticPlan(
-                profile.profile_id,
-                profile.kind.value,
-                planning_day.isoformat(),
-                departure.isoformat(),
-                (ready + timedelta(minutes=profile.final_walk_minutes)).isoformat(),
-                (ready + final).isoformat(),
-                deadline.isoformat() if deadline else None,
-                profile.initial_walk_minutes,
-                profile.final_walk_minutes,
-                profile.safety_margin_minutes,
-                tuple(steps),
-                start.isoformat(),
-                end.isoformat(),
-                profile.departure_window_minutes,
-                info["sha256"],
-                info["imported_at"],
-                spatial_connections_verified=not profile.transfers,
-            ),
-            warnings=tuple(warnings),
+        return StaticPlan(
+            profile.profile_id,
+            profile.kind.value,
+            planning_day.isoformat(),
+            departure.isoformat(),
+            (ready + timedelta(minutes=profile.final_walk_minutes)).isoformat(),
+            (
+                ready
+                + timedelta(minutes=profile.final_walk_minutes + profile.safety_margin_minutes)
+            ).isoformat(),
+            deadline.isoformat() if deadline else None,
+            profile.initial_walk_minutes,
+            profile.final_walk_minutes,
+            profile.safety_margin_minutes,
+            tuple(steps),
+            start.isoformat(),
+            end.isoformat(),
+            profile.departure_window_minutes,
+            info["sha256"],
+            info["imported_at"],
+            spatial_connections_verified=not profile.transfers,
         )
-
-    def _missing_boarding(self, profile, when, until, indices=None):
-        for index in indices if indices is not None else range(len(profile.legs)):
-            if self.catalog.has_unresolved_boarding(profile.legs[index], when, until):
-                field = f"legs.{index}"
-                return Result(
-                    errors=(
-                        Issue(
-                            "SCHEDULE_TIME_UNRESOLVED",
-                            field,
-                            "Active service has incomplete boarding times",
-                        ),
-                    ),
-                    warnings=(
-                        Issue(
-                            "SCHEDULE_WINDOW_UNVERIFIED",
-                            field,
-                            "Missing times prevent confirming membership in the selected window",
-                        ),
-                    ),
-                )
-        return None

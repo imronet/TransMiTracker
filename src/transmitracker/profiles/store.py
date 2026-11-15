@@ -81,7 +81,8 @@ class ProfileStore:
         self.connection = sqlite3.connect(path)
         self.connection.row_factory = sqlite3.Row
         self.connection.executescript(SCHEMA)
-        self.connection.execute("PRAGMA user_version=2")
+        if self.connection.execute("PRAGMA user_version").fetchone()[0] != 2:
+            self.connection.execute("PRAGMA user_version=2")
         self.path = path
 
     def close(self):

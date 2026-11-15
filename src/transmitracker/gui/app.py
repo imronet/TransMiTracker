@@ -80,10 +80,11 @@ class TransMiTrackerApp(ctk.CTk):
             self.nav[title] = button
         ctk.CTkLabel(
             self.sidebar,
-            text=f"CATÁLOGO LOCAL\nSin seguimiento en vivo\nv{app_version()} · Fase 2.1",
+            text=f"TransMiTracker v{app_version()}\nPlanificación con GTFS estático\nSin seguimiento en tiempo real",
             justify="left",
             text_color=MUTED,
-        ).pack(side="bottom", anchor="w", padx=24, pady=25)
+            wraplength=180,
+        ).pack(side="bottom", anchor="w", padx=20, pady=25)
         self.content = ctk.CTkFrame(self, fg_color="transparent")
         self.content.grid(row=0, column=1, sticky="nsew", padx=24, pady=18)
         self.content.grid_columnconfigure(0, weight=1)
@@ -134,7 +135,12 @@ class TransMiTrackerApp(ctk.CTk):
         def visit(widget):
             for child in widget.winfo_children():
                 if isinstance(child, ctk.CTkLabel):
-                    child.configure(wraplength=width)
+                    parent_width = int(widget.winfo_width() / child._get_widget_scaling())
+                    child.configure(
+                        wraplength=min(width, max(140, parent_width - 36))
+                        if parent_width > 80
+                        else width
+                    )
                 visit(child)
 
         visit(self.page)
@@ -190,7 +196,7 @@ class TransMiTrackerApp(ctk.CTk):
         self.label(page, "Tus recorridos habituales", size=30)
         self.label(
             page,
-            f"TransMiTracker {app_version()} · Configura hoy; las recomendaciones llegarán en una fase posterior.",
+            f"TransMiTracker v{app_version()} · Planifica con horarios GTFS publicados. Sin seguimiento en tiempo real.",
             color=MUTED,
         )
         strip = self.card(page)
@@ -268,9 +274,9 @@ class TransMiTrackerApp(ctk.CTk):
                     else saved.profile.usual_departure
                 )
                 timing = (
-                    f"Llegar al trabajo antes de {clock.strftime('%H:%M')}"
+                    f"Llegar al trabajo antes de {clock.isoformat()}"
                     if kind == ProfileKind.TO_WORK and clock
-                    else f"Salida habitual del trabajo: {clock.strftime('%H:%M')}"
+                    else f"Salida habitual del trabajo: {clock.isoformat()}"
                     if clock
                     else "Salida opcional sin configurar · sin hora absoluta de llegada"
                 )

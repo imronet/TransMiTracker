@@ -11,7 +11,7 @@ from transmitracker.catalog.queries import Catalog
 from transmitracker.gui.config import LocalConfig
 from transmitracker.profiles.contracts import Issue, Result, failure
 from transmitracker.profiles.models import Leg, ProfileKind, profile_from_dict
-from transmitracker.profiles.planning import StaticPlanner
+from transmitracker.profiles.planning import PlanningResult, StaticPlanner
 from transmitracker.profiles.reader import ReadOnlyProfileStore
 from transmitracker.profiles.services import CatalogService
 from transmitracker.profiles.store import ProfileStore
@@ -81,7 +81,7 @@ class DesktopController:
 
     def _catalog_path(self, sha=None):
         if sha:
-            with ProfileStore(self.store_path) as store:
+            with ReadOnlyProfileStore(self.store_path) as store:
                 result = store.catalog_path(sha)
             if not result.ok:
                 raise ValueError("Catálogo guardado no disponible")
@@ -214,9 +214,12 @@ class DesktopController:
                 if not registered.ok:
                     return registered
             with Catalog(self.config.local(registered.data)) as catalog:
-                result = StaticPlanner(catalog).plan(stored.profile, day, clock)
-            return Result(
-                data=result.data, errors=result.errors, warnings=loaded.warnings + result.warnings
+                result = StaticPlanner(catalog).consult(stored.profile, day, clock)
+            return PlanningResult(
+                data=result.data,
+                errors=result.errors,
+                warnings=loaded.warnings + result.warnings,
+                diagnostic=result.diagnostic,
             )
         except (ValueError, OSError, sqlite3.Error):
             return failure(

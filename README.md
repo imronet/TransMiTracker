@@ -15,7 +15,7 @@ It also configures journeys and provides an experimental offline GPS engine.
 
 ## Current status
 
-**Version 0.7.0 — Static GTFS itinerary planning for saved profiles.** The application
+**Version 0.7.1 — Stabilized static planning and explainable diagnostics.** The application
 and documentation are under active development. The interface and most technical
 documents are in Spanish.
 
@@ -23,6 +23,9 @@ Start with [static planning in the desktop app](docs/getting-started/USAGE.md#pl
 Choose a configured profile, then **Planificar con GTFS estático** and a departure
 date. Home → Work uses the saved arrival deadline; Work → Home requires an explicit
 or saved departure time. Queries leave profiles and preferences unchanged.
+Results separate the recommendation, walking warnings and optional technical details.
+When evidence supports a complete late itinerary, it is clearly marked as discarded,
+never recommended. See the [consolidated QA handoff](docs/archive/phases/V071_STABILIZATION_REPORT.md).
 
 The [offline route tracker guide](docs/getting-started/OFFLINE_ROUTE_TRACKER.md)
 for the CLI and standalone graphical viewer commands. They use saved snapshots and a local catalog;

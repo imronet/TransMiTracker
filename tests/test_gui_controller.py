@@ -14,7 +14,7 @@ from test_profiles import profile_catalogs as previous_catalogs
 
 from transmitracker.gui.config import SECRET_KEYS, LocalConfig
 from transmitracker.gui.controller import DesktopController, decode_form, parse_departure
-from transmitracker.gui.messages import result_text
+from transmitracker.gui.messages import result_text, technical_text
 from transmitracker.gui.worker import UiWorker
 from transmitracker.profiles.contracts import Issue, Result, primitive
 from transmitracker.profiles.models import ProfileKind
@@ -160,7 +160,8 @@ def test_settings_paths_and_secret_whitelist(desktop):
 def test_diagnostics_redact_raw_messages():
     result = Result(errors=(Issue("UNKNOWN_CODE", "catalog", "DO_NOT_RENDER_SECRET"),))
     assert "DO_NOT_RENDER_SECRET" not in result_text(result)
-    assert "UNKNOWN_CODE" in result_text(result)
+    assert "UNKNOWN_CODE" not in result_text(result)
+    assert "UNKNOWN_CODE" in technical_text(result)
 
 
 def test_profile_commit_survives_example_preference_write_failure(desktop, profile, monkeypatch):

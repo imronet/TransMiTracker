@@ -1,8 +1,8 @@
 # TransMiTracker — Implementation Plan
 
-**Estado vigente — v0.7.0:** planificación orientativa con GTFS estático desde perfiles guardados;
+**Estado vigente — v0.7.1:** estabilización de la planificación orientativa con GTFS estático;
 véanse [uso](../getting-started/USAGE.md#planificación-estática-070) y
-[adenda 21](#21-planificación-estática-desde-perfiles--camino-a).
+[adenda 22](#22-estabilización-integral-071--sin-nueva-fase).
 Las secciones y adendas anteriores conservan su contexto histórico. Croma es una
 alternativa futura y opcional; no se requiere para la capacidad actual. No hay
 autorización de nuevas capturas ni seguimiento continuo.
@@ -1081,3 +1081,18 @@ esquemas, dependencias ni garantías operativas. Se preservan requisitos histór
 [agregados y reproducción](../archive/evidence/STATIC_PLANNING_VALIDATION_20261114.json).
 Sin red, nuevas capturas, predictor, Telegram ni scheduler. Otra fase/capacidad y
 cualquier captura requieren autorización; no se realiza commit/push automático.
+
+## 22. Estabilización integral 0.7.1 — sin nueva fase
+
+El propietario autoriza cerrar Manual QA del prototipo existente: versión coherente,
+temas y navegación, resultados por tarjetas, traducción central de códigos/campos,
+advertencias peatonales con tiempos del usuario, ayuda de ventana y precisión del
+regreso. Se añade diagnóstico acotado y determinista, separado de la recomendación;
+una alternativa descartada solo es completa si se justifican todos sus tramos y
+conexiones dentro de la ventana original. No se relajan filtros para producir horas.
+
+Aceptación verificable y resultados en el [informe único de estabilización](../archive/phases/V071_STABILIZATION_REPORT.md).
+Se conservan requisitos y adendas anteriores. PATCH 0.7.1, sin nuevas dependencias,
+esquemas o migraciones, GPS/OD, proveedores, capturas, Telegram o scheduler. El Camino B
+permanece pospuesto. La aceptación final y cualquier siguiente fase corresponden
+al propietario; no se hace commit/push sin autorización.
