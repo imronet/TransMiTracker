@@ -42,6 +42,9 @@ def planning_tables():
     add("L2", "010", [("0001", "08:20:00"), ("0003", "08:30:00"), ("0004", "08:45:00")])
     add("L2_EARLY", "010", [("0001", "08:16:00"), ("0003", "08:21:00"), ("0004", "08:35:00")])
     add("L3", "011", [("0003", "08:35:00"), ("0004", "08:45:00")])
+    tables["routes.txt"][1].append(["012", "SYN12", "Synthetic seconds", 3])
+    add("EVENING_EARLY", "012", [("0006", "17:30:20"), ("0004", "17:40:00")])
+    add("EVENING_LATE", "012", [("0006", "17:31:00"), ("0004", "17:41:00")])
     return tables
 
 
@@ -330,3 +333,149 @@ def test_initial_walk_cannot_be_used_to_bypass_horizon(catalog):
     )
     result = StaticPlanner(catalog).plan(profile, date(2026, 11, 9), time(8, 5))
     assert result.errors[0].code == "HORIZON_INSUFFICIENT"
+
+
+def incomplete_catalog(tmp_path, mode="missing", prior="07:55:00", after="08:30:00"):
+    """An inactive reference preserves structure; only the tested alternative is active."""
+    tables = make_catalog_tables()
+    tables["trips.txt"][1][:] = [["MAIN", "001", "SLEEP", 0, "SH1"]]
+    tables["stop_times.txt"][1][:] = [
+        ["MAIN", 10, "0006", prior, prior, 0, 0],
+        ["MAIN", 20, "0001", "08:10:00", "08:10:00", 0, 0],
+        ["MAIN", 30, "0004", after, after, 0, 0],
+    ]
+    tables["frequencies.txt"][1].clear()
+    tables["calendar.txt"][1].append(["SLEEP", 0, 0, 0, 0, 0, 0, 0, "20260101", "20261231"])
+    if mode == "inactive_calendar":
+        tables["calendar.txt"][1][0][1] = 0  # Monday.
+    service = "EX" if mode == "added_exception" else "WK"
+    for identity, clock in (("INCOMPLETE", ""), ("EXPLICIT", "08:10:00")):
+        if (mode == "explicit" and not clock) or (mode != "mixed" and mode != "explicit" and clock):
+            continue
+        route = "002" if mode == "absent" else "001"
+        tables["trips.txt"][1].append([identity, route, service, 0, "SH1"])
+        tables["stop_times.txt"][1].extend(
+            [
+                [identity, 10, "0006", prior, prior, 0, 0],
+                [identity, 20, "0001", clock, clock, 1 if mode == "pickup_denied" else 0, 0],
+                [identity, 30, "0004", after, after, 0, 1 if mode == "dropoff_denied" else 0],
+            ]
+        )
+    if mode.startswith("frequency"):
+        start, end = {
+            "frequency": ("08:00:00", "08:10:00"),
+            "frequency_future": ("09:00:00", "09:10:00"),
+            "frequency_overnight": ("25:00:00", "25:20:00"),
+        }[mode]
+        tables["frequencies.txt"][1].append(["INCOMPLETE", start, end, 600, 1])
+    path = tmp_path / "incomplete.sqlite3"
+    import_catalog(write_zip(tmp_path / "incomplete.zip", tables), path)
+    return Catalog(path)
+
+
+def incomplete_profile(catalog):
+    return replace(
+        work_profile(catalog),
+        legs=(leg_for(catalog, "MAIN", "0001", "0004", 20, 30),),
+        initial_walk_minutes=0,
+        final_walk_minutes=0,
+        safety_margin_minutes=0,
+        active_weekdays=tuple(range(7)),
+        departure_window_minutes=60,
+    )
+
+
+@pytest.mark.parametrize(
+    "mode,day,code",
+    [
+        ("missing", date(2026, 11, 9), "SCHEDULE_TIME_UNRESOLVED"),
+        ("absent", date(2026, 11, 9), "NO_SCHEDULED_SERVICE"),
+        ("inactive_calendar", date(2026, 11, 9), "NO_SCHEDULED_SERVICE"),
+        ("removed_exception", date(2026, 11, 12), "NO_SCHEDULED_SERVICE"),
+        ("added_exception", date(2026, 11, 12), "SCHEDULE_TIME_UNRESOLVED"),
+        ("pickup_denied", date(2026, 11, 9), "NO_SCHEDULED_SERVICE"),
+        ("dropoff_denied", date(2026, 11, 9), "NO_SCHEDULED_SERVICE"),
+        ("explicit", date(2026, 11, 9), None),
+        ("mixed", date(2026, 11, 9), None),
+    ],
+)
+def test_missing_origin_times_are_distinct_from_absent_active_service(tmp_path, mode, day, code):
+    with incomplete_catalog(tmp_path, mode) as catalog:
+        profile = incomplete_profile(catalog)
+        before = catalog.options(
+            "0001", datetime.combine(day, time(7, 30), BOGOTA), window_minutes=60
+        )
+        result = StaticPlanner(catalog).plan(profile, day)
+        assert (
+            catalog.options("0001", datetime.combine(day, time(7, 30), BOGOTA), window_minutes=60)
+            == before
+        )
+        if code:
+            assert not result.ok and result.data is None
+            assert result.errors[0].code == code
+            assert bool(result.warnings) == (code == "SCHEDULE_TIME_UNRESOLVED")
+            if result.warnings:
+                assert result.warnings[0].code == "SCHEDULE_WINDOW_UNVERIFIED"
+        else:
+            assert result.ok
+            assert result.data.steps[0].trip_id == "EXPLICIT"
+            assert result.data.steps[0].boarding_at == f"{day.isoformat()}T08:10:00-05:00"
+
+
+@pytest.mark.parametrize("prior,after", [("07:00:00", "07:15:00"), ("09:00:00", "09:15:00")])
+def test_known_neighbor_times_exclude_missing_departure_outside_window(tmp_path, prior, after):
+    with incomplete_catalog(tmp_path, prior=prior, after=after) as catalog:
+        result = StaticPlanner(catalog).plan(incomplete_profile(catalog), date(2026, 11, 9))
+        assert result.errors[0].code == "NO_SCHEDULED_SERVICE"
+        assert result.data is None
+
+
+def test_no_neighbor_times_cannot_establish_membership_in_a_window(tmp_path):
+    with incomplete_catalog(tmp_path, prior="", after="") as catalog:
+        result = StaticPlanner(catalog).plan(incomplete_profile(catalog), date(2026, 11, 9))
+        assert result.errors[0].code == "SCHEDULE_TIME_UNRESOLVED"
+        assert result.warnings[0].code == "SCHEDULE_WINDOW_UNVERIFIED"
+        assert result.data is None
+
+
+def test_missing_time_diagnostic_uses_previous_gtfs_date_and_exact_horizon(tmp_path):
+    with incomplete_catalog(tmp_path, prior="25:00:45", after="25:20:00") as catalog:
+        profile = replace(
+            incomplete_profile(catalog),
+            kind=ProfileKind.TO_HOME,
+            initial_walk_minutes=0,
+            departure_window_minutes=1,
+        )
+        # No Sunday service, and Monday's >24h trip is still in the future.
+        result = StaticPlanner(catalog).plan(profile, date(2026, 11, 9), time(1))
+        assert result.errors[0].code == "NO_SCHEDULED_SERVICE"
+        # Friday 25h service is active on Saturday's civil date, despite Saturday
+        # being inactive in calendar. A rounded minute must not include 01:00:45.
+        result = StaticPlanner(catalog).plan(profile, date(2026, 11, 14), time(0, 59, 30))
+        assert result.errors[0].code == "NO_SCHEDULED_SERVICE"
+        assert not result.warnings
+        result = StaticPlanner(catalog).plan(profile, date(2026, 11, 14), time(1))
+        assert result.errors[0].code == "SCHEDULE_TIME_UNRESOLVED"
+        assert result.data is None
+
+
+@pytest.mark.parametrize(
+    "mode,code",
+    [("frequency", "SCHEDULE_TIME_UNRESOLVED"), ("frequency_future", "NO_SCHEDULED_SERVICE")],
+)
+def test_missing_frequency_offset_does_not_reuse_template_clock(tmp_path, mode, code):
+    with incomplete_catalog(tmp_path, mode) as catalog:
+        profile = replace(incomplete_profile(catalog), departure_window_minutes=10)
+        result = StaticPlanner(catalog).plan(profile, date(2026, 11, 9))
+        assert result.errors[0].code == code and result.data is None
+
+
+def test_missing_frequency_anchor_still_checks_published_25h_service_date(tmp_path):
+    with incomplete_catalog(tmp_path, "frequency_overnight", prior="", after="") as catalog:
+        profile = replace(
+            incomplete_profile(catalog), kind=ProfileKind.TO_HOME, departure_window_minutes=10
+        )
+        result = StaticPlanner(catalog).plan(profile, date(2026, 11, 14), time(1))
+        assert result.errors[0].code == "SCHEDULE_TIME_UNRESOLVED"
+        assert result.warnings[0].code == "SCHEDULE_WINDOW_UNVERIFIED"
+        assert result.data is None

@@ -75,7 +75,11 @@ class PlanningPanel(ctk.CTkFrame):
         if stored.profile.kind == ProfileKind.TO_HOME:
             usual = stored.profile.usual_departure
             self.clock = entry(
-                fields, "Salida del trabajo · HH:MM", usual.strftime("%H:%M") if usual else "", 0, 1
+                fields,
+                "Salida del trabajo · HH:MM o HH:MM:SS",
+                usual.isoformat() if usual else "",
+                0,
+                1,
             )
             self.clock_var = tk.StringVar(value=self.clock.get())
             self.clock.configure(textvariable=self.clock_var)

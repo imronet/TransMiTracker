@@ -68,6 +68,11 @@ temprana compatible; no aplica el límite de llegada de ida. Si falta esa hora,
 la consulta la solicita sin inventarla. Edite/guarde el perfil aparte para cambiar
 sus tolerancias o ventana; consultar no guarda ni modifica esos datos.
 
+La hora de regreso admite **HH:MM** o **HH:MM:SS** estrictos. La salida habitual
+precargada conserva sus segundos; una edición HH:MM significa segundos cero.
+Un formato inválido produce error sin recurrir silenciosamente a la hora guardada.
+Vaciar el campo solicita una salida explícita y no cambia el perfil.
+
 El resultado muestra caminatas, abordajes y llegadas programados, fechas de servicio
 GTFS, transbordos con buffers, margen configurado y fecha de importación del catálogo.
 Separa llegada con caminata final de llegada incluyendo margen. La espera implícita
@@ -97,6 +102,15 @@ incompatible, límite incumplible u horizonte insuficiente. Cambiar fecha/hora o
 salir de la página descarta respuestas anteriores; las consultas SQLite van al
 trabajador existente, sin bloquear Tk.
 
+Si faltan horas de abordaje, el diagnóstico comprueba el mismo patrón, ocurrencias,
+permisos y servicios activos. Los horarios vecinos del mismo viaje solo permiten
+excluir ventanas, nunca rellenar una hora. `SCHEDULE_TIME_UNRESOLVED` con el aviso
+`SCHEDULE_WINDOW_UNVERIFIED` significa que existe estructura y calendario activos,
+pero **no está demostrado que haya un abordaje dentro de la ventana elegida**.
+La revisión usa un rango de fechas acotado por las horas GTFS/ventanas de frecuencia
+publicadas; no prueba disponibilidad fuera de ese ámbito ni resuelve offsets sin
+ancla. Una alternativa explícita válida conserva prioridad sobre este diagnóstico.
+
 ### Validación y cierre para QA — 2026-11-14
 
 Se probaron perfiles y catálogos sintéticos con uno, dos y tres tramos, servicios
@@ -122,6 +136,16 @@ catálogo permanecieron iguales. Evidencia detallada privada nueva bajo
 Entrega disponible para QA Check; sin commit/push ni autorización implícita de
 otra capacidad. El Camino B de ampliar capturas sigue pospuesto. La fecha de
 importación del catálogo no acredita vigencia operativa ni precisión del horario.
+
+Corrección posterior al QA de `b12c07d`: el panel ya no trunca segundos y se
+distinguen las salidas sin hora de la ausencia de servicio compatible. Regresiones
+solo sintéticas, incluidas ventanas Tk reales, en la
+[evidencia de corrección](../archive/evidence/STATIC_PLANNING_QA_FIX_VALIDATION_20261114.json).
+Resultado: **77 casos distintos aprobados** (26 nuevos, tres pruebas Tk reales),
+Ruff y formato correctos. La comprobación final de frecuencias repite dos casos
+del lote inicial y añade el caso de ancla ausente con ventana de 25 horas.
+Se conserva 0.7.0 pendiente de aceptación; no se amplía la fase ni se repite el
+ejercicio con perfiles personales. No hay commit/push de esta corrección.
 
 ## Catálogo, configuración y privacidad
 

@@ -3,12 +3,13 @@
 import shutil
 import threading
 from dataclasses import replace
+from datetime import time
 
 import customtkinter as ctk
 import pytest
 from test_gui_widgets import pump
+from test_static_planning import leg_for, work_profile
 from test_static_planning import planning_catalog_path as planning_catalog_path
-from test_static_planning import work_profile
 
 from transmitracker.catalog.queries import Catalog
 from transmitracker.gui.app import TransMiTrackerApp
@@ -89,6 +90,29 @@ def test_controller_missing_or_replaced_catalog_does_not_remap(saved_desktop):
         controller.plan_static(profile.profile_id, "2026-11-09").errors[0].code
         == "CATALOG_VERSION_MISMATCH"
     )
+
+
+@pytest.mark.parametrize(
+    "clock",
+    [
+        "7:30",
+        "173045",
+        "17:30:70",
+        "24:00",
+        "17:30:45.1",
+        "17:30Z",
+        "17:30:45-05:00",
+        " 17:30",
+        "17:30 ",
+    ],
+)
+def test_controller_rejects_clock_formats_without_fallback(saved_desktop, clock):
+    controller, _, returning = saved_desktop
+    before = contents(controller)
+    result = controller.plan_static(returning.profile_id, "2026-11-09", clock)
+    assert not result.ok and result.data is None
+    assert result.errors[0].code == "INVALID_CLOCK"
+    assert contents(controller) == before
 
 
 @pytest.fixture
@@ -188,3 +212,60 @@ def test_changed_date_and_closed_page_discard_worker_results(planning_window, mo
     pump(app, finished.is_set)
     app.worker.drain()
     assert not panel.winfo_exists()
+
+
+@pytest.mark.gui
+def test_saved_seconds_survive_real_panel_controller_service_flow(saved_desktop):
+    controller, _, returning = saved_desktop
+    with Catalog(controller.config.root / "catalog.sqlite3") as catalog:
+        profile = replace(
+            returning,
+            legs=(leg_for(catalog, "EVENING_LATE", b=20),),
+            usual_departure=time(17, 30, 45),
+            initial_walk_minutes=0,
+        )
+    assert controller.save_configuration(primitive(profile), 1).ok
+    app = TransMiTrackerApp(controller.config.root)
+    failures = []
+    app.report_callback_exception = lambda *args: failures.append(args)
+    try:
+        pump(app, lambda: app.snapshot is not None)
+        stored = next(
+            s for s in app.snapshot["profiles"].data if s.profile.profile_id == profile.profile_id
+        )
+        before = contents(controller)
+        app.open_static_planning(stored)
+        panel = app.planning_panel
+        assert panel.clock.get() == "17:30:45"
+        panel.day_var.set("2026-11-09")
+        panel.button.invoke()
+        pump(app, lambda: panel.last_result is not None)
+        plan = panel.last_result.data
+        assert panel.last_result.ok
+        assert plan.departure_at == "2026-11-09T17:30:45-05:00"
+        assert plan.steps[0].trip_id == "EVENING_LATE"
+        assert plan.steps[0].boarding_at == "2026-11-09T17:31:00-05:00"
+        for clock, departure, trip in (
+            ("17:30", "17:30:00", "EVENING_EARLY"),
+            ("17:30:30", "17:30:30", "EVENING_LATE"),
+        ):
+            panel.clock_var.set(clock)
+            panel.button.invoke()
+            pump(app, lambda: panel.last_result is not None)
+            assert panel.last_result.ok
+            assert panel.last_result.data.departure_at == f"2026-11-09T{departure}-05:00"
+            assert panel.last_result.data.steps[0].trip_id == trip
+        for clock, code in (
+            ("17:30:70", "INVALID_CLOCK"),
+            ("173045", "INVALID_CLOCK"),
+            ("", "DEPARTURE_TIME_REQUIRED"),
+        ):
+            panel.clock_var.set(clock)
+            panel.button.invoke()
+            pump(app, lambda: panel.last_result is not None)
+            assert panel.last_result.errors[0].code == code
+            assert panel.last_result.data is None
+        assert contents(controller) == before
+    finally:
+        app.close()
+    assert not failures

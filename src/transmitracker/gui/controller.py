@@ -1,5 +1,6 @@
 """Widget-independent orchestration over catalog/profile contracts; no SQL or HTTP."""
 
+import re
 import sqlite3
 from dataclasses import replace
 from datetime import date, datetime, time, timedelta
@@ -187,9 +188,20 @@ class DesktopController:
         """Query saved data only; no bootstrap, preferences, saves or schedule checks."""
         try:
             day = date.fromisoformat(planning_day)
-            clock = time.fromisoformat(departure_clock) if departure_clock else None
         except (ValueError, TypeError):
-            return failure("INVALID_PLANNING_DATE", "planning_date", "Review local date/time")
+            return failure("INVALID_PLANNING_DATE", "planning_date", "Review local date")
+        clock = None
+        if departure_clock == "":
+            return failure("DEPARTURE_TIME_REQUIRED", "departure_clock", "Provide a departure time")
+        if departure_clock is not None:
+            try:
+                if not isinstance(departure_clock, str) or not re.fullmatch(
+                    r"[0-9]{2}:[0-9]{2}(?::[0-9]{2})?", departure_clock
+                ):
+                    raise ValueError
+                clock = time.fromisoformat(departure_clock)
+            except ValueError:
+                return failure("INVALID_CLOCK", "departure_clock", "Use HH:MM or HH:MM:SS")
         try:
             with ReadOnlyProfileStore(self.store_path) as store:
                 loaded = store.load(profile_id)

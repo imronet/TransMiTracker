@@ -26,6 +26,7 @@ MESSAGES = {
     "PROFILE_INACTIVE_DAY": "El perfil no está activo en el día de salida de ejemplo.",
     "LEG_SERVICE_INVALID": "El recorrido no está disponible en esa fecha, hora, sentido o secuencia.",
     "SCHEDULE_TIME_UNRESOLVED": "El GTFS no ofrece horas exactas para demostrar esta conexión.",
+    "SCHEDULE_WINDOW_UNVERIFIED": "Existe servicio activo y estructuralmente compatible, pero faltan horas para confirmar un abordaje dentro de la ventana consultada.",
     "ARRIVAL_DEADLINE_EXCEEDED": "El ejemplo programado, caminatas y margen superan la hora límite.",
     "TRANSFER_PATH_UNVERIFIED": "Conexión peatonal no verificada: se conserva el tiempo que indicó.",
     "NOTICE_AFTER_DEPARTURE": "La hora de aviso es posterior a la salida de ejemplo; no se enviará nada.",

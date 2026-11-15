@@ -1,0 +1,147 @@
+{
+  "date_bogota": "2026-11-14",
+  "product_version": "0.7.0",
+  "qa_reference_commit": "b12c07de2ab32db7eef735055d899d1fe3e3cee4",
+  "scope": "Only saved return-clock precision and diagnosis of missing static GTFS boarding times. No new feature or operational criteria.",
+  "status": "Correction prepared for QA Check. v0.7.0 acceptance remains pending. No commit or push.",
+  "python": "3.13.14",
+  "checks": [
+    {
+      "command": "python -m pytest -q -m 'not gui' tests/test_static_planning.py tests/test_planning_gui.py tests/test_catalog.py --tb=short",
+      "exit_code": 0,
+      "passed": 73,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 93.211
+    },
+    {
+      "command": "python -m pytest -q -m gui tests/test_planning_gui.py --tb=short",
+      "exit_code": 0,
+      "passed": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 36.48
+    },
+    {
+      "command": "python -m pytest -q tests/test_static_planning.py -k missing_frequency --tb=short",
+      "exit_code": 0,
+      "passed": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 11.586
+    },
+    {
+      "command": "python -m ruff check src/transmitracker/catalog/queries.py src/transmitracker/gui/controller.py src/transmitracker/gui/planning.py src/transmitracker/gui/messages.py src/transmitracker/profiles/planning.py tests/test_planning_gui.py tests/test_static_planning.py",
+      "exit_code": 0,
+      "output": "All checks passed!"
+    },
+    {
+      "command": "python -m ruff format --check src/transmitracker/catalog/queries.py src/transmitracker/gui/controller.py src/transmitracker/gui/planning.py src/transmitracker/gui/messages.py src/transmitracker/profiles/planning.py tests/test_planning_gui.py tests/test_static_planning.py",
+      "exit_code": 0,
+      "output": "7 files already formatted"
+    }
+  ],
+  "distinct_passing_cases": 77,
+  "new_synthetic_cases": 26,
+  "full_suite_executed": false,
+  "validation_note": "73 non-GUI cases and 3 real Tk cases passed. The final diagnostic-only change adds published frequency-window lookback for missing anchors; its three affected frequency cases were rerun (two overlap the earlier batch). 77 distinct cases, 79 passing test executions. XML results were generated before the context interruption, not rerun to close documentation.",
+  "initial_failures": [
+    {
+      "result": "15 failed, 28 passed, 3 deselected",
+      "cause": "New inactive-reference service SLEEP was not registered in the synthetic calendar; importer correctly rejected orphan references. Added an all-inactive calendar row; subsequent diagnostics passed."
+    },
+    {
+      "result": "1 failed, 2 passed GUI",
+      "cause": "The new Tk regression initially used the actual Saturday default instead of the intended synthetic active Monday. Set the test planning date explicitly; all three Tk cases subsequently passed."
+    }
+  ],
+  "clock_fix": {
+    "cause": "strftime(%H:%M) truncated saved seconds before sending an explicit departure to the service.",
+    "change": "Prefill time.isoformat(); strictly validate HH:MM or HH:MM:SS at the controller. Invalid or cleared explicit input cannot silently fall back to the saved departure.",
+    "synthetic_real_tk_regression": {
+      "saved_departure": "17:30:45",
+      "initial_walk_minutes": 0,
+      "rejected_earlier_boarding": "17:30:20",
+      "selected_later_boarding": "17:31:00",
+      "result_departure": "17:30:45",
+      "flow": "actual Tk panel -> DesktopController.plan_static -> StaticPlanner.plan -> synthetic SQLite catalog"
+    },
+    "explicit_edit_HH_MM": "17:30 means 17:30:00 and may board 17:30:20 by explicit user choice",
+    "explicit_edit_seconds": "17:30:30 rejects 17:30:20 and selects 17:31:00",
+    "invalid_inputs": [
+      "7:30",
+      "173045",
+      "17:30:70",
+      "24:00",
+      "17:30:45.1",
+      "17:30Z",
+      "17:30:45-05:00",
+      " 17:30",
+      "17:30 "
+    ],
+    "invalid_code": "INVALID_CLOCK",
+    "cleared_or_missing_code": "DEPARTURE_TIME_REQUIRED",
+    "no_usual_departure_gui_flow_preserved": true,
+    "synthetic_profile_catalog_preferences_bytes_unchanged_by_queries": true
+  },
+  "missing_schedule_fix": {
+    "cause": "Shared scheduled queries correctly filter null origin departures, but the planner treated the absence of returned rows as absence of service.",
+    "change": "New diagnostic-only Catalog.has_unresolved_boarding; existing public query outputs are unchanged. Shared private service-date/calendar iteration is reused.",
+    "unresolved_code": "SCHEDULE_TIME_UNRESOLVED",
+    "temporal_limitation_warning": "SCHEDULE_WINDOW_UNVERIFIED",
+    "absence_code": "NO_SCHEDULED_SERVICE",
+    "filters": [
+      "active services from calendar and calendar_dates",
+      "exact route/pattern/direction",
+      "origin family and stop occurrence",
+      "exact downstream destination occurrence",
+      "unconditional pickup and drop-off",
+      "exact query start/end, including seconds",
+      "neighboring published clocks of the SAME trip as exclusion bounds only",
+      "frequency template anchors, published frequency windows and GTFS >24h service dates"
+    ],
+    "covered_scenarios": [
+      "active missing origin departure",
+      "structurally different active service",
+      "calendar-inactive service",
+      "removed calendar exception",
+      "added calendar exception",
+      "pickup denied",
+      "drop-off denied",
+      "valid explicit departure",
+      "explicit and incomplete alternatives coexist without replacing a valid plan",
+      "known time bounds strictly before/after the horizon",
+      "no neighboring times: temporal membership unverified",
+      "previous GTFS service day with >24h times",
+      "subminute horizon excludes an outside lower bound",
+      "frequency template clocks are not absolute instance times",
+      "missing frequency anchor with published 25h window"
+    ],
+    "no_missing_time_synthesized": true,
+    "limitations": "A structurally and calendrically active service with missing clocks is not a verified timed alternative. The diagnostic date range is bounded by published GTFS times/frequency windows; offsets without an anchor remain unresolved. No operational availability is established."
+  },
+  "preserved": [
+    "latest feasible work departure",
+    "multi-leg connections, walks, transfer buffers and user safety margin",
+    "Bogota timezone, calendar exceptions, midnight and >24h",
+    "stale GUI response discard and static disclaimer",
+    "read-only query behavior",
+    "GPS 3A, route tracker, OD analyzer, profile OD adapter, schemas and dependencies"
+  ],
+  "real_profiles_used_or_modified": false,
+  "real_feeds_used": false,
+  "network_requests": 0,
+  "gps_captures": 0,
+  "code_sha256": {
+    "src/transmitracker/catalog/queries.py": "58d16e2a4511695e3af6ddf0d6d0c0f0a67b11b55b55f8cdcb599c14d63d858d",
+    "src/transmitracker/gui/controller.py": "e731bf3bc7550ad0ce5cfa29bc9f795afe9e754326216ec8ad14d3540b793ff1",
+    "src/transmitracker/gui/planning.py": "4cacf8f5aeeca5019b1a1bc7b1456700a0e9f0cbb8cc36761f2f8625405126e2",
+    "src/transmitracker/gui/messages.py": "f23f60d19d54fb86b889e79453de652f4a50fe52e5f452e5915f52efc9ab27a7",
+    "src/transmitracker/profiles/planning.py": "1d9d7500086ffedc942f9c6b285c2c1dfeb3d425a668037884048372a4883b1a",
+    "tests/test_planning_gui.py": "886436b013bd5524ba4b645a4afc6ecbcd203740d1765fb42fea57731a0e2d9f",
+    "tests/test_static_planning.py": "a026d9c9ea47f2a2f8fef6036dfb56131900ed050fede5a088c3cd69ee129cdb"
+  }
+}

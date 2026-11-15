@@ -202,6 +202,34 @@ class Catalog:
                 result.discard(row[0])
         return result
 
+    def _service_windows(self, when, end, *, unresolved=False):
+        """Existing service-date range, including published GTFS times >24h."""
+        max_seconds = self.connection.execute("""SELECT COALESCE(MAX(value),0) FROM (
+            SELECT MAX(max_seconds) AS value FROM trips
+            UNION ALL SELECT MAX(f.end + t.max_seconds - t.first_departure)
+            FROM frequencies f JOIN trips t ON t.trip_pk=f.trip_pk
+        )""").fetchone()[0]
+        if unresolved:
+            # A missing frequency anchor must not hide a published >24h window.
+            max_seconds = max(
+                max_seconds,
+                self.connection.execute("SELECT COALESCE(MAX(end),0) FROM frequencies").fetchone()[
+                    0
+                ],
+            )
+        # Supports all >24h times present in this version, rather than assuming one previous day.
+        first_day = when.date() - timedelta(days=max_seconds // 86400)
+        service_day = first_day
+        while service_day <= end.date():
+            services = self.active_services(service_day)
+            if not services:
+                service_day += timedelta(days=1)
+                continue
+            midnight = datetime.combine(service_day, time(), BOGOTA)
+            low, high = (when - midnight).total_seconds(), (end - midnight).total_seconds()
+            yield service_day, services, midnight, low, high
+            service_day += timedelta(days=1)
+
     def _candidates(
         self,
         origin: str,
@@ -218,21 +246,7 @@ class Catalog:
             raise CatalogError("Departure window must be between 1 and 1440 minutes")
         stops = self.stop_family(origin)
         end = when + timedelta(minutes=window_minutes)
-        max_seconds = self.connection.execute("""SELECT COALESCE(MAX(value),0) FROM (
-            SELECT MAX(max_seconds) AS value FROM trips
-            UNION ALL SELECT MAX(f.end + t.max_seconds - t.first_departure)
-            FROM frequencies f JOIN trips t ON t.trip_pk=f.trip_pk
-        )""").fetchone()[0]
-        # Supports all >24h times present in this version, rather than assuming one previous day.
-        first_day = when.date() - timedelta(days=max_seconds // 86400)
-        service_day = first_day
-        while service_day <= end.date():
-            services = self.active_services(service_day)
-            if not services:
-                service_day += timedelta(days=1)
-                continue
-            midnight = datetime.combine(service_day, time(), BOGOTA)
-            low, high = (when - midnight).total_seconds(), (end - midnight).total_seconds()
+        for service_day, services, midnight, low, high in self._service_windows(when, end):
             parameters = [*stops, *sorted(services), low, high]
             clause = ""
             if route_id is not None:
@@ -302,7 +316,83 @@ class Catalog:
                         "basis": basis,
                         "headway_seconds": headway,
                     }
-            service_day += timedelta(days=1)
+
+    def has_unresolved_boarding(self, leg, when, until):
+        """Diagnostic only: active structure whose missing times cannot exclude this window.
+
+        No departure is synthesized. Published neighboring times can exclude a
+        window, but an overlap of bounds never proves a boarding within it.
+        Service dates use the published-time lookback, also considering frequency
+        windows when their template anchor is missing. Unbounded offsets remain
+        unresolved; this is not proof of temporal membership or a boarding time.
+        """
+        self.validate_leg_structure(leg)
+        when = aware(when)
+        end = aware(until)
+        if not when <= end <= when + timedelta(minutes=1440):
+            raise CatalogError("Diagnostic window must be between 0 and 1440 minutes")
+        stops = self.stop_family(leg.origin_stop_id)
+        for _, services, _, low, high in self._service_windows(when, end, unresolved=True):
+            rows = self.connection.execute(
+                f"""
+                SELECT t.trip_pk,t.first_departure FROM trips t
+                JOIN stop_times o ON o.trip_pk=t.trip_pk
+                JOIN stop_times d ON d.trip_pk=t.trip_pk
+                WHERE t.route_id=? AND t.pattern_id=? AND t.direction_id IS ?
+                AND t.service_id IN ({",".join("?" for _ in services)})
+                AND o.stop_id IN ({",".join("?" for _ in stops)}) AND o.sequence=?
+                AND o.pickup_type=0 AND d.stop_id=? AND d.sequence=?
+                AND d.sequence>o.sequence AND d.drop_off_type=0
+                AND (o.departure IS NULL OR (t.first_departure IS NULL AND
+                     EXISTS(SELECT 1 FROM frequencies f WHERE f.trip_pk=t.trip_pk)))
+                """,
+                (
+                    leg.route_id,
+                    leg.pattern_id,
+                    leg.direction_id,
+                    *sorted(services),
+                    *stops,
+                    leg.origin_sequence,
+                    leg.destination_stop_id,
+                    leg.destination_sequence,
+                ),
+            )
+            for row in rows:
+                prior = self.connection.execute(
+                    "SELECT MAX(arrival),MAX(departure) FROM stop_times WHERE trip_pk=? AND sequence<=?",
+                    (row["trip_pk"], leg.origin_sequence),
+                ).fetchone()
+                following = self.connection.execute(
+                    "SELECT MIN(arrival),MIN(departure) FROM stop_times WHERE trip_pk=? AND sequence>?",
+                    (row["trip_pk"], leg.origin_sequence),
+                ).fetchone()
+                lower = max((v for v in prior if v is not None), default=None)
+                upper = min((v for v in following if v is not None), default=None)
+                frequencies = self.connection.execute(
+                    "SELECT start,end FROM frequencies WHERE trip_pk=?", (row["trip_pk"],)
+                ).fetchall()
+                if frequencies:
+                    # Template clocks are relative to the first departure, not
+                    # absolute clocks for frequency instances. Without that anchor,
+                    # only the published start supplies a lower bound; end is not
+                    # a bound on downstream boardings with an unknown offset.
+                    anchor = row["first_departure"]
+                    bounds = [
+                        (
+                            f["start"] + max(0, lower - anchor)
+                            if anchor is not None and lower is not None
+                            else f["start"],
+                            f["end"] + upper - anchor
+                            if anchor is not None and upper is not None
+                            else None,
+                        )
+                        for f in frequencies
+                    ]
+                else:
+                    bounds = [(lower, upper)]
+                if any((a is None or a <= high) and (b is None or b >= low) for a, b in bounds):
+                    return True
+        return False
 
     def scheduled_connections(self, leg, when, *, window_minutes=120):
         """All explicit alternatives for one saved leg, with the existing calendar rules.

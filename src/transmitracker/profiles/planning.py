@@ -124,6 +124,9 @@ class StaticPlanner:
                             f"legs.{index}",
                             "Only unresolved frequency or missing times",
                         )
+                    unresolved = self._missing_boarding(profile, query_start, end, (index,))
+                    if unresolved is not None:
+                        return unresolved
                     # Diagnose a bounded miss using the same calendar/query machinery;
                     # these wider alternatives are never selected as a recommendation.
                     probe_start = midnight if deadline else query_start
@@ -154,6 +157,9 @@ class StaticPlanner:
             if not deadline or datetime.fromisoformat(r["arrival_at"]) + final <= deadline
         ]
         if not chains:
+            unresolved = self._missing_boarding(profile, query_start, end)
+            if unresolved is not None:
+                return unresolved
             return failure(
                 "ARRIVAL_DEADLINE_EXCEEDED",
                 "arrival_deadline",
@@ -178,6 +184,9 @@ class StaticPlanner:
                 if position < len(best):
                     combined.append((row, *best[position]))
             if not combined:
+                unresolved = self._missing_boarding(profile, query_start, end)
+                if unresolved is not None:
+                    return unresolved
                 code = "TRANSFER_INCOMPATIBLE" if within_horizon else "HORIZON_INSUFFICIENT"
                 if uncertain:
                     code = "SCHEDULE_TIME_UNRESOLVED"
@@ -273,3 +282,25 @@ class StaticPlanner:
             ),
             warnings=tuple(warnings),
         )
+
+    def _missing_boarding(self, profile, when, until, indices=None):
+        for index in indices if indices is not None else range(len(profile.legs)):
+            if self.catalog.has_unresolved_boarding(profile.legs[index], when, until):
+                field = f"legs.{index}"
+                return Result(
+                    errors=(
+                        Issue(
+                            "SCHEDULE_TIME_UNRESOLVED",
+                            field,
+                            "Active service has incomplete boarding times",
+                        ),
+                    ),
+                    warnings=(
+                        Issue(
+                            "SCHEDULE_WINDOW_UNVERIFIED",
+                            field,
+                            "Missing times prevent confirming membership in the selected window",
+                        ),
+                    ),
+                )
+        return None
